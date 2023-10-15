@@ -8,16 +8,22 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Globe_Wander_Final.styles.css" asp-append-version="true" />
     <!-- Bootstrap core CSS -->
-    @* <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css"> *@
+   @*  <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css"> *@
     <!--Default CSS-->
     <link href="~/css/default.css" rel="stylesheet" type="text/css">
     <!--Custom CSS-->
     <link href="~/css/style.css" rel="stylesheet" type="text/css">
     <!--Plugin CSS-->
     <link href="~/css/plugin.css" rel="stylesheet" type="text/css">
+    <!--Dashboard CSS-->
+    <link href="~/css/dashboard.css" rel="stylesheet" type="text/css">
+    <!--Icons CSS-->
+    <link href="~/css/icons.css" rel="stylesheet" type="text/css">
     <!--Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    @* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"> *@
+    <script src="https://kit.fontawesome.com/f9b49e7bf3.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <header>
@@ -39,12 +45,22 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="TourSpots" asp-action="Index">Tours</a>
                         </li>
+                        <li class="nav-item">
+
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Hotels" asp-action="Index">Hotels</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Hotels" asp-action="Hotel">Hotels LIST 2</a>
+
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Dashboard">Dashboard</a>
+
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div>
+    <div >
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -55,18 +71,24 @@
             &copy; 2023 - Globe_Wander_Final - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+   @*  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @* <script src="~/js/jquery-3.3.1.min.js"></script> *@
-    @* <script src="~/js/bootstrap.min.js"></script> *@
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/color-switcher.js"></script>
     <script src="~/js/plugin.js"></script>
     <script src="~/js/main.js"></script>
     <script src="~/js/menu.js"></script>
-    <script src="~/js/custom-swiper2.js"></script>
+@*  <script src="~/js/custom-swiper2.js"></script> *@
+    <script src="~/js/custom-swiper3.js"></script>
     <script src="~/js/custom-nav.js"></script>
     <script src="~/js/custom-date.js"></script>
+    <script src="~/js/chart.js"></script>  
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="~/js/jpanelmenu.min.js"></script>
+    <script src="~/js/dashboard-custom.js"></script>*@
+    
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
