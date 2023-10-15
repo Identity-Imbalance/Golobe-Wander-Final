@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Globe_Wander_Final.styles.css" asp-append-version="true" />
     <!-- Bootstrap core CSS -->
-    @* <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css"> *@
+   @*  <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css"> *@
     <!--Default CSS-->
     <link href="~/css/default.css" rel="stylesheet" type="text/css">
     <!--Custom CSS-->
@@ -39,12 +39,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="TourSpots" asp-action="Index">Tours</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Hotels" asp-action="Index">Hotels</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Hotels" asp-action="Hotel">Hotels LIST 2</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div >
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -55,16 +61,17 @@
             &copy; 2023 - Globe_Wander_Final - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+   @*  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @* <script src="~/js/jquery-3.3.1.min.js"></script> *@
-    @* <script src="~/js/bootstrap.min.js"></script> *@
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/color-switcher.js"></script>
     <script src="~/js/plugin.js"></script>
     <script src="~/js/main.js"></script>
     <script src="~/js/menu.js"></script>
-    <script src="~/js/custom-swiper2.js"></script>
+@*     <script src="~/js/custom-swiper2.js"></script> *@
+    <script src="~/js/custom-swiper3.js"></script>
     <script src="~/js/custom-nav.js"></script>
     <script src="~/js/custom-date.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
