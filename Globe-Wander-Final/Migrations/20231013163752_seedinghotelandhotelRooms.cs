@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Globe_Wander_Final.Migrations
 {
     /// <inheritdoc />
-    public partial class SetUpDataBaseVersionOne : Migration
+    public partial class seedinghotelandhotelRooms : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -350,10 +350,10 @@ namespace Globe_Wander_Final.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "2fa4a7ab-57d2-459c-a343-4ea968c47d9d", "adminUser@example.com", true, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAEBte6E++0TqbjuvP5PINhsb1xPSy2fWaJYkVPRvDTozhnQ8/GNkDnaX/hADlmvyxhw==", "1234567890", false, "2e579207-8ad3-497f-86fa-5b25a8186b09", false, "admin" },
-                    { "2", 0, "9e9a9abb-f12f-41c1-a49f-11825e918cf5", "hotel@example.com", true, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAED6tdWg0/mRM4efngAN9jFkjm1X3CXeIBDdthtMvqdX9DLwGoUnIHBP4+z2iG63HbQ==", "1234567890", false, "724b9e40-82b6-4e8d-98e9-85ce30836c90", false, "hotel" },
-                    { "3", 0, "f2846620-f792-4a5c-ae96-6e2e8237067d", "trip@example.com", true, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAENSnO2rq4uV/yP3T8mcuKRFR2txw60njim3MTHPxuPvNGTPKyS9FmmjkHKt+5TkPww==", "1234567890", false, "ea23177f-d6ab-4ea3-9c47-416b512107ba", false, "trip" },
-                    { "4", 0, "b117c043-dbde-4cd3-85d3-2ab55ca7f5d9", "User@example.com", true, false, null, null, "USER", "AQAAAAIAAYagAAAAEImkFEY6Ls7pzTTZ35xhrQL8hJpT8Lc8giMEqUGcCD8SzBOVMeEXi596jSxKoxZdTA==", "1234567890", false, "6c923a58-930e-4e09-9663-38506cf8366d", false, "User" }
+                    { "1", 0, "07534e97-e783-440d-9a35-9925231da90c", "adminUser@example.com", true, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAED+b+EwzLU5sHQuxkdiUEamdBhOxQrCf5D9+dGK0k4lNsF8j7hVZ5cHv9x+t1mOoxg==", "1234567890", false, "2e7d819d-938c-4c66-b302-07c12e754812", false, "admin" },
+                    { "2", 0, "09899385-5ded-40b6-b15b-58592e283aae", "hotel@example.com", true, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAEGEc9MvzmY6Qb/yFNMrAqmt+OnGFrWtVHQW9i9LOQTjr69ptHkwVIW4YZYW/DvxsLQ==", "1234567890", false, "867adace-f353-4e30-b4c2-c04ea1a7f148", false, "hotel" },
+                    { "3", 0, "c40f8039-f799-47cc-b208-58256c6aefd7", "trip@example.com", true, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAEDKyxLAxGBP+NSPw2JkVTK7D2z6bPWKMRvHsRvwPHiqOhBb0gCHddNU721Klegb/GQ==", "1234567890", false, "6c06d09e-05ff-4c78-aba0-d3d4dff47b1c", false, "trip" },
+                    { "4", 0, "baec56b5-4c65-4397-9e76-fa1b4bcd454f", "User@example.com", true, false, null, null, "USER", "AQAAAAIAAYagAAAAEPLjnjwixKzqTsGHSALPkisw4qH4pWY1mBu7LJvVV6oYLekeApeUyxqkM46kzg3Dfg==", "1234567890", false, "6c60b692-e2b8-4b31-b676-469013e04b62", false, "User" }
                 });
 
             migrationBuilder.InsertData(
@@ -394,7 +394,18 @@ namespace Globe_Wander_Final.Migrations
                 {
                     { 1, "A unique hotel that you can't find in this place", "Paradise", 1 },
                     { 2, "A unique hotel that you can't find in this place", "Wander ", 2 },
-                    { 3, "A unique hotel that y    ou can't find in this place", "Amazing", 3 }
+                    { 3, "A unique hotel that you can't find in this place", "Amazing", 3 },
+                    { 4, "Experience the best of hospitality with us", "Euphoria", 2 },
+                    { 5, "Find your peace away from the hustle and bustle of the city", "Serenity", 3 },
+                    { 6, "A perfect blend of comfort and luxury", "Harmony", 3 },
+                    { 7, "A tranquil retreat in the heart of the city", "Oasis", 2 },
+                    { 8, "A luxury hotel that exceeds your expectations", "Mirage", 2 },
+                    { 9, "Experience ultimate relaxation and comfort", "Nirvana", 3 },
+                    { 10, "Your home away from home", "Bliss", 1 },
+                    { 11, "Experience the heavenly comfort and luxury", "Heaven", 1 },
+                    { 12, "A paradise on earth for travelers", "Eden", 1 },
+                    { 13, "A perfect place for a perfect vacation", "Utopia", 3 },
+                    { 14, "Dive into the world of luxury and comfort", "Atlantis", 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -402,9 +413,44 @@ namespace Globe_Wander_Final.Migrations
                 columns: new[] { "Id", "Activity", "Capacity", "Cost", "Count", "Description", "EndDate", "Name", "StartDate", "TourSpotID" },
                 values: new object[,]
                 {
-                    { 1, "walking", 30, 20m, 0, "trip start at 8 am and going from Amman to Petra", new DateTime(2023, 10, 12, 14, 40, 58, 388, DateTimeKind.Utc).AddTicks(2526), "Petra ride", new DateTime(2023, 10, 12, 17, 40, 58, 388, DateTimeKind.Local).AddTicks(2511), 1 },
-                    { 2, "visiting", 22, 30m, 0, "Amman to Jerash with a trip manager who can speak many languages", new DateTime(2023, 10, 12, 14, 40, 58, 388, DateTimeKind.Utc).AddTicks(2529), "Jerash ride", new DateTime(2023, 10, 12, 17, 40, 58, 388, DateTimeKind.Local).AddTicks(2528), 2 },
-                    { 3, "climbing", 40, 40m, 0, "Amman to Irbid with a trip manager who can speak many languages", new DateTime(2023, 10, 12, 14, 40, 58, 388, DateTimeKind.Utc).AddTicks(2533), "Um-Qais ride", new DateTime(2023, 10, 12, 17, 40, 58, 388, DateTimeKind.Local).AddTicks(2532), 3 }
+                    { 1, "walking", 30, 20m, 0, "trip start at 8 am and going from Amman to Petra", new DateTime(2023, 10, 13, 16, 37, 52, 200, DateTimeKind.Utc).AddTicks(5314), "Petra ride", new DateTime(2023, 10, 13, 19, 37, 52, 200, DateTimeKind.Local).AddTicks(5273), 1 },
+                    { 2, "visiting", 22, 30m, 0, "Amman to Jerash with a trip manager who can speak many languages", new DateTime(2023, 10, 13, 16, 37, 52, 200, DateTimeKind.Utc).AddTicks(5321), "Jerash ride", new DateTime(2023, 10, 13, 19, 37, 52, 200, DateTimeKind.Local).AddTicks(5319), 2 },
+                    { 3, "climbing", 40, 40m, 0, "Amman to Irbid with a trip manager who can speak many languages", new DateTime(2023, 10, 13, 16, 37, 52, 200, DateTimeKind.Utc).AddTicks(5324), "Um-Qais ride", new DateTime(2023, 10, 13, 19, 37, 52, 200, DateTimeKind.Local).AddTicks(5323), 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "HotelRooms",
+                columns: new[] { "HotelID", "RoomNumber", "IsAvailable", "PricePerDay", "RoomID" },
+                values: new object[,]
+                {
+                    { 1, 101, true, 100m, 1 },
+                    { 1, 102, true, 120m, 2 },
+                    { 2, 201, false, 150m, 3 },
+                    { 2, 202, true, 180m, 1 },
+                    { 3, 301, false, 200m, 3 },
+                    { 3, 302, true, 220m, 2 },
+                    { 4, 401, true, 250m, 3 },
+                    { 4, 402, false, 280m, 2 },
+                    { 5, 501, true, 300m, 1 },
+                    { 5, 502, false, 320m, 1 },
+                    { 6, 601, true, 350m, 2 },
+                    { 6, 602, true, 380m, 2 },
+                    { 7, 701, false, 400m, 3 },
+                    { 7, 702, true, 430m, 2 },
+                    { 8, 801, false, 450m, 1 },
+                    { 8, 802, true, 480m, 1 },
+                    { 9, 901, true, 500m, 3 },
+                    { 9, 902, false, 530m, 2 },
+                    { 10, 1001, true, 550m, 1 },
+                    { 10, 1002, false, 580m, 2 },
+                    { 11, 1101, true, 600m, 1 },
+                    { 11, 1102, false, 630m, 3 },
+                    { 12, 1201, true, 650m, 2 },
+                    { 12, 1202, true, 680m, 3 },
+                    { 13, 1301, false, 700m, 2 },
+                    { 13, 1302, true, 730m, 2 },
+                    { 14, 1401, false, 750m, 3 },
+                    { 14, 1402, true, 780m, 3 }
                 });
 
             migrationBuilder.CreateIndex(
