@@ -93,7 +93,7 @@ namespace Globe_Wander_Final.Models.Services
 
             }).ToListAsync();
 
-            HotelDTO? hotel = await _context.Hotels.Where(x => x.Id == hotelId).Select(b => new HotelDTO
+            HotelDTO? hotel = await _context.Hotels.Where(x => x.Id == hotelId).Include(v=>v.HotelRoom).Select(b => new HotelDTO
             {
                 Id = b.Id,
                 Name = b.Name,
