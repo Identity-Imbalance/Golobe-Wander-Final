@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<Globe_Wander_Final.Models.DTOs.TripDTO>
+
+
+
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
 <head>
     <meta charset="UTF-8" />
@@ -87,20 +91,23 @@
                             </div>
                         </div>
                         <div class="row">
+
+                            @foreach(var item in Model)
+                            {
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="ticket-item list-ticket">
                                     <div class="ticket-image">
-                                        <img src="images/flight5.jpg" alt="image">
+                                        <img src="~/imgs/petra.jpg" alt="image">
                                     </div>
                                     <div class="flight-content">
                                         <div class="ticket-content">
                                             <div class="ticket-title">
-                                                <p class="price mar-bottom-5">Otherway flight</p>
-                                                <h3 class="mar-0">Paris</h3>
+                                                <p class="price mar-bottom-5">@item.Id</p>
+                                                <h3 class="mar-0">@item.Name</h3>
 
                                             </div>
                                             <div class="ticket-btn mar-top-5">
-                                                <p class="price mar-0"><span class="bold">$350.00</span> avg/person</p>
+                                                <p class="price mar-0"><span class="bold">$@item.Cost</span> avg/person</p>
                                             </div>
                                         </div>
                                         <div class="landing display-flex">
@@ -108,8 +115,8 @@
                                                 <i class="fa fa-plane" aria-hidden="true"></i>
                                             </div>
                                             <div class="content">
-                                                <p class="bold">Take Off</p>
-                                                <p>Wed Nov 19 7:50 AM</p>
+                                                <p class="bold">Start</p>
+                                                <p>@item.StartDate</p>
                                             </div>
                                         </div>
                                         <div class="landing display-flex">
@@ -117,18 +124,19 @@
                                                 <i class="fa fa-plane" aria-hidden="true"></i>
                                             </div>
                                             <div class="content">
-                                                <p class="bold">Landing</p>
-                                                <p>Wed Nov 21 5:00 PM</p>
+                                                <p class="bold">End</p>
+                                                <p>@item.EndDate</p>
                                             </div>
                                         </div>
                                         <div class="flight-btn text-center">
-                                            <a href="#" class="biz-btn biz-btn1 mar-right-10">Flight Details</a>
-                                            <a href="#" class="biz-btn-black">Choose</a>
+                                                <a class="biz-btn biz-btn1 mar-right-10" asp-controller="Trips" asp-action="TripDetails" asp-route-id="@item.Id">Trip Details</a>
+                                            <a href="#" class="biz-btn-black">Booking</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
+                            }
+                           @*  <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="ticket-item list-ticket">
                                     <div class="ticket-image">
                                         <img src="images/flight3.jpg" alt="image">
@@ -420,7 +428,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> *@
                         </div>
                         <div class="pagination-content text-center">
                             <ul class="pagination">
