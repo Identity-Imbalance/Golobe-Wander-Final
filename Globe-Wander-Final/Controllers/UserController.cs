@@ -4,7 +4,7 @@ namespace Globe_Wander_Final.Controllers
 {
     public class UserController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Dashboard()
         {
             return View();
         }

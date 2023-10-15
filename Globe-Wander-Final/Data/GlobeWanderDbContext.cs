@@ -29,10 +29,57 @@ namespace Globe_Wander_Final.Data
                 new Trip() { Id = 3, TourSpotID = 3, Name = "Um-Qais ride", Cost = 40, Capacity = 40, Count = 0, Activity = "climbing", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Amman to Irbid with a trip manager who can speak many languages" }
             );
             modelBuilder.Entity<Hotel>().HasData(
-                new Hotel() { Id = 1, TourSpotID = 1, Name = "Paradise", Description = "A unique hotel that you can't find in this place" },
-                new Hotel() { Id = 2, TourSpotID = 2, Name = "Wander ", Description = "A unique hotel that you can't find in this place" },
-                new Hotel() { Id = 3, TourSpotID = 3, Name = "Amazing", Description = "A unique hotel that y    ou can't find in this place" }
-            );
+            new Hotel() { Id = 1, TourSpotID = 1, Name = "Paradise", Description = "A unique hotel that you can't find in this place" },
+            new Hotel() { Id = 2, TourSpotID = 2, Name = "Wander ", Description = "A unique hotel that you can't find in this place" },
+            new Hotel() { Id = 3, TourSpotID = 3, Name = "Amazing", Description = "A unique hotel that you can't find in this place" },
+            new Hotel() { Id = 4, TourSpotID = 2, Name = "Euphoria", Description = "Experience the best of hospitality with us" },
+            new Hotel() { Id = 5, TourSpotID = 3, Name = "Serenity", Description = "Find your peace away from the hustle and bustle of the city" },
+            new Hotel() { Id = 6, TourSpotID = 3, Name = "Harmony", Description = "A perfect blend of comfort and luxury" },
+
+    new Hotel() { Id = 7, TourSpotID = 2, Name = "Oasis", Description = "A tranquil retreat in the heart of the city" },
+    new Hotel() { Id = 8, TourSpotID = 2, Name = "Mirage", Description = "A luxury hotel that exceeds your expectations" },
+    new Hotel() { Id = 9, TourSpotID = 3, Name = "Nirvana", Description = "Experience ultimate relaxation and comfort" },
+    new Hotel() { Id = 10, TourSpotID = 1, Name = "Bliss", Description = "Your home away from home" },
+    new Hotel() { Id = 11, TourSpotID = 1, Name = "Heaven", Description = "Experience the heavenly comfort and luxury" },
+    new Hotel() { Id = 12, TourSpotID = 1, Name = "Eden", Description = "A paradise on earth for travelers" },
+    new Hotel() { Id = 13, TourSpotID = 3, Name = "Utopia", Description = "A perfect place for a perfect vacation" },
+    new Hotel() { Id = 14, TourSpotID = 2, Name = "Atlantis", Description = "Dive into the world of luxury and comfort" }
+);
+
+            modelBuilder.Entity<HotelRoom>().HasData(
+    new HotelRoom() { RoomNumber = 101, HotelID = 1, RoomID = 1, PricePerDay = 100, IsAvailable = true },
+    new HotelRoom() { RoomNumber = 102, HotelID = 1, RoomID = 2, PricePerDay = 120, IsAvailable = true },
+    new HotelRoom() { RoomNumber = 201, HotelID = 2, RoomID = 3, PricePerDay = 150, IsAvailable = false },
+    new HotelRoom() { RoomNumber = 202, HotelID = 2, RoomID = 1, PricePerDay = 180, IsAvailable = true },
+    new HotelRoom() { RoomNumber = 301, HotelID = 3, RoomID = 3, PricePerDay = 200, IsAvailable = false },
+    new HotelRoom() { RoomNumber = 302, HotelID = 3, RoomID = 2, PricePerDay = 220, IsAvailable = true },
+    new HotelRoom() { RoomNumber = 401, HotelID = 4, RoomID = 3, PricePerDay = 250, IsAvailable = true },
+    new HotelRoom() { RoomNumber = 402, HotelID = 4, RoomID = 2, PricePerDay = 280, IsAvailable = false },
+    new HotelRoom() { RoomNumber = 501, HotelID = 5, RoomID = 1, PricePerDay = 300, IsAvailable = true },
+    new HotelRoom() { RoomNumber = 502, HotelID = 5, RoomID = 1, PricePerDay = 320, IsAvailable = false },
+    new HotelRoom() { RoomNumber = 601, HotelID = 6, RoomID = 2, PricePerDay = 350, IsAvailable = true },
+    new HotelRoom() { RoomNumber = 602, HotelID = 6, RoomID = 2, PricePerDay = 380, IsAvailable = true },
+    new HotelRoom() { RoomNumber = 701, HotelID = 7, RoomID = 3, PricePerDay = 400, IsAvailable = false },
+    new HotelRoom() { RoomNumber = 702, HotelID = 7, RoomID = 2, PricePerDay = 430, IsAvailable = true },
+    new HotelRoom() { RoomNumber = 801, HotelID = 8, RoomID = 1, PricePerDay = 450, IsAvailable = false },
+    new HotelRoom() { RoomNumber = 802, HotelID = 8, RoomID = 1, PricePerDay = 480, IsAvailable = true },
+    new HotelRoom() { RoomNumber = 901, HotelID = 9, RoomID = 3, PricePerDay = 500, IsAvailable = true },
+    new HotelRoom() { RoomNumber = 902, HotelID = 9, RoomID = 2, PricePerDay = 530, IsAvailable = false },
+    new HotelRoom() { RoomNumber = 1001, HotelID = 10, RoomID = 1, PricePerDay = 550, IsAvailable = true },
+    new HotelRoom() { RoomNumber = 1002, HotelID = 10, RoomID = 2, PricePerDay = 580, IsAvailable = false },
+    new HotelRoom() { RoomNumber = 1101, HotelID = 11, RoomID = 1, PricePerDay = 600, IsAvailable = true },
+    new HotelRoom() { RoomNumber = 1102, HotelID = 11, RoomID = 3, PricePerDay = 630, IsAvailable = false },
+    new HotelRoom() { RoomNumber = 1201, HotelID = 12, RoomID = 2, PricePerDay = 650, IsAvailable = true },
+    new HotelRoom() { RoomNumber = 1202, HotelID = 12, RoomID = 3, PricePerDay = 680, IsAvailable = true },
+    
+    new HotelRoom() { RoomNumber = 1301, HotelID = 13, RoomID = 2, PricePerDay = 700, IsAvailable = false },
+    new HotelRoom() { RoomNumber = 1302, HotelID = 13, RoomID = 2, PricePerDay = 730, IsAvailable = true },
+    new HotelRoom() { RoomNumber = 1401, HotelID = 14, RoomID = 3, PricePerDay = 750, IsAvailable = false },
+    new HotelRoom() { RoomNumber = 1402, HotelID = 14, RoomID = 3, PricePerDay = 780, IsAvailable = true }
+    
+);
+
+
 
             modelBuilder.Entity<Room>().HasData(
                 new Room()
