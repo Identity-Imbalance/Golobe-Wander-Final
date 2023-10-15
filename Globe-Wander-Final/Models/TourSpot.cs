@@ -30,6 +30,8 @@ namespace Globe_Wander_Final.Models
         [Display(Name = "Medical")]
         Medical = 2,
         [Display(Name = "Historical")]
-        Historical = 3
+        Historical = 3,
+        [Display(Name = "Natural")]
+        Natural = 4
     }
 }

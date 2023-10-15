@@ -4,7 +4,7 @@ namespace Globe_Wander_Final.Controllers
 {
     public class TripsController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Trips()
         {
             return View();
         }
