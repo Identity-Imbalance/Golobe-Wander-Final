@@ -91,15 +91,15 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b117c043-dbde-4cd3-85d3-2ab55ca7f5d9",
+                            ConcurrencyStamp = "830558fd-4f00-4cfc-b645-b6c88bad570b",
                             Email = "User@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEImkFEY6Ls7pzTTZ35xhrQL8hJpT8Lc8giMEqUGcCD8SzBOVMeEXi596jSxKoxZdTA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEN3t4UEjdbRu3S6wOeduYBnZMswR5mh86BXRErD8wb9NxbqLRxKnMHf/n47dImTEiw==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6c923a58-930e-4e09-9663-38506cf8366d",
+                            SecurityStamp = "f7083b7a-3a29-40ed-a726-71e47e6a51a6",
                             TwoFactorEnabled = false,
                             UserName = "User"
                         },
@@ -107,16 +107,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2fa4a7ab-57d2-459c-a343-4ea968c47d9d",
+                            ConcurrencyStamp = "5dce36b9-dd3b-46cc-8fd1-093d3d002d90",
                             Email = "adminUser@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "adminUser@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBte6E++0TqbjuvP5PINhsb1xPSy2fWaJYkVPRvDTozhnQ8/GNkDnaX/hADlmvyxhw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEN3LG2VVs67KZIVpQeqpYVetrq6Vs4JPvejI7ixyb50H8w1iDt8+8xy8N/IF+8fL5w==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2e579207-8ad3-497f-86fa-5b25a8186b09",
+                            SecurityStamp = "e35cf9b9-35ee-4a26-874b-b01b1e9281ab",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -124,16 +124,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f2846620-f792-4a5c-ae96-6e2e8237067d",
+                            ConcurrencyStamp = "c6392281-2cd8-468c-992d-3908686029b0",
                             Email = "trip@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "trip@EXAMPLE.COM",
                             NormalizedUserName = "TRIP",
-                            PasswordHash = "AQAAAAIAAYagAAAAENSnO2rq4uV/yP3T8mcuKRFR2txw60njim3MTHPxuPvNGTPKyS9FmmjkHKt+5TkPww==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENHDSBsX9wjeau0VhvT+/CmvAcRrm+lw/zZyT8Xf0N8XoLa15uKVdf5q+EUizS4Zmw==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ea23177f-d6ab-4ea3-9c47-416b512107ba",
+                            SecurityStamp = "b190afb2-8eaf-49ef-aa7c-eb12751d20fe",
                             TwoFactorEnabled = false,
                             UserName = "trip"
                         },
@@ -141,16 +141,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9e9a9abb-f12f-41c1-a49f-11825e918cf5",
+                            ConcurrencyStamp = "5af802d6-6781-4cb1-b05e-da850fcc9b8b",
                             Email = "hotel@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "hotel@EXAMPLE.COM",
                             NormalizedUserName = "HOTEL",
-                            PasswordHash = "AQAAAAIAAYagAAAAED6tdWg0/mRM4efngAN9jFkjm1X3CXeIBDdthtMvqdX9DLwGoUnIHBP4+z2iG63HbQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEP7Y8cGl4Ew0iwfJFq4m7VQgrsQVly/m+FBsfe9aF7O8TK4QqWZcVch+Sa5gjaMNoA==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "724b9e40-82b6-4e8d-98e9-85ce30836c90",
+                            SecurityStamp = "2c699aef-7a1f-4f24-9bcc-2f26e385acbc",
                             TwoFactorEnabled = false,
                             UserName = "hotel"
                         });
@@ -432,6 +432,66 @@ namespace Globe_Wander_Final.Migrations
                             Description = "A historical place that the Romanian civilization build before thousands years. In the north of Jordan",
                             Name = "Um Qais",
                             PhoneNumber = "0788442521"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Category = 4,
+                            City = "Aqaba",
+                            Country = "Jordan",
+                            Description = "A spectacular desert in southern Jordan.",
+                            Name = "Wadi Rum",
+                            PhoneNumber = "0788555444"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Category = 3,
+                            City = "Ajloun",
+                            Country = "Jordan",
+                            Description = "A 12th-century Muslim castle in northern Jordan.",
+                            Name = "Ajloun Castle",
+                            PhoneNumber = "0799111122"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Category = 4,
+                            City = "Amman",
+                            Country = "Jordan",
+                            Description = "The lowest point on Earth and famous for its high salt content.",
+                            Name = "Dead Sea",
+                            PhoneNumber = "0777888999"
+                        },
+                        new
+                        {
+                            ID = 7,
+                            Category = 4,
+                            City = "Aqaba",
+                            Country = "Jordan",
+                            Description = "Beautiful beaches along the Red Sea.",
+                            Name = "Aqaba Beach",
+                            PhoneNumber = "0799777666"
+                        },
+                        new
+                        {
+                            ID = 8,
+                            Category = 3,
+                            City = "Madaba",
+                            Country = "Jordan",
+                            Description = "Ancient hilltop fortress where John the Baptist was imprisoned.",
+                            Name = "Machaerus",
+                            PhoneNumber = "0777666555"
+                        },
+                        new
+                        {
+                            ID = 9,
+                            Category = 4,
+                            City = "Tafilah",
+                            Country = "Jordan",
+                            Description = "A diverse ecological system in southern Jordan.",
+                            Name = "Dana Biosphere Reserve",
+                            PhoneNumber = "0799888777"
                         });
                 });
 
@@ -488,9 +548,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 20m,
                             Count = 0,
                             Description = "trip start at 8 am and going from Amman to Petra",
-                            EndDate = new DateTime(2023, 10, 12, 14, 40, 58, 388, DateTimeKind.Utc).AddTicks(2526),
+                            EndDate = new DateTime(2023, 10, 13, 16, 41, 8, 893, DateTimeKind.Utc).AddTicks(6910),
                             Name = "Petra ride",
-                            StartDate = new DateTime(2023, 10, 12, 17, 40, 58, 388, DateTimeKind.Local).AddTicks(2511),
+                            StartDate = new DateTime(2023, 10, 13, 19, 41, 8, 893, DateTimeKind.Local).AddTicks(6898),
                             TourSpotID = 1
                         },
                         new
@@ -501,9 +561,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 30m,
                             Count = 0,
                             Description = "Amman to Jerash with a trip manager who can speak many languages",
-                            EndDate = new DateTime(2023, 10, 12, 14, 40, 58, 388, DateTimeKind.Utc).AddTicks(2529),
+                            EndDate = new DateTime(2023, 10, 13, 16, 41, 8, 893, DateTimeKind.Utc).AddTicks(6913),
                             Name = "Jerash ride",
-                            StartDate = new DateTime(2023, 10, 12, 17, 40, 58, 388, DateTimeKind.Local).AddTicks(2528),
+                            StartDate = new DateTime(2023, 10, 13, 19, 41, 8, 893, DateTimeKind.Local).AddTicks(6912),
                             TourSpotID = 2
                         },
                         new
@@ -514,9 +574,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 40m,
                             Count = 0,
                             Description = "Amman to Irbid with a trip manager who can speak many languages",
-                            EndDate = new DateTime(2023, 10, 12, 14, 40, 58, 388, DateTimeKind.Utc).AddTicks(2533),
+                            EndDate = new DateTime(2023, 10, 13, 16, 41, 8, 893, DateTimeKind.Utc).AddTicks(6915),
                             Name = "Um-Qais ride",
-                            StartDate = new DateTime(2023, 10, 12, 17, 40, 58, 388, DateTimeKind.Local).AddTicks(2532),
+                            StartDate = new DateTime(2023, 10, 13, 19, 41, 8, 893, DateTimeKind.Local).AddTicks(6914),
                             TourSpotID = 3
                         });
                 });
