@@ -4,6 +4,7 @@ using Globe_Wander_Final.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Globe_Wander_Final.Migrations
 {
     [DbContext(typeof(GlobeWanderDbContext))]
-    partial class GlobeWanderDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231013164109_seedingData")]
+    partial class seedingData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,19 +94,15 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-
-                            ConcurrencyStamp = "baec56b5-4c65-4397-9e76-fa1b4bcd454f",
-
+                            ConcurrencyStamp = "830558fd-4f00-4cfc-b645-b6c88bad570b",
                             Email = "User@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "USER",
-
-                            PasswordHash = "AQAAAAIAAYagAAAAEPLjnjwixKzqTsGHSALPkisw4qH4pWY1mBu7LJvVV6oYLekeApeUyxqkM46kzg3Dfg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEN3t4UEjdbRu3S6wOeduYBnZMswR5mh86BXRErD8wb9NxbqLRxKnMHf/n47dImTEiw==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6c60b692-e2b8-4b31-b676-469013e04b62",
-
+                            SecurityStamp = "f7083b7a-3a29-40ed-a726-71e47e6a51a6",
                             TwoFactorEnabled = false,
                             UserName = "User"
                         },
@@ -111,20 +110,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-
-                            ConcurrencyStamp = "07534e97-e783-440d-9a35-9925231da90c",
-
+                            ConcurrencyStamp = "5dce36b9-dd3b-46cc-8fd1-093d3d002d90",
                             Email = "adminUser@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "adminUser@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
-
-                            PasswordHash = "AQAAAAIAAYagAAAAED+b+EwzLU5sHQuxkdiUEamdBhOxQrCf5D9+dGK0k4lNsF8j7hVZ5cHv9x+t1mOoxg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEN3LG2VVs67KZIVpQeqpYVetrq6Vs4JPvejI7ixyb50H8w1iDt8+8xy8N/IF+8fL5w==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2e7d819d-938c-4c66-b302-07c12e754812",
-
+                            SecurityStamp = "e35cf9b9-35ee-4a26-874b-b01b1e9281ab",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -132,19 +127,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                ConcurrencyStamp = "c40f8039-f799-47cc-b208-58256c6aefd7",
-
+                            ConcurrencyStamp = "c6392281-2cd8-468c-992d-3908686029b0",
                             Email = "trip@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "trip@EXAMPLE.COM",
                             NormalizedUserName = "TRIP",
-
-                            PasswordHash = "AQAAAAIAAYagAAAAEDKyxLAxGBP+NSPw2JkVTK7D2z6bPWKMRvHsRvwPHiqOhBb0gCHddNU721Klegb/GQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENHDSBsX9wjeau0VhvT+/CmvAcRrm+lw/zZyT8Xf0N8XoLa15uKVdf5q+EUizS4Zmw==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6c06d09e-05ff-4c78-aba0-d3d4dff47b1c",
-
+                            SecurityStamp = "b190afb2-8eaf-49ef-aa7c-eb12751d20fe",
                             TwoFactorEnabled = false,
                             UserName = "trip"
                         },
@@ -152,20 +144,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-
-                            ConcurrencyStamp = "09899385-5ded-40b6-b15b-58592e283aae",
-
+                            ConcurrencyStamp = "5af802d6-6781-4cb1-b05e-da850fcc9b8b",
                             Email = "hotel@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "hotel@EXAMPLE.COM",
                             NormalizedUserName = "HOTEL",
-
-                            PasswordHash = "AQAAAAIAAYagAAAAEGEc9MvzmY6Qb/yFNMrAqmt+OnGFrWtVHQW9i9LOQTjr69ptHkwVIW4YZYW/DvxsLQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEP7Y8cGl4Ew0iwfJFq4m7VQgrsQVly/m+FBsfe9aF7O8TK4QqWZcVch+Sa5gjaMNoA==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "867adace-f353-4e30-b4c2-c04ea1a7f148",
-
+                            SecurityStamp = "2c699aef-7a1f-4f24-9bcc-2f26e385acbc",
                             TwoFactorEnabled = false,
                             UserName = "hotel"
                         });
@@ -283,86 +271,9 @@ namespace Globe_Wander_Final.Migrations
                         new
                         {
                             Id = 3,
-                            Description = "A unique hotel that you can't find in this place",
+                            Description = "A unique hotel that y    ou can't find in this place",
                             Name = "Amazing",
                             TourSpotID = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "Experience the best of hospitality with us",
-                            Name = "Euphoria",
-                            TourSpotID = 2
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Description = "Find your peace away from the hustle and bustle of the city",
-                            Name = "Serenity",
-                            TourSpotID = 3
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Description = "A perfect blend of comfort and luxury",
-                            Name = "Harmony",
-                            TourSpotID = 3
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Description = "A tranquil retreat in the heart of the city",
-                            Name = "Oasis",
-                            TourSpotID = 2
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Description = "A luxury hotel that exceeds your expectations",
-                            Name = "Mirage",
-                            TourSpotID = 2
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Description = "Experience ultimate relaxation and comfort",
-                            Name = "Nirvana",
-                            TourSpotID = 3
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Description = "Your home away from home",
-                            Name = "Bliss",
-                            TourSpotID = 1
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Description = "Experience the heavenly comfort and luxury",
-                            Name = "Heaven",
-                            TourSpotID = 1
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Description = "A paradise on earth for travelers",
-                            Name = "Eden",
-                            TourSpotID = 1
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Description = "A perfect place for a perfect vacation",
-                            Name = "Utopia",
-                            TourSpotID = 3
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Description = "Dive into the world of luxury and comfort",
-                            Name = "Atlantis",
-                            TourSpotID = 2
                         });
                 });
 
@@ -388,232 +299,6 @@ namespace Globe_Wander_Final.Migrations
                     b.HasIndex("RoomID");
 
                     b.ToTable("HotelRooms");
-
-                    b.HasData(
-                        new
-                        {
-                            HotelID = 1,
-                            RoomNumber = 101,
-                            IsAvailable = true,
-                            PricePerDay = 100m,
-                            RoomID = 1
-                        },
-                        new
-                        {
-                            HotelID = 1,
-                            RoomNumber = 102,
-                            IsAvailable = true,
-                            PricePerDay = 120m,
-                            RoomID = 2
-                        },
-                        new
-                        {
-                            HotelID = 2,
-                            RoomNumber = 201,
-                            IsAvailable = false,
-                            PricePerDay = 150m,
-                            RoomID = 3
-                        },
-                        new
-                        {
-                            HotelID = 2,
-                            RoomNumber = 202,
-                            IsAvailable = true,
-                            PricePerDay = 180m,
-                            RoomID = 1
-                        },
-                        new
-                        {
-                            HotelID = 3,
-                            RoomNumber = 301,
-                            IsAvailable = false,
-                            PricePerDay = 200m,
-                            RoomID = 3
-                        },
-                        new
-                        {
-                            HotelID = 3,
-                            RoomNumber = 302,
-                            IsAvailable = true,
-                            PricePerDay = 220m,
-                            RoomID = 2
-                        },
-                        new
-                        {
-                            HotelID = 4,
-                            RoomNumber = 401,
-                            IsAvailable = true,
-                            PricePerDay = 250m,
-                            RoomID = 3
-                        },
-                        new
-                        {
-                            HotelID = 4,
-                            RoomNumber = 402,
-                            IsAvailable = false,
-                            PricePerDay = 280m,
-                            RoomID = 2
-                        },
-                        new
-                        {
-                            HotelID = 5,
-                            RoomNumber = 501,
-                            IsAvailable = true,
-                            PricePerDay = 300m,
-                            RoomID = 1
-                        },
-                        new
-                        {
-                            HotelID = 5,
-                            RoomNumber = 502,
-                            IsAvailable = false,
-                            PricePerDay = 320m,
-                            RoomID = 1
-                        },
-                        new
-                        {
-                            HotelID = 6,
-                            RoomNumber = 601,
-                            IsAvailable = true,
-                            PricePerDay = 350m,
-                            RoomID = 2
-                        },
-                        new
-                        {
-                            HotelID = 6,
-                            RoomNumber = 602,
-                            IsAvailable = true,
-                            PricePerDay = 380m,
-                            RoomID = 2
-                        },
-                        new
-                        {
-                            HotelID = 7,
-                            RoomNumber = 701,
-                            IsAvailable = false,
-                            PricePerDay = 400m,
-                            RoomID = 3
-                        },
-                        new
-                        {
-                            HotelID = 7,
-                            RoomNumber = 702,
-                            IsAvailable = true,
-                            PricePerDay = 430m,
-                            RoomID = 2
-                        },
-                        new
-                        {
-                            HotelID = 8,
-                            RoomNumber = 801,
-                            IsAvailable = false,
-                            PricePerDay = 450m,
-                            RoomID = 1
-                        },
-                        new
-                        {
-                            HotelID = 8,
-                            RoomNumber = 802,
-                            IsAvailable = true,
-                            PricePerDay = 480m,
-                            RoomID = 1
-                        },
-                        new
-                        {
-                            HotelID = 9,
-                            RoomNumber = 901,
-                            IsAvailable = true,
-                            PricePerDay = 500m,
-                            RoomID = 3
-                        },
-                        new
-                        {
-                            HotelID = 9,
-                            RoomNumber = 902,
-                            IsAvailable = false,
-                            PricePerDay = 530m,
-                            RoomID = 2
-                        },
-                        new
-                        {
-                            HotelID = 10,
-                            RoomNumber = 1001,
-                            IsAvailable = true,
-                            PricePerDay = 550m,
-                            RoomID = 1
-                        },
-                        new
-                        {
-                            HotelID = 10,
-                            RoomNumber = 1002,
-                            IsAvailable = false,
-                            PricePerDay = 580m,
-                            RoomID = 2
-                        },
-                        new
-                        {
-                            HotelID = 11,
-                            RoomNumber = 1101,
-                            IsAvailable = true,
-                            PricePerDay = 600m,
-                            RoomID = 1
-                        },
-                        new
-                        {
-                            HotelID = 11,
-                            RoomNumber = 1102,
-                            IsAvailable = false,
-                            PricePerDay = 630m,
-                            RoomID = 3
-                        },
-                        new
-                        {
-                            HotelID = 12,
-                            RoomNumber = 1201,
-                            IsAvailable = true,
-                            PricePerDay = 650m,
-                            RoomID = 2
-                        },
-                        new
-                        {
-                            HotelID = 12,
-                            RoomNumber = 1202,
-                            IsAvailable = true,
-                            PricePerDay = 680m,
-                            RoomID = 3
-                        },
-                        new
-                        {
-                            HotelID = 13,
-                            RoomNumber = 1301,
-                            IsAvailable = false,
-                            PricePerDay = 700m,
-                            RoomID = 2
-                        },
-                        new
-                        {
-                            HotelID = 13,
-                            RoomNumber = 1302,
-                            IsAvailable = true,
-                            PricePerDay = 730m,
-                            RoomID = 2
-                        },
-                        new
-                        {
-                            HotelID = 14,
-                            RoomNumber = 1401,
-                            IsAvailable = false,
-                            PricePerDay = 750m,
-                            RoomID = 3
-                        },
-                        new
-                        {
-                            HotelID = 14,
-                            RoomNumber = 1402,
-                            IsAvailable = true,
-                            PricePerDay = 780m,
-                            RoomID = 3
-                        });
                 });
 
             modelBuilder.Entity("Globe_Wander_Final.Models.Rate", b =>
@@ -866,11 +551,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 20m,
                             Count = 0,
                             Description = "trip start at 8 am and going from Amman to Petra",
-
-                            EndDate = new DateTime(2023, 10, 13, 16, 37, 52, 200, DateTimeKind.Utc).AddTicks(5314),
+                            EndDate = new DateTime(2023, 10, 13, 16, 41, 8, 893, DateTimeKind.Utc).AddTicks(6910),
                             Name = "Petra ride",
-                            StartDate = new DateTime(2023, 10, 13, 19, 37, 52, 200, DateTimeKind.Local).AddTicks(5273),
-
+                            StartDate = new DateTime(2023, 10, 13, 19, 41, 8, 893, DateTimeKind.Local).AddTicks(6898),
                             TourSpotID = 1
                         },
                         new
@@ -881,10 +564,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 30m,
                             Count = 0,
                             Description = "Amman to Jerash with a trip manager who can speak many languages",
-
-                            EndDate = new DateTime(2023, 10, 13, 16, 37, 52, 200, DateTimeKind.Utc).AddTicks(5321),
+                            EndDate = new DateTime(2023, 10, 13, 16, 41, 8, 893, DateTimeKind.Utc).AddTicks(6913),
                             Name = "Jerash ride",
-                            StartDate = new DateTime(2023, 10, 13, 19, 37, 52, 200, DateTimeKind.Local).AddTicks(5319),
+                            StartDate = new DateTime(2023, 10, 13, 19, 41, 8, 893, DateTimeKind.Local).AddTicks(6912),
                             TourSpotID = 2
                         },
                         new
@@ -895,10 +577,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 40m,
                             Count = 0,
                             Description = "Amman to Irbid with a trip manager who can speak many languages",
-
-                            EndDate = new DateTime(2023, 10, 13, 16, 37, 52, 200, DateTimeKind.Utc).AddTicks(5324),
+                            EndDate = new DateTime(2023, 10, 13, 16, 41, 8, 893, DateTimeKind.Utc).AddTicks(6915),
                             Name = "Um-Qais ride",
-                            StartDate = new DateTime(2023, 10, 13, 19, 37, 52, 200, DateTimeKind.Local).AddTicks(5323),
+                            StartDate = new DateTime(2023, 10, 13, 19, 41, 8, 893, DateTimeKind.Local).AddTicks(6914),
                             TourSpotID = 3
                         });
                 });

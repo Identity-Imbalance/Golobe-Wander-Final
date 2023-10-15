@@ -1,5 +1,7 @@
 ﻿@model List<Globe_Wander_Final.Models.DTOs.TourSpotDTO>
 
+@* 
+
 @{
     Layout = null;
 }
@@ -69,5 +71,478 @@
 }
     </tbody>
 </table>
+</body>
+</html>
+ *@
+
+
+
+@{
+  
+}
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status"></div>
+    </div>
+    <!-- Preloader Ends -->
+    <!-- header starts -->
+  
+    <!-- header ends -->
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-outer text-center">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <h2 class="white">Tour Grid</h2>
+                <nav aria-label="breadcrumb">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Tour Grid</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="overlay">
+            <img src="https://images.pexels.com/photos/691637/pexels-photo-691637.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+        </div>
+    </section>
+    <!-- BreadCrumb Ends -->
+    <!-- tour list starts -->
+    <section class="list">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-xs-12 pull-right">
+                    <div class="trend-box">
+                        <div class="list-results display-flex space-between">
+                            <div class="list-results-sort pull-left pad-top-5">
+                                <p class="mar-0">Showing 1-5 of 80 results      ****JQuery****</p>
+                            </div>
+                            <div class="click-menu pull-right">
+                                <div class="change-list mar-right-10"><a href="tourlist-2.html"><i class="fa fa-bars"></i></a></div>
+                                <div class="change-grid f-active"><a href="tourlist-1.html"><i class="fa fa-th"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                        @foreach (var item in Model){
+                                <div class="col-md-6 col-sm-6 col-xs-12 mar-bottom-30">
+                                    <div class="trend-item">
+                                        @if(item.ID % 2 == 0)
+                                        {
+                                            <div class="ribbon ribbon-top-left"><span>35% OFF</span></div>
+                                        }else{
+                                        <div class="ribbon ribbon-top-left"><span>15% OFF</span></div>}
+                                    <div class="trend-image">
+                                            <img src="https://images.pexels.com/photos/1631665/pexels-photo-1631665.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="image">
+                                        <div class="trend-tags">
+                                            <a href="#"><i class="flaticon-like"></i></a>
+                                        </div>
+                                        <div class="trend-price">
+                                            <p class="price">From <span>$350.00</span></p>
+                                            <p class="price">Trips <span>@item.Trips.Count.ToString()</span></p>
+                                     @*          @foreach(var trip in item.Trips){
+                                        <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> @trip.Name|| @trip.Capacity</p>
+                                        } *@
+                                        </div>
+                                    </div>
+                                    <div class="trend-content">
+                                        <p><i class="flaticon-location-pin"></i>@item.City / @item.Category</p>
+                                        <h4><a href="#">@item.Name</a></h4>
+                                        <div class="rating mar-bottom-15">
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                        </div>
+                                        <span class="mar-left-5">38 Reviews</span>
+                                        <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> @item.Description || @item.Trips.Count.ToString()</p> 
+                                      
+                                    </div>
+                                </div>
+                            </div>
+
+                   }
+                            <div class="col-xs-12">
+                                <div class="blog-button text-center">
+                                    <a href="car-detail.html" class="biz-btn biz-btn1">Load More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div class="list-sidebar">
+                        <div class="sidebar-item">
+                            <form class="filter-box">
+                                <h3 class="white">Find The Places</h3>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <label class="white">Your Destination</label>
+                                            <div class="input-box">
+                                                <i class="flaticon-placeholder"></i>
+                                                <select class="niceSelect">
+                                                    <option value="1">Where are you going?</option>
+                                                    <option value="2">Amman</option>
+                                                    <option value="3">Aqaba</option>
+                                                    <option value="4">Irbid</option>
+                                                    <option value="5">Wadi-Rum</option>
+                                                    <option value="5">Tafila</option>
+                                                    <option value="5">Ajloun</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+@* 
+                                    <div class="col-md-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label class="white">Check In</label>
+                                            <div class="input-box">
+                                                <i class="flaticon-calendar"></i>
+                                                <input id="date-range0" type="text" placeholder="yyyy-mmm-dd">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label class="white">Check Out</label>
+                                            <div class="input-box">
+                                                <i class="flaticon-calendar"></i>
+                                                <input id="date-range1" type="text" placeholder="yyyy-mm-dd">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label class="white">Adult</label>
+                                            <div class="input-box">
+                                                <i class="flaticon-add-user"></i>
+                                                <select class="niceSelect">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label class="white">Children</label>
+                                            <div class="input-box">
+                                                <i class="flaticon-add-user"></i>
+                                                <select class="niceSelect">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                              *@
+                                    
+                                    <div class="col-xs-12">
+                                        <div class="form-group mar-top-15">
+                                            <a href="#" class="biz-btn">Search</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="sidebar-item">
+                            <h3>Services</h3>
+                            <div class="pretty p-default p-thick p-pulse mar-bottom-15">
+                                <input type="checkbox" />
+                                <div class="state p-warning-o">
+                                    <label>24/7 Reception</label>
+                                </div>
+                            </div>
+                            <div class="pretty p-default p-thick p-pulse mar-bottom-15">
+                                <input type="checkbox" />
+                                <div class="state p-warning-o">
+                                    <label>Parking</label>
+                                </div>
+                            </div>
+                            
+                            <div class="pretty p-default p-thick p-pulse mar-bottom-15">
+                                <input type="checkbox" />
+                                <div class="state p-warning-o">
+                                    <label>Restaurant</label>
+                                </div>
+                            </div>
+                            <div class="pretty p-default p-thick p-pulse mar-bottom-15">
+                                <input type="checkbox" />
+                                <div class="state p-warning-o">
+                                    <label>Satellite Television</label>
+                                </div>
+                            </div>
+                         
+                            <div class="pretty p-default p-thick p-pulse">
+                                <input type="checkbox" />
+                                <div class="state p-warning-o">
+                                    <label>Luggage Storage </label>
+                                </div>
+                            </div>
+                        </div>
+                      
+                        <div class="sidebar-item">
+                            <h3>Star Rating</h3>
+                            <div class="pretty p-default p-thick p-pulse">
+                                <input type="checkbox" />
+                                <div class="state">
+                                    <label>
+                                        <div class="star-rating">
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="pretty p-default p-thick p-pulse">
+                                <input type="checkbox" />
+                                <div class="state">
+                                    <label>
+                                        <div class="star-rating">
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="pretty p-default p-thick p-pulse">
+                                <input type="checkbox" />
+                                <div class="state">
+                                    <label>
+                                        <div class="star-rating">
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="pretty p-default p-thick p-pulse">
+                                <input type="checkbox" />
+                                <div class="state">
+                                    <label>
+                                        <div class="star-rating">
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="pretty p-default p-thick p-pulse">
+                                <input type="checkbox" />
+                                <div class="state">
+                                    <label>
+                                        <div class="star-rating">
+                                            <span class="fa fa-star checked"></span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sidebar-item">
+                            <h3>Price Range($)</h3>
+                            <div class="range-slider">
+                                <div data-min="0" data-max="500" data-unit="$" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false">
+                                    <span class="min-value">0 $</span>
+                                    <span class="max-value">500 $</span>
+                                    <div class="ui-slider-range ui-widget-header ui-corner-all full" style="left: 0%; width: 100%;"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                 @*        <div class="sidebar-item">
+                            <h3>City</h3>
+                            <div class="pretty p-default p-thick p-pulse">
+                                <input type="checkbox" />
+                                <div class="state">
+                                    <label>
+                                        Amsterdam<span class="number">749</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="pretty p-default p-thick p-pulse">
+                                <input type="checkbox" checked />
+                                <div class="state">
+                                    <label>
+                                        Rotterdam<span class="number">630</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="pretty p-default p-thick p-pulse">
+                                <input type="checkbox" />
+                                <div class="state">
+                                    <label>
+                                        Copenghan<span class="number">58</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="pretty p-default p-thick p-pulse">
+                                <input type="checkbox" />
+                                <div class="state">
+                                    <label>
+                                        New Delhi<span class="number">29</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="pretty p-default p-thick p-pulse">
+                                <input type="checkbox" />
+                                <div class="state">
+                                    <label>
+                                        New York<span class="number">29</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="pretty p-default p-thick p-pulse">
+                                <input type="checkbox" />
+                                <div class="state">
+                                    <label>
+                                        Kathmandu<span class="number">29</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="pretty p-default p-thick p-pulse">
+                                <input type="checkbox" />
+                                <div class="state">
+                                    <label>
+                                        Brisbane<span class="number">29</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="pretty p-default p-thick p-pulse">
+                                <input type="checkbox" />
+                                <div class="state">
+                                    <label>
+                                        Tokyo<span class="number">29</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    *@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- tour list ends -->
+    <!-- footer starts -->
+ 
+    <!-- footer ends -->
+    <!-- Back to top start -->
+    <div id="back-to-top">
+        <a href="#"></a>
+    </div>
+    <!-- Back to top ends -->
+    <!-- search popup -->
+    <div id="search1">
+        <button type="button" class="close">×</button>
+        <form>
+            <input type="search" value="" placeholder="type keyword(s) here" />
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+
+    <div class="modal fade" id="login" role="dialog">
+        <div class="modal-dialog">
+            <div class="login-content">
+                <div class="login-title section-border">
+                    <h3>Login</h3>
+                </div>
+                <div class="login-form section-border">
+                    <form>
+                        <div class="form-group">
+                            <input type="email" placeholder="Enter email address">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Enter password">
+                        </div>
+                    </form>
+                    <div class="form-btn">
+                        <a href="#" class="biz-btn biz-btn1">LOGIN</a>
+                    </div>
+                    <div class="form-group form-checkbox">
+                        <input type="checkbox"> Remember Me
+                        <a href="#">Forgot password?</a>
+                    </div>
+                </div>
+                <div class="login-social section-border">
+                    <p>or continue with</p>
+                    <a href="#" class="btn-facebook"><i class="fab fa-facebook" aria-hidden="true"></i> Facebook</a>
+                    <a href="#" class="btn-twitter"><i class="fab fa-twitter" aria-hidden="true"></i> Twitter</a>
+                </div>
+                <div class="sign-up">
+                    <p>Do not have an account?<a href="#">Sign Up</a></p>
+                </div>
+            </div>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="register" role="dialog">
+        <div class="modal-dialog">
+            <div class="login-content">
+                <div class="login-title section-border">
+                    <h3>Register</h3>
+                </div>
+                <div class="login-form section-border">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="User Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Full Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Password">
+                        </div>
+                    </form>
+                    <div class="form-btn">
+                        <a href="#" class="biz-btn biz-btn1">REGISTER</a>
+                    </div>
+                    <div class="form-group form-checkbox">
+                        <input type="checkbox"> Remember Me
+                        <a href="#">Forgot password?</a>
+                    </div>
+                </div>
+                <div class="login-social section-border">
+                    <p>or continue with</p>
+                    <a href="#" class="btn-facebook"><i class="fab fa-facebook" aria-hidden="true"></i> Facebook</a>
+                    <a href="#" class="btn-twitter"><i class="fab fa-twitter" aria-hidden="true"></i> Twitter</a>
+                </div>
+                <div class="sign-up">
+                    <p>Do not have an account?<a href="#">Sign Up</a></p>
+                </div>
+            </div>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+    </div>
+
+    <!-- *Scripts* -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/color-switcher.js"></script>
+    <script src="js/plugin.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/custom-nav.js"></script>
+
 </body>
 </html>
