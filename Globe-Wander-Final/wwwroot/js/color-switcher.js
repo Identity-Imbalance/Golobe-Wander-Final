@@ -1,16 +1,13 @@
 "use strict";
-
-var ColorSwitcher = (function() {
-    
+var ColorSwitcher = (function () {
     function initColorSwitcher(colorSheets) {
         var tempCon, colorSwitcher, controlBtn, colorSwitchs, linkHolderHtml, linkHolder;
 
         if (Object.prototype.toString.call(colorSheets) !== "[object Array]") {
             return;
         }
-
         tempCon = document.createDocumentFragment();
-        
+      
         colorSwitcher = document.createElement("div");
         colorSwitcher.classList.add("ColorSwitcher");
 
@@ -28,6 +25,7 @@ var ColorSwitcher = (function() {
         linkHolder = document.getElementById("ColorSwitcherLinkHolder");
 
         colorSheets.forEach(function(colorSheet, index) {
+
             var colorSwitch;
 
             if (colorSheet.color && colorSheet.title && colorSheet.href) {
@@ -42,7 +40,9 @@ var ColorSwitcher = (function() {
             }
         });
 
-        colorSwitchs.addEventListener("click", function(event) {
+        colorSwitchs.addEventListener("click", function (event) {
+        
+
             var index;
 
             if (event.target.nodeName !== "BUTTON") {
@@ -56,6 +56,7 @@ var ColorSwitcher = (function() {
         });
 
         controlBtn.addEventListener("click", function(event) {
+
             event.target.parentElement.classList.toggle("ColorSwitcher--open");
 
             return false;
