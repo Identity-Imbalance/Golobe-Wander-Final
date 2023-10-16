@@ -1,0 +1,68 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
+<div class="dashboard-sticky-nav">
+    <div class="content-left pull-left">
+        <a href="dashboard.html"><img src="~/imgs/pngwing.com.png" height="60" alt="logo"></a>
+    </div>
+    <div class="content-right pull-right">
+
+        <div class="profile-sec bg-dark">
+            <div class="dash-content">
+                <h4 class="text-white">user name</h4>
+                <span class="text-white">user role</span>
+            </div>
+            <div class="dash-image">
+                <img src="~/imgs/pngwing.com.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="dashboard-nav">
+    <div class="dashboard-nav-inner">
+        <ul>
+            <li id="dash" class="@(ViewContext.RouteData.Values["action"].ToString() == "Dashboard" ? "active" : "")">
+                <a asp-controller="User" asp-action="Dashboard"><i class="sl sl-icon-settings"></i> Dashboard</a>
+            </li>
+            <li id="user" class="@(ViewContext.RouteData.Values["action"].ToString() == "Profile" ? "active" : "")">
+                <a asp-controller="User" asp-action="Profile"><i class="sl sl-icon-user"></i> Profile</a>
+            </li>
+            <li>
+                <a><i class="fa-solid fa-plane-departure pe-2 me-2"></i>Tours</a>
+                <ul>
+                    <li>
+                        <a asp-controller="Tours" asp-action="ListTours">List of Tours</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Tours" asp-action="CreateTour">Add New Tour</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a><i class="sl sl-icon-layers"></i>Trips</a>
+                <ul>
+                    <li>
+                        <a asp-controller="Trips" asp-action="ListTrips">List of Trips</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Trips" asp-action="CreateTrip">Add New Trip</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a><i class="sl sl-icon-layers"></i> Hotel</a>
+                <ul>
+                    <li>
+                        <a asp-controller="Hotels" asp-action="ListHotels">List of Hotels</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Hotels" asp-action="CreateHotel">Add New Hotel</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
