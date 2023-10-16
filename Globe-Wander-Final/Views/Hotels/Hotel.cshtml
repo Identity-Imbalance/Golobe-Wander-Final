@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<Globe_Wander_Final.Models.DTOs.HotelDTO>
+@using Globe_Wander_Final.Models.Interfaces
+@inject ITourSpot tour;
 
 <!--remove-->
 
@@ -151,7 +153,10 @@
         <div class="trend-box">
             <div class="row mix tour">
                 @foreach(var item in Model){
-                <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">
+                    var name = await tour.GetSpotById(item.Id);
+
+
+                    <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">
                     <div class="trend-item">
                         
                         <div class="trend-image">
@@ -166,6 +171,9 @@
                         <div class="trend-content">
                             <p><i class="flaticon-location-pin"></i> @item.Name</p>
                                 <h4> <a class="dropdown-item" asp-area="" asp-controller="Hotels" asp-action="GetById" asp-route-id="@item.Id">@item.Description</a></h4>
+                                <p>
+                                    @name.Country, @name.City
+                                </p>
                             <div class="rating mar-bottom-15">
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>

@@ -20,5 +20,7 @@ namespace Globe_Wander_Final.Models.Interfaces
 
         public Task<List<TrendTourSpotDTO>> GetMostVisitedTourSpots();
 
+        public Task<string> GetLocationByTourSptID(int id);
+
     }
 }
