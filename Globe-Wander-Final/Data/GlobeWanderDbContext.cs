@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Stripe;
 using System.Reflection.Emit;
 
 namespace Globe_Wander_Final.Data
@@ -28,11 +29,51 @@ namespace Globe_Wander_Final.Data
                 new Trip() { Id = 2, TourSpotID = 2, Name = "Jerash ride", Cost = 30, Capacity = 22, Count = 0, Activity = "visiting", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Amman to Jerash with a trip manager who can speak many languages" },
                 new Trip() { Id = 3, TourSpotID = 3, Name = "Um-Qais ride", Cost = 40, Capacity = 40, Count = 0, Activity = "climbing", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Amman to Irbid with a trip manager who can speak many languages" }
             );
-            modelBuilder.Entity<Hotel>().HasData(
-                new Hotel() { Id = 1, TourSpotID = 1, Name = "Paradise", Description = "A unique hotel that you can't find in this place" },
-                new Hotel() { Id = 2, TourSpotID = 2, Name = "Wander ", Description = "A unique hotel that you can't find in this place" },
-                new Hotel() { Id = 3, TourSpotID = 3, Name = "Amazing", Description = "A unique hotel that y    ou can't find in this place" }
+
+ 
+
+    
+
+
+
+        modelBuilder.Entity<Hotel>().HasData(
+                new Hotel() { Id = 1, TourSpotID = 1, Name = "Paradise",Location="petra",StarRate=4, Description = "A unique hotel that you can't find in this place" },
+                new Hotel() { Id = 2, TourSpotID = 2, Name = "Wander ", Location = "petra", StarRate = 4, Description = "A unique hotel that you can't find in this place" },
+                new Hotel() { Id = 3, TourSpotID = 3, Name = "Amazing", Location = "petra", StarRate = 4, Description = "A unique hotel that y    ou can't find in this place" }
             );
+            modelBuilder.Entity<HotelRoom>().HasData(
+    new HotelRoom() { RoomNumber = 101, HotelID = 1, RoomID = 1, Description="CLEAN" ,SquareFeet=250,Bathrooms=2,Beds=3, PricePerDay = 100, IsAvailable = true },
+    new HotelRoom() { RoomNumber = 102, HotelID = 1, RoomID = 2, Description = "CLEAN", SquareFeet = 250, Bathrooms = 2, Beds = 3, PricePerDay = 150, IsAvailable = true },
+    new HotelRoom() { RoomNumber = 201, HotelID = 2, RoomID = 1, Description = "CLEAN", SquareFeet = 250, Bathrooms = 2, Beds = 3, PricePerDay = 120, IsAvailable = false }
+);
+
+             
+        modelBuilder.Entity<Amenity>().HasData(
+                new Amenity() { Id = 1, Name = "Free Wi-Fi" },
+                new Amenity() { Id = 2, Name = "TV" },
+                new Amenity() { Id = 3, Name = "Air conditioning" }
+            );
+            modelBuilder.Entity<RoomAmenity>().HasData(
+    new RoomAmenity() { Id = 1, RoomId = 1, AmenityId = 1 },
+    new RoomAmenity() { Id = 2, RoomId = 1, AmenityId = 2 },
+    new RoomAmenity() { Id = 3, RoomId = 2, AmenityId = 3 },
+    new RoomAmenity() { Id = 4, RoomId = 3, AmenityId = 1 }
+);
+
+
+            modelBuilder.Entity<Facility>().HasData(
+                    new Facility() { Id = 1, Name = "swimingpool11111" },
+                    new Facility() { Id = 2, Name = "swimingpool22222" },
+                    new Facility() { Id = 3, Name = "swimingpool33333" }
+                );
+            modelBuilder.Entity<HotelFacility>().HasData(
+    new HotelFacility() { Id = 1, FacilityId = 1, HotelId = 1 },
+    new HotelFacility() { Id = 2, FacilityId = 1, HotelId = 2 },
+    new HotelFacility() { Id = 3, FacilityId = 2, HotelId = 3 },
+    new HotelFacility() { Id = 4, FacilityId = 3, HotelId = 1 }
+);
+
+
 
             modelBuilder.Entity<Room>().HasData(
                 new Room()
@@ -56,7 +97,7 @@ namespace Globe_Wander_Final.Data
                 }
             );
 
-
+          
             modelBuilder.Entity<HotelRoom>().HasKey(
                  hotelRooms => new
                  {
@@ -179,7 +220,11 @@ namespace Globe_Wander_Final.Data
         public DbSet<Rate> Rates { get; set; }
 
         public DbSet<BookingRoom> BookingRooms { get; set; }
+        public DbSet<Amenity> Amenities { get; set; }
+        public DbSet<RoomAmenity> RoomAmenities { get; set; }
 
+        public DbSet<Facility> Facilities { get; set; }
+        public DbSet<HotelFacility> HotelFacilities { get; set; }
         public DbSet<BookingTrip> bookingTrips { get; set; }
     }
 }

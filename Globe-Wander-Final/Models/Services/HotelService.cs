@@ -30,6 +30,7 @@ namespace Globe_Wander_Final.Models.Services
                 Name = hotelDTO.Name,
                 Description = hotelDTO.Description,
                 TourSpotID = hotelDTO.TourSpotID
+     
             };
 
             _context.Entry(hotel).State = EntityState.Added;
@@ -71,6 +72,10 @@ namespace Globe_Wander_Final.Models.Services
             {
                 HotelID = v.HotelID,
                 RoomID = v.RoomID,
+                SquareFeet=v.SquareFeet,
+                Bathrooms=v.Bathrooms,
+                Beds=v.Beds,
+                Description=v.Description,
                 IsAvailable = v.IsAvailable,
                 RoomNumber = v.RoomNumber,
                 PricePerDay = v.PricePerDay,
@@ -78,7 +83,15 @@ namespace Globe_Wander_Final.Models.Services
                 {
                     ID = r.ID,
                     Layout = r.Layout,
-                    Name = r.Name
+                    Name = r.Name,
+                    RoomAmenities = _context.RoomAmenities.Where(I => I.RoomId == r.ID).Select(l => new RoomAmenity
+                    {
+                        Amenity = l.Amenity,
+                        Room = l.Room,
+                        AmenityId = l.AmenityId,
+                        RoomId = l.RoomId,
+                    }
+                            ).ToList()
                 }).Where(r => r.ID == v.RoomID).FirstOrDefault(),
                 BookingRoom = _context.BookingRooms.Select(bk => new BookingRoomDTO
                 {
@@ -97,6 +110,16 @@ namespace Globe_Wander_Final.Models.Services
             {
                 Id = b.Id,
                 Name = b.Name,
+                Location = b.Location,
+                StarRate = b.StarRate,
+                HotelFacilities = _context.HotelFacilities.Where(q => q.HotelId == b.Id).Select(k => new HotelFacility
+                {
+                    Id = k.Id,
+                    Facility = k.Facility,
+                    FacilityId = k.FacilityId,
+                    Hotel = k.Hotel,
+                    HotelId = b.Id,
+                }).ToList(),
                 Description = b.Description,
                 TourSpotID = b.TourSpotID,
                 HotelRoom = hotelRooms
@@ -117,6 +140,15 @@ namespace Globe_Wander_Final.Models.Services
             {
                 Id = b.Id,
                 Name = b.Name,
+                Location=b.Location,
+                StarRate = b.StarRate,
+               HotelFacilities=_context.HotelFacilities.Where(q=>q.HotelId==b.Id).Select(k=> new HotelFacility
+               {Id=k.Id,
+                   Facility=k.Facility,
+                    FacilityId=k.FacilityId,
+                    Hotel=k.Hotel,
+                    HotelId=b.Id,
+               }).ToList(),
                 Description = b.Description,
                 TourSpotID = b.TourSpotID,
                 HotelRoom = _context.HotelRooms.Where(x => x.HotelID == b.Id).Select(v => new HotelRoomDTO
@@ -125,12 +157,24 @@ namespace Globe_Wander_Final.Models.Services
                     RoomID = v.RoomID,
                     IsAvailable = v.IsAvailable,
                     RoomNumber = v.RoomNumber,
+                    Bathrooms = v.Bathrooms,
+                    Description = v.Description,
+                    Beds = v.Beds,
+                    SquareFeet = v.SquareFeet,
                     PricePerDay = v.PricePerDay,
                     Rooms = _context.Rooms.Select(r => new RoomDTO
                     {
                         ID = r.ID,
                         Layout = r.Layout,
-                        Name = r.Name
+                        Name = r.Name,
+                        RoomAmenities = _context.RoomAmenities.Where(I=>I.RoomId==r.ID).Select(l=> new RoomAmenity
+                        { 
+                            Amenity = l.Amenity,
+                            Room=l.Room,
+                            AmenityId = l.AmenityId,
+                            RoomId = l.RoomId,
+                        }
+                            ).ToList(),
                     }).Where(r => r.ID == v.RoomID).FirstOrDefault(),
                     BookingRoom = _context.BookingRooms.Select(bk => new BookingRoomDTO
                     {
@@ -165,7 +209,9 @@ namespace Globe_Wander_Final.Models.Services
 
                 hotel.Name = updatedHotel.Name;
                 hotel.Description = updatedHotel.Description;
-
+                hotel.Location= updatedHotel.Location;
+                hotel.StarRate= updatedHotel.StarRate;
+               
                 _context.Entry(hotel).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
                 updatedHotel.Id = id;

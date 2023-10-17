@@ -7,7 +7,10 @@
         public int HotelID { get; set; }
 
         public int RoomID { get; set; }
-
+        public string Description { get; set; }
+        public int SquareFeet { get; set; }
+        public int Bathrooms { get; set; }
+        public int Beds { get; set; }
         public decimal PricePerDay { get; set; }
 
         public bool IsAvailable { get; set; }

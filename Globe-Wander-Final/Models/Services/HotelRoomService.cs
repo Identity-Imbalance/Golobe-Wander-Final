@@ -64,7 +64,12 @@ namespace Globe_Wander_Final.Models.Services
            RoomNumber = b.RoomNumber,
            RoomID = b.RoomID,
            PricePerDay = b.PricePerDay,
-           IsAvailable = b.IsAvailable
+           IsAvailable = b.IsAvailable,
+           Bathrooms=b.Bathrooms,
+           Beds=b.Beds,
+           Description=b.Description,
+           SquareFeet =b.SquareFeet
+           
        })
        .FirstOrDefaultAsync();
 
@@ -76,7 +81,15 @@ namespace Globe_Wander_Final.Models.Services
                     {
                         ID = r.ID,
                         Name = r.Name,
-                        Layout = r.Layout
+                        Layout = r.Layout,
+                        RoomAmenities = _context.RoomAmenities.Where(I => I.RoomId == r.ID).Select(l => new RoomAmenity
+                        {
+                            Amenity = l.Amenity,
+                            Room = l.Room,
+                            AmenityId = l.AmenityId,
+                            RoomId = l.RoomId,
+                        }
+                            ).ToList()
                     })
                     .FirstOrDefaultAsync();
 
@@ -135,12 +148,25 @@ namespace Globe_Wander_Final.Models.Services
                 RoomID = b.RoomID,
                 PricePerDay = b.PricePerDay,
                 IsAvailable = b.IsAvailable,
+                Bathrooms = b.Bathrooms,
+                SquareFeet = b.SquareFeet,
+                Beds = b.Beds,
+                Description = b.Description,
+                
                 Rooms = _context.Rooms.Select(
                     x => new RoomDTO
                     {
                         ID = x.ID,
                         Name = x.Name,
-                        Layout = x.Layout
+                        Layout = x.Layout,
+                        RoomAmenities = _context.RoomAmenities.Where(I => I.RoomId == x.ID).Select(l => new RoomAmenity
+                        {
+                            Amenity = l.Amenity,
+                            Room = l.Room,
+                            AmenityId = l.AmenityId,
+                            RoomId = l.RoomId,
+                        }
+                            ).ToList()
                     })
                 .Where(x => x.ID == b.RoomID)
                 .FirstOrDefault(),

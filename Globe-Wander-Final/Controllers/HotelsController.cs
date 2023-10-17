@@ -29,7 +29,7 @@ namespace Globe_Wander_Final.Controllers
         }
 
 
-        public async Task<IActionResult> GetById(int Id)
+        public async Task<IActionResult> SingleHotel(int Id)
         {
             var hotel = await _hotels.GetHotelId(Id);
             var hotels = await _hotels.GetAllHotels();
