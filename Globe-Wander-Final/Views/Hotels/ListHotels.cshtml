@@ -1,0 +1,73 @@
+﻿@model List<Globe_Wander_Final.Models.DTOs.HotelDTO>
+@inject Globe_Wander_Final.Models.Interfaces.ITourSpot _tours
+@{
+}
+<div id="preloader">
+    <div id="status"></div>
+</div>
+<div id="container-wrapper">
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <partial name="_Navigation"></partial>
+
+        <div class="dashboard-content">
+            <div class="list-outer">
+                @* this should be responsive *@
+               @foreach (var item in Model)
+                {
+                    var location = await _tours.GetSpotById(item.TourSpotID);
+
+                    <div class="list-item-1">
+                        <div class="row display-flex">
+                        <div class="col-md-4 col-sm-12">
+                            <div class="list-image1">
+                                @* <img src="@item.ImageURL" alt="@item.Name"> *@
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="list-content">
+                                <div class="list-rating">
+                                    <div class="rating">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                    </div>
+                                </div>
+                                <h3><a asp-action="HotelDetailAdmin">@item.Name</a></h3>
+                                   <p>
+                                       @location.Country , @location.City
+                                   </p>
+                                     @* <p class="price">From <span></span>                                             
+                                 night</p>
+                                *@
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-12">
+                            
+                                <a asp-controller="Hotels" asp-action="EditHotel" asp-route-id="@item.Id"  class="biz-btn biz-btn1 mar-top-5">Edit</a>
+                                <a asp-controller="Hotels" asp-action="DeleteHotel" asp-route-id="@item.Id"  class="biz-btn biz-btn1 mar-top-5">Delete</a>
+                            
+                        </div>
+                    </div>
+
+                </div>
+                }
+                <div class="pagination-content text-center">
+                    <ul class="pagination">
+                        <li><a href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- end Container Wrapper -->
+</div>

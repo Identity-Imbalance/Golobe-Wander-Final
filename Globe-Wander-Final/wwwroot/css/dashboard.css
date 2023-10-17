@@ -3131,7 +3131,7 @@ span.like-icon {
 
 .profile-sec {
     padding: 15px 15px 5px;
-    background: #333;
+    background: transparent;
     display: inline-block;
     width: 100%;
     text-align: center;

@@ -1,0 +1,88 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div id="preloader">
+    <div id="status"></div>
+</div>
+<div id="container-wrapper">
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <partial name="_Navigation"></partial>
+
+        <div class="dashboard-content">
+            <div class="dashboard-form mar-bottom-30">
+                <div class="row">
+
+                    <!-- Profile -->
+                    <div class="col-lg-6 col-md-6 col-xs-12 padding-right-30">
+                        <div class="dashboard-list-box">
+                            <h4 class="gray">Profile Details</h4>
+                            <div class="dashboard-list-box-static">
+
+                                <!-- Avatar -->
+                                <div class="edit-profile-photo">
+                                    <img src="images/user-avatar.jpg" alt="">
+                                    <div class="change-photo-btn">
+                                        <div class="photoUpload">
+                                            <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                            <input type="file" class="upload" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Details -->
+                                <div class="my-profile">
+
+                                    <label>Your Name *</label>
+                                    <input placeholder="Tom Perrin" type="text">
+
+                                    <label>Phone Number *</label>
+                                    <input placeholder="(123) 123-456" type="text">
+
+                                    <label>Email Address *</label>
+                                    <input placeholder="tom@example.com" type="text">
+
+                                </div>
+
+                                <button class="biz-btn biz-btn1">Save Changes</button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+                <div class="dashboard-form mar-bottom-30">
+                    <div class="dashboard-password">
+                        <h3>Change Password</h3>
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-4 col-xs-12">
+                                    <label>Current Password</label>
+                                    <input type="password" placeholder="*********">
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <label>New Password</label>
+                                    <input type="password">
+                                </div>
+                                <div class="col-sm-4 col-xs-12">
+                                    <label>Re-enter Password</label>
+                                    <input type="password">
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="form-btn mar-top-15">
+                                        <a href="#" class="biz-btn biz-btn1">SAVE CHANGE</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>  
+            </div>
+            <!-- Dashboard / End -->
+        </div>
+        </div>
+        <!-- end Container Wrapper -->
+    </div>
