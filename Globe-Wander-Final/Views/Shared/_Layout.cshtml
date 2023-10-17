@@ -20,8 +20,8 @@
     <!--Icons CSS-->
     <link href="~/css/icons.css" rel="stylesheet" type="text/css">
     <!--Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    @* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"> *@
     <script src="https://kit.fontawesome.com/f9b49e7bf3.js" crossorigin="anonymous"></script>
 
 </head>
@@ -29,7 +29,7 @@
     <header class="main_header_area">
         <div class="header-content">
             <div class="container">
-                
+
                 <div class="links links-right pull-right">
                     <ul>
                         <li>
@@ -39,47 +39,16 @@
                                 <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
                                 <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
                             </ul>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Globe_Wander_Final</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TourSpots" asp-action="Index">Tours</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="home" asp-action="about">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ContactUs" asp-action="Index">ContactUs</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Trips" asp-action="Trips">Trips</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Hotels" asp-action="Index">Hotels</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Hotels" asp-action="Hotel">Hotels LIST 2</a>
-                            </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Dashboard">Dashboard</a>
-                        </li>
-                        <li><a asp-area="" asp-controller="User" asp-action="Login"><i class="fa fa-sign-in-alt"></i> Login</a></li>
-                        <li><a asp-area="" asp-controller="User" asp-action="Register"><i class="fa fa-sign-out-alt"></i> Register</a></li>
-                        
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li><a asp-area="" asp-controller="User" asp-action="Login"><i class="fa fa-sign-in-alt"></i> Login</a></li>
+                            <li><a asp-area="" asp-controller="User" asp-action="Register"><i class="fa fa-sign-out-alt"></i> Register</a></li>
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li><a asp-area="" asp-controller="User" asp-action="Logout"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -113,7 +82,6 @@
 
         <!-- Navigation Bar Ends -->
     </header>
- <div >
     <div>
         <main role="main" class="pb-3">
             @RenderBody()
@@ -179,16 +147,16 @@
                                 <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a></li>
                             </ul>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="footer-copyright">
             <div class="container">
                 <div class="copyright-text pull-left">
                     <p class="mar-0">&copy; 2023 - Globe_Wander_Final</p>
-                </div>                
+                </div>
             </div>
         </div>
     </footer>
@@ -210,7 +178,6 @@
     <script src="~/js/jpanelmenu.min.js"></script>
     <script src="~/js/dashboard-custom.js"></script>
 
-    <script src="~/js/changeActive.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
