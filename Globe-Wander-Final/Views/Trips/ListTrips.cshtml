@@ -1,0 +1,63 @@
+﻿@model List<Globe_Wander_Final.Models.DTOs.TripDTO>
+
+<div id="preloader">
+    <div id="status"></div>
+</div>
+<div id="container-wrapper">
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <partial name="_Navigation"></partial>
+
+        <div class="dashboard-content">
+            <div class="list-outer">
+                @foreach (var trip in Model)
+                {
+                    <div class="list-item">
+                        <div class="row display-flex">
+                            <div class="col-md-4 col-sm-12">
+                                <div class="list-image">
+                                    <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="@trip.Name">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="list-content ">
+                                    <div class="list-rating d-flex">
+                                        <div class="rating border-start-0 mx-2">
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                        </div>
+                                    <h3><a asp-action="TripDetail">@trip.Name</a></h3>
+                                    </div>
+                                    <p>@trip.Description</p>
+                                    <p class="price my-2 fw-bold ">Cost: $@trip.Cost</p>
+                                    <p>Start Date: @trip.StartDate.ToShortDateString()</p>
+                                    <p>End Date: @trip.EndDate.ToShortDateString()</p>
+                                    <p>Capacity: @trip.Capacity</p>
+                                    <p>Activity: @trip.Activity</p>
+                                    <p>Booking Count: @trip.Count</p>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-12">
+                                <a asp-controller="Trips" asp-action="EditTrip" asp-route-id="@trip.Id" class="biz-btn biz-btn1 mar-top-5">Edit</a>
+                                <a asp-controller="Trips" asp-action="DeleteTrip" asp-route-id="@trip.Id" class="biz-btn biz-btn1 mar-top-5">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="pagination-content text-center">
+                    <ul class="pagination">
+                        <li><a href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
