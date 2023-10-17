@@ -1,0 +1,197 @@
+﻿@model Globe_Wander_Final.Models.DTOs.TourSpotDTO
+
+
+
+
+@{
+
+}
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status"></div>
+    </div>
+    <!-- Preloader Ends -->
+    <!-- header starts -->
+    <!-- header ends -->
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-outer text-center">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <h2 class="white">Tour Grid</h2>
+                <nav aria-label="breadcrumb">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Tour Grid</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="overlay">
+            <img src="https://images.pexels.com/photos/691637/pexels-photo-691637.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+        </div>
+    </section>
+    <!-- BreadCrumb Ends -->
+    <!-- tour list starts -->
+    <section class="list">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-xs-12 pull-right">
+                    <div class="trend-box">
+                        <div class="list-results display-flex space-between">
+                            <div class="list-results-sort pull-left pad-top-5">
+                                <p class="mar-0">Showing 1-5 of 80 results      ****JQuery****</p>
+                            </div>
+                            <div class="click-menu pull-right">
+                                <div class="change-list mar-right-10"><a href="tourlist-2.html"><i class="fa fa-bars"></i></a></div>
+                                <div class="change-grid f-active"><a href="tourlist-1.html"><i class="fa fa-th"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="content" class="col-md-8">
+                                <div class="destination-content">
+                                    <h2 class="mar-bottom-5"><a href="car-detail.html">@Model.Name</a></h2>
+
+
+                                    <div class="deal-rating rating">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star-half checked"></span>
+                                    </div>
+                                </div>
+                                <div class="single-slider mar-bottom-30">
+                                    <div class="slider-1 slider-store">
+
+                                        <div class="detail-slider-item">
+                                            <img src="https://api.time.com/wp-content/uploads/2016/06/jordan-petra-landmark.jpg" alt="image">
+                                        </div>
+                                        <div class="detail-slider-item">
+                                            <img src="https://cdn-v2.theculturetrip.com/1020x/wp-content/uploads/2021/06/mbdd48.webp" alt="image">
+                                        </div>
+                                        <div class="detail-slider-item">
+                                            <img src="https://cdn-v2.theculturetrip.com/1020x/wp-content/uploads/2021/06/mfd9h1.webp" alt="image">
+                                        </div>
+                                    </div>
+                                    <div class="slider-1 slider-thumbs">
+
+
+                                        <div class="detail-slider-item">
+                                            <img src="https://api.time.com/wp-content/uploads/2016/06/jordan-petra-landmark.jpg" alt="image">
+                                        </div>
+                                        <div class="detail-slider-item">
+                                            <img src="https://cdn-v2.theculturetrip.com/1020x/wp-content/uploads/2021/06/mbdd48.webp" alt="image">
+                                        </div>
+                                        <div class="detail-slider-item">
+                                            <img src="https://cdn-v2.theculturetrip.com/1020x/wp-content/uploads/2021/06/mfd9h1.webp" alt="image">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="description detail-box">
+                                    <div class="detail-title">
+                                        <h3>Description</h3>
+                                    </div>
+                                    <div class="description-content">
+                                        <p>@Model.Description</p>
+
+
+
+
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- tour list ends -->
+    <!-- Recommended Hotels-->
+    <section class="trending bg-grey">
+        <div class="container">
+            <div class="section-title">
+                <h2><span>Recommended</span> Hotels</h2>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+            </div>
+            <div class="trend-box">
+                <div class="row mix tour">
+                    @foreach (var item in Model.Hotels)
+                    {
+                        <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">
+                            <div class="trend-item">
+
+                                <div class="trend-image">
+                                    <img src="images/blog1.jpg" alt="image">
+                                    <div class="trend-tags">
+                                        <a href="#"><i class="flaticon-like"></i></a>
+                                    </div>
+                                    <div class="trend-price">
+                                        <p class="price">From <span>$350.00</span></p>
+                                    </div>
+                                </div>
+                                <div class="trend-content">
+                                    <p><i class="flaticon-location-pin"></i> @item.Name</p>
+                                    <h4> <a class="dropdown-item" asp-area="" asp-controller="Hotels" asp-action="GetById" asp-route-id="@item.Id">@item.Description</a></h4>
+                                    <div class="rating mar-bottom-15">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                    </div>
+                                    <span class="mar-left-5">38 Reviews</span>
+                                    <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> @item.HotelRoom.Count.ToString() has hotel rooms</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Recommended Trips-->
+
+
+    <!-- footer starts -->
+    <!-- footer ends -->
+    <!-- Back to top start -->
+    <div id="back-to-top">
+        <a href="#"></a>
+    </div>
+    <!-- Back to top ends -->
+    <!-- search popup -->
+    <div id="search1">
+        <button type="button" class="close">×</button>
+        <form>
+            <input type="search" value="" placeholder="type keyword(s) here" />
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+
+
+
+    <!-- *Scripts* -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/color-switcher.js"></script>
+    <script src="js/plugin.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/custom-nav.js"></script>
+
+</body>
+</html>
