@@ -9,9 +9,12 @@ namespace Globe_Wander_Final.Controllers
     {
         private readonly IHotel _hotels;
 
-        public HotelsController(IHotel hotels)
+        private readonly ITourSpot _tourSpot;
+
+        public HotelsController(IHotel hotels, ITourSpot tourSpot)
         {
             _hotels = hotels;
+            _tourSpot = tourSpot;
         }
         public  async Task<IActionResult> Index()
         {
@@ -36,6 +39,21 @@ namespace Globe_Wander_Final.Controllers
 
             };
             return View(reco);
+        }
+
+        public async Task<IActionResult> CreateHotel()
+        {
+            var tourSpots = await _tourSpot.GetAllTourSpots();
+
+            // Store the tour spots in ViewBag to pass it to the view
+            ViewBag.TourSpots = tourSpots;
+            return View();
+        }
+
+        public async Task<IActionResult> ListHotels()
+        {
+            var hotels = await _hotels.GetAllHotels();
+            return View(hotels);
         }
     }
 }

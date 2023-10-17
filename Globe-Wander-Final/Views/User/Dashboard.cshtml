@@ -1,7 +1,16 @@
-﻿@*
+﻿@inject Globe_Wander_Final.Models.Interfaces.ITourSpot _tour
+@inject Globe_Wander_Final.Models.Interfaces.IBookingRoom _book
+@inject Globe_Wander_Final.Models.Interfaces.IRate _rate
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    var tours = await _tour.GetAllTourSpots();
+    var book = await _book.GetAllBookingRooms();
+    var rate = await _rate.GetAllRate();
+    var toursSpotCounter = tours.Count();
+    var bookCount = book.Count();
+    var rateCount = rate.Count();
 }
 
 <!-- Preloader -->
@@ -11,50 +20,18 @@
 <div id="container-wrapper">
     <!-- Dashboard -->
     <div id="dashboard">
+        <partial name="_Navigation"></partial>
 
         <!-- Responsive Navigation Trigger -->
-        <a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
-
-        <div class="dashboard-sticky-nav">
-            <div class="content-left pull-left">
-                <a href="dashboard.html"><img src="~/imgs/pngwing.com.png" height="60" alt="logo"></a>
-            </div>
-            <div class="content-right pull-right">
-                <a class="dropdown-toggle" data-toggle="dropdown">
-                    <div class="profile-sec">
-                        <div class="dash-content">
-                            <h4>user name</h4>
-                            <span>user role</span>
-                        </div>
-                        <div class="dash-image">
-                            <img src="~/imgs/pngwing.com.png" alt="">
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="dashboard-nav">
-            <div class="dashboard-nav-inner">
-                <ul>
-                    <li class="active"><a href="dashboard.html"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
-                    <li><a href="dashboard-my-profile.html"><i class="sl sl-icon-user"></i> Profile</a></li>
-                    <li>
-                        <a><i class="sl sl-icon-layers"></i> Hotel</a>
-                        <ul>
-                            <li><a href="dashboard-history.html">Booking History</a></li>
-                            <li><a href="dashboard-add-new.html">Add New Hotel</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        
+        <!-- Content / Start -->
         <div class="dashboard-content">
             <div class="row">
 
                 <!-- Item -->
                 <div class="col-lg-3 col-md-6 col-xs-6">
                     <div class="dashboard-stat color-1">
-                        <div class="dashboard-stat-content"><h4>6</h4> <span>Active Tours Spots</span></div>
+                        <div class="dashboard-stat-content"><h4>@toursSpotCounter</h4> <span>Active Tours Spots</span></div>
                         <div class="dashboard-stat-icon"><i class="im im-icon-Map2"></i></div>
                         <div class="dashboard-stat-item"><p>Someone Crossed your Tours!</p></div>
                     </div>
@@ -63,7 +40,7 @@
                 <!-- Item -->
                 <div class="col-lg-3 col-md-6 col-xs-6">
                     <div class="dashboard-stat color-2">
-                        <div class="dashboard-stat-content"><h4>726</h4> <span>Total Bookings</span></div>
+                        <div class="dashboard-stat-content"><h4>@bookCount</h4> <span>Total Bookings</span></div>
                         <div class="dashboard-stat-icon"><i class="im im-icon-Line-Chart"></i></div>
                         <div class="dashboard-stat-item"><p>Someone Booked your listing!</p></div>
                     </div>
@@ -73,7 +50,7 @@
                 <!-- Item -->
                 <div class="col-lg-3 col-md-6 col-xs-6">
                     <div class="dashboard-stat color-3">
-                        <div class="dashboard-stat-content"><h4>95</h4> <span>Total Reviews</span></div>
+                        <div class="dashboard-stat-content"><h4>@rateCount</h4> <span>Total Reviews</span></div>
                         <div class="dashboard-stat-icon"><i class="im im-icon-Add-UserStar"></i></div>
                         <div class="dashboard-stat-item"><p>Someone Viewed your listing!</p></div>
                     </div>
@@ -88,6 +65,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-xs-12">
                     <div class="dashboard-list-box mar-bottom-30">
@@ -257,53 +235,11 @@
                         </ul>
                     </div>
                 </div>
-                @* <div class="col-lg-7 col-md-12 col-xs-12 traffic">
-                <div class="dashboard-list-box with-icons margin-top-20">
-                <h4 class="gray">Recent Activities</h4>
-                <ul>
-                <li>
-                <i class="list-box-icon sl sl-icon-layers"></i> Your listing <strong><a href="#">Hotel Govendor</a></strong> has been approved!
-                <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-                </li>
-
-                <li>
-                <i class="list-box-icon sl sl-icon-star"></i> Kathy Brown left a review <div class="numerical-rating" data-rating="5.0"></div> on <strong><a href="#">Burger House</a></strong>
-                <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-                </li>
-
-                <li>
-                <i class="list-box-icon sl sl-icon-heart"></i> Someone bookmarked your <strong><a href="#">Burger House</a></strong> listing!
-                <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-                </li>
-
-                <li>
-                <i class="list-box-icon sl sl-icon-star"></i> Kathy Brown left a review <div class="numerical-rating" data-rating="3.0"></div> on <strong><a href="#">Airport</a></strong>
-                <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-                </li>
-
-                <li>
-                <i class="list-box-icon sl sl-icon-heart"></i> Someone bookmarked your <strong><a href="#">Burger House</a></strong> listing!
-                <a href="#" class="close-list-item"><i class="fa fa-close"></i></a>
-                </li>
-
-                </ul>
-                </div>
-                </div> *@
             </div>
 
         </div>
         <!-- Content / End -->
-        <!-- Copyrights -->
-        <div class="copyrights">
-            <p>2020 <i class="fa fa-copyright" aria-hidden="true"></i> Nepayatri by <a href="https://www.cyclonethemes.com" target="_blank">Cyclone Themes</a></p>
-        </div>
+
     </div>
     <!-- Dashboard / End -->
 </div>
-<script src="~/js/jquery-3.3.1.min.js"></script>
-<script src="~/js/bootstrap.min.js"></script>
-<script src="~/js/plugin.js"></script>
-<script src="~/https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
-<script src="~/js/jpanelmenu.min.js"></script>
-<script src="~/js/dashboard-custom.js"></script>
