@@ -1,5 +1,4 @@
 ﻿@model List<Globe_Wander_Final.Models.DTOs.HotelDTO>
-@inject Globe_Wander_Final.Models.Interfaces.ITourSpot _tours
 @{
 }
 <div id="preloader">
@@ -15,7 +14,6 @@
                 @* this should be responsive *@
                @foreach (var item in Model)
                 {
-                    var location = await _tours.GetSpotById(item.TourSpotID);
 
                     <div class="list-item-1">
                         <div class="row display-flex">
@@ -28,16 +26,15 @@
                             <div class="list-content">
                                 <div class="list-rating">
                                     <div class="rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
+                                            @for (int i = 0; i < item.StarRate; i++)
+                                            {
+                                                <span class="fa fa-star checked"></span>
+                                            }
                                     </div>
                                 </div>
                                 <h3><a asp-action="HotelDetailAdmin">@item.Name</a></h3>
                                    <p>
-                                       @location.Country , @location.City
+                                       @item.Location
                                    </p>
                                      @* <p class="price">From <span></span>                                             
                                  night</p>

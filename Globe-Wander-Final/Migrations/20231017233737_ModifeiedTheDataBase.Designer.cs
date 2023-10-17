@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Globe_Wander_Final.Migrations
 {
     [DbContext(typeof(GlobeWanderDbContext))]
-    [Migration("20231017191627_SetupDataBase")]
-    partial class SetupDataBase
+    [Migration("20231017233737_ModifeiedTheDataBase")]
+    partial class ModifeiedTheDataBase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,40 @@ namespace Globe_Wander_Final.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Globe_Wander_Final.Models.Amenity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Amenities");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Free Wi-Fi"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "TV"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Air conditioning"
+                        });
+                });
 
             modelBuilder.Entity("Globe_Wander_Final.Models.ApplicationUser", b =>
                 {
@@ -94,15 +128,15 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cda8bfaf-dd05-4ee2-a624-9d9d777bd433",
+                            ConcurrencyStamp = "9593239f-ac0a-41d4-b012-32d05657ac18",
                             Email = "User@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEN+L0Gv/WI+8AC1+bThCPG9xCfWqsDL5V69BBKxX1kHZHlCgFnKdBZ56ba61GRAF9w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDdEO4xrY4B4tq7D2fmutfDQ8cBu5ahJwfLTibQ/7UGf5O2Ghurmogvz9NjgKJRXNQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e419121f-6ec1-43a7-ae45-e52574c8bb38",
+                            SecurityStamp = "25cf0b88-2714-4f63-a648-8b7ce1b08f9c",
                             TwoFactorEnabled = false,
                             UserName = "User"
                         },
@@ -110,16 +144,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "05c3f524-1620-4c54-a70e-56a2b619b195",
+                            ConcurrencyStamp = "6330e043-2700-46ab-b965-5dc1b84b92d0",
                             Email = "adminUser@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "adminUser@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAELk3PnDU33TlA6rWlJirB3w8ym+a7mVgev1Z97H6y+Cq1ZvYIi1nY8hHwYY+ubO/XA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEC3qszX9iGATFkOSXNEvVGtTM8z1vvr+08GR4dhSOe+fhoZ80y9JxSENQTVdA9yWtA==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2fddf5e1-e4d4-4f40-a764-ecbdf75bd2d2",
+                            SecurityStamp = "ee487350-11c1-4d49-b566-ef77bea16a82",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -127,16 +161,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e77f9ba0-7a8b-4b99-ad0c-91acc0859cd4",
+                            ConcurrencyStamp = "fa566d1a-312b-4815-a23f-c26a98495e56",
                             Email = "trip@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "trip@EXAMPLE.COM",
                             NormalizedUserName = "TRIP",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHOQh+R+a+kfLmVHzgDYQJMSBk+IWZocfaWKFuzmX+dVx9vc4dc49pLza7rAdgBR0A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJAcKDlvGWn7V8pnl3m3jFEP67QU34p/b4RQGA+0WY8fRjRNYhEmAg8j2nyilEFYrg==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e7cc3129-ac69-40fe-a5ce-0165afe938c4",
+                            SecurityStamp = "61624fbe-0413-4924-9ad2-52de9b817728",
                             TwoFactorEnabled = false,
                             UserName = "trip"
                         },
@@ -144,16 +178,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7593cb8e-da4f-49f9-8c5e-f09305bfe4d4",
+                            ConcurrencyStamp = "13cc67cd-903d-4df5-9ab9-7b205d172821",
                             Email = "hotel@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "hotel@EXAMPLE.COM",
                             NormalizedUserName = "HOTEL",
-                            PasswordHash = "AQAAAAIAAYagAAAAEM0RGADvD2E+es6yf0UYFkugxfPa7+2p2N7yyQvj4RgKVVkIgMYXLqtajoZS/4tfyg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECuF70AzJvW2A99kfjZD4rqMUWuLiF5eS6nxaIKuAYpCcjcNIBcG2jmFLNX9SkSFFQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7b79c5d7-a0dd-47df-adf1-e67ef0aa3386",
+                            SecurityStamp = "4cd42081-87a5-45fa-ab6b-6ae1314876f7",
                             TwoFactorEnabled = false,
                             UserName = "hotel"
                         });
@@ -228,6 +262,40 @@ namespace Globe_Wander_Final.Migrations
                     b.ToTable("bookingTrips");
                 });
 
+            modelBuilder.Entity("Globe_Wander_Final.Models.Facility", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Facilities");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "swimingpool11111"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "swimingpool22222"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "swimingpool33333"
+                        });
+                });
+
             modelBuilder.Entity("Globe_Wander_Final.Models.Hotel", b =>
                 {
                     b.Property<int>("Id")
@@ -240,14 +308,26 @@ namespace Globe_Wander_Final.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("FacilityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StarRate")
+                        .HasColumnType("int");
 
                     b.Property<int>("TourSpotID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FacilityId");
 
                     b.HasIndex("TourSpotID");
 
@@ -258,22 +338,77 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = 1,
                             Description = "A unique hotel that you can't find in this place",
+                            Location = "petra",
                             Name = "Paradise",
+                            StarRate = 4,
                             TourSpotID = 1
                         },
                         new
                         {
                             Id = 2,
                             Description = "A unique hotel that you can't find in this place",
+                            Location = "petra",
                             Name = "Wander ",
+                            StarRate = 4,
                             TourSpotID = 2
                         },
                         new
                         {
                             Id = 3,
                             Description = "A unique hotel that y    ou can't find in this place",
+                            Location = "petra",
                             Name = "Amazing",
+                            StarRate = 4,
                             TourSpotID = 3
+                        });
+                });
+
+            modelBuilder.Entity("Globe_Wander_Final.Models.HotelFacility", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("FacilityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HotelId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FacilityId");
+
+                    b.HasIndex("HotelId");
+
+                    b.ToTable("HotelFacilities");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FacilityId = 1,
+                            HotelId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            FacilityId = 1,
+                            HotelId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            FacilityId = 2,
+                            HotelId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            FacilityId = 3,
+                            HotelId = 1
                         });
                 });
 
@@ -288,6 +423,16 @@ namespace Globe_Wander_Final.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoomNumber"));
 
+                    b.Property<int>("Bathrooms")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Beds")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsAvailable")
                         .HasColumnType("bit");
 
@@ -297,11 +442,52 @@ namespace Globe_Wander_Final.Migrations
                     b.Property<int>("RoomID")
                         .HasColumnType("int");
 
+                    b.Property<int>("SquareFeet")
+                        .HasColumnType("int");
+
                     b.HasKey("HotelID", "RoomNumber");
 
                     b.HasIndex("RoomID");
 
                     b.ToTable("HotelRooms");
+
+                    b.HasData(
+                        new
+                        {
+                            HotelID = 1,
+                            RoomNumber = 101,
+                            Bathrooms = 2,
+                            Beds = 3,
+                            Description = "CLEAN",
+                            IsAvailable = true,
+                            PricePerDay = 100m,
+                            RoomID = 1,
+                            SquareFeet = 250
+                        },
+                        new
+                        {
+                            HotelID = 1,
+                            RoomNumber = 102,
+                            Bathrooms = 2,
+                            Beds = 3,
+                            Description = "CLEAN",
+                            IsAvailable = true,
+                            PricePerDay = 150m,
+                            RoomID = 2,
+                            SquareFeet = 250
+                        },
+                        new
+                        {
+                            HotelID = 2,
+                            RoomNumber = 201,
+                            Bathrooms = 2,
+                            Beds = 3,
+                            Description = "CLEAN",
+                            IsAvailable = false,
+                            PricePerDay = 120m,
+                            RoomID = 1,
+                            SquareFeet = 250
+                        });
                 });
 
             modelBuilder.Entity("Globe_Wander_Final.Models.Rate", b =>
@@ -341,6 +527,9 @@ namespace Globe_Wander_Final.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<int?>("AmenityId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Layout")
                         .HasColumnType("int");
 
@@ -349,6 +538,8 @@ namespace Globe_Wander_Final.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("AmenityId");
 
                     b.ToTable("Rooms");
 
@@ -370,6 +561,55 @@ namespace Globe_Wander_Final.Migrations
                             ID = 3,
                             Layout = 1,
                             Name = "Studio room"
+                        });
+                });
+
+            modelBuilder.Entity("Globe_Wander_Final.Models.RoomAmenity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AmenityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AmenityId");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("RoomAmenities");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AmenityId = 1,
+                            RoomId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AmenityId = 2,
+                            RoomId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AmenityId = 3,
+                            RoomId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AmenityId = 1,
+                            RoomId = 3
                         });
                 });
 
@@ -494,9 +734,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 20m,
                             Count = 0,
                             Description = "trip start at 8 am and going from Amman to Petra",
-                            EndDate = new DateTime(2023, 10, 17, 19, 16, 26, 862, DateTimeKind.Utc).AddTicks(5413),
+                            EndDate = new DateTime(2023, 10, 17, 23, 37, 36, 414, DateTimeKind.Utc).AddTicks(1515),
                             Name = "Petra ride",
-                            StartDate = new DateTime(2023, 10, 17, 22, 16, 26, 862, DateTimeKind.Local).AddTicks(5399),
+                            StartDate = new DateTime(2023, 10, 18, 2, 37, 36, 414, DateTimeKind.Local).AddTicks(1496),
                             TourSpotID = 1
                         },
                         new
@@ -507,9 +747,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 30m,
                             Count = 0,
                             Description = "Amman to Jerash with a trip manager who can speak many languages",
-                            EndDate = new DateTime(2023, 10, 17, 19, 16, 26, 862, DateTimeKind.Utc).AddTicks(5417),
+                            EndDate = new DateTime(2023, 10, 17, 23, 37, 36, 414, DateTimeKind.Utc).AddTicks(1518),
                             Name = "Jerash ride",
-                            StartDate = new DateTime(2023, 10, 17, 22, 16, 26, 862, DateTimeKind.Local).AddTicks(5416),
+                            StartDate = new DateTime(2023, 10, 18, 2, 37, 36, 414, DateTimeKind.Local).AddTicks(1517),
                             TourSpotID = 2
                         },
                         new
@@ -520,9 +760,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 40m,
                             Count = 0,
                             Description = "Amman to Irbid with a trip manager who can speak many languages",
-                            EndDate = new DateTime(2023, 10, 17, 19, 16, 26, 862, DateTimeKind.Utc).AddTicks(5420),
+                            EndDate = new DateTime(2023, 10, 17, 23, 37, 36, 414, DateTimeKind.Utc).AddTicks(1521),
                             Name = "Um-Qais ride",
-                            StartDate = new DateTime(2023, 10, 17, 22, 16, 26, 862, DateTimeKind.Local).AddTicks(5419),
+                            StartDate = new DateTime(2023, 10, 18, 2, 37, 36, 414, DateTimeKind.Local).AddTicks(1520),
                             TourSpotID = 3
                         });
                 });
@@ -736,6 +976,10 @@ namespace Globe_Wander_Final.Migrations
 
             modelBuilder.Entity("Globe_Wander_Final.Models.Hotel", b =>
                 {
+                    b.HasOne("Globe_Wander_Final.Models.Facility", null)
+                        .WithMany("HotelFacilities")
+                        .HasForeignKey("FacilityId");
+
                     b.HasOne("Globe_Wander_Final.Models.TourSpot", "TourSpot")
                         .WithMany("Hotels")
                         .HasForeignKey("TourSpotID")
@@ -743,6 +987,25 @@ namespace Globe_Wander_Final.Migrations
                         .IsRequired();
 
                     b.Navigation("TourSpot");
+                });
+
+            modelBuilder.Entity("Globe_Wander_Final.Models.HotelFacility", b =>
+                {
+                    b.HasOne("Globe_Wander_Final.Models.Facility", "Facility")
+                        .WithMany()
+                        .HasForeignKey("FacilityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Globe_Wander_Final.Models.Hotel", "Hotel")
+                        .WithMany("HotelFacilities")
+                        .HasForeignKey("HotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Facility");
+
+                    b.Navigation("Hotel");
                 });
 
             modelBuilder.Entity("Globe_Wander_Final.Models.HotelRoom", b =>
@@ -773,6 +1036,32 @@ namespace Globe_Wander_Final.Migrations
                         .IsRequired();
 
                     b.Navigation("Trip");
+                });
+
+            modelBuilder.Entity("Globe_Wander_Final.Models.Room", b =>
+                {
+                    b.HasOne("Globe_Wander_Final.Models.Amenity", null)
+                        .WithMany("RoomAmenities")
+                        .HasForeignKey("AmenityId");
+                });
+
+            modelBuilder.Entity("Globe_Wander_Final.Models.RoomAmenity", b =>
+                {
+                    b.HasOne("Globe_Wander_Final.Models.Amenity", "Amenity")
+                        .WithMany()
+                        .HasForeignKey("AmenityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Globe_Wander_Final.Models.Room", "Room")
+                        .WithMany("RoomAmenities")
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Amenity");
+
+                    b.Navigation("Room");
                 });
 
             modelBuilder.Entity("Globe_Wander_Final.Models.Trip", b =>
@@ -837,8 +1126,20 @@ namespace Globe_Wander_Final.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Globe_Wander_Final.Models.Amenity", b =>
+                {
+                    b.Navigation("RoomAmenities");
+                });
+
+            modelBuilder.Entity("Globe_Wander_Final.Models.Facility", b =>
+                {
+                    b.Navigation("HotelFacilities");
+                });
+
             modelBuilder.Entity("Globe_Wander_Final.Models.Hotel", b =>
                 {
+                    b.Navigation("HotelFacilities");
+
                     b.Navigation("HotelRoom");
                 });
 
@@ -850,6 +1151,8 @@ namespace Globe_Wander_Final.Migrations
             modelBuilder.Entity("Globe_Wander_Final.Models.Room", b =>
                 {
                     b.Navigation("HotelRooms");
+
+                    b.Navigation("RoomAmenities");
                 });
 
             modelBuilder.Entity("Globe_Wander_Final.Models.TourSpot", b =>
