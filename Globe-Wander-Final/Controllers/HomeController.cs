@@ -22,7 +22,10 @@ namespace Globe_Wander_Final.Controllers
             return View();
         }
 
-
+        public IActionResult about()
+        {
+            return View("about");
+        }
         public IActionResult Privacy()
         {
             return View();
