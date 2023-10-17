@@ -28,7 +28,6 @@ namespace Globe_Wander_Final.Models.Services
         {
             HotelRoom hotelRooms = new HotelRoom()
             {
-                RoomNumber = hotelRoomdto.HotelID * 100 + hotelRoomdto.RoomID,
                 HotelID = hotelRoomdto.HotelID,
                 RoomID = hotelRoomdto.RoomID,
                 PricePerDay = hotelRoomdto.PricePerDay,
