@@ -1,6 +1,4 @@
 ﻿@model IEnumerable<Globe_Wander_Final.Models.DTOs.HotelDTO>
-@using Globe_Wander_Final.Models.Interfaces
-@inject ITourSpot tour;
 
 <!--remove-->
 
@@ -153,39 +151,38 @@
         <div class="trend-box">
             <div class="row mix tour">
                 @foreach(var item in Model){
-                    var name = await tour.GetSpotById(item.Id);
 
 
+                   
                     <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">
-                    <div class="trend-item">
+               
+                     <div class="trend-item">
                         
                         <div class="trend-image">
-                            <img src="images/blog1.jpg" alt="image">
-                            <div class="trend-tags">
-                                <a href="#"><i class="flaticon-like"></i></a>
-                            </div>
-                            <div class="trend-price">
-                                <p class="price">From <span>$350.00</span></p>
-                            </div>
+                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
                         </div>
-                        <div class="trend-content">
+                      <a asp-area="" asp-controller="Hotels" asp-action="SingleHotel" asp-route-id="@item.Id">  
+                          <div class="trend-content">
                             <p><i class="flaticon-location-pin"></i> @item.Name</p>
-                                <h4> <a class="dropdown-item" asp-area="" asp-controller="Hotels" asp-action="GetById" asp-route-id="@item.Id">@item.Description</a></h4>
+                                <h4> @item.Description</h4>
                                 <p>
-                                    @name.Country, @name.City
+                                   
                                 </p>
                             <div class="rating mar-bottom-15">
+                                        @for (int a = item.StarRate;a > 0;a--)
+                                {
                                 <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
+                                
+                                }
+                          
                             </div>
-                            <span class="mar-left-5">38 Reviews</span>
+                           
                             <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> @item.HotelRoom.Count.ToString() has hotel rooms</p>
+                                </div>
+                            </a>
+                    </div> 
                         </div>
-                    </div>
-                </div>
+            
            }
               
             </div>
@@ -205,39 +202,35 @@
                     @foreach(var items in Model ){
                     @foreach (var item in items.HotelRoom)
                     {
-                        <div class="col-md-4 col-sm-12 col-xs-12">
-                            <div class="room-item">
+                    
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                            <a asp-area="" asp-controller="HotelRooms" asp-action="SingleRoom" asp-route-Id="@item.HotelID" asp-route-RoomNumber="@item.RoomNumber">
+                                <div class="room-item">
                                 <div class="room-image">
-                                    <img src="images/room1.jpg" alt="image">
+                                        <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
                                 </div>
                                 <div class="room-content1">
                                     <div class="room-title">
-                                        <h3>@item.Rooms.Name</h3>
+                                            <h3>@items.Name</h3>
+                                            <h3>@item.Rooms.Name</h3>
                                         <p>@item.PricePerDay</p>
-                                        <div class="deal-rating">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                        </div>
+                                      
                                     </div>
                                     <div class="room-services mar-bottom-15">
                                         <ul>
-                                            <li><i class="fa fa-bed" aria-hidden="true"></i>     @item.Rooms.Layout</li>
-                                            <li><i class="fa fa-wifi" aria-hidden="true"></i> Wifi</li>
+                                            <li><i class="fa fa-bed" aria-hidden="true"></i>@item.Rooms.Layout</li>
+                                          
                                         </ul>
                                     </div>
-                                    <p>Is Available or not </p>
-
-                                    <p>@item.IsAvailable</p>
+                                  
                                     <div class="room-btns mar-top-20">
-                                        <a href="#" class="biz-btn biz-btn1 mar-right-10">VIEW DETAILS</a>
+                         
                                         <a href="#" class="biz-btn-black">BOOK NOW</a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
+                    </div>
                     }
 
                 }
