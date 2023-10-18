@@ -6,6 +6,7 @@
 @{
 
 }
+
 <body>
 
     <!-- Preloader -->
@@ -16,25 +17,10 @@
     <!-- header starts -->
     <!-- header ends -->
     <!-- Breadcrumb -->
-    <section class="breadcrumb-outer text-center">
-        <div class="container">
-            <div class="breadcrumb-content">
-                <h2 class="white">Tour Grid</h2>
-                <nav aria-label="breadcrumb">
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Tour Grid</li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <div class="overlay">
-            <img src="https://images.pexels.com/photos/691637/pexels-photo-691637.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-        </div>
-    </section>
+ 
     <!-- BreadCrumb Ends -->
     <!-- tour list starts -->
-    <section class="list">
+   @*  <section class="list">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-xs-12 pull-right">
@@ -49,49 +35,37 @@
                             </div>
                         </div>
                         <div class="row ">
-                            @foreach (var item in Model)
-                            {
-                                <div class="col-md-6 col-sm-6 col-xs-12 mar-bottom-30">
-                                    <div class="trend-item">
-                                        @if (item.ID % 2 == 0)
-                                        {
-                                            <div class="ribbon ribbon-top-left"><span>35% OFF</span></div>
-                                        }
-                                        else
-                                        {
-                                            <div class="ribbon ribbon-top-left"><span>15% OFF</span></div>
-                                        }
-                                        <div class="trend-image">
-                                            <img src="https://images.pexels.com/photos/1631665/pexels-photo-1631665.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="image">
-                                            <div class="trend-tags">
-                                                <a href="#"><i class="flaticon-like"></i></a>
-                                            </div>
-                                            <div class="trend-price">
-                                                <p class="price">From <span>$350.00</span></p>
-                                                <p class="price">Trips <span>@item.Trips.Count.ToString()</span></p>
-                                                @*          @foreach(var trip in item.Trips){
-                                            <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> @trip.Name|| @trip.Capacity</p>
-                                            } *@
-                                            </div>
-                                        </div>
-                                        <div class="trend-content">
-                                            <p><i class="flaticon-location-pin"></i>@item.City / @item.Category</p>
-                                            <h4><a asp-action="GetSpotById" asp-controller="TourSpots" asp-route-spotId="@item.ID">@item.Name</a></h4>
-                                            <div class="rating mar-bottom-15">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                            </div>
-                                            <span class="mar-left-5">38 Reviews</span>
-                                            <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> @item.Description </p>
 
+
+
+                            <div class="container">
+
+                                <div class="row mar-top-50">
+                                    @foreach (var tour in Model)
+                                    {
+                                        <div class="col-md-3 col-sm-6 col-xs-12">
+                                            <div class="gallery-item">
+                                                <div class="gallery-image">
+                                                    <img src="https://images.pexels.com/photos/1631665/pexels-photo-1631665.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="image">
+                                                </div>
+                                                <div class="gallery-content">
+                                                    <ul>
+                                                        <li><a href="images/gallery/gallery1.jpg" data-lightbox="gallery" data-title="@tour.Name"><i class="fa fa-eye"></i></a></li>
+                                                        <li>
+                                                            <a asp-action="GetSpotById" asp-controller="TourSpots" asp-route-spotId="@tour.ID"><i class="fa fa-link"></i></a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
+
                                 </div>
+                            </div>
 
-                            }
+
+
                             <div class="col-xs-12">
                                 <div class="blog-button text-center">
                                     <a href="car-detail.html" class="biz-btn biz-btn1">Load More</a>
@@ -250,7 +224,51 @@
             </div>
         </div>
     </section>
+       *@
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-outer text-center">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <h2 class="white">Tours Spots</h2>
+                <nav aria-label="breadcrumb">
+                   
+                </nav>
+            </div>
+        </div>
+        <div class="overlay">
+            <img src="https://c4.wallpaperflare.com/wallpaper/608/182/542/amman-jordan-classic-nice-wallpaper-preview.jpg" width="100%" />
+        </div>
+    </section>
+    <!-- BreadCrumb Ends -->
+    <!-- Gallery starts -->
+    <section class="content gallery" data-ref="container-1">
+        <div class="container">
+            <div class="row mar-top-50">
+                @foreach(var tour in Model){
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="gallery-item">
+                        <div class="gallery-image">
+                                <img src="@tour.Img" alt="image" width="415" height="293">
+                        </div>
+                        <div class="gallery-content">
+                            <ul>
+                                <li><a href="images/gallery/gallery1.jpg" data-lightbox="gallery" data-title="@tour.Name"><i class="fa fa-eye"></i></a></li>
+                                    <li><a asp-action="GetSpotById" asp-controller="TourSpots" asp-route-spotId="@tour.ID"><i class="fa fa-link"></i></a></li><br>
+                            </ul>
+                                <h4 style="color:wheat; text-align:center;" class="text-center">@tour.Name</h4>
+                        </div>
+                    </div>
+                </div>
+               }
+            </div>
+        </div>
+    </section>
+
     <!-- tour list ends -->
+
+
+  
     <!-- footer starts -->
     <!-- footer ends -->
     <!-- Back to top start -->

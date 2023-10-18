@@ -31,7 +31,8 @@ namespace Globe_Wander_Final.Models.Services
                 City = tourSpot.City,
                 Description = tourSpot.Description,
                 Category = tourSpot.Category,
-                PhoneNumber = tourSpot.PhoneNumber
+                PhoneNumber = tourSpot.PhoneNumber,
+              
             };
             _context.Entry<TourSpot>(newTourSpot).State = EntityState.Added;
             await _context.SaveChangesAsync();
@@ -71,6 +72,7 @@ namespace Globe_Wander_Final.Models.Services
                     Description = tours.Description,
                     Category = tours.Category,
                     PhoneNumber = tours.PhoneNumber,
+                    Img = tours.Img,
                     Hotels = tours.Hotels.Select(hotels => new HotelDTO
                     {
                         TourSpotID = hotels.TourSpotID,
@@ -248,6 +250,7 @@ namespace Globe_Wander_Final.Models.Services
                     Description = tours.Description,
                     Category = tours.Category,
                     PhoneNumber = tours.PhoneNumber,
+                    Img = tours.Img,
                     Hotels = tours.Hotels.Select(hotels => new HotelDTO
                     {
                         TourSpotID = hotels.TourSpotID,

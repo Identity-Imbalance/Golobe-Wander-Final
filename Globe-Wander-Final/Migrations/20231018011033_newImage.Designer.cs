@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Globe_Wander_Final.Migrations
 {
     [DbContext(typeof(GlobeWanderDbContext))]
-    [Migration("20231013164109_seedingData")]
-    partial class seedingData
+    [Migration("20231018011033_newImage")]
+    partial class newImage
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -94,15 +94,15 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "830558fd-4f00-4cfc-b645-b6c88bad570b",
+                            ConcurrencyStamp = "5c3f3c8e-c817-4d46-ba0a-ab7f840b32d8",
                             Email = "User@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEN3t4UEjdbRu3S6wOeduYBnZMswR5mh86BXRErD8wb9NxbqLRxKnMHf/n47dImTEiw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKi8tRu68huSRsnXmkVaNWEcEM6rLeR4dhVjr4jLvXLclM/WNmtd89Y/LVkHBSo4+g==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f7083b7a-3a29-40ed-a726-71e47e6a51a6",
+                            SecurityStamp = "bfe57859-343b-4b9f-9318-8ece31718518",
                             TwoFactorEnabled = false,
                             UserName = "User"
                         },
@@ -110,16 +110,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5dce36b9-dd3b-46cc-8fd1-093d3d002d90",
+                            ConcurrencyStamp = "627988e8-c6d0-45b4-83ca-b809ac3fcd52",
                             Email = "adminUser@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "adminUser@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEN3LG2VVs67KZIVpQeqpYVetrq6Vs4JPvejI7ixyb50H8w1iDt8+8xy8N/IF+8fL5w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEM4vwgLiWuuUy6cwkWBOimIfTUpB2yn7VaACQ4su7hkwnMkp8Kj3GlS6+lIIDbL36Q==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e35cf9b9-35ee-4a26-874b-b01b1e9281ab",
+                            SecurityStamp = "740b143e-0953-44dc-97cc-6b7d75353008",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -127,16 +127,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c6392281-2cd8-468c-992d-3908686029b0",
+                            ConcurrencyStamp = "194f7c19-1835-452f-ab38-54ea0910815a",
                             Email = "trip@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "trip@EXAMPLE.COM",
                             NormalizedUserName = "TRIP",
-                            PasswordHash = "AQAAAAIAAYagAAAAENHDSBsX9wjeau0VhvT+/CmvAcRrm+lw/zZyT8Xf0N8XoLa15uKVdf5q+EUizS4Zmw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGhmeWuusdL3Hd7P4ITaEzaUaS+MqrEjYUotbmZ+vlqmZX9OsaQhDSFqlNDfxFLKFg==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b190afb2-8eaf-49ef-aa7c-eb12751d20fe",
+                            SecurityStamp = "d6b642f8-d195-4081-ad4f-564de3cf431d",
                             TwoFactorEnabled = false,
                             UserName = "trip"
                         },
@@ -144,16 +144,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5af802d6-6781-4cb1-b05e-da850fcc9b8b",
+                            ConcurrencyStamp = "a3e8b234-eac6-48c9-9afb-016e6393888f",
                             Email = "hotel@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "hotel@EXAMPLE.COM",
                             NormalizedUserName = "HOTEL",
-                            PasswordHash = "AQAAAAIAAYagAAAAEP7Y8cGl4Ew0iwfJFq4m7VQgrsQVly/m+FBsfe9aF7O8TK4QqWZcVch+Sa5gjaMNoA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMCWiiJyAfFrvB1IjnyrQxE5yZKDNGAiCQY4dYEctuGyNhh4KmdTCZg2K4aCx+qthQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2c699aef-7a1f-4f24-9bcc-2f26e385acbc",
+                            SecurityStamp = "ed624474-78da-441b-afac-193d39ec3fb3",
                             TwoFactorEnabled = false,
                             UserName = "hotel"
                         });
@@ -393,6 +393,10 @@ namespace Globe_Wander_Final.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Img")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -413,6 +417,7 @@ namespace Globe_Wander_Final.Migrations
                             City = "Petra",
                             Country = "Jordan",
                             Description = "a place before thousands years",
+                            Img = "https://images.pexels.com/photos/1631665/pexels-photo-1631665.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                             Name = "Petra",
                             PhoneNumber = "078885423"
                         },
@@ -423,6 +428,7 @@ namespace Globe_Wander_Final.Migrations
                             City = "Jerash",
                             Country = "Jordan",
                             Description = "A historical place that the Romanian civilization build before thousands years.",
+                            Img = "https://c0.wallpaperflare.com/preview/705/707/822/jordan-jerash-oval-plaza-market.jpg",
                             Name = "Jerash",
                             PhoneNumber = "088782215"
                         },
@@ -433,6 +439,7 @@ namespace Globe_Wander_Final.Migrations
                             City = "Irbid",
                             Country = "Jordan",
                             Description = "A historical place that the Romanian civilization build before thousands years. In the north of Jordan",
+                            Img = "https://followinghadrianphotographycom.files.wordpress.com/2020/09/34509636386_2139ee3bc1_k.jpg?w=1075&h=712",
                             Name = "Um Qais",
                             PhoneNumber = "0788442521"
                         },
@@ -443,6 +450,7 @@ namespace Globe_Wander_Final.Migrations
                             City = "Aqaba",
                             Country = "Jordan",
                             Description = "A spectacular desert in southern Jordan.",
+                            Img = "https://c4.wallpaperflare.com/wallpaper/774/140/860/nature-landscape-sand-desert-dunes-hd-wallpaper-preview.jpg",
                             Name = "Wadi Rum",
                             PhoneNumber = "0788555444"
                         },
@@ -453,6 +461,7 @@ namespace Globe_Wander_Final.Migrations
                             City = "Ajloun",
                             Country = "Jordan",
                             Description = "A 12th-century Muslim castle in northern Jordan.",
+                            Img = "https://as1.ftcdn.net/v2/jpg/02/49/78/08/1000_F_249780853_qBrIwoai4WNGR0OSx4I6A3EZZ47cUN5B.jpg",
                             Name = "Ajloun Castle",
                             PhoneNumber = "0799111122"
                         },
@@ -463,6 +472,7 @@ namespace Globe_Wander_Final.Migrations
                             City = "Amman",
                             Country = "Jordan",
                             Description = "The lowest point on Earth and famous for its high salt content.",
+                            Img = "https://c4.wallpaperflare.com/wallpaper/884/827/830/dead-sea-coast-white-salt-blue-sea-wallpaper-preview.jpg",
                             Name = "Dead Sea",
                             PhoneNumber = "0777888999"
                         },
@@ -473,6 +483,7 @@ namespace Globe_Wander_Final.Migrations
                             City = "Aqaba",
                             Country = "Jordan",
                             Description = "Beautiful beaches along the Red Sea.",
+                            Img = "https://wallpapers.com/images/high/aqaba-jordan-shoreline-y69cto406g6r0i5c.webp",
                             Name = "Aqaba Beach",
                             PhoneNumber = "0799777666"
                         },
@@ -483,7 +494,8 @@ namespace Globe_Wander_Final.Migrations
                             City = "Madaba",
                             Country = "Jordan",
                             Description = "Ancient hilltop fortress where John the Baptist was imprisoned.",
-                            Name = "Machaerus",
+                            Img = "https://storage.kempinski.com/cdn-cgi/image/w=960,f=auto,g=auto,fit=scale-down/ki-cms-prod/images/4/5/5/3/313554-1-eng-GB/9e96e4717f7a-74342124_4K.jpg",
+                            Name = "Wadi Al-Mujib",
                             PhoneNumber = "0777666555"
                         },
                         new
@@ -493,6 +505,7 @@ namespace Globe_Wander_Final.Migrations
                             City = "Tafilah",
                             Country = "Jordan",
                             Description = "A diverse ecological system in southern Jordan.",
+                            Img = "https://www.jordanbesttours.com/images/dana/jordan_nature_reserves_dana_full.jpg",
                             Name = "Dana Biosphere Reserve",
                             PhoneNumber = "0799888777"
                         });
@@ -551,9 +564,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 20m,
                             Count = 0,
                             Description = "trip start at 8 am and going from Amman to Petra",
-                            EndDate = new DateTime(2023, 10, 13, 16, 41, 8, 893, DateTimeKind.Utc).AddTicks(6910),
+                            EndDate = new DateTime(2023, 10, 18, 1, 10, 32, 624, DateTimeKind.Utc).AddTicks(2328),
                             Name = "Petra ride",
-                            StartDate = new DateTime(2023, 10, 13, 19, 41, 8, 893, DateTimeKind.Local).AddTicks(6898),
+                            StartDate = new DateTime(2023, 10, 18, 4, 10, 32, 624, DateTimeKind.Local).AddTicks(2306),
                             TourSpotID = 1
                         },
                         new
@@ -564,9 +577,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 30m,
                             Count = 0,
                             Description = "Amman to Jerash with a trip manager who can speak many languages",
-                            EndDate = new DateTime(2023, 10, 13, 16, 41, 8, 893, DateTimeKind.Utc).AddTicks(6913),
+                            EndDate = new DateTime(2023, 10, 18, 1, 10, 32, 624, DateTimeKind.Utc).AddTicks(2331),
                             Name = "Jerash ride",
-                            StartDate = new DateTime(2023, 10, 13, 19, 41, 8, 893, DateTimeKind.Local).AddTicks(6912),
+                            StartDate = new DateTime(2023, 10, 18, 4, 10, 32, 624, DateTimeKind.Local).AddTicks(2330),
                             TourSpotID = 2
                         },
                         new
@@ -577,9 +590,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 40m,
                             Count = 0,
                             Description = "Amman to Irbid with a trip manager who can speak many languages",
-                            EndDate = new DateTime(2023, 10, 13, 16, 41, 8, 893, DateTimeKind.Utc).AddTicks(6915),
+                            EndDate = new DateTime(2023, 10, 18, 1, 10, 32, 624, DateTimeKind.Utc).AddTicks(2333),
                             Name = "Um-Qais ride",
-                            StartDate = new DateTime(2023, 10, 13, 19, 41, 8, 893, DateTimeKind.Local).AddTicks(6914),
+                            StartDate = new DateTime(2023, 10, 18, 4, 10, 32, 624, DateTimeKind.Local).AddTicks(2333),
                             TourSpotID = 3
                         });
                 });
