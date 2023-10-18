@@ -40,6 +40,7 @@
                                 <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
                             </ul>
                         </li>
+
                         @if (!User.Identity.IsAuthenticated)
                         {
                             <li><a asp-area="" asp-controller="User" asp-action="Login"><i class="fa fa-sign-in-alt"></i> Login</a></li>
@@ -47,6 +48,9 @@
                         }
                         @if (User.Identity.IsAuthenticated)
                         {
+                            <li class="nav-item">
+                                <span class="nav-link active">Welcome, @User.Identity.Name!</span>
+                            </li>
                             <li><a asp-area="" asp-controller="User" asp-action="Logout"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
                         }
                     </ul>
@@ -167,8 +171,8 @@
     <script src="~/js/jquery-3.3.1.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
     @* <script src="~/js/color-switcher.js"></script> *@
-    <script src="~/js/plugin.js"></script>
-    <script src="~/js/main.js"></script>
+   @*  <script src="~/js/plugin.js"></script>
+    <script src="~/js/main.js"></script> *@
     <script src="~/js/menu.js"></script>
     @*  <script src="~/js/custom-swiper2.js"></script> *@
     <script src="~/js/custom-swiper3.js"></script>
