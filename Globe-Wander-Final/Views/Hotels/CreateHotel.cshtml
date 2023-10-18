@@ -1,7 +1,7 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Globe_Wander_Final.Models.DTOs.NewHotelDTO
+
 @{
+    List<int> selectedFacilityIds = new List<int>();
 }
 
 <div id="container-wrapper">
@@ -14,18 +14,22 @@
 
                 <div class="add-content">
                     <h3>Hotel Information</h3>
-                    <form id="hotelForm" method="post" action="/YourController/YourAction">
+                    <form id="hotelForm" method="post" asp-action="CreateHotel">
                         <div class="row">
                             <div class="col-sm-12">
-                                <label for="hotelName">Hotel Name</label>
+                                <label for="Name">Hotel Name</label>
                                 <input type="text" id="hotelName" name="Name" placeholder="Enter Hotel Name" required>
                             </div>
                             <div class="col-sm-12">
-                                <label for="description">Description</label>
+                                <label for="Description">Description</label>
                                 <textarea id="description" name="Description" placeholder="Enter Hotel Description" required></textarea>
                             </div>
                             <div class="col-sm-12">
-                                <label for="tourSpotID">Select Tour Spot</label>
+                                <label for="hotelStarRate">Hotel Star Rate</label>
+                                <input type="number" id="hotelStarRate" name="StarRate" placeholder="Enter Hotel Star Rate" required>
+                            </div>
+                            <div class="col-sm-12 my-3">
+                                <label for="TourSpotID">Select Tour Spot</label>
                                 <select id="tourSpotID" name="TourSpotID" required>
                                     <option value="">Select a Tour Spot</option>
                                     @foreach (var spot in ViewBag.TourSpots)
@@ -33,12 +37,53 @@
                                         <option value="@spot.ID">@spot.Name</option>
                                     }
                                 </select>
+
+                            </div>
+
+                            <div class="col-sm-12 my-3">
+
+                            @foreach (var facility in ViewBag.Facilities)
+                            {
+                                <div class="facilities mx-2">
+                                <input type="checkbox" name="selectedFacilityIds" value="@facility.Id" />
+                                @facility.Name
+                                </div>
+                            }
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-btn">
                                     <button type="submit" class="biz-btn biz-btn1 mar-top-5">Create Hotel</button>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="add-box add-rooms">
+
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="rooms-info">
+                                        <h4>Add Gallery Images</h4>
+                                        <div class="image-add">
+                                            <input type="file" name="Image">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="rooms-info">
+                                        <h4>Add Cover Images</h4>
+                                        <div class="image-add">
+                                            <input type="file" name="coverImage">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-btn">
+                                    <button type="submit" class="biz-btn biz-btn1 mar-top-5">Save Changes </button>
+                                </div>
+                            </div>
+
                         </div>
                     </form>
                 </div>
