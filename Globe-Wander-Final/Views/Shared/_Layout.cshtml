@@ -6,7 +6,6 @@
     <title>@ViewData["Title"] - Globe_Wander_Final</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Globe_Wander_Final.styles.css" asp-append-version="true" />
     <!-- Bootstrap core CSS -->
     @*  <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css"> *@
     <!--Default CSS-->
@@ -23,51 +22,66 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <script src="https://kit.fontawesome.com/f9b49e7bf3.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Globe_Wander_Final</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+    <header class="main_header_area">
+        <div class="header-content">
+            <div class="container">
+                <div class="links links-right pull-right">
+                    <ul>
+                        <li>
+                            <ul class="social-links">
+                                <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TourSpots" asp-action="Index">Tours</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="home" asp-action="about">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ContactUs" asp-action="Index">ContactUs</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Trips" asp-action="Trips">Trips</a>
-                        </li>
-                       
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Hotels" asp-action="Hotel">Hotels </a>
-                            </li>
-        
-         
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Dashboard">Dashboard</a>
-                        </li>
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li><a asp-area="" asp-controller="User" asp-action="Login"><i class="fa fa-sign-in-alt"></i> Login</a></li>
+                            <li><a asp-area="" asp-controller="User" asp-action="Register"><i class="fa fa-sign-out-alt"></i> Register</a></li>
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li><a asp-area="" asp-controller="User" asp-action="Logout"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
+                        }
                     </ul>
                 </div>
             </div>
-        </nav>
+        </div>
+        <!-- Navigation Bar -->
+        <div class="header_menu affix-top">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <div class="navbar-flex">
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Globe_Wander_Final</a>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="TourSpots" asp-action="Index">Tours</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Trips" asp-action="Trips">Trips</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Hotels" asp-action="Index">Hotels</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Hotels" asp-action="Hotel">Hotels LIST 2</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-page="/Dashboard">Dashboard</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- /.navbar-collapse -->
+                        <div id="slicknav-mobile"></div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+        </div>
+
+        <!-- Navigation Bar Ends -->
     </header>
     <div>
         <main role="main" class="pb-3">
@@ -75,29 +89,96 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - Globe_Wander_Final - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer>
+        <div class="footer-upper pad-bottom-50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-about">
+                            <div class="footer-about-in mar-bottom-30">
+                                <h3 class="white">Need Globe Wander Help?</h3>
+                                <div class="footer-phone">
+                                    <div class="cont-icon"><i class="flaticon-call"></i></div>
+                                    <div class="cont-content mar-left-20">
+                                        <p class="mar-0">Got Questions? Call us 24/7!</p>
+                                        <p class="bold mar-0"><span>Call Us:</span> (962) 0000 1111</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 class="white">Contact Info</h3>
+                            <p>
+                                PO Box: +47-252-254-2542<br />
+                                Location: Collins Stree, Vicotria 80, Australia
+                            </p>
+                            <ul class="social-links">
+                                <li>
+                                    <a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-links">
+                            <h3 class="white">Company</h3>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Terms of Use</a></li>
+                                <li><a href="#">Feedbacks</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="footer-links">
+                            <h3 class="white">Support</h3>
+                            <ul>
+                                <li><a href="#">Account</a></li>
+                                <li><a href="#">Legal</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">Affiliate Program</a></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="copyright-text pull-left">
+                    <p class="mar-0">&copy; 2023 - Globe_Wander_Final</p>
+                </div>
+            </div>
         </div>
     </footer>
-    @*  <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+  <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
-    @* <script src="~/js/color-switcher.js"></script> *@
-    <script src="~/js/plugin.js"></script>
-    <script src="~/js/main.js"></script>
+    
+    @* <script src="~/js/plugin.js"></script> *@
+    @* <script src="~/js/main.js"></script> *@
     <script src="~/js/menu.js"></script>
-    @*  <script src="~/js/custom-swiper2.js"></script> *@
+    
     <script src="~/js/custom-swiper3.js"></script>
-    <script src="~/js/custom-nav.js"></script>
+     @* <script src="~/js/custom-nav.js"></script>  *@
     <script src="~/js/custom-date.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="~/js/jpanelmenu.min.js"></script>
     <script src="~/js/dashboard-custom.js"></script>
-    <script src="~/js/changeActive.js"></script>
-
+     
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

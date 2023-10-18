@@ -25,12 +25,16 @@ namespace Globe_Wander_Final.Models.Services
         /// <param name="hotelDTO">Data for the new hotel.</param>
         public async Task<NewHotelDTO> CreateHotel(NewHotelDTO hotelDTO)
         {
+            var tour = await _context.TourSpots.FindAsync(hotelDTO.TourSpotID);
+            string location = tour.Country + ", " + tour.City;
+
             Hotel hotel = new Hotel()
             {
                 Name = hotelDTO.Name,
+                Location = location,
+                StarRate = hotelDTO.StarRate,
                 Description = hotelDTO.Description,
                 TourSpotID = hotelDTO.TourSpotID
-     
             };
 
             _context.Entry(hotel).State = EntityState.Added;
@@ -270,6 +274,31 @@ namespace Globe_Wander_Final.Models.Services
                 Name = x.Name,
                 Description = x.Description
             }).ToListAsync();
+        }
+
+        public async Task<List<Facility>> GetAllFacilities()
+        {
+            var facilities = await _context.Facilities.ToListAsync();
+            return facilities;
+        }
+
+        public async Task<List<HotelFacility>> GetAllHotelFacilityByHotelId(int hotelId)
+        {
+            var hotelFacilities = await _context.HotelFacilities.Where(hf => hf.HotelId == hotelId).ToListAsync();
+            return hotelFacilities;
+        }
+
+        public async Task AddHotelFacility(HotelFacility hotelFacility)
+        {
+            await _context.HotelFacilities.AddAsync(hotelFacility);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task RemoveHotelFacility(HotelFacility hotelFacility)
+        {
+             _context.HotelFacilities.Remove(hotelFacility);
+
+            await _context.SaveChangesAsync();
         }
     }
 }
