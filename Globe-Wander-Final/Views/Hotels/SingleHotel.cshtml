@@ -1,0 +1,194 @@
+﻿@model Globe_Wander_Final.Models.RecomandHotelsANDHotelMV
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status"></div>
+    </div>
+
+<section class="breadcrumb-outer text-center" style="height:40vh !important">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <h2 class="white">@Model.hotel.Name</h2>
+                <nav aria-label="breadcrumb">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.hotel.Name</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+ 
+    <img class="overlay" src="https://globewanderimages.blob.core.windows.net/globe-wander-images/hotelBanner.png" alt="image" />
+    </section>
+    <!-- BreadCrumb Ends -->
+    <!-- hotel detail starts -->
+    <section class="hotel-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-xs-12">
+                    <div class="single-content">
+                        <div class="single-title mar-bottom-30">
+                            <h2>@Model.hotel.Name</h2>
+                        <h3>@Model.hotel.Location</h3>
+                            <div class="rating">
+                            @for (int a = Model.hotel.StarRate; a > 0; a--)
+                            {
+                                <span class="fa fa-star checked"></span>
+
+                            }
+                               
+                            </div>
+
+                        </div>
+                        <div class="single-slider mar-bottom-30">
+                            <div class="slider-1 slider-store">
+                            @foreach (var image in Model.hotel.HotelImages)
+                            {
+                                <div class="detail-slider-item">
+                                    <img src="@image.Path" alt="image">
+                                </div>
+                            }
+                               
+                            </div>
+                            <div class="slider-1 slider-thumbs">
+                            @foreach (var image in Model.hotel.HotelImages)
+                            {
+                                <div class="detail-slider-item">
+                                    <img src="@image.Path" alt="image">
+                                </div>
+                            }
+                            </div>
+                        </div>
+                        <div class="description mar-bottom-30">
+                            <h3>Description</h3>
+                            <p>@Model.hotel.Description</p>
+                        <h3>Facilities</h3>
+
+                        @foreach(var item in Model.hotel.HotelFacilities){
+                            <div class="desc-box">
+                                <h4>@item.Facility.Name</h4>
+                               
+                            </div>
+                        }
+                        
+                         
+                        
+                        </div>
+                   
+                       <div class="single-rooms mar-bottom-30">
+                            <h3>Select Your Room</h3>
+                        @foreach (var item in Model.hotel.HotelRoom)
+                        {
+                           <a asp-area="" asp-controller="HotelRooms" asp-action="SingleRoom" asp-route-Id="@item.HotelID" asp-route-RoomNumber="@item.RoomNumber">  
+                               <div class="room-item">
+                                <div class="row display-flex">
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <div class="room-image">
+                                                @foreach (var image in item.HotelRoomImages.Take(1))
+                                                {
+                                                    <img src="@image.Path" alt="@item.Rooms.Name">
+                                                }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <div class="room-content">
+
+                                            <div class="room-info">
+                                                <h4>Amnities</h4>
+                                                <div class="content-lower">
+                                                    <ul>
+                                                        @foreach (var amenity in item.Rooms.RoomAmenities)
+                                                        {
+                                                            <li>@amenity.Amenity.Name</li>
+                                                        }
+                                                    </ul>
+                                                </div>
+
+                                            <div class="room-info">
+                                                <h4>@item.Rooms.Name</h4>
+                                                <div class="content-lower">
+                                                    <ul>
+                                                        <li>@item.SquareFeet sq ft</li>
+                                                        <li> @item.Rooms.Layout rooms</li>
+                                                        <li> @item.Bathrooms bathrooms</li>
+                                                        <li>@item.Beds beds</li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                           
+                                          
+                                   
+                                            </div>
+                                            <div class="room-price">
+                               
+                                                <p class="price">From <span>$@item.PricePerDay</span> / night</p>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> </a>
+                  
+                           } 
+                        </div>
+                       
+              
+
+             
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- hotel detail Ends -->
+    <!-- hotel-nearby starts -->
+    <section class="hotel-nearby bg-grey">
+        <div class="container">
+            <div class="section-title">
+                <h2>Related <span>Hotels</span></h2>
+                <p>this other hotels you might be intrested in </p>
+            </div>
+            <div class="row top-deal-slider">
+                @foreach(var item in Model.recomandedHotels){
+                <div class="col-md-4">
+                    <div class="trend-item">
+                        <div class="trend-image">
+                            @foreach (var image in item.HotelImages.Take(1))
+                            {
+                                <img src="@image.Path" alt="@item.Name">
+                            }
+                            <div class="trend-tags">
+                                <a href="#"><i class="flaticon-like"></i></a>
+                            </div>
+                            <div class="trend-price">
+                                <p class="price">From <span></span></p>
+                            </div>
+                        </div>
+                        <a asp-area="" asp-controller="Hotels" asp-action="SingleHotel" asp-route-id="@item.Id">
+                            <div class="trend-content">
+                            <p><i class="flaticon-location-pin"></i> @item.Name</p>
+                            <h4>@item.Description</h4>
+                            <div class="rating mar-bottom-15">
+                                @for (int a = item.StarRate; a > 0; a--)
+                                {
+                                    <span class="fa fa-star checked"></span>
+
+                                }
+
+                            </div>
+                    
+                                <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i>@item.HotelRoom.Count.ToString() rooms</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+           }
+            </div>
+        </div>
+    </section>
+ 
+
+    <div id="back-to-top">
+        <a href="#"></a>
+    </div>
+  

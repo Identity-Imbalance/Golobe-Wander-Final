@@ -1,10 +1,7 @@
 ﻿@model List<Globe_Wander_Final.Models.DTOs.HotelDTO>
-@inject Globe_Wander_Final.Models.Interfaces.ITourSpot _tours
 @{
 }
-<div id="preloader">
-    <div id="status"></div>
-</div>
+
 <div id="container-wrapper">
     <!-- Dashboard -->
     <div id="dashboard">
@@ -15,7 +12,6 @@
                 @* this should be responsive *@
                @foreach (var item in Model)
                 {
-                    var location = await _tours.GetSpotById(item.TourSpotID);
 
                     <div class="list-item-1">
                         <div class="row display-flex">
@@ -28,16 +24,18 @@
                             <div class="list-content">
                                 <div class="list-rating">
                                     <div class="rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
+                                            @for (int i = 0; i < item.StarRate; i++)
+                                            {
+                                                <span class="fa fa-star checked"></span>
+                                            }
                                     </div>
                                 </div>
                                 <h3><a asp-action="HotelDetailAdmin">@item.Name</a></h3>
                                    <p>
-                                       @location.Country , @location.City
+                                       @item.Location
+                                   </p>
+                                   <p>
+                                       @item.Description
                                    </p>
                                      @* <p class="price">From <span></span>                                             
                                  night</p>
@@ -46,8 +44,14 @@
                         </div>
                         <div class="col-md-2 col-sm-12">
                             
-                                <a asp-controller="Hotels" asp-action="EditHotel" asp-route-id="@item.Id"  class="biz-btn biz-btn1 mar-top-5">Edit</a>
-                                <a asp-controller="Hotels" asp-action="DeleteHotel" asp-route-id="@item.Id"  class="biz-btn biz-btn1 mar-top-5">Delete</a>
+                                <a asp-controller="Hotels" asp-action="EditHotel" asp-route-id="@item.Id" class="biz-btn biz-btn1 mar-top-5">Edit</a>
+                                @* <a asp-controller="Hotels" asp-action="DeleteHotel" asp-route-id="@item.Id"  class="biz-btn biz-btn1 mar-top-5">Delete</a> *@
+                                <a type="button" class="biz-btn biz-btn1 mar-top-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="@item.Id">
+                                    <span>Delete</span>
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                                <partial name="_DeleteHotelPartial" model="@item">
+
                             
                         </div>
                     </div>
