@@ -209,9 +209,6 @@ namespace Globe_Wander_Final.Models.Services
             updatedHotelRoom.RoomID = hotelRoom.RoomID;
             return updatedHotelRoom;
 
-
-
-
         }
 
         public async Task<List<AnonymousHotelRoomDTO>> GetAnonymousHotelRoomDTO()

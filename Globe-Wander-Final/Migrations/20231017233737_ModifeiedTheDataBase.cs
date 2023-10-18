@@ -8,11 +8,24 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Globe_Wander_Final.Migrations
 {
     /// <inheritdoc />
-    public partial class SetupDataBase : Migration
+    public partial class ModifeiedTheDataBase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Amenities",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Amenities", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -53,17 +66,16 @@ namespace Globe_Wander_Final.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Rooms",
+                name: "Facilities",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Layout = table.Column<int>(type: "int", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rooms", x => x.ID);
+                    table.PrimaryKey("PK_Facilities", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -82,6 +94,26 @@ namespace Globe_Wander_Final.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TourSpots", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Rooms",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Layout = table.Column<int>(type: "int", nullable: false),
+                    AmenityId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rooms", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Rooms_Amenities_AmenityId",
+                        column: x => x.AmenityId,
+                        principalTable: "Amenities",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -197,12 +229,20 @@ namespace Globe_Wander_Final.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StarRate = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TourSpotID = table.Column<int>(type: "int", nullable: false)
+                    TourSpotID = table.Column<int>(type: "int", nullable: false),
+                    FacilityId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Hotels", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Hotels_Facilities_FacilityId",
+                        column: x => x.FacilityId,
+                        principalTable: "Facilities",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Hotels_TourSpots_TourSpotID",
                         column: x => x.TourSpotID,
@@ -239,6 +279,58 @@ namespace Globe_Wander_Final.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RoomAmenities",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoomId = table.Column<int>(type: "int", nullable: false),
+                    AmenityId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RoomAmenities", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RoomAmenities_Amenities_AmenityId",
+                        column: x => x.AmenityId,
+                        principalTable: "Amenities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_RoomAmenities_Rooms_RoomId",
+                        column: x => x.RoomId,
+                        principalTable: "Rooms",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HotelFacilities",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HotelId = table.Column<int>(type: "int", nullable: false),
+                    FacilityId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HotelFacilities", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_HotelFacilities_Facilities_FacilityId",
+                        column: x => x.FacilityId,
+                        principalTable: "Facilities",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_HotelFacilities_Hotels_HotelId",
+                        column: x => x.HotelId,
+                        principalTable: "Hotels",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "HotelRooms",
                 columns: table => new
                 {
@@ -246,6 +338,10 @@ namespace Globe_Wander_Final.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     HotelID = table.Column<int>(type: "int", nullable: false),
                     RoomID = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SquareFeet = table.Column<int>(type: "int", nullable: false),
+                    Bathrooms = table.Column<int>(type: "int", nullable: false),
+                    Beds = table.Column<int>(type: "int", nullable: false),
                     PricePerDay = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     IsAvailable = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -336,6 +432,16 @@ namespace Globe_Wander_Final.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Amenities",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Free Wi-Fi" },
+                    { 2, "TV" },
+                    { 3, "Air conditioning" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
@@ -351,20 +457,30 @@ namespace Globe_Wander_Final.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "05c3f524-1620-4c54-a70e-56a2b619b195", "adminUser@example.com", true, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAELk3PnDU33TlA6rWlJirB3w8ym+a7mVgev1Z97H6y+Cq1ZvYIi1nY8hHwYY+ubO/XA==", "1234567890", false, "2fddf5e1-e4d4-4f40-a764-ecbdf75bd2d2", false, "admin" },
-                    { "2", 0, "7593cb8e-da4f-49f9-8c5e-f09305bfe4d4", "hotel@example.com", true, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAEM0RGADvD2E+es6yf0UYFkugxfPa7+2p2N7yyQvj4RgKVVkIgMYXLqtajoZS/4tfyg==", "1234567890", false, "7b79c5d7-a0dd-47df-adf1-e67ef0aa3386", false, "hotel" },
-                    { "3", 0, "e77f9ba0-7a8b-4b99-ad0c-91acc0859cd4", "trip@example.com", true, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAEHOQh+R+a+kfLmVHzgDYQJMSBk+IWZocfaWKFuzmX+dVx9vc4dc49pLza7rAdgBR0A==", "1234567890", false, "e7cc3129-ac69-40fe-a5ce-0165afe938c4", false, "trip" },
-                    { "4", 0, "cda8bfaf-dd05-4ee2-a624-9d9d777bd433", "User@example.com", true, false, null, null, "USER", "AQAAAAIAAYagAAAAEN+L0Gv/WI+8AC1+bThCPG9xCfWqsDL5V69BBKxX1kHZHlCgFnKdBZ56ba61GRAF9w==", "1234567890", false, "e419121f-6ec1-43a7-ae45-e52574c8bb38", false, "User" }
+                    { "1", 0, "6330e043-2700-46ab-b965-5dc1b84b92d0", "adminUser@example.com", true, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAEC3qszX9iGATFkOSXNEvVGtTM8z1vvr+08GR4dhSOe+fhoZ80y9JxSENQTVdA9yWtA==", "1234567890", false, "ee487350-11c1-4d49-b566-ef77bea16a82", false, "admin" },
+                    { "2", 0, "13cc67cd-903d-4df5-9ab9-7b205d172821", "hotel@example.com", true, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAECuF70AzJvW2A99kfjZD4rqMUWuLiF5eS6nxaIKuAYpCcjcNIBcG2jmFLNX9SkSFFQ==", "1234567890", false, "4cd42081-87a5-45fa-ab6b-6ae1314876f7", false, "hotel" },
+                    { "3", 0, "fa566d1a-312b-4815-a23f-c26a98495e56", "trip@example.com", true, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAEJAcKDlvGWn7V8pnl3m3jFEP67QU34p/b4RQGA+0WY8fRjRNYhEmAg8j2nyilEFYrg==", "1234567890", false, "61624fbe-0413-4924-9ad2-52de9b817728", false, "trip" },
+                    { "4", 0, "9593239f-ac0a-41d4-b012-32d05657ac18", "User@example.com", true, false, null, null, "USER", "AQAAAAIAAYagAAAAEDdEO4xrY4B4tq7D2fmutfDQ8cBu5ahJwfLTibQ/7UGf5O2Ghurmogvz9NjgKJRXNQ==", "1234567890", false, "25cf0b88-2714-4f63-a648-8b7ce1b08f9c", false, "User" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Facilities",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "swimingpool11111" },
+                    { 2, "swimingpool22222" },
+                    { 3, "swimingpool33333" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Rooms",
-                columns: new[] { "ID", "Layout", "Name" },
+                columns: new[] { "ID", "AmenityId", "Layout", "Name" },
                 values: new object[,]
                 {
-                    { 1, 2, "Small Room" },
-                    { 2, 3, "Suite Room" },
-                    { 3, 1, "Studio room" }
+                    { 1, null, 2, "Small Room" },
+                    { 2, null, 3, "Suite Room" },
+                    { 3, null, 1, "Studio room" }
                 });
 
             migrationBuilder.InsertData(
@@ -390,12 +506,23 @@ namespace Globe_Wander_Final.Migrations
 
             migrationBuilder.InsertData(
                 table: "Hotels",
-                columns: new[] { "Id", "Description", "Name", "TourSpotID" },
+                columns: new[] { "Id", "Description", "FacilityId", "Location", "Name", "StarRate", "TourSpotID" },
                 values: new object[,]
                 {
-                    { 1, "A unique hotel that you can't find in this place", "Paradise", 1 },
-                    { 2, "A unique hotel that you can't find in this place", "Wander ", 2 },
-                    { 3, "A unique hotel that y    ou can't find in this place", "Amazing", 3 }
+                    { 1, "A unique hotel that you can't find in this place", null, "petra", "Paradise", 4, 1 },
+                    { 2, "A unique hotel that you can't find in this place", null, "petra", "Wander ", 4, 2 },
+                    { 3, "A unique hotel that y    ou can't find in this place", null, "petra", "Amazing", 4, 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "RoomAmenities",
+                columns: new[] { "Id", "AmenityId", "RoomId" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 2, 1 },
+                    { 3, 3, 2 },
+                    { 4, 1, 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -403,9 +530,30 @@ namespace Globe_Wander_Final.Migrations
                 columns: new[] { "Id", "Activity", "Capacity", "Cost", "Count", "Description", "EndDate", "Name", "StartDate", "TourSpotID" },
                 values: new object[,]
                 {
-                    { 1, "walking", 30, 20m, 0, "trip start at 8 am and going from Amman to Petra", new DateTime(2023, 10, 17, 19, 16, 26, 862, DateTimeKind.Utc).AddTicks(5413), "Petra ride", new DateTime(2023, 10, 17, 22, 16, 26, 862, DateTimeKind.Local).AddTicks(5399), 1 },
-                    { 2, "visiting", 22, 30m, 0, "Amman to Jerash with a trip manager who can speak many languages", new DateTime(2023, 10, 17, 19, 16, 26, 862, DateTimeKind.Utc).AddTicks(5417), "Jerash ride", new DateTime(2023, 10, 17, 22, 16, 26, 862, DateTimeKind.Local).AddTicks(5416), 2 },
-                    { 3, "climbing", 40, 40m, 0, "Amman to Irbid with a trip manager who can speak many languages", new DateTime(2023, 10, 17, 19, 16, 26, 862, DateTimeKind.Utc).AddTicks(5420), "Um-Qais ride", new DateTime(2023, 10, 17, 22, 16, 26, 862, DateTimeKind.Local).AddTicks(5419), 3 }
+                    { 1, "walking", 30, 20m, 0, "trip start at 8 am and going from Amman to Petra", new DateTime(2023, 10, 17, 23, 37, 36, 414, DateTimeKind.Utc).AddTicks(1515), "Petra ride", new DateTime(2023, 10, 18, 2, 37, 36, 414, DateTimeKind.Local).AddTicks(1496), 1 },
+                    { 2, "visiting", 22, 30m, 0, "Amman to Jerash with a trip manager who can speak many languages", new DateTime(2023, 10, 17, 23, 37, 36, 414, DateTimeKind.Utc).AddTicks(1518), "Jerash ride", new DateTime(2023, 10, 18, 2, 37, 36, 414, DateTimeKind.Local).AddTicks(1517), 2 },
+                    { 3, "climbing", 40, 40m, 0, "Amman to Irbid with a trip manager who can speak many languages", new DateTime(2023, 10, 17, 23, 37, 36, 414, DateTimeKind.Utc).AddTicks(1521), "Um-Qais ride", new DateTime(2023, 10, 18, 2, 37, 36, 414, DateTimeKind.Local).AddTicks(1520), 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "HotelFacilities",
+                columns: new[] { "Id", "FacilityId", "HotelId" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 1, 2 },
+                    { 3, 2, 3 },
+                    { 4, 3, 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "HotelRooms",
+                columns: new[] { "HotelID", "RoomNumber", "Bathrooms", "Beds", "Description", "IsAvailable", "PricePerDay", "RoomID", "SquareFeet" },
+                values: new object[,]
+                {
+                    { 1, 101, 2, 3, "CLEAN", true, 100m, 1, 250 },
+                    { 1, 102, 2, 3, "CLEAN", true, 150m, 2, 250 },
+                    { 2, 201, 2, 3, "CLEAN", false, 120m, 1, 250 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -459,9 +607,24 @@ namespace Globe_Wander_Final.Migrations
                 column: "TripID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_HotelFacilities_FacilityId",
+                table: "HotelFacilities",
+                column: "FacilityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HotelFacilities_HotelId",
+                table: "HotelFacilities",
+                column: "HotelId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_HotelRooms_RoomID",
                 table: "HotelRooms",
                 column: "RoomID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Hotels_FacilityId",
+                table: "Hotels",
+                column: "FacilityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Hotels_TourSpotID",
@@ -472,6 +635,21 @@ namespace Globe_Wander_Final.Migrations
                 name: "IX_Rates_TripID",
                 table: "Rates",
                 column: "TripID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RoomAmenities_AmenityId",
+                table: "RoomAmenities",
+                column: "AmenityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RoomAmenities_RoomId",
+                table: "RoomAmenities",
+                column: "RoomId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Rooms_AmenityId",
+                table: "Rooms",
+                column: "AmenityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Trips_TourSpotID",
@@ -504,7 +682,13 @@ namespace Globe_Wander_Final.Migrations
                 name: "bookingTrips");
 
             migrationBuilder.DropTable(
+                name: "HotelFacilities");
+
+            migrationBuilder.DropTable(
                 name: "Rates");
+
+            migrationBuilder.DropTable(
+                name: "RoomAmenities");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -525,7 +709,13 @@ namespace Globe_Wander_Final.Migrations
                 name: "Rooms");
 
             migrationBuilder.DropTable(
+                name: "Facilities");
+
+            migrationBuilder.DropTable(
                 name: "TourSpots");
+
+            migrationBuilder.DropTable(
+                name: "Amenities");
         }
     }
 }

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34004.107
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Globe-Wander-Final", "Globe-Wander-Final.csproj", "{E52BB5AC-374A-4352-9511-6E89A0681089}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Globe-Wander-Final", "Globe-Wander-Final.csproj", "{E52BB5AC-374A-4352-9511-6E89A0681089}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
