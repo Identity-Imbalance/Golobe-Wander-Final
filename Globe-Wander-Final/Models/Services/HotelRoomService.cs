@@ -65,7 +65,16 @@ namespace Globe_Wander_Final.Models.Services
            PricePerDay = b.PricePerDay,
            IsAvailable = b.IsAvailable,
            Bathrooms=b.Bathrooms,
-           Beds=b.Beds,
+           HotelRoomImages = _context.Images.Where(w => b.HotelID == w.HotelId && b.RoomNumber == w.RoomNumber).Select(e => new Image
+           {
+               Id = e.Id,
+               HotelId = e.HotelId,
+               RoomNumber = e.RoomNumber,
+               Path = e.Path,
+
+           }
+                            ).ToList(),
+           Beds =b.Beds,
            Description=b.Description,
            SquareFeet =b.SquareFeet
            
@@ -151,7 +160,16 @@ namespace Globe_Wander_Final.Models.Services
                 SquareFeet = b.SquareFeet,
                 Beds = b.Beds,
                 Description = b.Description,
-                
+                HotelRoomImages = _context.Images.Where(w => b.HotelID == w.HotelId && b.RoomNumber == w.RoomNumber).Select(e => new Image
+                {
+                    Id = e.Id,
+                    HotelId = e.HotelId,
+                    RoomNumber = e.RoomNumber,
+                    Path = e.Path,
+
+                }
+                            ).ToList(),
+
                 Rooms = _context.Rooms.Select(
                     x => new RoomDTO
                     {
