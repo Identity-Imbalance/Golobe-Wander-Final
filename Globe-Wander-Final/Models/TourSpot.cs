@@ -10,6 +10,7 @@ namespace Globe_Wander_Final.Models
 
         public string Country { get; set; }
 
+        public string Img { get; set; }
         public string City { get; set; }
 
         public string Description { get; set; }

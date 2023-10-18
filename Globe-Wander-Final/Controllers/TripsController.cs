@@ -1,4 +1,5 @@
 ﻿using Globe_Wander_Final.Models.Interfaces;
+using Globe_Wander_Final.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Globe_Wander_Final.Controllers
@@ -23,7 +24,13 @@ namespace Globe_Wander_Final.Controllers
         {
 
             var trip = await _trips.GetTripByID(id);
-            return View(trip);
+            var trips = await _trips.GetAllTrips();
+            var tripAndRecomanded = new RecomandedTripsAndTrip
+            {
+                trip = trip,
+                ListTrips = trips
+            };
+            return View(tripAndRecomanded);
         }
     }
 }
