@@ -75,6 +75,16 @@ namespace Globe_Wander_Final.Models.Services
                 SquareFeet=v.SquareFeet,
                 Bathrooms=v.Bathrooms,
                 Beds=v.Beds,
+                HotelRoomImages= _context.Images.Where(w=>v.HotelID == w.HotelId && v.RoomNumber == w.RoomNumber).Select(e => new Image
+                {
+                    Id=e.Id,
+                    HotelId=e.HotelId,
+                    RoomNumber=e.RoomNumber,
+                    Path=e.Path,
+                    
+                }
+                            ).ToList(),
+                  
                 Description=v.Description,
                 IsAvailable = v.IsAvailable,
                 RoomNumber = v.RoomNumber,
@@ -120,6 +130,17 @@ namespace Globe_Wander_Final.Models.Services
                     Hotel = k.Hotel,
                     HotelId = b.Id,
                 }).ToList(),
+
+                HotelImages = _context.Images.Where(w => b.Id == w.HotelId &&  w.RoomNumber == null).Select(e => new Image
+                {
+                    Id = e.Id,
+                    HotelId = e.HotelId,
+
+                    Path = e.Path,
+
+                }
+                            ).ToList(),
+
                 Description = b.Description,
                 TourSpotID = b.TourSpotID,
                 HotelRoom = hotelRooms
@@ -142,7 +163,17 @@ namespace Globe_Wander_Final.Models.Services
                 Name = b.Name,
                 Location=b.Location,
                 StarRate = b.StarRate,
-               HotelFacilities=_context.HotelFacilities.Where(q=>q.HotelId==b.Id).Select(k=> new HotelFacility
+
+                HotelImages = _context.Images.Where(w => b.Id == w.HotelId && w.RoomNumber == null).Select(e => new Image
+                {
+                    Id = e.Id,
+                    HotelId = e.HotelId,
+
+                    Path = e.Path,
+
+                }
+                            ).ToList(),
+                HotelFacilities =_context.HotelFacilities.Where(q=>q.HotelId==b.Id).Select(k=> new HotelFacility
                {Id=k.Id,
                    Facility=k.Facility,
                     FacilityId=k.FacilityId,
@@ -162,6 +193,15 @@ namespace Globe_Wander_Final.Models.Services
                     Beds = v.Beds,
                     SquareFeet = v.SquareFeet,
                     PricePerDay = v.PricePerDay,
+                    HotelRoomImages = _context.Images.Where(w => v.HotelID == w.HotelId && v.RoomNumber == w.RoomNumber).Select(e => new Image
+                    {
+                        Id = e.Id,
+                        HotelId = e.HotelId,
+                        RoomNumber = e.RoomNumber,
+                        Path = e.Path,
+
+                    }
+                            ).ToList(),
                     Rooms = _context.Rooms.Select(r => new RoomDTO
                     {
                         ID = r.ID,

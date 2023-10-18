@@ -3,20 +3,21 @@
     <div id="preloader">
         <div id="status"></div>
     </div>
-    
-    <section class="breadcrumb-outer text-center">
+
+<section class="breadcrumb-outer text-center" style="height:40vh !important">
         <div class="container">
             <div class="breadcrumb-content">
-                <h2 class="white">Hotel Single Full</h2>
+                <h2 class="white">@Model.hotel.Name</h2>
                 <nav aria-label="breadcrumb">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Hotel Single Full</li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.hotel.Name</li>
                     </ul>
                 </nav>
             </div>
         </div>
-        <div class="overlay"></div>
+ 
+    <img class="overlay" src="https://globewanderimages.blob.core.windows.net/globe-wander-images/hotelBanner.png" alt="image" />
     </section>
     <!-- BreadCrumb Ends -->
     <!-- hotel detail starts -->
@@ -40,62 +41,21 @@
                         </div>
                         <div class="single-slider mar-bottom-30">
                             <div class="slider-1 slider-store">
+                            @foreach (var image in Model.hotel.HotelImages)
+                            {
                                 <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
+                                    <img src="@image.Path" alt="image">
                                 </div>
-                                <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                                </div>
-                                <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                                </div>
-                                <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                                </div>
-                                <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                                </div>
-                                <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                                </div>
-                                <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                                </div>
-                                <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                                </div>
-                                <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                                </div>
+                            }
+                               
                             </div>
                             <div class="slider-1 slider-thumbs">
+                            @foreach (var image in Model.hotel.HotelImages)
+                            {
                                 <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
+                                    <img src="@image.Path" alt="image">
                                 </div>
-                                <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                                </div>
-                                <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                                </div>
-                                <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                                </div>
-                                <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                                </div>
-                                <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                                </div>
-                                <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                                </div>
-                                <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                                </div>
-                                <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                                </div>
+                            }
                             </div>
                         </div>
                         <div class="description mar-bottom-30">
@@ -123,7 +83,10 @@
                                 <div class="row display-flex">
                                     <div class="col-md-4 col-sm-4 col-xs-12">
                                         <div class="room-image">
-                                            <img src="images/trending1.jpg" alt="Image">
+                                                @foreach (var image in item.HotelRoomImages.Take(1))
+                                                {
+                                                    <img src="@image.Path" alt="@item.Rooms.Name">
+                                                }
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-sm-8 col-xs-12">
@@ -182,15 +145,18 @@
     <section class="hotel-nearby bg-grey">
         <div class="container">
             <div class="section-title">
-                <h2>Related <span>Holiday</span> Plan</h2>
-                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                <h2>Related <span>Hotels</span></h2>
+                <p>this other hotels you might be intrested in </p>
             </div>
             <div class="row top-deal-slider">
                 @foreach(var item in Model.recomandedHotels){
                 <div class="col-md-4">
                     <div class="trend-item">
                         <div class="trend-image">
-                            <img src="images/trending4.jpg" alt="image">
+                            @foreach (var image in item.HotelImages.Take(1))
+                            {
+                                <img src="@image.Path" alt="@item.Name">
+                            }
                             <div class="trend-tags">
                                 <a href="#"><i class="flaticon-like"></i></a>
                             </div>

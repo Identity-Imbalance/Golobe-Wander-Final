@@ -159,7 +159,11 @@
                      <div class="trend-item">
                         
                         <div class="trend-image">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
+                                @foreach (var image in item.HotelImages.Take(1))
+                                {
+                                    <img src="@image.Path" alt="@item.Name">
+                                }
+
                         </div>
                       <a asp-area="" asp-controller="Hotels" asp-action="SingleHotel" asp-route-id="@item.Id">  
                           <div class="trend-content">
@@ -207,8 +211,12 @@
                             <a asp-area="" asp-controller="HotelRooms" asp-action="SingleRoom" asp-route-Id="@item.HotelID" asp-route-RoomNumber="@item.RoomNumber">
                                 <div class="room-item">
                                 <div class="room-image">
-                                        <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                                </div>
+                                        @foreach (var image in item.HotelRoomImages.Take(1))
+                                        {
+                                            <img src="@image.Path" alt="@item.Rooms.Name">
+                                        }
+
+                                    </div>
                                 <div class="room-content1">
                                     <div class="room-title">
                                             <h3>@items.Name</h3>

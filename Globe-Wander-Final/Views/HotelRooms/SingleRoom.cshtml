@@ -1,5 +1,21 @@
 ﻿@model Globe_Wander_Final.Models.ViewModels.HotelAndHotelRoom
-    <section class="hotel-single">
+  
+<section class="breadcrumb-outer text-center" style="height:40vh !important">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2 class="white">@Model.hotel.Name</h2>
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.hotel.Name</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <img class="overlay" src="https://globewanderimages.blob.core.windows.net/globe-wander-images/hotelBanner.png" alt="image" />
+</section>
+<section class="hotel-single">
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1 col-xs-12">
@@ -11,62 +27,21 @@
                         </div>
                     <div class="single-slider mar-bottom-30">
                         <div class="slider-1 slider-store">
-                            <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                            </div>
-                            <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                            </div>
-                            <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                            </div>
-                            <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                            </div>
-                            <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                            </div>
-                            <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                            </div>
-                            <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                            </div>
-                            <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                            </div>
-                            <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                            </div>
+                            @foreach (var image in Model.HotelRoomDTO.HotelRoomImages)
+                            {
+                                <div class="detail-slider-item">
+                                    <img src="@image.Path" alt="image">
+                                </div>
+                            }
+
                         </div>
                         <div class="slider-1 slider-thumbs">
-                            <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                            </div>
-                            <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                            </div>
-                            <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                            </div>
-                            <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                            </div>
-                            <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                            </div>
-                            <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                            </div>
-                            <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                            </div>
-                            <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                            </div>
-                            <div class="detail-slider-item">
-                                <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="image">
-                            </div>
+                            @foreach (var image in Model.HotelRoomDTO.HotelRoomImages)
+                            {
+                                <div class="detail-slider-item">
+                                    <img src="@image.Path" alt="image">
+                                </div>
+                            }
                         </div>
                     </div>
                         <div class="description mar-bottom-30">

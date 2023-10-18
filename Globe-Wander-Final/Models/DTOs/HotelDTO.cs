@@ -10,6 +10,7 @@
         public int StarRate { get; set; }
         public string Description { get; set; }
 
+        public virtual ICollection<Image> HotelImages { get; set; }
         public ICollection<HotelFacility> HotelFacilities { get; set; }
 
         public int TourSpotID { get; set; }
