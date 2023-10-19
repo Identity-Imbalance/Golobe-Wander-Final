@@ -1,5 +1,6 @@
 ﻿using Globe_Wander_Final.Models;
 using Globe_Wander_Final.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -16,13 +17,16 @@ namespace Globe_Wander_Final.Controllers
             _logger = logger;
             
         }
-
+        
         public IActionResult Index()
         {
             return View();
         }
 
-
+        public IActionResult about()
+        {
+            return View("about");
+        }
         public IActionResult Privacy()
         {
             return View();

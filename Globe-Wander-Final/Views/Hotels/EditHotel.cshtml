@@ -1,0 +1,65 @@
+﻿@model Globe_Wander_Final.Models.DTOs.HotelDTO
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var selectedFacilityIds = Model.HotelFacilities.Select(hf => hf.FacilityId).ToList();
+}
+
+<div id="container-wrapper">
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <partial name="_Navigation"></partial>
+
+        <div class="dashboard-content">
+            <div class="dashboard-form mar-bottom-30">
+
+                <h2 class="text-center">Edit Hotel</h2>
+
+                <form asp-controller="Hotels" asp-action="EditHotel" method="post">
+                    <input hidden asp-for="Id" />
+                    @foreach (var item in Model.HotelRoom)
+                    {
+                        <input hidden asp-for="@item"/> 
+                    }
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Location"></label>
+                        <input asp-for="Location" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="StarRate"></label>
+                        <input asp-for="StarRate" />
+                    </div>
+                  
+                    <div class="col-sm-12">
+                        <label asp-for="Description"></label>
+                        <textarea asp-for="Description" required></textarea>
+                    </div>
+                    
+                    <select asp-for="TourSpotID" required>
+                        <option value="">Select a Tour Spot</option>
+                        @foreach (var spot in ViewBag.TourSpots)
+                        {
+                            <option value="@spot.ID">@spot.Name</option>
+                        }
+                    </select>
+
+                    @foreach (var facility in ViewBag.Facilities)
+                    {
+                        <input type="checkbox" name="selectedFacilityIds" value="@facility.Id" @(selectedFacilityIds.Contains(facility.Id) ? "checked" : "") />
+                        <label>@facility.Name</label>
+                    }
+
+                    <input type="submit" class="biz-btn biz-btn1" value="Save" />
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

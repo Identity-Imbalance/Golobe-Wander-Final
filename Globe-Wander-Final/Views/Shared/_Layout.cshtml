@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <script src="https://kit.fontawesome.com/f9b49e7bf3.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
 </head>
@@ -39,6 +40,7 @@
                                 <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
                             </ul>
                         </li>
+
                         @if (!User.Identity.IsAuthenticated)
                         {
                             <li><a asp-area="" asp-controller="User" asp-action="Login"><i class="fa fa-sign-in-alt"></i> Login</a></li>
@@ -46,6 +48,10 @@
                         }
                         @if (User.Identity.IsAuthenticated)
                         {
+
+                            <li class="nav-item">
+                                <span class="nav-link active">Welcome, @User.Identity.Name!</span>
+                            </li>
                             <li><a asp-area="" asp-controller="User" asp-action="Logout"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
                         }
                     </ul>
@@ -160,22 +166,23 @@
         </div>
     </footer>
 
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+  <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
-
-    <script src="~/js/plugin.js"></script>
-    <script src="~/js/main.js"></script>
+    @* <script src="~/js/plugin.js"></script> *@
+    @* <script src="~/js/main.js"></script> *@
     <script src="~/js/menu.js"></script>
-
     <script src="~/js/custom-swiper3.js"></script>
-    @* <script src="~/js/custom-nav.js"></script> *@
+     @* <script src="~/js/custom-nav.js"></script>  *@
     <script src="~/js/custom-date.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="~/js/jpanelmenu.min.js"></script>
     <script src="~/js/dashboard-custom.js"></script>
-    <script src="~/js/changeActive.js"></script>
 
+     
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

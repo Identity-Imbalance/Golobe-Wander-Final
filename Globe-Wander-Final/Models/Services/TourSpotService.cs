@@ -145,6 +145,20 @@ namespace Globe_Wander_Final.Models.Services
             return tourSpots;
 
         }
+        /// <summary>
+        /// get Tour spot location to use in the collection of the hotels it will be temp
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public async Task<string> GetLocationByTourSptID(int id)
+        {
+            var tour = await _context.TourSpots.FindAsync(id);
+
+            string location = tour.City +", " + tour.Country;
+
+            return location;
+        }
 
         public async Task<List<TrendTourSpotDTO>> GetMostVisitedTourSpots()
         {

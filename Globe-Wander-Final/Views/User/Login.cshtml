@@ -1,0 +1,39 @@
+﻿@model Globe_Wander_Final.Models.DTOs.LogInDTO
+
+<!-- Login Starts -->
+<section class="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="login-content">
+                    <h4>Hello! Sign into your account</h4>
+                    <form asp-action="Login" method="post">
+                        <div class="form-group">
+                            <input asp-for="UserName" class="form-control" id="username" placeholder="Enter username">
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Enter password">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group form-checkbox">
+                            <input type="checkbox"> Remember Me
+                            <a href="#">Forgot password?</a>
+                        </div>
+                        <div class="form-btn mar-top-20">
+                            <button type="submit" class="biz-btn biz-btn1 mar-bottom-20">LOGIN</button>
+                            <p>Need an Account?<a asp-area="" asp-controller="User" asp-action="Register"> Create your account</a></p>
+                        </div>
+                    </form>
+                    <ul class="social-links">
+                        <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Login Ends -->

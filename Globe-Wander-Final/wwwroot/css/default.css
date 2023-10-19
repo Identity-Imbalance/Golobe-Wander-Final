@@ -237,6 +237,7 @@ ol {
 a {
     color: #464545;
     transition: all ease-in-out 0.4s;
+    text-decoration : none;
 }
 
     a:hover, a:focus {

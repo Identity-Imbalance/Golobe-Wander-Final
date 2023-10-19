@@ -1,0 +1,209 @@
+﻿@model Globe_Wander_Final.Models.DTOs.TripDTO
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Nepayatri - Tour & Travel Multipurpose Template</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!--Default CSS-->
+    <link href="css/default.css" rel="stylesheet" type="text/css">
+    <!--Custom CSS-->
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <!--Color Switcher CSS-->
+    <link rel="stylesheet" href="css/color/color-default.css">
+    <!--Plugin CSS-->
+    <link href="css/plugin.css" rel="stylesheet" type="text/css">
+    <!--Flaticons CSS-->
+    <link href="fonts/flaticon.css" rel="stylesheet" type="text/css">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status"></div>
+    </div>
+    <!-- Preloader Ends -->
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-outer text-center">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <h2 class="white">Trip Detail</h2>
+                <nav aria-label="breadcrumb">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Flight</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Trip Detail</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </section>
+    <!-- BreadCrumb Ends -->
+    <!-- flight desti starts -->
+    <section class="flight-destinations bg-white">
+        <div class="container">
+            <div class="row">
+                <div id="content" class="col-md-8 col-xs-12">
+                    <div class="detail-content content-wrapper">
+                        <div class="detail-info">
+                            <div class="detail-info-content clearfix">
+                                
+                                <h2>@Model.Name</h2>
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                                <h3 class=" detail-price mar-0 text-right">$@Model.Cost<br>Person</h3>
+                            </div>
+                        </div>
+                        <div class="gallery detail-box about-slider">
+                            <div class="gallery-item">
+                                <img src="images/flight1.jpg" alt="in_th_030_01_sm" />
+                            </div>
+
+                            <div class="gallery-item">
+                                <img src="images/flight2.jpg" alt="in_th_030_01_sm" />
+                            </div>
+
+                            <div class="gallery-item">
+                                <img src="images/flight3.jpg" alt="in_th_030_01_sm" />
+                            </div>
+
+                            <div class="gallery-item">
+                                <img src="images/flight4.jpg" alt="in_th_030_01_sm" />
+                            </div>
+                        </div>
+                        <div class="description flight-table mar-bottom-30">
+                            <div class="detail-title">
+                                <h3>Description</h3>
+                            </div>
+                            <div class="description-content">
+                                <p>@Model.Description</p>
+                                <table>
+                                    <thead>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="title">Location</td>
+                                            <td><i class="fa fa-map-marker" aria-hidden="true"></i> @Model.Name</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="title">Departure and return Time</td>
+                                            <td><i class="fa fa-clock-o" aria-hidden="true"></i> Please arrive by <span style="color:#DC143C;">@Model.StartDate</span> for a prompt departure at <span style="color:#DC143C;">@Model.EndDate</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="title">Maximum travellers</td>
+                                            <td><i class="fa fa-user" aria-hidden="true"></i> @Model.Capacity</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="title">People that booked</td>
+                                            <td><i class="fa fa-user" aria-hidden="true"></i> @Model.Count</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="title">Activity</td>
+                                            <td><i class="fa fa-check" aria-hidden="true"></i> @Model.Activity</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="title">Trip ID</td>
+                                            <td><i class="fa fa-check" aria-hidden="true"></i> @Model.Id</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                      
+                       
+                </div>
+
+                <div id="sidebar" class="col-md-4 col-xs-12">
+                    <aside class="detail-sidebar sidebar-wrapper">
+                        
+                        <div class="sidebar-item">
+                            <div class="detail-title">
+                                <h3>Popular Flights</h3>
+                            </div>
+                            <div class="sidebar-content about-slider">
+                                <div class="sidebar-package">
+                                    <div class="sidebar-package-image">
+                                        <img src="images/plane1.jpg" alt="Images">
+                                    </div>
+                                    <div class="destination-content mar-top-20">
+                                        <div class="destination-title">
+                                            <h6 class="mar-bottom-5">ONE WAY FLIGHTS</h6>
+                                            <h4><a href="flight-detail.html">CHEAP FLIGHTS TO MONACO</a></h4>
+                                        </div>
+                                        <p class="package-days">BOOK NOW AND <span>SAVE 30%</span></p>
+                                        <p class="price-ft mar-0 bold">$800 <span>/ per Person</span></p>
+                                    </div>
+                                </div>
+                                <div class="sidebar-package">
+                                    <div class="sidebar-package-image">
+                                        <img src="images/plane2.jpg" alt="Images">
+                                    </div>
+                                    <div class="destination-content mar-top-20">
+                                        <div class="destination-title">
+                                            <h6 class="mar-bottom-5">ONE WAY FLIGHTS</h6>
+                                            <h4><a href="flight-detail.html">CHEAP FLIGHTS TO LONDON</a></h4>
+                                        </div>
+                                        <p class="package-days">BOOK NOW AND <span>SAVE 30%</span></p>
+                                        <p class="price-ft mar-0 bold">$800 <span>/ per Person</span></p>
+                                    </div>
+                                </div>
+                                <div class="sidebar-package">
+                                    <div class="sidebar-package-image">
+                                        <img src="images/plane3.jpg" alt="Images">
+                                    </div>
+                                    <div class="destination-content mar-top-20">
+                                        <div class="destination-title">
+                                            <h6 class="mar-bottom-5">ONE WAY FLIGHTS</h6>
+                                            <h4><a href="flight-detail.html">CHEAP FLIGHTS TO PARIS</a></h4>
+                                        </div>
+                                        <p class="package-days">BOOK NOW AND <span>SAVE 30%</span></p>
+                                        <p class="price-ft mar-0 bold">$800 <span>/ per Person</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- flight desti ends -->
+   
+    <!-- Back to top start -->
+    <div id="back-to-top">
+        <a href="#"></a>
+    </div>
+    <!-- Back to top ends -->
+    
+
+    <!-- *Scripts* -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/color-switcher.js"></script>
+    <script src="js/plugin.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/custom-nav.js"></script>
+    <script src="js/custom-date.js"></script>
+
+</body>
+</html>
