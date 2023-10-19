@@ -17,7 +17,7 @@ namespace Globe_Wander_Final.Controllers
             _logger = logger;
             
         }
-        [Authorize/*(Roles = "Admin")*/]
+        
         public IActionResult Index()
         {
             return View();
