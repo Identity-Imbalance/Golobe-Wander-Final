@@ -28,7 +28,6 @@ namespace Globe_Wander_Final.Models.Services
         {
             HotelRoom hotelRooms = new HotelRoom()
             {
-                RoomNumber = hotelRoomdto.HotelID * 100 + hotelRoomdto.RoomID,
                 HotelID = hotelRoomdto.HotelID,
                 RoomID = hotelRoomdto.RoomID,
                 PricePerDay = hotelRoomdto.PricePerDay,
@@ -64,7 +63,21 @@ namespace Globe_Wander_Final.Models.Services
            RoomNumber = b.RoomNumber,
            RoomID = b.RoomID,
            PricePerDay = b.PricePerDay,
-           IsAvailable = b.IsAvailable
+           IsAvailable = b.IsAvailable,
+           Bathrooms=b.Bathrooms,
+           HotelRoomImages = _context.Images.Where(w => b.HotelID == w.HotelId && b.RoomNumber == w.RoomNumber).Select(e => new Image
+           {
+               Id = e.Id,
+               HotelId = e.HotelId,
+               RoomNumber = e.RoomNumber,
+               Path = e.Path,
+
+           }
+                            ).ToList(),
+           Beds =b.Beds,
+           Description=b.Description,
+           SquareFeet =b.SquareFeet
+           
        })
        .FirstOrDefaultAsync();
 
@@ -76,7 +89,15 @@ namespace Globe_Wander_Final.Models.Services
                     {
                         ID = r.ID,
                         Name = r.Name,
-                        Layout = r.Layout
+                        Layout = r.Layout,
+                        RoomAmenities = _context.RoomAmenities.Where(I => I.RoomId == r.ID).Select(l => new RoomAmenity
+                        {
+                            Amenity = l.Amenity,
+                            Room = l.Room,
+                            AmenityId = l.AmenityId,
+                            RoomId = l.RoomId,
+                        }
+                            ).ToList()
                     })
                     .FirstOrDefaultAsync();
 
@@ -135,12 +156,34 @@ namespace Globe_Wander_Final.Models.Services
                 RoomID = b.RoomID,
                 PricePerDay = b.PricePerDay,
                 IsAvailable = b.IsAvailable,
+                Bathrooms = b.Bathrooms,
+                SquareFeet = b.SquareFeet,
+                Beds = b.Beds,
+                Description = b.Description,
+                HotelRoomImages = _context.Images.Where(w => b.HotelID == w.HotelId && b.RoomNumber == w.RoomNumber).Select(e => new Image
+                {
+                    Id = e.Id,
+                    HotelId = e.HotelId,
+                    RoomNumber = e.RoomNumber,
+                    Path = e.Path,
+
+                }
+                            ).ToList(),
+
                 Rooms = _context.Rooms.Select(
                     x => new RoomDTO
                     {
                         ID = x.ID,
                         Name = x.Name,
-                        Layout = x.Layout
+                        Layout = x.Layout,
+                        RoomAmenities = _context.RoomAmenities.Where(I => I.RoomId == x.ID).Select(l => new RoomAmenity
+                        {
+                            Amenity = l.Amenity,
+                            Room = l.Room,
+                            AmenityId = l.AmenityId,
+                            RoomId = l.RoomId,
+                        }
+                            ).ToList()
                     })
                 .Where(x => x.ID == b.RoomID)
                 .FirstOrDefault(),
@@ -183,9 +226,6 @@ namespace Globe_Wander_Final.Models.Services
             updatedHotelRoom.RoomNumber = roomNumber;
             updatedHotelRoom.RoomID = hotelRoom.RoomID;
             return updatedHotelRoom;
-
-
-
 
         }
 

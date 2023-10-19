@@ -19,5 +19,10 @@ namespace Globe_Wander_Final.Controllers
 
             return View(tours);
         }
+        public async Task<IActionResult> GetSpotById(int spotId)
+        {
+            var tourId = await _tours.GetSpotById(spotId);
+            return View(tourId);
+        }
     }
 }
