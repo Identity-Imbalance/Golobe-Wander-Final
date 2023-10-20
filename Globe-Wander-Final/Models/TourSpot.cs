@@ -18,11 +18,13 @@ namespace Globe_Wander_Final.Models
         public Category Category { get; set; }
 
         public string PhoneNumber { get; set; }
+        public string Img {  get; set; }
 
         public List<Hotel>? Hotels { get; set; }
 
         public List<Trip>? Trips { get; set; }
     }
+
 
     public enum Category
     {

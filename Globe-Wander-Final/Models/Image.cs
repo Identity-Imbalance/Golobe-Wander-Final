@@ -11,7 +11,6 @@
 
         public int? HotelId { get; set; }
         public virtual Hotel? Hotel { get; set; }
-
         public int? TripId { get; set; }
         public virtual Trip? Trip { get; set; }
 

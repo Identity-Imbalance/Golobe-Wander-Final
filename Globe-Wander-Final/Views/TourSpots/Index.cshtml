@@ -1,85 +1,12 @@
 ﻿@model List<Globe_Wander_Final.Models.DTOs.TourSpotDTO>
 
-@* 
-
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Tours</title>
-</head>
-<body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Country
-            </th>
-            <th>
-                City
-            </th>
-            <th>
-                Description
-            </th>
-            <th>
-                Category
-            </th>
-            <th>
-                PhoneNumber
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-</body>
-</html>
- *@
 
 
 
 @{
-  
+
 }
+
 <body>
 
     <!-- Preloader -->
@@ -88,28 +15,12 @@
     </div>
     <!-- Preloader Ends -->
     <!-- header starts -->
-  
     <!-- header ends -->
     <!-- Breadcrumb -->
-    <section class="breadcrumb-outer text-center">
-        <div class="container">
-            <div class="breadcrumb-content">
-                <h2 class="white">Tour Grid</h2>
-                <nav aria-label="breadcrumb">
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Tour Grid</li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <div class="overlay">
-            <img src="https://images.pexels.com/photos/691637/pexels-photo-691637.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-        </div>
-    </section>
+ 
     <!-- BreadCrumb Ends -->
     <!-- tour list starts -->
-    <section class="list">
+   @*  <section class="list">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-xs-12 pull-right">
@@ -124,45 +35,37 @@
                             </div>
                         </div>
                         <div class="row ">
-                        @foreach (var item in Model){
-                                <div class="col-md-6 col-sm-6 col-xs-12 mar-bottom-30">
-                                    <div class="trend-item">
-                                        @if(item.ID % 2 == 0)
-                                        {
-                                            <div class="ribbon ribbon-top-left"><span>35% OFF</span></div>
-                                        }else{
-                                        <div class="ribbon ribbon-top-left"><span>15% OFF</span></div>}
-                                    <div class="trend-image">
-                                            <img src="https://images.pexels.com/photos/1631665/pexels-photo-1631665.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="image">
-                                        <div class="trend-tags">
-                                            <a href="#"><i class="flaticon-like"></i></a>
+
+
+
+                            <div class="container">
+
+                                <div class="row mar-top-50">
+                                    @foreach (var tour in Model)
+                                    {
+                                        <div class="col-md-3 col-sm-6 col-xs-12">
+                                            <div class="gallery-item">
+                                                <div class="gallery-image">
+                                                    <img src="https://images.pexels.com/photos/1631665/pexels-photo-1631665.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="image">
+                                                </div>
+                                                <div class="gallery-content">
+                                                    <ul>
+                                                        <li><a href="images/gallery/gallery1.jpg" data-lightbox="gallery" data-title="@tour.Name"><i class="fa fa-eye"></i></a></li>
+                                                        <li>
+                                                            <a asp-action="GetSpotById" asp-controller="TourSpots" asp-route-spotId="@tour.ID"><i class="fa fa-link"></i></a>
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="trend-price">
-                                            <p class="price">From <span>$350.00</span></p>
-                                            <p class="price">Trips <span>@item.Trips.Count.ToString()</span></p>
-                                     @*          @foreach(var trip in item.Trips){
-                                        <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> @trip.Name|| @trip.Capacity</p>
-                                        } *@
-                                        </div>
-                                    </div>
-                                    <div class="trend-content">
-                                        <p><i class="flaticon-location-pin"></i>@item.City / @item.Category</p>
-                                        <h4><a href="#">@item.Name</a></h4>
-                                        <div class="rating mar-bottom-15">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                        </div>
-                                        <span class="mar-left-5">38 Reviews</span>
-                                        <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> @item.Description || @item.Trips.Count.ToString()</p> 
-                                      
-                                    </div>
+                                    }
+
                                 </div>
                             </div>
 
-                   }
+
+
                             <div class="col-xs-12">
                                 <div class="blog-button text-center">
                                     <a href="car-detail.html" class="biz-btn biz-btn1">Load More</a>
@@ -171,6 +74,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-4 col-xs-12">
                     <div class="list-sidebar">
                         <div class="sidebar-item">
@@ -194,60 +98,8 @@
                                             </div>
                                         </div>
                                     </div>
-@* 
-                                    <div class="col-md-6 col-xs-12">
-                                        <div class="form-group">
-                                            <label class="white">Check In</label>
-                                            <div class="input-box">
-                                                <i class="flaticon-calendar"></i>
-                                                <input id="date-range0" type="text" placeholder="yyyy-mmm-dd">
-                                            </div>
-                                        </div>
-                                    </div>
+                                  
 
-                                    <div class="col-md-6 col-xs-12">
-                                        <div class="form-group">
-                                            <label class="white">Check Out</label>
-                                            <div class="input-box">
-                                                <i class="flaticon-calendar"></i>
-                                                <input id="date-range1" type="text" placeholder="yyyy-mm-dd">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6 col-xs-12">
-                                        <div class="form-group">
-                                            <label class="white">Adult</label>
-                                            <div class="input-box">
-                                                <i class="flaticon-add-user"></i>
-                                                <select class="niceSelect">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6 col-xs-12">
-                                        <div class="form-group">
-                                            <label class="white">Children</label>
-                                            <div class="input-box">
-                                                <i class="flaticon-add-user"></i>
-                                                <select class="niceSelect">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                              *@
-                                    
                                     <div class="col-xs-12">
                                         <div class="form-group mar-top-15">
                                             <a href="#" class="biz-btn">Search</a>
@@ -270,7 +122,7 @@
                                     <label>Parking</label>
                                 </div>
                             </div>
-                            
+
                             <div class="pretty p-default p-thick p-pulse mar-bottom-15">
                                 <input type="checkbox" />
                                 <div class="state p-warning-o">
@@ -283,7 +135,7 @@
                                     <label>Satellite Television</label>
                                 </div>
                             </div>
-                         
+
                             <div class="pretty p-default p-thick p-pulse">
                                 <input type="checkbox" />
                                 <div class="state p-warning-o">
@@ -291,7 +143,7 @@
                                 </div>
                             </div>
                         </div>
-                      
+
                         <div class="sidebar-item">
                             <h3>Star Rating</h3>
                             <div class="pretty p-default p-thick p-pulse">
@@ -366,82 +218,73 @@
                                 <div class="clearfix"></div>
                             </div>
                         </div>
-                 @*        <div class="sidebar-item">
-                            <h3>City</h3>
-                            <div class="pretty p-default p-thick p-pulse">
-                                <input type="checkbox" />
-                                <div class="state">
-                                    <label>
-                                        Amsterdam<span class="number">749</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="pretty p-default p-thick p-pulse">
-                                <input type="checkbox" checked />
-                                <div class="state">
-                                    <label>
-                                        Rotterdam<span class="number">630</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="pretty p-default p-thick p-pulse">
-                                <input type="checkbox" />
-                                <div class="state">
-                                    <label>
-                                        Copenghan<span class="number">58</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="pretty p-default p-thick p-pulse">
-                                <input type="checkbox" />
-                                <div class="state">
-                                    <label>
-                                        New Delhi<span class="number">29</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="pretty p-default p-thick p-pulse">
-                                <input type="checkbox" />
-                                <div class="state">
-                                    <label>
-                                        New York<span class="number">29</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="pretty p-default p-thick p-pulse">
-                                <input type="checkbox" />
-                                <div class="state">
-                                    <label>
-                                        Kathmandu<span class="number">29</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="pretty p-default p-thick p-pulse">
-                                <input type="checkbox" />
-                                <div class="state">
-                                    <label>
-                                        Brisbane<span class="number">29</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="pretty p-default p-thick p-pulse">
-                                <input type="checkbox" />
-                                <div class="state">
-                                    <label>
-                                        Tokyo<span class="number">29</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    *@
+                    
                     </div>
                 </div>
             </div>
         </div>
     </section>
+       *@
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-outer text-center" style="height:40vh !important">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <h2 class="white">Tours Spots</h2>
+                <nav aria-label="breadcrumb">
+                   
+                </nav>
+            </div>
+        </div>
+        <div class="overlay">
+            <img src="https://c4.wallpaperflare.com/wallpaper/608/182/542/amman-jordan-classic-nice-wallpaper-preview.jpg" width="100%" />
+        </div>
+    </section>
+       
+    <!-- BreadCrumb Ends -->
+    <!-- Gallery starts -->
+    <section class="content gallery" data-ref="container-1">
+        <div class="container">
+            <div class="section-title">
+                <h3 style="margin-top:25px"> <span>Jordan is home to a wealth of remarkable tour spots, each offering a unique blend of history, culture, and natural beauty. Here are some noteworthy tour spots in Jordan</span> </h3>
+
+            </div>
+            <div class="row mar-top-50">
+                @foreach(var tour in Model){
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="gallery-item">
+                        <div class="gallery-image">
+                                <img src="@tour.Img" alt="image" width="415" height="293">
+                        </div>
+                        <div class="gallery-content">
+                                    <ul>
+                                <li><a href="images/gallery/gallery1.jpg" data-lightbox="gallery" data-title="@tour.Name"><i class="fa fa-eye"></i></a></li>
+                                    <li><a asp-action="GetSpotById" asp-controller="TourSpots" asp-route-spotId="@tour.ID"><i class="fa fa-link"></i></a></li><br>
+                            </ul>
+                            @if(tour.ID %2 == 0){
+                                    <div class="ribbon ribbon-top-left"><span>25% OFF</span></div>
+                                }
+                                else
+                                {
+                                    <div class="ribbon ribbon-top-left"><span>15% OFF</span></div>
+                                }
+
+                                
+                                    }
+                                <h4 style="color:wheat; text-align:center;" class="text-center">@tour.Name</h4>
+                        </div>
+                    </div>
+                </div>
+               }
+            </div>
+        </div>
+    </section>
+
     <!-- tour list ends -->
+
+
+  
     <!-- footer starts -->
- 
     <!-- footer ends -->
     <!-- Back to top start -->
     <div id="back-to-top">
@@ -546,3 +389,5 @@
 
 </body>
 </html>
+
+@* -------------------------------------------------------- *@

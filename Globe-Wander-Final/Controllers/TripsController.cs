@@ -32,5 +32,12 @@ namespace Globe_Wander_Final.Controllers
             };
             return View(tripAndRecomanded);
         }
+
+        public async Task<IActionResult> ListTrips()
+        {
+            var trips = await _trips.GetAllTrips();
+
+            return View(trips);
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace Globe_Wander_Final.Models
         public int HotelID { get; set; }
 
         public int RoomID { get; set; }
-
+        public virtual ICollection<Image> HotelRoomImages { get; set; }
         public string Description { get; set; }
         public int SquareFeet { get; set; }
         public int Bathrooms { get; set; }

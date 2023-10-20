@@ -4,28 +4,36 @@
 </div>
 <!-- Preloader Ends --> *@
 <!-- login Starts -->
+@model Globe_Wander_Final.Models.DTOs.RegisterUserDTO;
+
+
 <section class="login">
     <div class="container">
         <div class="row">            
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="login-content">
                     <h4>Create an Account</h4>
-                    <form>
+                    <form  method="post" asp-action="Register">
                         <div class="form-group">
-                            <input type="text" placeholder="Enter username">
+                                <input type="text" asp-for="UserName" class="form-control" placeholder="Enter username">
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Enter email address">
+                            <input type="email" asp-for="Email" class="form-control" placeholder="Enter email address">
                         </div>
                         <div class="form-group">
-                            <input type="password" placeholder="Enter password">
+                            <input type="password" asp-for="Password" class="form-control" placeholder="Enter password">
                         </div>
                         <div class="form-group">
-                            <input type="password" placeholder="Confirm password">
+                            <input type="number" asp-for="PhoneNumber" class="form-control" placeholder="Phone Number">
                         </div>
+                         <div class="form-group">
+                            <input type="text" asp-for="Roles" class="form-control" placeholder="Roles">
+                        </div>
+                       
+                        <input type="submit" class="btn btn-primary" value="Sign Up" />
                     </form>
                     <div class="form-btn mar-bottom-20">
-                        <a href="#" class="biz-btn biz-btn1">SIGN UP</a>
+                        @* <a href="#" class="biz-btn biz-btn1">SIGN UP</a> *@
                     </div>
                     <ul class="social-links">
                         <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
@@ -38,4 +46,47 @@
         </div>
     </div>
 </section>
+
+
+@* <div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Create Account</h2>
+                    <form id="signupForm" method="post" asp-action="/User/Register">
+                        <div class="mb-3">
+                            <input class="form-control" name="username" placeholder="Username" required />
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" type="password" name="password" placeholder="Password" required />
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" name="email" placeholder="Email" type="email" required />
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" name="phonenumber" placeholder="+962123456789" pattern="\+962\d{9}" required maxlength="13" />
+                            <small class="form-text text-muted">Please enter a valid phone number starting with +962 and followed by 9 digits.</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <select class="form-control" name="roles" required>
+                                <option value="" disabled selected>Select a role</option>
+                                <option value="Administrator">Admin</option>
+                                <option value="Editor">Editor</option>
+                            </select>
+                        </div>
+
+                        <div class="text-center" style="margin-top:25px">
+                            <input type="submit" class="btn btn-primary" value="Sign Up" />
+                        </div>
+                    </form>
+                    <div id="signupSuccessMessage" class="alert alert-success" style="display:none;">
+                        Sign up has been successful!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> *@
 <!-- Login Ends -->
