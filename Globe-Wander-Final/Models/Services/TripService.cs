@@ -76,6 +76,14 @@ namespace Globe_Wander_Final.Models.Services
                     Id = tr.Id,
                     Name = tr.Name,
                     Description = tr.Description,
+                    TripImages = _context.Images.Where(w => tr.Id == w.TripId).Select(e => new Image
+                    {
+                        Id = e.Id,
+                        TripId = e.TripId,
+                        Path = e.Path,
+
+                    }
+                            ).ToList(),
                     Cost = tr.Cost,
                     Activity = tr.Activity,
                     StartDate = tr.StartDate,
@@ -119,6 +127,14 @@ namespace Globe_Wander_Final.Models.Services
                     Id = tr.Id,
                     Name = tr.Name,
                     Description = tr.Description,
+                    TripImages = _context.Images.Where(w => tr.Id == w.TripId).Select(e => new Image
+                    {
+                        Id = e.Id,
+                        TripId = e.TripId,
+                        Path = e.Path,
+
+                    }
+                            ).ToList(),
                     Cost = tr.Cost,
                     Activity = tr.Activity,
                     StartDate = tr.StartDate,
