@@ -73,45 +73,7 @@ namespace Globe_Wander_Final.Data
                 );
 
 
-            modelBuilder.Entity<Image>().HasData(
-            new Image { Id = 1, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg", TripId = 1 },
-              new Image { Id = 2, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip2.jpg", TripId = 2 },
-                 new Image { Id = 3, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip3.jpg", TripId = 3 },
-                    new Image { Id = 4, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip4.png", TripId = 4 },
-                        new Image { Id = 5, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip5.jpg", TripId = 5 },
-                            new Image { Id = 6, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip6.jpg", TripId = 6 },
-
-                    new Image { Id = 7, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip7.png", TripId = 7 },
-                      new Image { Id = 8, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip8.jpg", TripId = 8 },
-                         new Image { Id = 9, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip9.jpg", TripId = 9 },
-                            new Image { Id = 10, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg", TripId = 10 },
-                                new Image { Id = 11, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip30.jpg", TripId = 11 },
-                                    new Image { Id = 12, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip31.jpg", TripId = 12 },
-
-                    new Image { Id = 13, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip32.jpg", TripId = 13 },
-                      new Image { Id = 14, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip9.jpg", TripId = 14 },
-                         new Image { Id = 15, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip9.jpg", TripId = 15 },
-                            new Image { Id = 16, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg", TripId = 16 },
-                                new Image { Id = 17, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg", TripId = 17 },
-                                    new Image { Id = 18, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip5.jpg", TripId = 18 },
-
-                    new Image { Id = 19, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg", TripId = 19 },
-                      new Image { Id = 20, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip9.jpg", TripId = 20 },
-                         new Image { Id = 21, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg", TripId = 21 },
-                            new Image { Id = 22, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip9.jpg", TripId = 22 },
-                                new Image { Id = 23, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg", TripId = 23 },
-                                    new Image { Id = 24, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg", TripId = 24 },
-
-                    new Image { Id = 25, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip7.png", TripId = 25 },
-                      new Image { Id = 26, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg", TripId = 26 },
-                         new Image { Id = 27, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg", TripId = 27 },
-                         new Image { Id = 28, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip7.png", TripId = 28 },
-                      new Image { Id = 29, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg", TripId = 29 },
-                         new Image { Id = 30, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg", TripId = 30 }
-
-
-
-);
+          
 
         modelBuilder.Entity<Hotel>().HasData(
    new Hotel() { Id = 1, TourSpotID = 1, Name = "Harmony", Location = "amman", StarRate = 4, Description = "A peaceful retreat in the heart of the city" },
@@ -327,8 +289,39 @@ new Image { Id = 20, Path = "https://globewanderimages.blob.core.windows.net/glo
               new Image { Id = 137, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg", HotelId = 5, RoomNumber = 503 },
                       new Image { Id = 138, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg", HotelId = 5, RoomNumber = 503 },
                           new Image { Id = 139, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg", HotelId = 5, RoomNumber = 503 },
-       new Image { Id = 140, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg", HotelId = 5, RoomNumber = 503 }
+       new Image { Id = 140, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg", HotelId = 5, RoomNumber = 503 },
 
+       // Trip Images
+        new Image { Id = 141, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg", TripId = 1 },
+        new Image { Id = 142, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip2.jpg", TripId = 2 },
+        new Image { Id = 143, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip3.jpg", TripId = 3 },
+        new Image { Id = 144, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip4.png", TripId = 4 },
+        new Image { Id = 145, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip5.jpg", TripId = 5 },
+        new Image { Id = 146, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip6.jpg", TripId = 6 },
+        new Image { Id = 147, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip7.png", TripId = 7 },
+        new Image { Id = 148, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip8.jpg", TripId = 8 },
+        new Image { Id = 149, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip9.jpg", TripId = 9 },
+        new Image { Id = 150, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg", TripId = 10 },
+        new Image { Id = 151, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip30.jpg", TripId = 11 },
+        new Image { Id = 152, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip31.jpg", TripId = 12 },
+        new Image { Id = 153, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip32.jpg", TripId = 13 },
+        new Image { Id = 154, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip9.jpg", TripId = 14 },
+        new Image { Id = 155, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip9.jpg", TripId = 15 },
+        new Image { Id = 156, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg", TripId = 16 },
+        new Image { Id = 157, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg", TripId = 17 },
+        new Image { Id = 158, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip5.jpg", TripId = 18 },
+        new Image { Id = 159, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg", TripId = 19 },
+        new Image { Id = 160, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip9.jpg", TripId = 20 },
+        new Image { Id = 161, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg", TripId = 21 },
+        new Image { Id = 162, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip9.jpg", TripId = 22 },
+        new Image { Id = 163, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg", TripId = 23 },
+        new Image { Id = 164, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg", TripId = 24 },
+        new Image { Id = 165, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip7.png", TripId = 25 },
+        new Image { Id = 166, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg", TripId = 26 },
+        new Image { Id = 167, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg", TripId = 27 },
+        new Image { Id = 168, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip7.png", TripId = 28 },
+        new Image { Id = 169, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg", TripId = 29 },
+        new Image { Id = 170, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg", TripId = 30 }
 
 
 
@@ -527,6 +520,5 @@ new Image { Id = 20, Path = "https://globewanderimages.blob.core.windows.net/glo
         public DbSet<HotelFacility> HotelFacilities { get; set; }
         public DbSet<BookingTrip> bookingTrips { get; set; }
 
-        public DbSet<Image> Images { get; set; }
     }
 }

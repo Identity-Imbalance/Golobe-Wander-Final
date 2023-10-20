@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Globe_Wander_Final.Migrations
 {
     [DbContext(typeof(GlobeWanderDbContext))]
-    [Migration("20231018155919_osama")]
-    partial class osama
+    [Migration("20231020163745_data")]
+    partial class data
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -128,15 +128,15 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ab2acc06-a01d-4bdf-bddb-209467966c63",
+                            ConcurrencyStamp = "4cde008d-ca9a-4b42-a5df-8b5542af973f",
                             Email = "User@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIlsObD+II7+/Y81eBy4ofgmBYlMhMVuxODrlxae8ZigWx2I4H2+ZIQeojF3UpDz4Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOoYN8bXr+RtsmfLDrq5MoZzrPC1phWbe4YiAp4Xkw9F7VILnKyJUs1o3prt53WEQA==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "671c4dd8-d5e8-47da-b3db-39d975e309f9",
+                            SecurityStamp = "348e457f-7427-4800-bdd8-6b32eb273837",
                             TwoFactorEnabled = false,
                             UserName = "User"
                         },
@@ -144,16 +144,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0bb483e1-e726-4bf8-9ee9-4abc98ccba26",
+                            ConcurrencyStamp = "41baff86-aafa-4af8-a002-f8b8cb1dd106",
                             Email = "adminUser@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "adminUser@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMBXInpBnF+H2ucdh+Nh/mGsYMbuOS7Fxf+9HW7uAWBMOg/YgTC4l5SKsLIeqweG3w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEZKZdiFgjbLBoYFvYlBIgiQfx/qcmVlGe9Q2qHPqhTXQk4IppVhe1v40NTk+qhn7w==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b9cab3b3-82f4-4a45-9a3b-a986f229a75f",
+                            SecurityStamp = "fdceb46e-de57-4623-bacd-ea6f27226c45",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -161,16 +161,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "353e88ab-80df-4aa2-8b2e-488f45b3869d",
+                            ConcurrencyStamp = "5d59cf00-d948-46bc-804e-83a878075a65",
                             Email = "trip@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "trip@EXAMPLE.COM",
                             NormalizedUserName = "TRIP",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIP6iRcsy6EU77y9t+IqDm/q/Dy4aZla676HcQnKZkDvexLqF51v009s6uph5gl3EQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMq+bgv5fu0J3HyNK/fq9fUyDpeqvGn+TDSyXk3xOgg4VFSw/ahcVct08FiDjOJLZQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a9d622f4-f8a7-425f-a687-6ca6b4e8cad7",
+                            SecurityStamp = "f6f12be4-8d34-4408-a14a-69d0ce2dc0df",
                             TwoFactorEnabled = false,
                             UserName = "trip"
                         },
@@ -178,16 +178,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b8387b84-f307-44aa-8587-b201319512d7",
+                            ConcurrencyStamp = "b963ff88-dd10-47a5-bde7-2667b0602aa0",
                             Email = "hotel@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "hotel@EXAMPLE.COM",
                             NormalizedUserName = "HOTEL",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMhG6ApBJzb5mVmAPh3jYYqFk8Fclm26Mw9l29uAgnSPqLYGdAg0ECH7meVwPmAbyg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHyudxmGBRmX1N9+qJooY/orM973l6zFYeOPasLK35w6maHSES7c8gKX7lyhwAB9PA==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1624d794-c998-4365-b44f-d46f1da0c683",
+                            SecurityStamp = "ff9fcd92-c420-4511-9730-b60835d3117e",
                             TwoFactorEnabled = false,
                             UserName = "hotel"
                         });
@@ -472,7 +472,10 @@ namespace Globe_Wander_Final.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("RoomNumber")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoomNumber"));
 
                     b.Property<int>("Bathrooms")
                         .HasColumnType("int");
@@ -709,9 +712,14 @@ namespace Globe_Wander_Final.Migrations
                     b.Property<int?>("RoomNumber")
                         .HasColumnType("int");
 
+                    b.Property<int?>("TripId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("HotelId");
+
+                    b.HasIndex("TripId");
 
                     b.HasIndex("HotelRoomHotelID", "HotelRoomRoomNumber");
 
@@ -1662,6 +1670,186 @@ namespace Globe_Wander_Final.Migrations
                             HotelId = 5,
                             Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
                             RoomNumber = 503
+                        },
+                        new
+                        {
+                            Id = 141,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg",
+                            TripId = 1
+                        },
+                        new
+                        {
+                            Id = 142,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip2.jpg",
+                            TripId = 2
+                        },
+                        new
+                        {
+                            Id = 143,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip3.jpg",
+                            TripId = 3
+                        },
+                        new
+                        {
+                            Id = 144,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip4.png",
+                            TripId = 4
+                        },
+                        new
+                        {
+                            Id = 145,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip5.jpg",
+                            TripId = 5
+                        },
+                        new
+                        {
+                            Id = 146,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip6.jpg",
+                            TripId = 6
+                        },
+                        new
+                        {
+                            Id = 147,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip7.png",
+                            TripId = 7
+                        },
+                        new
+                        {
+                            Id = 148,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip8.jpg",
+                            TripId = 8
+                        },
+                        new
+                        {
+                            Id = 149,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip9.jpg",
+                            TripId = 9
+                        },
+                        new
+                        {
+                            Id = 150,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg",
+                            TripId = 10
+                        },
+                        new
+                        {
+                            Id = 151,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip30.jpg",
+                            TripId = 11
+                        },
+                        new
+                        {
+                            Id = 152,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip31.jpg",
+                            TripId = 12
+                        },
+                        new
+                        {
+                            Id = 153,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip32.jpg",
+                            TripId = 13
+                        },
+                        new
+                        {
+                            Id = 154,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip9.jpg",
+                            TripId = 14
+                        },
+                        new
+                        {
+                            Id = 155,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip9.jpg",
+                            TripId = 15
+                        },
+                        new
+                        {
+                            Id = 156,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg",
+                            TripId = 16
+                        },
+                        new
+                        {
+                            Id = 157,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg",
+                            TripId = 17
+                        },
+                        new
+                        {
+                            Id = 158,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip5.jpg",
+                            TripId = 18
+                        },
+                        new
+                        {
+                            Id = 159,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg",
+                            TripId = 19
+                        },
+                        new
+                        {
+                            Id = 160,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip9.jpg",
+                            TripId = 20
+                        },
+                        new
+                        {
+                            Id = 161,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg",
+                            TripId = 21
+                        },
+                        new
+                        {
+                            Id = 162,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip9.jpg",
+                            TripId = 22
+                        },
+                        new
+                        {
+                            Id = 163,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg",
+                            TripId = 23
+                        },
+                        new
+                        {
+                            Id = 164,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg",
+                            TripId = 24
+                        },
+                        new
+                        {
+                            Id = 165,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip7.png",
+                            TripId = 25
+                        },
+                        new
+                        {
+                            Id = 166,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg",
+                            TripId = 26
+                        },
+                        new
+                        {
+                            Id = 167,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg",
+                            TripId = 27
+                        },
+                        new
+                        {
+                            Id = 168,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip7.png",
+                            TripId = 28
+                        },
+                        new
+                        {
+                            Id = 169,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg",
+                            TripId = 29
+                        },
+                        new
+                        {
+                            Id = 170,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg",
+                            TripId = 30
                         });
                 });
 
@@ -1823,6 +2011,10 @@ namespace Globe_Wander_Final.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Img")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -1843,6 +2035,7 @@ namespace Globe_Wander_Final.Migrations
                             City = "Petra",
                             Country = "Jordan",
                             Description = "a place before thousands years",
+                            Img = "https://images.pexels.com/photos/1631665/pexels-photo-1631665.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                             Name = "Petra",
                             PhoneNumber = "078885423"
                         },
@@ -1853,6 +2046,7 @@ namespace Globe_Wander_Final.Migrations
                             City = "Jerash",
                             Country = "Jordan",
                             Description = "A historical place that the Romanian civilization build before thousands years.",
+                            Img = "https://c0.wallpaperflare.com/preview/705/707/822/jordan-jerash-oval-plaza-market.jpg",
                             Name = "Jerash",
                             PhoneNumber = "088782215"
                         },
@@ -1863,8 +2057,75 @@ namespace Globe_Wander_Final.Migrations
                             City = "Irbid",
                             Country = "Jordan",
                             Description = "A historical place that the Romanian civilization build before thousands years. In the north of Jordan",
+                            Img = "https://followinghadrianphotographycom.files.wordpress.com/2020/09/34509636386_2139ee3bc1_k.jpg?w=1075&h=712",
                             Name = "Um Qais",
                             PhoneNumber = "0788442521"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Category = 4,
+                            City = "Aqaba",
+                            Country = "Jordan",
+                            Description = "A spectacular desert in southern Jordan.",
+                            Img = "https://c4.wallpaperflare.com/wallpaper/774/140/860/nature-landscape-sand-desert-dunes-hd-wallpaper-preview.jpg",
+                            Name = "Wadi Rum",
+                            PhoneNumber = "0788555444"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Category = 3,
+                            City = "Ajloun",
+                            Country = "Jordan",
+                            Description = "A 12th-century Muslim castle in northern Jordan.",
+                            Img = "https://as1.ftcdn.net/v2/jpg/02/49/78/08/1000_F_249780853_qBrIwoai4WNGR0OSx4I6A3EZZ47cUN5B.jpg",
+                            Name = "Ajloun Castle",
+                            PhoneNumber = "0799111122"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Category = 4,
+                            City = "Amman",
+                            Country = "Jordan",
+                            Description = "The lowest point on Earth and famous for its high salt content.",
+                            Img = "https://c4.wallpaperflare.com/wallpaper/884/827/830/dead-sea-coast-white-salt-blue-sea-wallpaper-preview.jpg",
+                            Name = "Dead Sea",
+                            PhoneNumber = "0777888999"
+                        },
+                        new
+                        {
+                            ID = 7,
+                            Category = 4,
+                            City = "Aqaba",
+                            Country = "Jordan",
+                            Description = "Beautiful beaches along the Red Sea.",
+                            Img = "https://wallpapers.com/images/high/aqaba-jordan-shoreline-y69cto406g6r0i5c.webp",
+                            Name = "Aqaba Beach",
+                            PhoneNumber = "0799777666"
+                        },
+                        new
+                        {
+                            ID = 8,
+                            Category = 3,
+                            City = "Madaba",
+                            Country = "Jordan",
+                            Description = "Ancient hilltop fortress where John the Baptist was imprisoned.",
+                            Img = "https://storage.kempinski.com/cdn-cgi/image/w=960,f=auto,g=auto,fit=scale-down/ki-cms-prod/images/4/5/5/3/313554-1-eng-GB/9e96e4717f7a-74342124_4K.jpg",
+                            Name = "Wadi Al-Mujib",
+                            PhoneNumber = "0777666555"
+                        },
+                        new
+                        {
+                            ID = 9,
+                            Category = 4,
+                            City = "Tafilah",
+                            Country = "Jordan",
+                            Description = "A diverse ecological system in southern Jordan.",
+                            Img = "https://www.jordanbesttours.com/images/dana/jordan_nature_reserves_dana_full.jpg",
+                            Name = "Dana Biosphere Reserve",
+                            PhoneNumber = "0799888777"
                         });
                 });
 
@@ -1921,9 +2182,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 20m,
                             Count = 0,
                             Description = "trip start at 8 am and going from Amman to Petra",
-                            EndDate = new DateTime(2023, 10, 18, 15, 59, 19, 54, DateTimeKind.Utc).AddTicks(8042),
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3690),
                             Name = "Petra ride",
-                            StartDate = new DateTime(2023, 10, 18, 18, 59, 19, 54, DateTimeKind.Local).AddTicks(8000),
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3659),
                             TourSpotID = 1
                         },
                         new
@@ -1934,10 +2195,10 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 30m,
                             Count = 0,
                             Description = "Amman to Jerash with a trip manager who can speak many languages",
-                            EndDate = new DateTime(2023, 10, 18, 15, 59, 19, 54, DateTimeKind.Utc).AddTicks(8046),
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3701),
                             Name = "Jerash ride",
-                            StartDate = new DateTime(2023, 10, 18, 18, 59, 19, 54, DateTimeKind.Local).AddTicks(8045),
-                            TourSpotID = 2
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3699),
+                            TourSpotID = 1
                         },
                         new
                         {
@@ -1947,10 +2208,361 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 40m,
                             Count = 0,
                             Description = "Amman to Irbid with a trip manager who can speak many languages",
-                            EndDate = new DateTime(2023, 10, 18, 15, 59, 19, 54, DateTimeKind.Utc).AddTicks(8049),
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3708),
                             Name = "Um-Qais ride",
-                            StartDate = new DateTime(2023, 10, 18, 18, 59, 19, 54, DateTimeKind.Local).AddTicks(8048),
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3707),
+                            TourSpotID = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Activity = "desert safari",
+                            Capacity = 20,
+                            Cost = 50m,
+                            Count = 0,
+                            Description = "Explore the breathtaking Wadi Rum desert in Jordan.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3715),
+                            Name = "Wadi Rum Adventure",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3713),
+                            TourSpotID = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Activity = "swimming and mud baths",
+                            Capacity = 15,
+                            Cost = 25m,
+                            Count = 0,
+                            Description = "Relax at the world-famous Dead Sea and experience its healing properties.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3721),
+                            Name = "Dead Sea Relaxation",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3719),
+                            TourSpotID = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Activity = "scuba diving",
+                            Capacity = 10,
+                            Cost = 60m,
+                            Count = 0,
+                            Description = "Discover the vibrant marine life of the Red Sea in Aqaba.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3726),
+                            Name = "Aqaba Diving Expedition",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3725),
+                            TourSpotID = 2
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Activity = "sightseeing",
+                            Capacity = 25,
+                            Cost = 15m,
+                            Count = 0,
+                            Description = "Explore the historical and cultural landmarks of Amman.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3733),
+                            Name = "Amman City Tour",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3731),
                             TourSpotID = 3
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Activity = "hiking",
+                            Capacity = 12,
+                            Cost = 35m,
+                            Count = 0,
+                            Description = "Trek through the stunning Dana Biosphere Reserve.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3739),
+                            Name = "Dana Biosphere Reserve Hike",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3737),
+                            TourSpotID = 3
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Activity = "canyoning",
+                            Capacity = 18,
+                            Cost = 45m,
+                            Count = 0,
+                            Description = "Experience the adventure of canyoning in Wadi Mujib.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3744),
+                            Name = "Wadi Mujib Canyoning",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3743),
+                            TourSpotID = 3
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Activity = "relaxation",
+                            Capacity = 30,
+                            Cost = 20m,
+                            Count = 0,
+                            Description = "Relax in the soothing hot springs of Ma'in.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3750),
+                            Name = "Ma'in Hot Springs Visit",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3749),
+                            TourSpotID = 4
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Activity = "historical tour",
+                            Capacity = 20,
+                            Cost = 25m,
+                            Count = 0,
+                            Description = "Explore the historic Kerak Castle in Jordan.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3758),
+                            Name = "Kerak Castle Tour",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3757),
+                            TourSpotID = 4
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Activity = "nature walk",
+                            Capacity = 15,
+                            Cost = 30m,
+                            Count = 0,
+                            Description = "Take a nature walk in the Ajloun Forest Reserve.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3764),
+                            Name = "Ajloun Forest Reserve Trek",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3763),
+                            TourSpotID = 4
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Activity = "food tasting",
+                            Capacity = 12,
+                            Cost = 40m,
+                            Count = 0,
+                            Description = "Indulge in a culinary journey through Amman's cuisine.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3770),
+                            Name = "Amman Culinary Tour",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3769),
+                            TourSpotID = 4
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Activity = "mosaic art",
+                            Capacity = 25,
+                            Cost = 20m,
+                            Count = 0,
+                            Description = "Discover the mosaic art of Madaba.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3794),
+                            Name = "Mosaic City Madaba",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3792),
+                            TourSpotID = 4
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Activity = "historical tour",
+                            Capacity = 18,
+                            Cost = 30m,
+                            Count = 0,
+                            Description = "Explore the historic Ajloun Castle.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3800),
+                            Name = "Ajloun Castle Exploration",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3798),
+                            TourSpotID = 4
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Activity = "beach relaxation",
+                            Capacity = 20,
+                            Cost = 55m,
+                            Count = 0,
+                            Description = "Relax on the beautiful beaches of Aqaba.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3806),
+                            Name = "Aqaba Beach Getaway",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3805),
+                            TourSpotID = 5
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Activity = "snorkeling",
+                            Capacity = 15,
+                            Cost = 40m,
+                            Count = 0,
+                            Description = "Explore the underwater world of the Red Sea through snorkeling in Aqaba.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3813),
+                            Name = "Aqaba Snorkeling Adventure",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3811),
+                            TourSpotID = 5
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Activity = "boat tour",
+                            Capacity = 25,
+                            Cost = 30m,
+                            Count = 0,
+                            Description = "View marine life through a glass-bottom boat tour in Aqaba.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3819),
+                            Name = "Aqaba Glass-Bottom Boat Tour",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3817),
+                            TourSpotID = 5
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Activity = "desert adventure",
+                            Capacity = 12,
+                            Cost = 45m,
+                            Count = 0,
+                            Description = "Embark on an exciting jeep safari in the Aqaba desert.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3825),
+                            Name = "Aqaba Desert Jeep Safari",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3824),
+                            TourSpotID = 6
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Activity = "nightclub hopping",
+                            Capacity = 20,
+                            Cost = 25m,
+                            Count = 0,
+                            Description = "Experience the vibrant nightlife of Aqaba.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3831),
+                            Name = "Aqaba Nightlife Tour",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3830),
+                            TourSpotID = 6
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Activity = "historical tour",
+                            Capacity = 15,
+                            Cost = 60m,
+                            Count = 0,
+                            Description = "Explore the iconic Pyramids of Giza in Egypt.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3842),
+                            Name = "Pyramids of Giza Tour",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3841),
+                            TourSpotID = 6
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Activity = "theater",
+                            Capacity = 18,
+                            Cost = 60m,
+                            Count = 0,
+                            Description = "Attend a Broadway show in the heart of New York City.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3848),
+                            Name = "Broadway Show Experience",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3847),
+                            TourSpotID = 7
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Activity = "museum visit",
+                            Capacity = 20,
+                            Cost = 30m,
+                            Count = 0,
+                            Description = "Explore the museums along Museum Mile.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3855),
+                            Name = "Museum Mile Tour",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3853),
+                            TourSpotID = 7
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Activity = "walking tour",
+                            Capacity = 35,
+                            Cost = 20m,
+                            Count = 0,
+                            Description = "Take a scenic walk across the historic Brooklyn Bridge.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3861),
+                            Name = "Brooklyn Bridge Walk",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3859),
+                            TourSpotID = 7
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Activity = "sightseeing",
+                            Capacity = 30,
+                            Cost = 35m,
+                            Count = 0,
+                            Description = "Enjoy panoramic views from the Empire State Building.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3867),
+                            Name = "Empire State Building Observation Deck",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3866),
+                            TourSpotID = 8
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Activity = "boat tour",
+                            Capacity = 25,
+                            Cost = 45m,
+                            Count = 0,
+                            Description = "Cruise along the Hudson River and see Manhattan's skyline.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3874),
+                            Name = "Hudson River Boat Tour",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3872),
+                            TourSpotID = 8
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Activity = "cultural tour",
+                            Capacity = 20,
+                            Cost = 45m,
+                            Count = 0,
+                            Description = "Immerse in the rich culture of Ubud, Bali.",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3881),
+                            Name = "Ubud Cultural Experience",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3879),
+                            TourSpotID = 8
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Activity = "snorkeling",
+                            Capacity = 30,
+                            Cost = 60m,
+                            Count = 0,
+                            Description = "Explore the vibrant marine life of the Red Sea in Aqaba",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3887),
+                            Name = "Red Sea Adventure",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3885),
+                            TourSpotID = 9
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Activity = "off-roading",
+                            Capacity = 20,
+                            Cost = 50m,
+                            Count = 0,
+                            Description = "Experience the thrill of a desert adventure in Aqaba",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3974),
+                            Name = "Desert Safari",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3972),
+                            TourSpotID = 9
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Activity = "scuba diving",
+                            Capacity = 15,
+                            Cost = 70m,
+                            Count = 0,
+                            Description = "Discover submerged historical sites in the Red Sea",
+                            EndDate = new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(4020),
+                            Name = "Historical Dive",
+                            StartDate = new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3996),
+                            TourSpotID = 9
                         });
                 });
 
@@ -2220,6 +2832,10 @@ namespace Globe_Wander_Final.Migrations
                         .WithMany("HotelImages")
                         .HasForeignKey("HotelId");
 
+                    b.HasOne("Globe_Wander_Final.Models.Trip", "Trip")
+                        .WithMany("TripImages")
+                        .HasForeignKey("TripId");
+
                     b.HasOne("Globe_Wander_Final.Models.HotelRoom", "HotelRoom")
                         .WithMany("HotelRoomImages")
                         .HasForeignKey("HotelRoomHotelID", "HotelRoomRoomNumber");
@@ -2227,6 +2843,8 @@ namespace Globe_Wander_Final.Migrations
                     b.Navigation("Hotel");
 
                     b.Navigation("HotelRoom");
+
+                    b.Navigation("Trip");
                 });
 
             modelBuilder.Entity("Globe_Wander_Final.Models.Rate", b =>
@@ -2373,6 +2991,8 @@ namespace Globe_Wander_Final.Migrations
                     b.Navigation("BookingTrips");
 
                     b.Navigation("Rates");
+
+                    b.Navigation("TripImages");
                 });
 #pragma warning restore 612, 618
         }
