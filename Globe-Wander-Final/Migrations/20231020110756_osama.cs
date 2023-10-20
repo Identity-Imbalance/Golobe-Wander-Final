@@ -89,7 +89,8 @@ namespace Globe_Wander_Final.Migrations
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Category = table.Column<int>(type: "int", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Img = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -334,7 +335,8 @@ namespace Globe_Wander_Final.Migrations
                 name: "HotelRooms",
                 columns: table => new
                 {
-                    RoomNumber = table.Column<int>(type: "int", nullable: false),
+                    RoomNumber = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     HotelID = table.Column<int>(type: "int", nullable: false),
                     RoomID = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -483,10 +485,10 @@ namespace Globe_Wander_Final.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "0bb483e1-e726-4bf8-9ee9-4abc98ccba26", "adminUser@example.com", true, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAEMBXInpBnF+H2ucdh+Nh/mGsYMbuOS7Fxf+9HW7uAWBMOg/YgTC4l5SKsLIeqweG3w==", "1234567890", false, "b9cab3b3-82f4-4a45-9a3b-a986f229a75f", false, "admin" },
-                    { "2", 0, "b8387b84-f307-44aa-8587-b201319512d7", "hotel@example.com", true, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAEMhG6ApBJzb5mVmAPh3jYYqFk8Fclm26Mw9l29uAgnSPqLYGdAg0ECH7meVwPmAbyg==", "1234567890", false, "1624d794-c998-4365-b44f-d46f1da0c683", false, "hotel" },
-                    { "3", 0, "353e88ab-80df-4aa2-8b2e-488f45b3869d", "trip@example.com", true, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAEIP6iRcsy6EU77y9t+IqDm/q/Dy4aZla676HcQnKZkDvexLqF51v009s6uph5gl3EQ==", "1234567890", false, "a9d622f4-f8a7-425f-a687-6ca6b4e8cad7", false, "trip" },
-                    { "4", 0, "ab2acc06-a01d-4bdf-bddb-209467966c63", "User@example.com", true, false, null, null, "USER", "AQAAAAIAAYagAAAAEIlsObD+II7+/Y81eBy4ofgmBYlMhMVuxODrlxae8ZigWx2I4H2+ZIQeojF3UpDz4Q==", "1234567890", false, "671c4dd8-d5e8-47da-b3db-39d975e309f9", false, "User" }
+                    { "1", 0, "e7a6e8d2-ad27-4f8f-8138-0307aa6e71e4", "adminUser@example.com", true, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAEKlFZ6jY0q2SS/SGVtcEm8lw9g39VsGxUs2a1hA6zBp5jXNjpka8Uo7XfMDNb9NNxw==", "1234567890", false, "c4ec77d3-422e-4bf4-98a3-9d6b5ed25ccc", false, "admin" },
+                    { "2", 0, "c84037b8-be3b-40c1-8e71-d42fa794c543", "hotel@example.com", true, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAEMGeVoG2OqLxV7PLTnx7qN5uGJN8bLD+oq7yFwQ2/nXnanTNWl6Q7iwlTuyJkOAXSA==", "1234567890", false, "2b91a159-887f-4aff-86c3-93d442be096a", false, "hotel" },
+                    { "3", 0, "0bd1b1b4-80d8-47de-8a7f-2634864ea932", "trip@example.com", true, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAEN69xFjPCntAW5pFyaXNNZVR/YzlyBnEWSWrq4roow5+UucXZapGYWEgToFNRh+ntg==", "1234567890", false, "5447eb71-b260-4673-8242-f720827177d0", false, "trip" },
+                    { "4", 0, "bb838498-69ea-4154-9a66-b33bdf467f65", "User@example.com", true, false, null, null, "USER", "AQAAAAIAAYagAAAAEFFeLel1Zs75Tonj5u4F2M9nywUSvR8wrfX5ANRHa8/2o22tUCeexZtXEnjM/b6org==", "1234567890", false, "61b63c19-5697-4b76-a450-54c7f44d6b93", false, "User" }
                 });
 
             migrationBuilder.InsertData(
@@ -511,12 +513,18 @@ namespace Globe_Wander_Final.Migrations
 
             migrationBuilder.InsertData(
                 table: "TourSpots",
-                columns: new[] { "ID", "Category", "City", "Country", "Description", "Name", "PhoneNumber" },
+                columns: new[] { "ID", "Category", "City", "Country", "Description", "Img", "Name", "PhoneNumber" },
                 values: new object[,]
                 {
-                    { 1, 3, "Petra", "Jordan", "a place before thousands years", "Petra", "078885423" },
-                    { 2, 3, "Jerash", "Jordan", "A historical place that the Romanian civilization build before thousands years.", "Jerash", "088782215" },
-                    { 3, 3, "Irbid", "Jordan", "A historical place that the Romanian civilization build before thousands years. In the north of Jordan", "Um Qais", "0788442521" }
+                    { 1, 3, "Petra", "Jordan", "a place before thousands years", "https://images.pexels.com/photos/1631665/pexels-photo-1631665.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "Petra", "078885423" },
+                    { 2, 3, "Jerash", "Jordan", "A historical place that the Romanian civilization build before thousands years.", "https://c0.wallpaperflare.com/preview/705/707/822/jordan-jerash-oval-plaza-market.jpg", "Jerash", "088782215" },
+                    { 3, 3, "Irbid", "Jordan", "A historical place that the Romanian civilization build before thousands years. In the north of Jordan", "https://followinghadrianphotographycom.files.wordpress.com/2020/09/34509636386_2139ee3bc1_k.jpg?w=1075&h=712", "Um Qais", "0788442521" },
+                    { 4, 4, "Aqaba", "Jordan", "A spectacular desert in southern Jordan.", "https://c4.wallpaperflare.com/wallpaper/774/140/860/nature-landscape-sand-desert-dunes-hd-wallpaper-preview.jpg", "Wadi Rum", "0788555444" },
+                    { 5, 3, "Ajloun", "Jordan", "A 12th-century Muslim castle in northern Jordan.", "https://as1.ftcdn.net/v2/jpg/02/49/78/08/1000_F_249780853_qBrIwoai4WNGR0OSx4I6A3EZZ47cUN5B.jpg", "Ajloun Castle", "0799111122" },
+                    { 6, 4, "Amman", "Jordan", "The lowest point on Earth and famous for its high salt content.", "https://c4.wallpaperflare.com/wallpaper/884/827/830/dead-sea-coast-white-salt-blue-sea-wallpaper-preview.jpg", "Dead Sea", "0777888999" },
+                    { 7, 4, "Aqaba", "Jordan", "Beautiful beaches along the Red Sea.", "https://wallpapers.com/images/high/aqaba-jordan-shoreline-y69cto406g6r0i5c.webp", "Aqaba Beach", "0799777666" },
+                    { 8, 3, "Madaba", "Jordan", "Ancient hilltop fortress where John the Baptist was imprisoned.", "https://storage.kempinski.com/cdn-cgi/image/w=960,f=auto,g=auto,fit=scale-down/ki-cms-prod/images/4/5/5/3/313554-1-eng-GB/9e96e4717f7a-74342124_4K.jpg", "Wadi Al-Mujib", "0777666555" },
+                    { 9, 4, "Tafilah", "Jordan", "A diverse ecological system in southern Jordan.", "https://www.jordanbesttours.com/images/dana/jordan_nature_reserves_dana_full.jpg", "Dana Biosphere Reserve", "0799888777" }
                 });
 
             migrationBuilder.InsertData(
@@ -560,9 +568,9 @@ namespace Globe_Wander_Final.Migrations
                 columns: new[] { "Id", "Activity", "Capacity", "Cost", "Count", "Description", "EndDate", "Name", "StartDate", "TourSpotID" },
                 values: new object[,]
                 {
-                    { 1, "walking", 30, 20m, 0, "trip start at 8 am and going from Amman to Petra", new DateTime(2023, 10, 18, 15, 59, 19, 54, DateTimeKind.Utc).AddTicks(8042), "Petra ride", new DateTime(2023, 10, 18, 18, 59, 19, 54, DateTimeKind.Local).AddTicks(8000), 1 },
-                    { 2, "visiting", 22, 30m, 0, "Amman to Jerash with a trip manager who can speak many languages", new DateTime(2023, 10, 18, 15, 59, 19, 54, DateTimeKind.Utc).AddTicks(8046), "Jerash ride", new DateTime(2023, 10, 18, 18, 59, 19, 54, DateTimeKind.Local).AddTicks(8045), 2 },
-                    { 3, "climbing", 40, 40m, 0, "Amman to Irbid with a trip manager who can speak many languages", new DateTime(2023, 10, 18, 15, 59, 19, 54, DateTimeKind.Utc).AddTicks(8049), "Um-Qais ride", new DateTime(2023, 10, 18, 18, 59, 19, 54, DateTimeKind.Local).AddTicks(8048), 3 }
+                    { 1, "walking", 30, 20m, 0, "trip start at 8 am and going from Amman to Petra", new DateTime(2023, 10, 20, 11, 7, 55, 598, DateTimeKind.Utc).AddTicks(7709), "Petra ride", new DateTime(2023, 10, 20, 14, 7, 55, 598, DateTimeKind.Local).AddTicks(7659), 1 },
+                    { 2, "visiting", 22, 30m, 0, "Amman to Jerash with a trip manager who can speak many languages", new DateTime(2023, 10, 20, 11, 7, 55, 598, DateTimeKind.Utc).AddTicks(7714), "Jerash ride", new DateTime(2023, 10, 20, 14, 7, 55, 598, DateTimeKind.Local).AddTicks(7712), 2 },
+                    { 3, "climbing", 40, 40m, 0, "Amman to Irbid with a trip manager who can speak many languages", new DateTime(2023, 10, 20, 11, 7, 55, 598, DateTimeKind.Utc).AddTicks(7717), "Um-Qais ride", new DateTime(2023, 10, 20, 14, 7, 55, 598, DateTimeKind.Local).AddTicks(7716), 3 }
                 });
 
             migrationBuilder.InsertData(
