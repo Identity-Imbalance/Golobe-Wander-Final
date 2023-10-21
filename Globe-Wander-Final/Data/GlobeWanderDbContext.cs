@@ -456,5 +456,6 @@ new Image { Id = 20, Path = "https://globewanderimages.blob.core.windows.net/glo
         public DbSet<Image> Images { get; set; }
         public DbSet<HotelFacility> HotelFacilities { get; set; }
         public DbSet<BookingTrip> bookingTrips { get; set; }
+        public DbSet<UPDATEBOOKINGTEMP> UPDATEBOOKINGTEMPs { get; set; }
     }
 }

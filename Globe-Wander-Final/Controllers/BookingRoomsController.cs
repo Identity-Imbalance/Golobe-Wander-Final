@@ -1,9 +1,14 @@
 ﻿using Globe_Wander_Final.Models;
+using Globe_Wander_Final.Models.DTOs;
 using Globe_Wander_Final.Models.Interfaces;
 using Globe_Wander_Final.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Stripe.Checkout;
+using Stripe;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Globe_Wander_Final.Models.Services;
 
 namespace Globe_Wander_Final.Controllers
 {
@@ -12,14 +17,17 @@ namespace Globe_Wander_Final.Controllers
         private readonly IHotelRoom _hotelRoom;
         private readonly IBookingRoom _bookingRoom;
         private readonly IHotel _hotel;
+        private readonly UPDATEBOOKINGTEMPServices _UPDATEBOOKINGTEMPServices ;
 
-        public BookingRoomsController(IHotelRoom hotelRoom , IBookingRoom bookingRoom, IHotel hotel)
+        public BookingRoomsController(IHotelRoom hotelRoom, IBookingRoom bookingRoom, IHotel hotel, UPDATEBOOKINGTEMPServices UPDATEBOOKINGTEMPServices)
         {
             _hotelRoom = hotelRoom;
             _bookingRoom = bookingRoom;
             _hotel = hotel;
-       
-      
+            _UPDATEBOOKINGTEMPServices = UPDATEBOOKINGTEMPServices;
+
+
+
         }
         public IActionResult Index()
         {
@@ -48,15 +56,91 @@ namespace Globe_Wander_Final.Controllers
         {
             var hotelRoom = await _hotelRoom.GetHotelRoomId(hotelRoomAndBookingForm.NewBookingRoomDTO.HotelID, hotelRoomAndBookingForm.NewBookingRoomDTO.RoomNumber);
            var user = User.Identity.Name;
-            await _bookingRoom.CreateBookingRoom(hotelRoomAndBookingForm.NewBookingRoomDTO, user);
-            var Form = new HotelRoomandBooking
-            {
-                HotelRoomDTO = hotelRoom,
-            };
+           var booking = await _bookingRoom.CreateBookingRoom(hotelRoomAndBookingForm.NewBookingRoomDTO, user);
+            var nameOfRoom = hotelRoom.Rooms.Name;
+                StripeConfiguration.ApiKey = "sk_test_51NubdTFevC2H5P3dnpmteGXkcBY9039zcaJJYEs6S5frHIj0BzpWYid6eXGNJPjfKo1nuw7rb3Pm0kEwSZKspkOX00Z1a00TTs";
+       
+                var domain = "https://localhost:7062/";
 
-            return View(Form);
+                var options = new SessionCreateOptions
+                {
+                    SuccessUrl = domain + "BookingRooms/MyBookings",
+                    CancelUrl = domain + $"BookingRooms/FailedPayment/{booking.ID}",
+                    LineItems = new List<SessionLineItemOptions>(),
+                    Mode = "payment",
+                };
+
+
+                    var sessionLineItem = new SessionLineItemOptions
+                    {
+                        PriceData = new SessionLineItemPriceDataOptions()
+                        {
+                            UnitAmount = (long)(booking.TotalPrice * 100), // 20.50 => 2050
+                            Currency = "usd",
+                            ProductData = new SessionLineItemPriceDataProductDataOptions()
+                            {
+                                Name = nameOfRoom
+                            }
+                        },
+                        Quantity = 1
+
+                    };
+
+                    options.LineItems.Add(sessionLineItem);
+                
+                var service = new SessionService();
+                var session = service.Create(options);
+
+                var sessionId = session.Id;
+
+                TempData["sessionId"] = sessionId;
+
+                Response.Headers.Add("Location", session.Url);
+
+
+
+                return new StatusCodeResult(303);
+
+
         }
 
+        public async Task<IActionResult> CompletedPaymentMessage(int ID)
+        {
+
+            var UpdateBooking = await _UPDATEBOOKINGTEMPServices.get(ID);
+            DurationBookingRoomDTO newbooking = new DurationBookingRoomDTO() { 
+
+            ID = UpdateBooking.IdForUpdate,
+            CheckIn=UpdateBooking.CheckIn,
+            CheckOut=UpdateBooking.CheckOut,
+            
+            
+            };
+
+            var updated = await _bookingRoom.UpdateBookingRoom(UpdateBooking.IdForUpdate, newbooking);
+
+
+            await _UPDATEBOOKINGTEMPServices.Delete(ID);
+            return View(updated);
+
+        }
+
+        public async Task<IActionResult> FailedPayment( int Id)
+        {
+
+    await _bookingRoom.DeleteBookingRoom(Id);
+         
+            return View();
+
+        }
+
+        public async Task<IActionResult> FailedPaymentExtra(int ID)
+        {
+          
+            await _UPDATEBOOKINGTEMPServices.Delete(ID);
+            return View();
+
+        }
         public async Task<IActionResult> MyBookings()
         {
             var user = User.Identity.Name;
@@ -88,6 +172,98 @@ namespace Globe_Wander_Final.Controllers
             return RedirectToAction("MyBookings");
         }
 
+        public async Task<IActionResult> UserUpdateBooking(int Id)
+        {
+
+            var BookingData = await _bookingRoom.GetBookingRoomById(Id);
+            var BOOKING = new UpdateBooking()
+            {
+                bookingRoom = BookingData,
+
+            };
+
+            return View(BOOKING);
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> UserUpdateBooking(DurationBookingRoomDTO UpdateBooking)
+        {
+
+            var BookingData = await _bookingRoom.GetBookingRoomById(UpdateBooking.ID);
+            var totalBeforeUpdate = BookingData.TotalPrice;
+            TimeSpan duration = UpdateBooking.CheckOut - UpdateBooking.CheckIn;
+            int totalDays = (int)duration.TotalDays;
+            //var updated = await _bookingRoom.UpdateBookingRoom(UpdateBooking.ID, UpdateBooking);
+            var totalAfterUpdate = totalDays * BookingData.Cost;
+
+            
+if(totalBeforeUpdate > totalAfterUpdate)
+            {
+                var updated = await _bookingRoom.UpdateBookingRoom(UpdateBooking.ID, UpdateBooking);
+              var totalRefund =  totalBeforeUpdate - totalAfterUpdate;
+                return RedirectToAction("MyBookings");
+
+            }
+
+            var UPDATEBOOKINGTEMP = await _UPDATEBOOKINGTEMPServices.Create(UpdateBooking);
+
+
+            var totalExtra = totalAfterUpdate - totalBeforeUpdate;
+            if (totalBeforeUpdate < totalAfterUpdate)
+            {
+            
+                StripeConfiguration.ApiKey = "sk_test_51NubdTFevC2H5P3dnpmteGXkcBY9039zcaJJYEs6S5frHIj0BzpWYid6eXGNJPjfKo1nuw7rb3Pm0kEwSZKspkOX00Z1a00TTs";
+
+                var domain = "https://localhost:7062/";
+
+                var options = new SessionCreateOptions
+                {
+                    SuccessUrl = domain + $"BookingRooms/CompletedPaymentMessage/{UPDATEBOOKINGTEMP.ID}",
+                    CancelUrl = domain + $"BookingRooms/FailedPaymentExtra",
+                    LineItems = new List<SessionLineItemOptions>(),
+                    Mode = "payment",
+                };
+
+
+                var sessionLineItem = new SessionLineItemOptions
+                {
+                    PriceData = new SessionLineItemPriceDataOptions()
+                    {
+                        UnitAmount = (long)(totalExtra * 100), // 20.50 => 2050
+                        Currency = "usd",
+                        ProductData = new SessionLineItemPriceDataProductDataOptions()
+                        {
+                            Name = "Extra Days Total Cost"
+                        }
+                    },
+                    Quantity = 1
+
+                };
+
+                options.LineItems.Add(sessionLineItem);
+
+                var service = new SessionService();
+                var session = service.Create(options);
+
+                var sessionId = session.Id;
+
+                TempData["sessionId"] = sessionId;
+
+                Response.Headers.Add("Location", session.Url);
+
+
+
+                return new StatusCodeResult(303);
+
+            }
+
+            return RedirectToAction("MyBookings");
+
+
+
+
+
+        }
 
 
     }

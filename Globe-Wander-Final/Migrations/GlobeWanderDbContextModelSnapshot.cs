@@ -125,15 +125,15 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5848657f-7660-44d8-aac8-2b9837360f32",
+                            ConcurrencyStamp = "95c8615f-9400-46cb-9cb1-57621bd59463",
                             Email = "User@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBa5tKiXGBCOlpsklmKTCAbkNTuV7AbZ140i6+vMDFgwecuMRFnF1by9S6X8HjMvDQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEC9xGmVTDPMe/NicntvnWB8KnW1JJwajuvndKqTTFy5UqN1heZpui7YLXMjVT5ehVw==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "75c87036-2daa-4eaf-add4-f092f1c60388",
+                            SecurityStamp = "fe1e2df1-b5f5-4b62-ba13-17ebe427795c",
                             TwoFactorEnabled = false,
                             UserName = "User"
                         },
@@ -141,16 +141,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f3ae66ca-d4ed-4951-972d-b6e81358202d",
+                            ConcurrencyStamp = "fc37bbf4-22fe-41a1-801a-286ab4d0d69f",
                             Email = "adminUser@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "adminUser@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAELmyBSIUw2/TKpLX0R5kTmGaJHD3cHUMcXedAsksca9QDHoZjMebzNxLaOROCMb2Vw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGqShZtGPh1dz8bw91gZb68JQEPVAcZ+Vbow6kKqvude5Cb6q4jar/FccqyRrxDsMw==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4673a983-8dc5-49ad-bd6e-289b2754492a",
+                            SecurityStamp = "90f226f7-5e07-4c8f-8e96-4438a0fad6dc",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -158,16 +158,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "78281bcf-1e21-466d-a07c-9a542987c580",
+                            ConcurrencyStamp = "abbd5c5e-0578-42d3-8a2e-ec788660ec58",
                             Email = "trip@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "trip@EXAMPLE.COM",
                             NormalizedUserName = "TRIP",
-                            PasswordHash = "AQAAAAIAAYagAAAAENxUQsWIYTPswBp0MgueELGRSf7HvCi5P9ZVYOppd1GqQVGsCa8JDVWZeELFpJhY/Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOPYNdbeqcbKrLelfCWXPOkyfmijUsJDS2pIEnc/GubF6xjpXVwXnGL8R1eHbRo6gw==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3060e207-a360-453c-afcf-1585a44a3713",
+                            SecurityStamp = "ccb98b17-0ad5-4c23-ab19-8548456eecad",
                             TwoFactorEnabled = false,
                             UserName = "trip"
                         },
@@ -175,16 +175,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fb59a7c8-b1d6-4c0f-9fe8-99e469b59dfe",
+                            ConcurrencyStamp = "d03a3500-63e8-428e-b902-aa9dd7162fb8",
                             Email = "hotel@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "hotel@EXAMPLE.COM",
                             NormalizedUserName = "HOTEL",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOlVLYme0C0Hats6Eja9OOZKfDVVJeQBG+gwXm3w8Eeyo/z8xK4DpDMBToPO1lxcAQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKHO4OABElFPj+Q31X99J+OBaku10ksu+JoKO0n2UYUip4YrzTd+J2bnTWwWXvbJ/g==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ce4bff05-d056-407d-8ff8-7b24a275d1e9",
+                            SecurityStamp = "d961cbb4-18ee-47ff-9074-9e6612a117b4",
                             TwoFactorEnabled = false,
                             UserName = "hotel"
                         });
@@ -2000,9 +2000,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 20m,
                             Count = 0,
                             Description = "trip start at 8 am and going from Amman to Petra",
-                            EndDate = new DateTime(2023, 10, 21, 15, 56, 19, 80, DateTimeKind.Utc).AddTicks(1561),
+                            EndDate = new DateTime(2023, 10, 21, 22, 9, 36, 811, DateTimeKind.Utc).AddTicks(6506),
                             Name = "Petra ride",
-                            StartDate = new DateTime(2023, 10, 21, 18, 56, 19, 80, DateTimeKind.Local).AddTicks(1512),
+                            StartDate = new DateTime(2023, 10, 22, 1, 9, 36, 811, DateTimeKind.Local).AddTicks(6453),
                             TourSpotID = 1
                         },
                         new
@@ -2013,9 +2013,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 30m,
                             Count = 0,
                             Description = "Amman to Jerash with a trip manager who can speak many languages",
-                            EndDate = new DateTime(2023, 10, 21, 15, 56, 19, 80, DateTimeKind.Utc).AddTicks(1567),
+                            EndDate = new DateTime(2023, 10, 21, 22, 9, 36, 811, DateTimeKind.Utc).AddTicks(6512),
                             Name = "Jerash ride",
-                            StartDate = new DateTime(2023, 10, 21, 18, 56, 19, 80, DateTimeKind.Local).AddTicks(1565),
+                            StartDate = new DateTime(2023, 10, 22, 1, 9, 36, 811, DateTimeKind.Local).AddTicks(6509),
                             TourSpotID = 2
                         },
                         new
@@ -2026,11 +2026,33 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 40m,
                             Count = 0,
                             Description = "Amman to Irbid with a trip manager who can speak many languages",
-                            EndDate = new DateTime(2023, 10, 21, 15, 56, 19, 80, DateTimeKind.Utc).AddTicks(1570),
+                            EndDate = new DateTime(2023, 10, 21, 22, 9, 36, 811, DateTimeKind.Utc).AddTicks(6552),
                             Name = "Um-Qais ride",
-                            StartDate = new DateTime(2023, 10, 21, 18, 56, 19, 80, DateTimeKind.Local).AddTicks(1568),
+                            StartDate = new DateTime(2023, 10, 22, 1, 9, 36, 811, DateTimeKind.Local).AddTicks(6550),
                             TourSpotID = 3
                         });
+                });
+
+            modelBuilder.Entity("Globe_Wander_Final.Models.UPDATEBOOKINGTEMP", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime>("CheckIn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CheckOut")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdForUpdate")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("UPDATEBOOKINGTEMPs");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

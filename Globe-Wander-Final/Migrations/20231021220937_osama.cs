@@ -98,6 +98,21 @@ namespace Globe_Wander_Final.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UPDATEBOOKINGTEMPs",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdForUpdate = table.Column<int>(type: "int", nullable: false),
+                    CheckIn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CheckOut = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UPDATEBOOKINGTEMPs", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Rooms",
                 columns: table => new
                 {
@@ -487,10 +502,10 @@ namespace Globe_Wander_Final.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "f3ae66ca-d4ed-4951-972d-b6e81358202d", "adminUser@example.com", true, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAELmyBSIUw2/TKpLX0R5kTmGaJHD3cHUMcXedAsksca9QDHoZjMebzNxLaOROCMb2Vw==", "1234567890", false, "4673a983-8dc5-49ad-bd6e-289b2754492a", false, "admin" },
-                    { "2", 0, "fb59a7c8-b1d6-4c0f-9fe8-99e469b59dfe", "hotel@example.com", true, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAEOlVLYme0C0Hats6Eja9OOZKfDVVJeQBG+gwXm3w8Eeyo/z8xK4DpDMBToPO1lxcAQ==", "1234567890", false, "ce4bff05-d056-407d-8ff8-7b24a275d1e9", false, "hotel" },
-                    { "3", 0, "78281bcf-1e21-466d-a07c-9a542987c580", "trip@example.com", true, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAENxUQsWIYTPswBp0MgueELGRSf7HvCi5P9ZVYOppd1GqQVGsCa8JDVWZeELFpJhY/Q==", "1234567890", false, "3060e207-a360-453c-afcf-1585a44a3713", false, "trip" },
-                    { "4", 0, "5848657f-7660-44d8-aac8-2b9837360f32", "User@example.com", true, false, null, null, "USER", "AQAAAAIAAYagAAAAEBa5tKiXGBCOlpsklmKTCAbkNTuV7AbZ140i6+vMDFgwecuMRFnF1by9S6X8HjMvDQ==", "1234567890", false, "75c87036-2daa-4eaf-add4-f092f1c60388", false, "User" }
+                    { "1", 0, "fc37bbf4-22fe-41a1-801a-286ab4d0d69f", "adminUser@example.com", true, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAEGqShZtGPh1dz8bw91gZb68JQEPVAcZ+Vbow6kKqvude5Cb6q4jar/FccqyRrxDsMw==", "1234567890", false, "90f226f7-5e07-4c8f-8e96-4438a0fad6dc", false, "admin" },
+                    { "2", 0, "d03a3500-63e8-428e-b902-aa9dd7162fb8", "hotel@example.com", true, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAEKHO4OABElFPj+Q31X99J+OBaku10ksu+JoKO0n2UYUip4YrzTd+J2bnTWwWXvbJ/g==", "1234567890", false, "d961cbb4-18ee-47ff-9074-9e6612a117b4", false, "hotel" },
+                    { "3", 0, "abbd5c5e-0578-42d3-8a2e-ec788660ec58", "trip@example.com", true, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAEOPYNdbeqcbKrLelfCWXPOkyfmijUsJDS2pIEnc/GubF6xjpXVwXnGL8R1eHbRo6gw==", "1234567890", false, "ccb98b17-0ad5-4c23-ab19-8548456eecad", false, "trip" },
+                    { "4", 0, "95c8615f-9400-46cb-9cb1-57621bd59463", "User@example.com", true, false, null, null, "USER", "AQAAAAIAAYagAAAAEC9xGmVTDPMe/NicntvnWB8KnW1JJwajuvndKqTTFy5UqN1heZpui7YLXMjVT5ehVw==", "1234567890", false, "fe1e2df1-b5f5-4b62-ba13-17ebe427795c", false, "User" }
                 });
 
             migrationBuilder.InsertData(
@@ -570,9 +585,9 @@ namespace Globe_Wander_Final.Migrations
                 columns: new[] { "Id", "Activity", "Capacity", "Cost", "Count", "Description", "EndDate", "Name", "StartDate", "TourSpotID" },
                 values: new object[,]
                 {
-                    { 1, "walking", 30, 20m, 0, "trip start at 8 am and going from Amman to Petra", new DateTime(2023, 10, 21, 15, 56, 19, 80, DateTimeKind.Utc).AddTicks(1561), "Petra ride", new DateTime(2023, 10, 21, 18, 56, 19, 80, DateTimeKind.Local).AddTicks(1512), 1 },
-                    { 2, "visiting", 22, 30m, 0, "Amman to Jerash with a trip manager who can speak many languages", new DateTime(2023, 10, 21, 15, 56, 19, 80, DateTimeKind.Utc).AddTicks(1567), "Jerash ride", new DateTime(2023, 10, 21, 18, 56, 19, 80, DateTimeKind.Local).AddTicks(1565), 2 },
-                    { 3, "climbing", 40, 40m, 0, "Amman to Irbid with a trip manager who can speak many languages", new DateTime(2023, 10, 21, 15, 56, 19, 80, DateTimeKind.Utc).AddTicks(1570), "Um-Qais ride", new DateTime(2023, 10, 21, 18, 56, 19, 80, DateTimeKind.Local).AddTicks(1568), 3 }
+                    { 1, "walking", 30, 20m, 0, "trip start at 8 am and going from Amman to Petra", new DateTime(2023, 10, 21, 22, 9, 36, 811, DateTimeKind.Utc).AddTicks(6506), "Petra ride", new DateTime(2023, 10, 22, 1, 9, 36, 811, DateTimeKind.Local).AddTicks(6453), 1 },
+                    { 2, "visiting", 22, 30m, 0, "Amman to Jerash with a trip manager who can speak many languages", new DateTime(2023, 10, 21, 22, 9, 36, 811, DateTimeKind.Utc).AddTicks(6512), "Jerash ride", new DateTime(2023, 10, 22, 1, 9, 36, 811, DateTimeKind.Local).AddTicks(6509), 2 },
+                    { 3, "climbing", 40, 40m, 0, "Amman to Irbid with a trip manager who can speak many languages", new DateTime(2023, 10, 21, 22, 9, 36, 811, DateTimeKind.Utc).AddTicks(6552), "Um-Qais ride", new DateTime(2023, 10, 22, 1, 9, 36, 811, DateTimeKind.Local).AddTicks(6550), 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -907,6 +922,9 @@ namespace Globe_Wander_Final.Migrations
 
             migrationBuilder.DropTable(
                 name: "RoomAmenities");
+
+            migrationBuilder.DropTable(
+                name: "UPDATEBOOKINGTEMPs");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
