@@ -40,6 +40,16 @@ namespace Globe_Wander_Final.Models.Services
                                     .FirstOrDefaultAsync(b => b.Username == user.UserName && b.HotelID == hotelRoom.HotelID);
             if (existBookingRoom == null)
             {
+
+                TimeSpan duration = bookingRoomDTO.CheckOut - bookingRoomDTO.CheckIn;
+                int totalDays = (int)duration.TotalDays;
+                if (totalDays < 1)
+                {
+                    return null;
+                }
+
+                 
+             
                 if (getHotelRoom.IsAvailable)
                 {
                     var bookingRoom = new BookingRoom
@@ -47,8 +57,10 @@ namespace Globe_Wander_Final.Models.Services
                         HotelID = bookingRoomDTO.HotelID,
                         RoomNumber = bookingRoomDTO.RoomNumber,
                         Cost = getHotelRoom.PricePerDay,
-                        Duration = bookingRoomDTO.Duration,
-                        TotalPrice = getHotelRoom.PricePerDay * bookingRoomDTO.Duration,
+                        Duration = totalDays,
+                        CheckIn=bookingRoomDTO.CheckIn,
+                        CheckOut=bookingRoomDTO.CheckOut,
+                        TotalPrice = getHotelRoom.PricePerDay * totalDays,
                         Username = user.UserName
                     };
                     getHotelRoom.IsAvailable = false;
@@ -96,6 +108,8 @@ namespace Globe_Wander_Final.Models.Services
                 HotelID = bookingRoom.HotelID,
                 RoomNumber = bookingRoom.RoomNumber,
                 Cost = bookingRoom.Cost,
+                CheckIn = bookingRoom.CheckIn,
+                CheckOut = bookingRoom.CheckOut,
                 Duration = bookingRoom.Duration,
                 TotalPrice = bookingRoom.TotalPrice,
                 Username = bookingRoom.Username
@@ -126,6 +140,8 @@ namespace Globe_Wander_Final.Models.Services
                 RoomNumber = bookingRoom.RoomNumber,
                 Cost = bookingRoom.Cost,
                 Duration = bookingRoom.Duration,
+                CheckOut = bookingRoom.CheckOut,
+                CheckIn = bookingRoom.CheckIn,
                 TotalPrice = bookingRoom.TotalPrice,
                 Username = bookingRoom.Username
             };
@@ -146,8 +162,18 @@ namespace Globe_Wander_Final.Models.Services
 
             if (bookingRoom != null)
             {
-                bookingRoom.Duration = updatedBookingRoomDTO.Duration;
-                bookingRoom.TotalPrice = updatedBookingRoomDTO.Duration * bookingRoom.Cost;
+                TimeSpan duration = updatedBookingRoomDTO.CheckOut - updatedBookingRoomDTO.CheckIn;
+                int totalDays = (int)duration.TotalDays;
+                if (totalDays < 1)
+                {
+                    return null;
+                }
+
+
+
+
+                bookingRoom.Duration = totalDays;
+                bookingRoom.TotalPrice = totalDays * bookingRoom.Cost;
                 _context.Entry(bookingRoom).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }

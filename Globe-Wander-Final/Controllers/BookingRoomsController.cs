@@ -12,5 +12,14 @@ namespace Globe_Wander_Final.Controllers
         {
             return View();
         }
+
+
+        public IActionResult BookingForm()
+        {
+            return View();
+        }
+
+
+
     }
 }
