@@ -1,0 +1,59 @@
+﻿@model Globe_Wander_Final.Models.ViewModels.MyBookingsDTO
+
+
+
+
+
+<section class="trending bg-grey">
+    <div class="container">
+        <div class="section-title">
+            <h2><span>Recommended</span> Hotels</h2>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+        </div>
+        <div class="trend-box">
+            <div class="row mix tour">
+                @foreach (var bookingRoom in Model.BookingRoomDTO)
+                  
+                {
+
+
+                    @foreach (var hotelRoom in Model.HotelRoomDTO)
+                 {       @if (bookingRoom.HotelID == hotelRoom.HotelID && hotelRoom.RoomNumber == bookingRoom.RoomNumber)
+                        {
+
+                        <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">
+
+                            <div class="trend-item">
+
+
+                                <div class="trend-content">
+
+                                        <h4> Hotel Name : @Model.HotelDTOs.Where(x=>x.Id==bookingRoom.HotelID).First().Name</h4>
+
+                                        <h4> Room style  :  @Model.HotelRoomDTO.Where(x=>x.HotelID==bookingRoom.HotelID).First().Rooms.Name</h4>
+
+                                        <h4> image: @Model.HotelRoomDTO.Where(x=>x.HotelID==bookingRoom.HotelID).First().HotelRoomImages.First()</h4>
+                                        <h4> TotalPrice : @bookingRoom.TotalPrice $</h4>
+                                        <h4> Duration: @bookingRoom.Duration  Days</h4>
+                                        <h4>Cost preDay : @bookingRoom.Cost $</h4>
+
+                                        <h4> CheckIn : @bookingRoom.CheckIn</h4>
+                                        <h4>CheckOut : @bookingRoom.CheckOut</h4>
+
+                                        <a class="biz-btn" asp-area="" asp-controller="BookingRooms" asp-action="UserDeleteBooking" asp-route-ID="@bookingRoom.ID">booking</a>
+
+
+                                    </div>
+
+
+                            </div>
+
+                        </div>
+
+                    }
+                }
+                }
+            </div>
+        </div>
+    </div>
+</section>

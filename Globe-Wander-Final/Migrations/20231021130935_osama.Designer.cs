@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Globe_Wander_Final.Migrations
 {
     [DbContext(typeof(GlobeWanderDbContext))]
-    [Migration("20231021094054_osama")]
+    [Migration("20231021130935_osama")]
     partial class osama
     {
         /// <inheritdoc />
@@ -128,15 +128,15 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1f62cfad-9a94-4e36-bc5a-f6a25fed307f",
+                            ConcurrencyStamp = "756ea715-6e00-4834-9e83-bdc0e84b57d0",
                             Email = "User@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAIAAYagAAAAECmxlLLvyDcKR0Pilbc2j13v6WdhPJZ5A63eQYGL+w7HatOVAkGyNBHWAAemLJ8wNg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMiQR7O1C7oWP5q9BDpjNPP1/mi5MDLcJnSGBzNgQXStt45eKALpJjtEnhPSGQjJFQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "239bd7a4-bca6-478c-931d-9ee8f5f3a746",
+                            SecurityStamp = "9e5c5396-909a-4bdf-aa2b-3d1fb752dfa2",
                             TwoFactorEnabled = false,
                             UserName = "User"
                         },
@@ -144,16 +144,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d1c1e260-b3f3-4c18-a20b-fc7012c42e12",
+                            ConcurrencyStamp = "ef83d219-e5c8-44ba-b8a8-6dfc83707df1",
                             Email = "adminUser@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "adminUser@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAENK9/yxTfJ1p/LLxwWesc+l9k21HK4zzp1RQUqCqlRWRIp/gVA4X2AxriSu6mXfhsg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELqRTuACH5PBluJcr3BQ1VRbwsHO61k6PLHPePOawq2gzZV3u4icFMEf+/f7Lp4uEQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5917ca0c-7cbf-4597-814d-2241ba6ea944",
+                            SecurityStamp = "7c39038a-7408-4fe4-9db1-d71a42d88d57",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -161,16 +161,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cbcd55d8-c721-4275-810c-093784abde5b",
+                            ConcurrencyStamp = "fa1b229b-775b-434f-9fed-bc8cadbb973f",
                             Email = "trip@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "trip@EXAMPLE.COM",
                             NormalizedUserName = "TRIP",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFtOjjsRU33Q0ut2bX1bUmeKXjlYP71+sj0W0aA0GiIDtnjpazNnhmG0iMHDBNvcyA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOT20KBw30y0tMkk5vFOi4kv8oL9/2f4Wi59JKRL7W7nTplwyoHC6JDZ7cVlXwd4JA==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "36f5afc0-6c2e-4cc7-86e6-28d1daaae515",
+                            SecurityStamp = "99d9c015-51f0-4425-96f8-fbaea51cae59",
                             TwoFactorEnabled = false,
                             UserName = "trip"
                         },
@@ -178,16 +178,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c7ca7d0e-fac9-403e-9a0b-147b3205a7e2",
+                            ConcurrencyStamp = "25176a4d-3603-4840-8c36-4c9bbc341e60",
                             Email = "hotel@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "hotel@EXAMPLE.COM",
                             NormalizedUserName = "HOTEL",
-                            PasswordHash = "AQAAAAIAAYagAAAAENX2YxDw2LX4RFYdLJ1Amj0cGKes3n5F8wQdNXCpnDAY1P/qJPKLbKQ+K8Q+MoVwgQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEO9btDU2uiBl8QJfmYaaj6X8hbl/77I1L/bHzqjnR6RUC6MNiSulOkPgQ6q7qOkuGw==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c5509fca-eb40-4a66-8570-832e44212f9d",
+                            SecurityStamp = "e6674ed5-2a72-422f-9e6e-b175434fb20c",
                             TwoFactorEnabled = false,
                             UserName = "hotel"
                         });
@@ -531,7 +531,7 @@ namespace Globe_Wander_Final.Migrations
                             Bathrooms = 2,
                             Beds = 2,
                             Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.",
-                            IsAvailable = false,
+                            IsAvailable = true,
                             PricePerDay = 200.00m,
                             RoomID = 2,
                             SquareFeet = 700
@@ -567,7 +567,7 @@ namespace Globe_Wander_Final.Migrations
                             Bathrooms = 2,
                             Beds = 2,
                             Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.",
-                            IsAvailable = false,
+                            IsAvailable = true,
                             PricePerDay = 200.00m,
                             RoomID = 2,
                             SquareFeet = 700
@@ -603,7 +603,7 @@ namespace Globe_Wander_Final.Migrations
                             Bathrooms = 2,
                             Beds = 2,
                             Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.",
-                            IsAvailable = false,
+                            IsAvailable = true,
                             PricePerDay = 200.00m,
                             RoomID = 2,
                             SquareFeet = 700
@@ -639,7 +639,7 @@ namespace Globe_Wander_Final.Migrations
                             Bathrooms = 2,
                             Beds = 2,
                             Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.",
-                            IsAvailable = false,
+                            IsAvailable = true,
                             PricePerDay = 200.00m,
                             RoomID = 2,
                             SquareFeet = 700
@@ -675,7 +675,7 @@ namespace Globe_Wander_Final.Migrations
                             Bathrooms = 2,
                             Beds = 2,
                             Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.",
-                            IsAvailable = false,
+                            IsAvailable = true,
                             PricePerDay = 200.00m,
                             RoomID = 2,
                             SquareFeet = 700
@@ -2003,9 +2003,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 20m,
                             Count = 0,
                             Description = "trip start at 8 am and going from Amman to Petra",
-                            EndDate = new DateTime(2023, 10, 21, 9, 40, 53, 984, DateTimeKind.Utc).AddTicks(6455),
+                            EndDate = new DateTime(2023, 10, 21, 13, 9, 34, 878, DateTimeKind.Utc).AddTicks(3708),
                             Name = "Petra ride",
-                            StartDate = new DateTime(2023, 10, 21, 12, 40, 53, 984, DateTimeKind.Local).AddTicks(6413),
+                            StartDate = new DateTime(2023, 10, 21, 16, 9, 34, 878, DateTimeKind.Local).AddTicks(3663),
                             TourSpotID = 1
                         },
                         new
@@ -2016,9 +2016,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 30m,
                             Count = 0,
                             Description = "Amman to Jerash with a trip manager who can speak many languages",
-                            EndDate = new DateTime(2023, 10, 21, 9, 40, 53, 984, DateTimeKind.Utc).AddTicks(6461),
+                            EndDate = new DateTime(2023, 10, 21, 13, 9, 34, 878, DateTimeKind.Utc).AddTicks(3714),
                             Name = "Jerash ride",
-                            StartDate = new DateTime(2023, 10, 21, 12, 40, 53, 984, DateTimeKind.Local).AddTicks(6458),
+                            StartDate = new DateTime(2023, 10, 21, 16, 9, 34, 878, DateTimeKind.Local).AddTicks(3712),
                             TourSpotID = 2
                         },
                         new
@@ -2029,9 +2029,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 40m,
                             Count = 0,
                             Description = "Amman to Irbid with a trip manager who can speak many languages",
-                            EndDate = new DateTime(2023, 10, 21, 9, 40, 53, 984, DateTimeKind.Utc).AddTicks(6464),
+                            EndDate = new DateTime(2023, 10, 21, 13, 9, 34, 878, DateTimeKind.Utc).AddTicks(3717),
                             Name = "Um-Qais ride",
-                            StartDate = new DateTime(2023, 10, 21, 12, 40, 53, 984, DateTimeKind.Local).AddTicks(6462),
+                            StartDate = new DateTime(2023, 10, 21, 16, 9, 34, 878, DateTimeKind.Local).AddTicks(3715),
                             TourSpotID = 3
                         });
                 });

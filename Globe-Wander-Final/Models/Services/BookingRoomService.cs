@@ -31,14 +31,10 @@ namespace Globe_Wander_Final.Models.Services
                 return null;
             }
 
-            var user = await _UserManager.FindByIdAsync(userId);
-
             var hotelRoom = await _context.HotelRooms.FindAsync(bookingRoomDTO.HotelID, bookingRoomDTO.RoomNumber);
 
-            var existBookingRoom = await _context.BookingRooms
-                                    .Where(x => x.Username == user.UserName)
-                                    .FirstOrDefaultAsync(b => b.Username == user.UserName && b.HotelID == hotelRoom.HotelID);
-            if (existBookingRoom == null)
+
+            if (null == null)
             {
 
                 TimeSpan duration = bookingRoomDTO.CheckOut - bookingRoomDTO.CheckIn;
@@ -61,7 +57,7 @@ namespace Globe_Wander_Final.Models.Services
                         CheckIn=bookingRoomDTO.CheckIn,
                         CheckOut=bookingRoomDTO.CheckOut,
                         TotalPrice = getHotelRoom.PricePerDay * totalDays,
-                        Username = user.UserName
+                        Username = userId
                     };
                     getHotelRoom.IsAvailable = false;
                     _context.BookingRooms.Add(bookingRoom);
@@ -180,5 +176,28 @@ namespace Globe_Wander_Final.Models.Services
             var newBookingRoomUpdate = await GetBookingRoomById(id);
             return newBookingRoomUpdate;
         }
+
+        public async Task<List<BookingRoomDTO>> GetAllBookingRoomsForUser(string userId)
+        {
+
+            var bookingRooms = await _context.BookingRooms.ToListAsync();
+            var bookingRoomDTOs = bookingRooms.Where(x=>userId == x.Username).Select(bookingRoom => new BookingRoomDTO
+            {
+                ID = bookingRoom.ID,
+                HotelID = bookingRoom.HotelID,
+                RoomNumber = bookingRoom.RoomNumber,
+                Cost = bookingRoom.Cost,
+                CheckIn = bookingRoom.CheckIn,
+                CheckOut = bookingRoom.CheckOut,
+                Duration = bookingRoom.Duration,
+                TotalPrice = bookingRoom.TotalPrice,
+                Username = bookingRoom.Username
+
+
+            }).ToList();
+
+            return bookingRoomDTOs;
+        }
+
     }
 }

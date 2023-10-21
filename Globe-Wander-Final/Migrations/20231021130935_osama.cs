@@ -487,10 +487,10 @@ namespace Globe_Wander_Final.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "d1c1e260-b3f3-4c18-a20b-fc7012c42e12", "adminUser@example.com", true, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAENK9/yxTfJ1p/LLxwWesc+l9k21HK4zzp1RQUqCqlRWRIp/gVA4X2AxriSu6mXfhsg==", "1234567890", false, "5917ca0c-7cbf-4597-814d-2241ba6ea944", false, "admin" },
-                    { "2", 0, "c7ca7d0e-fac9-403e-9a0b-147b3205a7e2", "hotel@example.com", true, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAENX2YxDw2LX4RFYdLJ1Amj0cGKes3n5F8wQdNXCpnDAY1P/qJPKLbKQ+K8Q+MoVwgQ==", "1234567890", false, "c5509fca-eb40-4a66-8570-832e44212f9d", false, "hotel" },
-                    { "3", 0, "cbcd55d8-c721-4275-810c-093784abde5b", "trip@example.com", true, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAEFtOjjsRU33Q0ut2bX1bUmeKXjlYP71+sj0W0aA0GiIDtnjpazNnhmG0iMHDBNvcyA==", "1234567890", false, "36f5afc0-6c2e-4cc7-86e6-28d1daaae515", false, "trip" },
-                    { "4", 0, "1f62cfad-9a94-4e36-bc5a-f6a25fed307f", "User@example.com", true, false, null, null, "USER", "AQAAAAIAAYagAAAAECmxlLLvyDcKR0Pilbc2j13v6WdhPJZ5A63eQYGL+w7HatOVAkGyNBHWAAemLJ8wNg==", "1234567890", false, "239bd7a4-bca6-478c-931d-9ee8f5f3a746", false, "User" }
+                    { "1", 0, "ef83d219-e5c8-44ba-b8a8-6dfc83707df1", "adminUser@example.com", true, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAELqRTuACH5PBluJcr3BQ1VRbwsHO61k6PLHPePOawq2gzZV3u4icFMEf+/f7Lp4uEQ==", "1234567890", false, "7c39038a-7408-4fe4-9db1-d71a42d88d57", false, "admin" },
+                    { "2", 0, "25176a4d-3603-4840-8c36-4c9bbc341e60", "hotel@example.com", true, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAEO9btDU2uiBl8QJfmYaaj6X8hbl/77I1L/bHzqjnR6RUC6MNiSulOkPgQ6q7qOkuGw==", "1234567890", false, "e6674ed5-2a72-422f-9e6e-b175434fb20c", false, "hotel" },
+                    { "3", 0, "fa1b229b-775b-434f-9fed-bc8cadbb973f", "trip@example.com", true, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAEOT20KBw30y0tMkk5vFOi4kv8oL9/2f4Wi59JKRL7W7nTplwyoHC6JDZ7cVlXwd4JA==", "1234567890", false, "99d9c015-51f0-4425-96f8-fbaea51cae59", false, "trip" },
+                    { "4", 0, "756ea715-6e00-4834-9e83-bdc0e84b57d0", "User@example.com", true, false, null, null, "USER", "AQAAAAIAAYagAAAAEMiQR7O1C7oWP5q9BDpjNPP1/mi5MDLcJnSGBzNgQXStt45eKALpJjtEnhPSGQjJFQ==", "1234567890", false, "9e5c5396-909a-4bdf-aa2b-3d1fb752dfa2", false, "User" }
                 });
 
             migrationBuilder.InsertData(
@@ -570,9 +570,9 @@ namespace Globe_Wander_Final.Migrations
                 columns: new[] { "Id", "Activity", "Capacity", "Cost", "Count", "Description", "EndDate", "Name", "StartDate", "TourSpotID" },
                 values: new object[,]
                 {
-                    { 1, "walking", 30, 20m, 0, "trip start at 8 am and going from Amman to Petra", new DateTime(2023, 10, 21, 9, 40, 53, 984, DateTimeKind.Utc).AddTicks(6455), "Petra ride", new DateTime(2023, 10, 21, 12, 40, 53, 984, DateTimeKind.Local).AddTicks(6413), 1 },
-                    { 2, "visiting", 22, 30m, 0, "Amman to Jerash with a trip manager who can speak many languages", new DateTime(2023, 10, 21, 9, 40, 53, 984, DateTimeKind.Utc).AddTicks(6461), "Jerash ride", new DateTime(2023, 10, 21, 12, 40, 53, 984, DateTimeKind.Local).AddTicks(6458), 2 },
-                    { 3, "climbing", 40, 40m, 0, "Amman to Irbid with a trip manager who can speak many languages", new DateTime(2023, 10, 21, 9, 40, 53, 984, DateTimeKind.Utc).AddTicks(6464), "Um-Qais ride", new DateTime(2023, 10, 21, 12, 40, 53, 984, DateTimeKind.Local).AddTicks(6462), 3 }
+                    { 1, "walking", 30, 20m, 0, "trip start at 8 am and going from Amman to Petra", new DateTime(2023, 10, 21, 13, 9, 34, 878, DateTimeKind.Utc).AddTicks(3708), "Petra ride", new DateTime(2023, 10, 21, 16, 9, 34, 878, DateTimeKind.Local).AddTicks(3663), 1 },
+                    { 2, "visiting", 22, 30m, 0, "Amman to Jerash with a trip manager who can speak many languages", new DateTime(2023, 10, 21, 13, 9, 34, 878, DateTimeKind.Utc).AddTicks(3714), "Jerash ride", new DateTime(2023, 10, 21, 16, 9, 34, 878, DateTimeKind.Local).AddTicks(3712), 2 },
+                    { 3, "climbing", 40, 40m, 0, "Amman to Irbid with a trip manager who can speak many languages", new DateTime(2023, 10, 21, 13, 9, 34, 878, DateTimeKind.Utc).AddTicks(3717), "Um-Qais ride", new DateTime(2023, 10, 21, 16, 9, 34, 878, DateTimeKind.Local).AddTicks(3715), 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -598,19 +598,19 @@ namespace Globe_Wander_Final.Migrations
                 values: new object[,]
                 {
                     { 1, 101, 1, 2, " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", true, 150.00m, 1, 500 },
-                    { 1, 102, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", false, 200.00m, 2, 700 },
+                    { 1, 102, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", true, 200.00m, 2, 700 },
                     { 1, 103, 2, 1, "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", true, 300.00m, 3, 1000 },
                     { 2, 201, 1, 2, " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", true, 150.00m, 1, 500 },
-                    { 2, 202, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", false, 200.00m, 2, 700 },
+                    { 2, 202, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", true, 200.00m, 2, 700 },
                     { 2, 203, 2, 1, "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", true, 300.00m, 3, 1000 },
                     { 3, 301, 1, 2, " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", true, 150.00m, 1, 500 },
-                    { 3, 302, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", false, 200.00m, 2, 700 },
+                    { 3, 302, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", true, 200.00m, 2, 700 },
                     { 3, 303, 2, 1, "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", true, 300.00m, 3, 1000 },
                     { 4, 401, 1, 2, " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", true, 150.00m, 1, 500 },
-                    { 4, 402, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", false, 200.00m, 2, 700 },
+                    { 4, 402, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", true, 200.00m, 2, 700 },
                     { 4, 403, 2, 1, "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", true, 300.00m, 3, 1000 },
                     { 5, 501, 1, 2, " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", true, 150.00m, 1, 500 },
-                    { 5, 502, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", false, 200.00m, 2, 700 },
+                    { 5, 502, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", true, 200.00m, 2, 700 },
                     { 5, 503, 2, 1, "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", true, 300.00m, 3, 1000 }
                 });
 
