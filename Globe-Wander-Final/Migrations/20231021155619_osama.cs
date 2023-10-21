@@ -487,10 +487,10 @@ namespace Globe_Wander_Final.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "ef83d219-e5c8-44ba-b8a8-6dfc83707df1", "adminUser@example.com", true, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAELqRTuACH5PBluJcr3BQ1VRbwsHO61k6PLHPePOawq2gzZV3u4icFMEf+/f7Lp4uEQ==", "1234567890", false, "7c39038a-7408-4fe4-9db1-d71a42d88d57", false, "admin" },
-                    { "2", 0, "25176a4d-3603-4840-8c36-4c9bbc341e60", "hotel@example.com", true, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAEO9btDU2uiBl8QJfmYaaj6X8hbl/77I1L/bHzqjnR6RUC6MNiSulOkPgQ6q7qOkuGw==", "1234567890", false, "e6674ed5-2a72-422f-9e6e-b175434fb20c", false, "hotel" },
-                    { "3", 0, "fa1b229b-775b-434f-9fed-bc8cadbb973f", "trip@example.com", true, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAEOT20KBw30y0tMkk5vFOi4kv8oL9/2f4Wi59JKRL7W7nTplwyoHC6JDZ7cVlXwd4JA==", "1234567890", false, "99d9c015-51f0-4425-96f8-fbaea51cae59", false, "trip" },
-                    { "4", 0, "756ea715-6e00-4834-9e83-bdc0e84b57d0", "User@example.com", true, false, null, null, "USER", "AQAAAAIAAYagAAAAEMiQR7O1C7oWP5q9BDpjNPP1/mi5MDLcJnSGBzNgQXStt45eKALpJjtEnhPSGQjJFQ==", "1234567890", false, "9e5c5396-909a-4bdf-aa2b-3d1fb752dfa2", false, "User" }
+                    { "1", 0, "f3ae66ca-d4ed-4951-972d-b6e81358202d", "adminUser@example.com", true, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAELmyBSIUw2/TKpLX0R5kTmGaJHD3cHUMcXedAsksca9QDHoZjMebzNxLaOROCMb2Vw==", "1234567890", false, "4673a983-8dc5-49ad-bd6e-289b2754492a", false, "admin" },
+                    { "2", 0, "fb59a7c8-b1d6-4c0f-9fe8-99e469b59dfe", "hotel@example.com", true, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAEOlVLYme0C0Hats6Eja9OOZKfDVVJeQBG+gwXm3w8Eeyo/z8xK4DpDMBToPO1lxcAQ==", "1234567890", false, "ce4bff05-d056-407d-8ff8-7b24a275d1e9", false, "hotel" },
+                    { "3", 0, "78281bcf-1e21-466d-a07c-9a542987c580", "trip@example.com", true, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAENxUQsWIYTPswBp0MgueELGRSf7HvCi5P9ZVYOppd1GqQVGsCa8JDVWZeELFpJhY/Q==", "1234567890", false, "3060e207-a360-453c-afcf-1585a44a3713", false, "trip" },
+                    { "4", 0, "5848657f-7660-44d8-aac8-2b9837360f32", "User@example.com", true, false, null, null, "USER", "AQAAAAIAAYagAAAAEBa5tKiXGBCOlpsklmKTCAbkNTuV7AbZ140i6+vMDFgwecuMRFnF1by9S6X8HjMvDQ==", "1234567890", false, "75c87036-2daa-4eaf-add4-f092f1c60388", false, "User" }
                 });
 
             migrationBuilder.InsertData(
@@ -570,9 +570,9 @@ namespace Globe_Wander_Final.Migrations
                 columns: new[] { "Id", "Activity", "Capacity", "Cost", "Count", "Description", "EndDate", "Name", "StartDate", "TourSpotID" },
                 values: new object[,]
                 {
-                    { 1, "walking", 30, 20m, 0, "trip start at 8 am and going from Amman to Petra", new DateTime(2023, 10, 21, 13, 9, 34, 878, DateTimeKind.Utc).AddTicks(3708), "Petra ride", new DateTime(2023, 10, 21, 16, 9, 34, 878, DateTimeKind.Local).AddTicks(3663), 1 },
-                    { 2, "visiting", 22, 30m, 0, "Amman to Jerash with a trip manager who can speak many languages", new DateTime(2023, 10, 21, 13, 9, 34, 878, DateTimeKind.Utc).AddTicks(3714), "Jerash ride", new DateTime(2023, 10, 21, 16, 9, 34, 878, DateTimeKind.Local).AddTicks(3712), 2 },
-                    { 3, "climbing", 40, 40m, 0, "Amman to Irbid with a trip manager who can speak many languages", new DateTime(2023, 10, 21, 13, 9, 34, 878, DateTimeKind.Utc).AddTicks(3717), "Um-Qais ride", new DateTime(2023, 10, 21, 16, 9, 34, 878, DateTimeKind.Local).AddTicks(3715), 3 }
+                    { 1, "walking", 30, 20m, 0, "trip start at 8 am and going from Amman to Petra", new DateTime(2023, 10, 21, 15, 56, 19, 80, DateTimeKind.Utc).AddTicks(1561), "Petra ride", new DateTime(2023, 10, 21, 18, 56, 19, 80, DateTimeKind.Local).AddTicks(1512), 1 },
+                    { 2, "visiting", 22, 30m, 0, "Amman to Jerash with a trip manager who can speak many languages", new DateTime(2023, 10, 21, 15, 56, 19, 80, DateTimeKind.Utc).AddTicks(1567), "Jerash ride", new DateTime(2023, 10, 21, 18, 56, 19, 80, DateTimeKind.Local).AddTicks(1565), 2 },
+                    { 3, "climbing", 40, 40m, 0, "Amman to Irbid with a trip manager who can speak many languages", new DateTime(2023, 10, 21, 15, 56, 19, 80, DateTimeKind.Utc).AddTicks(1570), "Um-Qais ride", new DateTime(2023, 10, 21, 18, 56, 19, 80, DateTimeKind.Local).AddTicks(1568), 3 }
                 });
 
             migrationBuilder.InsertData(
