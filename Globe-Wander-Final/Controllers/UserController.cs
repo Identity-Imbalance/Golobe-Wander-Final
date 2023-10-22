@@ -50,6 +50,7 @@ namespace Globe_Wander_Final.Controllers
                 return View();
             }
             var result = await userService.Register(dataDTO,this.ModelState,User);
+
             if (result!=null)
             {
                 return Redirect("/");
@@ -78,6 +79,7 @@ namespace Globe_Wander_Final.Controllers
         //    }            
         //    return View(data);
         //}
+
 
         public async Task<IActionResult> Logout()
         {

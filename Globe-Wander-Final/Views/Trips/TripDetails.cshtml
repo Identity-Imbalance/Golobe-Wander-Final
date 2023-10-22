@@ -1,4 +1,4 @@
-﻿@model Globe_Wander_Final.Models.DTOs.TripDTO
+﻿@model Globe_Wander_Final.Models.ViewModels.RecomandedTripsAndTrip
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
@@ -42,7 +42,6 @@
                 <nav aria-label="breadcrumb">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Flight</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Trip Detail</li>
                     </ul>
                 </nav>
@@ -59,8 +58,8 @@
                     <div class="detail-content content-wrapper">
                         <div class="detail-info">
                             <div class="detail-info-content clearfix">
-                                
-                                <h2>@Model.Name</h2>
+
+                                <h2>@Model.trip.Name</h2>
                                 <div class="rating">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
@@ -68,142 +67,109 @@
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
                                 </div>
-                                <h3 class=" detail-price mar-0 text-right">$@Model.Cost<br>Person</h3>
+                                <h3 class=" detail-price mar-0 text-right">$@Model.trip.Cost<br>Person</h3>
                             </div>
                         </div>
                         <div class="gallery detail-box about-slider">
-                            <div class="gallery-item">
-                                <img src="images/flight1.jpg" alt="in_th_030_01_sm" />
-                            </div>
+                            
+                                <div class="gallery-item">
+                                @foreach (var item in Model.trip.TripImages)
+                                {
+                                        <img src="@item.Path" alt="@Model.trip.Name">
+                                    }
+                                </div>
+                            
 
-                            <div class="gallery-item">
-                                <img src="images/flight2.jpg" alt="in_th_030_01_sm" />
-                            </div>
-
-                            <div class="gallery-item">
-                                <img src="images/flight3.jpg" alt="in_th_030_01_sm" />
-                            </div>
-
-                            <div class="gallery-item">
-                                <img src="images/flight4.jpg" alt="in_th_030_01_sm" />
-                            </div>
                         </div>
                         <div class="description flight-table mar-bottom-30">
                             <div class="detail-title">
                                 <h3>Description</h3>
                             </div>
                             <div class="description-content">
-                                <p>@Model.Description</p>
+                                <p>@Model.trip.Description</p>
                                 <table>
                                     <thead>
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td class="title">Trip ID</td>
+                                            <td><i aria-hidden="true"></i> @Model.trip.Id</td>
+                                        </tr>
+                                        <tr>
                                             <td class="title">Location</td>
-                                            <td><i class="fa fa-map-marker" aria-hidden="true"></i> @Model.Name</td>
+                                            <td><i class="fa fa-map-marker" aria-hidden="true"></i> @Model.trip.Name</td>
                                         </tr>
                                         <tr>
                                             <td class="title">Departure and return Time</td>
-                                            <td><i class="fa fa-clock-o" aria-hidden="true"></i> Please arrive by <span style="color:#DC143C;">@Model.StartDate</span> for a prompt departure at <span style="color:#DC143C;">@Model.EndDate</span></td>
+                                            <td><i class="fa fa-clock-o" aria-hidden="true"></i> Please arrive by <span style="color:#DC143C;">@Model.trip.StartDate</span> for a prompt departure at <span style="color:#DC143C;">@Model.trip.EndDate</span></td>
                                         </tr>
                                         <tr>
                                             <td class="title">Maximum travellers</td>
-                                            <td><i class="fa fa-user" aria-hidden="true"></i> @Model.Capacity</td>
+                                            <td><i class="fa fa-user" aria-hidden="true"></i> @Model.trip.Capacity</td>
                                         </tr>
                                         <tr>
                                             <td class="title">People that booked</td>
-                                            <td><i class="fa fa-user" aria-hidden="true"></i> @Model.Count</td>
+                                            <td><i class="fa fa-user" aria-hidden="true"></i> @Model.trip.Count</td>
                                         </tr>
                                         <tr>
                                             <td class="title">Activity</td>
-                                            <td><i class="fa fa-check" aria-hidden="true"></i> @Model.Activity</td>
+                                            <td><i class="fa fa-check" aria-hidden="true"></i> @Model.trip.Activity</td>
                                         </tr>
-                                        <tr>
-                                            <td class="title">Trip ID</td>
-                                            <td><i class="fa fa-check" aria-hidden="true"></i> @Model.Id</td>
-                                        </tr>
-                                        
+
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                      
-                       
-                </div>
 
-                <div id="sidebar" class="col-md-4 col-xs-12">
-                    <aside class="detail-sidebar sidebar-wrapper">
-                        
-                        <div class="sidebar-item">
-                            <div class="detail-title">
-                                <h3>Popular Flights</h3>
-                            </div>
-                            <div class="sidebar-content about-slider">
-                                <div class="sidebar-package">
-                                    <div class="sidebar-package-image">
-                                        <img src="images/plane1.jpg" alt="Images">
-                                    </div>
-                                    <div class="destination-content mar-top-20">
-                                        <div class="destination-title">
-                                            <h6 class="mar-bottom-5">ONE WAY FLIGHTS</h6>
-                                            <h4><a href="flight-detail.html">CHEAP FLIGHTS TO MONACO</a></h4>
-                                        </div>
-                                        <p class="package-days">BOOK NOW AND <span>SAVE 30%</span></p>
-                                        <p class="price-ft mar-0 bold">$800 <span>/ per Person</span></p>
-                                    </div>
+
+                    </div>
+
+                    <div id="sidebar" class="col-md-4 col-xs-12">
+                        <aside class="detail-sidebar sidebar-wrapper">
+
+                            <div class="sidebar-item">
+                                <div class="detail-title">
+                                    <h3>Popular Trips</h3>
                                 </div>
-                                <div class="sidebar-package">
-                                    <div class="sidebar-package-image">
-                                        <img src="images/plane2.jpg" alt="Images">
-                                    </div>
-                                    <div class="destination-content mar-top-20">
-                                        <div class="destination-title">
-                                            <h6 class="mar-bottom-5">ONE WAY FLIGHTS</h6>
-                                            <h4><a href="flight-detail.html">CHEAP FLIGHTS TO LONDON</a></h4>
+                                <div class="sidebar-content about-slider">
+                                    @foreach (var item in Model.ListTrips)
+                                    {
+                                        <div class="sidebar-package">
+
+                                            <div class="sidebar-package-image">
+                                                @foreach (var image in item.TripImages)
+                                                {
+                                                    <img src="@image.Path" alt="@item.Name">
+                                                }
+                                            </div>
+
+                                            <div class="destination-content mar-top-20">
+                                                <div class="destination-title">
+                                                    <h6 class="mar-bottom-5">@Model.trip.Name</h6>
+                                                    <h4><a href="#">@Model.trip.Description</a></h4>
+                                                </div>
+                                                <p class="price-ft mar-0 bold">@Model.trip.Cost <span>/ per Person</span></p>
+                                            </div>
                                         </div>
-                                        <p class="package-days">BOOK NOW AND <span>SAVE 30%</span></p>
-                                        <p class="price-ft mar-0 bold">$800 <span>/ per Person</span></p>
-                                    </div>
-                                </div>
-                                <div class="sidebar-package">
-                                    <div class="sidebar-package-image">
-                                        <img src="images/plane3.jpg" alt="Images">
-                                    </div>
-                                    <div class="destination-content mar-top-20">
-                                        <div class="destination-title">
-                                            <h6 class="mar-bottom-5">ONE WAY FLIGHTS</h6>
-                                            <h4><a href="flight-detail.html">CHEAP FLIGHTS TO PARIS</a></h4>
-                                        </div>
-                                        <p class="package-days">BOOK NOW AND <span>SAVE 30%</span></p>
-                                        <p class="price-ft mar-0 bold">$800 <span>/ per Person</span></p>
-                                    </div>
+                                    }
                                 </div>
                             </div>
-                        </div>
-                       
-                    </aside>
+
+                        </aside>
+                    </div>
                 </div>
             </div>
-        </div>
     </section>
     <!-- flight desti ends -->
-   
     <!-- Back to top start -->
     <div id="back-to-top">
         <a href="#"></a>
     </div>
     <!-- Back to top ends -->
-    
-
     <!-- *Scripts* -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/color-switcher.js"></script>
-    <script src="js/plugin.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/menu.js"></script>
-    <script src="js/custom-nav.js"></script>
-    <script src="js/custom-date.js"></script>
-
+    
+    <script src="~/js/plugin.js"></script> 
+     <script src="~/js/main.js"></script> 
 </body>
 </html>
