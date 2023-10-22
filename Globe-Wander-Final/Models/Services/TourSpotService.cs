@@ -265,38 +265,80 @@ namespace Globe_Wander_Final.Models.Services
                     Category = tours.Category,
                     PhoneNumber = tours.PhoneNumber,
                     Img = tours.Img,
-                    Hotels = tours.Hotels.Select(hotels => new HotelDTO
+                    Hotels = tours.Hotels.Select(b => new HotelDTO
                     {
-                        TourSpotID = hotels.TourSpotID,
-                        Id = hotels.Id,
-                        Name = hotels.Name,
-                        Description = hotels.Description,
-                        HotelRoom = hotels.HotelRoom.Select(hrooms => new HotelRoomDTO
-                        {
-                            RoomNumber = hrooms.RoomNumber,
-                            HotelID = hrooms.HotelID,
-                            RoomID = hrooms.RoomID,
-                            PricePerDay = hrooms.PricePerDay,
-                            IsAvailable = hrooms.IsAvailable,
-                            Rooms = new RoomDTO
-                            {
-                                ID = hrooms.Rooms.ID,
-                                Name = hrooms.Rooms.Name,
-                                Layout = hrooms.Rooms.Layout
+                        Id = b.Id,
+                        Name = b.Name,
+                        Location = b.Location,
+                        StarRate = b.StarRate,
 
-                            },
-                            BookingRoom = new BookingRoomDTO
+                        HotelImages = _context.Images.Where(w => b.Id == w.HotelId && w.RoomNumber == null).Select(e => new Image
+                        {
+                            Id = e.Id,
+                            HotelId = e.HotelId,
+
+                            Path = e.Path,
+
+                        }
+                            ).ToList(),
+                        HotelFacilities = _context.HotelFacilities.Where(q => q.HotelId == b.Id).Select(k => new HotelFacility
+                        {
+                            Id = k.Id,
+                            Facility = k.Facility,
+                            FacilityId = k.FacilityId,
+                            Hotel = k.Hotel,
+                            HotelId = b.Id,
+                        }).ToList(),
+                        Description = b.Description,
+                        TourSpotID = b.TourSpotID,
+                        HotelRoom = _context.HotelRooms.Where(x => x.HotelID == b.Id).Select(v => new HotelRoomDTO
+                        {
+                            HotelID = v.HotelID,
+                            RoomID = v.RoomID,
+                            IsAvailable = v.IsAvailable,
+                            RoomNumber = v.RoomNumber,
+                            Bathrooms = v.Bathrooms,
+                            Description = v.Description,
+                            Beds = v.Beds,
+                            SquareFeet = v.SquareFeet,
+                            PricePerDay = v.PricePerDay,
+                            HotelRoomImages = _context.Images.Where(w => v.HotelID == w.HotelId && v.RoomNumber == w.RoomNumber).Select(e => new Image
                             {
-                                ID = hrooms.BookingRoom.ID,
-                                RoomNumber = hrooms.BookingRoom.RoomNumber,
-                                HotelID = hrooms.BookingRoom.HotelID,
-                                Cost = hrooms.BookingRoom.Cost,
-                                Duration = hrooms.BookingRoom.Duration,
-                                TotalPrice = hrooms.BookingRoom.TotalPrice,
-                                Username = hrooms.BookingRoom.Username
+                                Id = e.Id,
+                                HotelId = e.HotelId,
+                                RoomNumber = e.RoomNumber,
+                                Path = e.Path,
 
                             }
+                                    ).ToList(),
+                            Rooms = _context.Rooms.Select(r => new RoomDTO
+                            {
+                                ID = r.ID,
+                                Layout = r.Layout,
+                                Name = r.Name,
+                                RoomAmenities = _context.RoomAmenities.Where(I => I.RoomId == r.ID).Select(l => new RoomAmenity
+                                {
+                                    Amenity = l.Amenity,
+                                    Room = l.Room,
+                                    AmenityId = l.AmenityId,
+                                    RoomId = l.RoomId,
+                                }
+                                    ).ToList(),
+                            }).Where(r => r.ID == v.RoomID).FirstOrDefault(),
+                            BookingRoom = _context.BookingRooms.Select(bk => new BookingRoomDTO
+                            {
+                                ID = bk.ID,
+                                HotelID = bk.HotelID,
+                                Cost = bk.Cost,
+                                RoomNumber = bk.RoomNumber,
+                                TotalPrice = bk.TotalPrice,
+                                Duration = bk.Duration,
+                                Username = bk.Username
+                            }).Where(bk => bk.RoomNumber == v.RoomNumber).FirstOrDefault()
+
+
                         }).ToList(),
+                           
                     }).ToList(),
                     Trips = tours.Trips
                     .Where(x => x.TourSpotID == tours.ID)

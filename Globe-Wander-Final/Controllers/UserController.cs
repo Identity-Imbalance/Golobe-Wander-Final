@@ -25,18 +25,19 @@ namespace Globe_Wander_Final.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(LogInDTO data)
+        public async Task<ActionResult<UserDTO>> Login(LogInDTO data)
         {
             if (ModelState.IsValid)
             {
                 var user = await userService.Authenticate(data.UserName, data.Password);
 
-                if (user != null)
-                {                    
-                    return RedirectToAction("Index", "Home");
+                if (user == null)
+                {
+                    this.ModelState.AddModelError(String.Empty, "Invalid Login");
+                     return View(data);
                 }
             }
-            return View(data);
+                    return RedirectToAction("Index", "Home");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -48,7 +49,8 @@ namespace Globe_Wander_Final.Controllers
                 ModelState.AddModelError(nameof(dataDTO.Email), "Email is already in use.");
                 return View();
             }
-            var result = await userService.Register(dataDTO,this.ModelState);
+            var result = await userService.Register(dataDTO,this.ModelState,User);
+
             if (result!=null)
             {
                 return Redirect("/");
@@ -63,7 +65,21 @@ namespace Globe_Wander_Final.Controllers
             return View();
         }
 
-       
+        //[HttpPost]
+        //public async Task<IActionResult> Register(RegisterUserDTO data)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = await userService.Register(data, this.ModelState, User);
+
+        //        if (user != null)
+        //        {                    
+        //            return RedirectToAction("Index", "Home"); 
+        //        }
+        //    }            
+        //    return View(data);
+        //}
+
 
         public async Task<IActionResult> Logout()
         {
