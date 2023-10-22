@@ -1,0 +1,54 @@
+﻿@model Globe_Wander_Final.Models.DTOs.RoomDTO
+@{
+    List<int> selectedAmentias = new List<int>();
+}
+@*TODO: Better to make it as a step progress *@
+<div id="container-wrapper">
+    <!-- Dashboard -->
+    <div id="dashboard">
+
+        <partial name="_Navigation"></partial>
+        <div class="dashboard-content">
+            <div class="add-box add-rooms">
+                <div class="rooms-info">
+                    <div class="info-content pad-0">
+                        <h3>Create Room Information </h3>
+                        <form id="roomForm" method="post" action="CreateRoom">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label for="roomTitle">Room Name</label>
+                                    <input type="text" id="roomTitle" asp-for="Name" placeholder="Enter Room Name" required>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label for="roomDetail">Room Layout</label>
+                                    <select id="roomLayout" name="Layout" placeholder="Select Room Layout" required>
+                                        <option value="">Select a layout</option>
+                                        @foreach (Layout layout in Enum.GetValues(typeof(Layout)))
+                                        {
+                                            var layoutValue = (int)layout;
+                                            <option  value="@layoutValue">@layout.ToString()</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="rooms-info">
+                                <h3>Amentias</h3>
+                                @foreach (var item in ViewBag.Amenities)
+                                {
+                                    <div class="facilities">
+                                        <input type="checkbox" name="selectedAmentias" value="@item.Id">@item.Name
+                                    </div>
+                                }
+
+                                <!-- Add more facilities checkboxes here -->
+                            </div>
+                            <button type="submit" class="biz-btn biz-btn1 mar-top-5">Add Room</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Dashboard / End -->
+</div>
+<!-- end Container Wrapper -->

@@ -20,6 +20,11 @@ namespace Globe_Wander_Final.Controllers
             _userManager = userManager;
         }
 
+        public IActionResult Profile()
+        {
+            return View();
+        }
+
         public IActionResult Login()
         {
             return View();

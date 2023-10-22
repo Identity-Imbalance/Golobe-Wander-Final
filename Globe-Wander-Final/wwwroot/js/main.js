@@ -324,53 +324,8 @@
              $(this).removeClass('open');
          }
      });
-     //Do not include! This prevents the form from submitting for DEMO purposes only!
-     $('form').submit(function(event) {
-         event.preventDefault();
-         return false;
-     })
-
-     ColorSwitcher_main();
-
  }(jQuery));
 
- function ColorSwitcher_main() {
-     var colorSheets = [{
-         color: "#ee2654",
-         title: "Switch to Default",
-         href: "./css/color/color-default.css"
-     }, {
-         color: "#fb2d1f",
-         title: "Switch to Red",
-         href: "./css/color/color-red.css"
-     }, {
-         color: "#7DBD21",
-         title: "Switch to Green",
-         href: "./css/color/color-green.css"
-     }, {
-         color: "#00b1cd",
-         title: "Switch to Blue",
-         href: "./css/color/color-blue.css"
-     }, {
-         color: "#ec5f0c",
-         title: "Switch to orange",
-         href: "./css/color/color-orange.css"
-     }, {
-         color: "#785cb4",
-         title: "Switch to Violet",
-         href: "./css/color/color-violet.css"
-     }, 
-     {
-         color: "#005294",
-         title: "Switch to Darkblue",
-         href: "./css/color/color-darkblue.css"
-     }, {
-         color: "#bea882",
-         title: "Switch to beige",
-         href: "./css/color/color-beige.css"
-     }];
-     ColorSwitcher.init(colorSheets);
- }
 
  jQuery(window).on('resize load', () => {
      resize_eb_slider();
