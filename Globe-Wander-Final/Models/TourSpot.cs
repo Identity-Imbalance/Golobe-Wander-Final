@@ -10,6 +10,7 @@ namespace Globe_Wander_Final.Models
 
         public string Country { get; set; }
 
+        public string Img { get; set; }
         public string City { get; set; }
 
         public string Description { get; set; }
@@ -17,7 +18,6 @@ namespace Globe_Wander_Final.Models
         public Category Category { get; set; }
 
         public string PhoneNumber { get; set; }
-        public string Img {  get; set; }
 
         public List<Hotel>? Hotels { get; set; }
 

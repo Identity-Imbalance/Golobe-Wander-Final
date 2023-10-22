@@ -9,18 +9,20 @@ namespace Globe_Wander_Final.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        private readonly ITourSpot _tour;
         
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger , ITourSpot tour)
         {
             _logger = logger;
+            _tour = tour;
             
         }
         
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+           var tour =  await _tour.GetAllTourSpots();
+            return View(tour);
         }
 
         public IActionResult about()

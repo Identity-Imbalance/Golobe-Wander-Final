@@ -1,11 +1,15 @@
+@model List<Globe_Wander_Final.Models.DTOs.TourSpotDTO>
 
+       <link rel="shortcut icon" type="image/x-icon" href="~/images/favicon.png">
+<link href="~/fonts/flaticon.css" rel="stylesheet" type="text/css">   
   <section class="banner banner1">
+
         <div class="slider">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="slide-inner">
-                           <div class="slide-image" style="background-image:url(images/slider/slider8.jpg)"></div>
+                        <div class="slide-image" style="background-image:url(https://assets.wego.com/image/upload/c_fill,fl_lossy,q_auto:best,f_auto,w_2560/v1597920831/web/hero_images/jo_1.jpg)"></div>
                            <div class="swiper-content swi-content">
                                 <h1>Make you Free to <span>travel</span> with us</h1>
                                 <p class="mar-bottom-30">Foresee the pain and trouble that are bound to ensue and equal fail in their duty through weakness. </p>
@@ -17,7 +21,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="slide-inner">
-                            <div class="slide-image" style="background-image:url(images/slider/slider7.jpg)"></div>
+                        <div class="slide-image" style="background-image:url(https://wallpaperaccess.com/full/1124780.jpg)"></div>
                            <div class="swiper-content swi-content">
                                 <h1><span>Sensation Ice Trip</span> Is Coming For Kids</h1>
                                 <p class="mar-bottom-30">Find awesome hotel, tour, car and activities in London</p>
@@ -28,7 +32,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="slide-inner">
-                           <div class="slide-image" style="background-image:url(images/slider/slider3.jpg)"></div>
+                        <div class="slide-image" style="background-image:url(https://wallpaperaccess.com/full/3635798.jpg)"></div>
                            <div class="swiper-content swi-content">
                                 <h1>Your <span>Adventure</span> Travel Experts In Europe!</h1>
                                 <p class="mar-bottom-30">Find awesome hotel, tour, car and activities in London</p>
@@ -44,424 +48,222 @@
     <!-- banner ends -->
 
     <!-- form starts -->
-    <section class="banner-form form-style2">
-        <div class="container">
-            <div class="form-content">
-                <div class="price-navtab text-center">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#hotel"><i class="flaticon-building"></i> Hotel</a></li>
-                        <li><a data-toggle="tab" href="#tour"><i class="flaticon-global"></i> Tours</a></li>
-                        <li><a data-toggle="tab" href="#flight"><i class="fa fa-plane"></i> Flight</a></li>
-                        <li><a data-toggle="tab" href="#car"><i class="fa fa-car"></i> Cars</a></li>
-                        <li><a data-toggle="tab" href="#yatch"><i class="flaticon-yatch-with-sails"></i> Yatch</a></li>
-                    </ul>
-                </div>    
+<section class="banner-form form-style2">
+    <div class="container">
+        <div class="form-content">
+            <div class="price-navtab text-center">
+                <ul class="nav nav-tabs" style="margin-bottom: 10px;">
+                    <li style="display: inline-block; margin-right: -4px;">
+                        <a data-toggle="tab" href="#hotel" aria-expanded="false" style="padding: 10px 20px; font-size: 20px;">
+                            <i class="flaticon-building"></i> Hotel
+                        </a>
+                    </li>
+                    <li style="display: inline-block; margin-right: -4px;">
+                        <a data-toggle="tab" href="#tour" aria-expanded="false" style="padding: 10px 20px; font-size: 20px;">
+                            <i class="flaticon-global"></i> Trip
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
-                <div class="tab-content">
-                    <div id="hotel" class="tab-pane in active">
-                        <div class="row filter-box">
-                            <div class="col-md-3 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Your Destination</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-placeholder"></i>
-                                        <select class="niceSelect">
-                                            <option value="1">Where are you going?</option>
-                                            <option value="2">Argentina</option>
-                                            <option value="3">Belgium</option>
-                                            <option value="4">Canada</option>
-                                            <option value="5">Denmark</option>
-                                        </select>
-                                    </div>                            
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>Reserved Date</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-calendar"></i>
-                                        <input id="date-range0" type="text" placeholder="yyyy-mm-dd">
-                                    </div>                            
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>Hotel Types</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-add-user"></i>
-                                        <select class="niceSelect">
-                                            <option value="1">High Class</option>
-                                            <option value="2">Middle Class</option>
-                                            <option value="3">Low Class</option>
-                                        </select>
-                                    </div>                             
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>Person</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-add-user"></i>
-                                        <select class="niceSelect">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                    </div>                             
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-12 col-xs-12">
-                                <div class="form-group mar-0">
-                                    <a href="#" class="biz-btn"><i class="fa fa-search"></i> Find Now</a>                         
+
+            <div class="tab-content">
+                <div id="hotel" class="tab-pane active">
+                    <div class="row filter-box">
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label>Your Destination</label>
+                                <div class="input-box">
+                                    <i class="flaticon-placeholder"></i>
+                                    <select class="niceSelect" style="display: none;">
+                                        <option value="1">Where are you going?</option>
+                                        <option value="2">Argentina</option>
+                                        <option value="3">Belgium</option>
+                                        <option value="4">Canada</option>
+                                        <option value="5">Denmark</option>
+                                    </select><div class="nice-select niceSelect" tabindex="0"><span class="current">Where are you going?</span><ul class="list"><li data-value="1" class="option selected">Where are you going?</li><li data-value="2" class="option">Argentina</li><li data-value="3" class="option">Belgium</li><li data-value="4" class="option">Canada</li><li data-value="5" class="option">Denmark</li></ul></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div id="tour" class="tab-pane">
-                        <div class="row filter-box">
-                            <div class="col-md-3 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Your Destination</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-placeholder"></i>
-                                        <select class="niceSelect">
-                                            <option value="1">Where are you going?</option>
-                                            <option value="2">Argentina</option>
-                                            <option value="3">Belgium</option>
-                                            <option value="4">Canada</option>
-                                            <option value="5">Denmark</option>
-                                        </select>
-                                    </div>                            
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>Check In</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-calendar"></i>
-                                        <input id="date-range0" type="text" placeholder="yyyy-mm-dd">
-                                    </div>                            
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>Check Out</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-calendar"></i>
-                                        <input id="date-range1" type="text" placeholder="yyyy-mm-dd">
-                                    </div>                            
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>Adult</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-add-user"></i>
-                                        <select class="niceSelect">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                    </div>                             
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>Children</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-add-user"></i>
-                                        <select class="niceSelect">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                    </div>                             
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-12 col-xs-12">
-                                <div class="form-group mar-0">
-                                    <a href="#" class="biz-btn"><i class="fa fa-search"></i> Find Now</a>                         
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label>Reserved Date</label>
+                                <div class="input-box">
+                                    <i class="flaticon-calendar"></i>
+                                    <input id="date-range0" type="text" placeholder="yyyy-mm-dd">
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div id="flight" class="tab-pane">
-                        <div class="row filter-box">
-                            <div class="col-md-3 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Flying From</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-placeholder"></i>
-                                        <select class="niceSelect">
-                                            <option value="1">Where are you going?</option>
-                                            <option value="2">Argentina</option>
-                                            <option value="3">Belgium</option>
-                                            <option value="4">Canada</option>
-                                            <option value="5">Denmark</option>
-                                        </select>
-                                    </div>                            
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Flying To</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-placeholder"></i>
-                                        <select class="niceSelect">
-                                            <option value="1">Where are you going?</option>
-                                            <option value="2">Argentina</option>
-                                            <option value="3">Belgium</option>
-                                            <option value="4">Canada</option>
-                                            <option value="5">Denmark</option>
-                                        </select>
-                                    </div>                            
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>Depart Date</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-calendar"></i>
-                                        <input id="date-range0" type="text" placeholder="yyyy-mm-dd">
-                                    </div>                            
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>Adult</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-add-user"></i>
-                                        <select class="niceSelect">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                    </div>                             
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>Children</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-add-user"></i>
-                                        <select class="niceSelect">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                    </div>                             
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-12 col-xs-12">
-                                <div class="form-group mar-0">
-                                    <a href="#" class="biz-btn"><i class="fa fa-search"></i> Find Now</a>                         
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label>Hotel Types</label>
+                                <div class="input-box">
+                                    <i class="flaticon-add-user"></i>
+                                    <select class="niceSelect" style="display: none;">
+                                        <option value="1">High Class</option>
+                                        <option value="2">Middle Class</option>
+                                        <option value="3">Low Class</option>
+                                    </select><div class="nice-select niceSelect" tabindex="0"><span class="current">High Class</span><ul class="list"><li data-value="1" class="option selected">High Class</li><li data-value="2" class="option">Middle Class</li><li data-value="3" class="option">Low Class</li></ul></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div id="car" class="tab-pane">
-                        <div class="row filter-box">
-                            <div class="col-md-3 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Car Types</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-placeholder"></i>
-                                        <select class="niceSelect">
-                                            <option value="1">Ferrari</option>
-                                            <option value="2">BMW</option>
-                                            <option value="3">Audi</option>
-                                            <option value="4">Honda</option>
-                                            <option value="5">Suzuki</option>
-                                        </select>
-                                    </div>                            
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>Pick Up</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-calendar"></i>
-                                        <input id="date-range0" type="text" placeholder="yyyy-mm-dd">
-                                    </div>                            
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>Drop Off</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-calendar"></i>
-                                        <input id="date-range1" type="text" placeholder="yyyy-mm-dd">
-                                    </div>                            
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Price Range</label>
-                                    <div class="input-box">
-                                        <div class="range-slider">
-                                            <div data-min="0" data-max="2000" data-unit="$" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false">
-                                                <span class="min-value">0 $</span> 
-                                                <span class="max-value">2000 $</span>
-                                                <div class="ui-slider-range ui-widget-header ui-corner-all whole" style="left: 0%; width: 100%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>                            
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-12 col-xs-12">
-                                <div class="form-group mar-0">
-                                    <a href="#" class="biz-btn"><i class="fa fa-search"></i> Find Now</a>                         
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label>Person</label>
+                                <div class="input-box">
+                                    <i class="flaticon-add-user"></i>
+                                    <select class="niceSelect" style="display: none;">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select><div class="nice-select niceSelect" tabindex="0"><span class="current">1</span><ul class="list"><li data-value="1" class="option selected">1</li><li data-value="2" class="option">2</li><li data-value="3" class="option">3</li><li data-value="4" class="option">4</li><li data-value="5" class="option">5</li></ul></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div id="yatch" class="tab-pane">
-                        <div class="row filter-box">
-                            <div class="col-md-3 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Flying From</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-placeholder"></i>
-                                        <select class="niceSelect">
-                                            <option value="1">Where are you going?</option>
-                                            <option value="2">Argentina</option>
-                                            <option value="3">Belgium</option>
-                                            <option value="4">Canada</option>
-                                            <option value="5">Denmark</option>
-                                        </select>
-                                    </div>                            
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>Depart Date</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-calendar"></i>
-                                        <input id="date-range1" type="text" placeholder="yyyy-mm-dd">
-                                    </div>                            
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label>Cruise Type</label>
-                                    <div class="input-box">
-                                        <i class="flaticon-add-user"></i>
-                                        <select class="niceSelect">
-                                            <option value="1">Sail Boat</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                    </div>                             
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-12 col-xs-12">
-                                <div class="form-group mar-0">
-                                    <a href="#" class="biz-btn"><i class="fa fa-search"></i> Find Now</a>                         
-                                </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <div class="form-group mar-0">
+                                <a href="#" class="biz-btn"><i class="fa fa-search"></i> Find Now</a>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div id="tour" class="tab-pane">
+                    <div class="row filter-box">
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label>Your Destination</label>
+                                <div class="input-box">
+                                    <i class="flaticon-placeholder"></i>
+                                    <select class="niceSelect" style="display: none;">
+                                        <option value="1">Where are you going?</option>
+                                        <option value="2">Argentina</option>
+                                        <option value="3">Belgium</option>
+                                        <option value="4">Canada</option>
+                                        <option value="5">Denmark</option>
+                                    </select><div class="nice-select niceSelect" tabindex="0"><span class="current">Where are you going?</span><ul class="list"><li data-value="1" class="option selected">Where are you going?</li><li data-value="2" class="option">Argentina</li><li data-value="3" class="option">Belgium</li><li data-value="4" class="option">Canada</li><li data-value="5" class="option">Denmark</li></ul></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label>Check In</label>
+                                <div class="input-box">
+                                    <i class="flaticon-calendar"></i>
+                                    <input id="date-range0" type="text" placeholder="yyyy-mm-dd">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label>Check Out</label>
+                                <div class="input-box">
+                                    <i class="flaticon-calendar"></i>
+                                    <input id="date-range1" type="text" placeholder="yyyy-mm-dd">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label>Adult</label>
+                                <div class="input-box">
+                                    <i class="flaticon-add-user"></i>
+                                    <select class="niceSelect" style="display: none;">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select><div class="nice-select niceSelect" tabindex="0"><span class="current">1</span><ul class="list"><li data-value="1" class="option selected">1</li><li data-value="2" class="option">2</li><li data-value="3" class="option">3</li><li data-value="4" class="option">4</li><li data-value="5" class="option">5</li></ul></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label>Children</label>
+                                <div class="input-box">
+                                    <i class="flaticon-add-user"></i>
+                                    <select class="niceSelect" style="display: none;">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select><div class="nice-select niceSelect" tabindex="0"><span class="current">1</span><ul class="list"><li data-value="1" class="option selected">1</li><li data-value="2" class="option">2</li><li data-value="3" class="option">3</li><li data-value="4" class="option">4</li><li data-value="5" class="option">5</li></ul></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <div class="form-group mar-0">
+                                <a href="#" class="biz-btn"><i class="fa fa-search"></i> Find Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+  
+       
+             
             </div>
         </div>
-    </section>
+    </div>
+</section>
     <!-- form ends -->
 
-    <!-- why us starts -->
-    <section class="why-us">
-        <div class="container">
-            <div class="why-us-box">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="why-us-item why-us-item1 text-center">
-                            <div class="why-us-icon">
-                                <i class="flaticon-call"></i>
-                            </div>
-                            <div class="why-us-content">
-                                <h4>Advice & Support</h4>
-                                <p class="mar-0">Travel worry free knowing that we're here if you need us, 24 hours a day</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="why-us-item why-us-item1 text-center">
-                            <div class="why-us-icon">
-                                <i class="flaticon-global"></i>
-                            </div>
-                            <div class="why-us-content">
-                                <h4>Air Ticketing</h4>
-                                <p class="mar-0">Travel worry free knowing that we're here if you need us, 24 hours a day</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="why-us-item why-us-item1 text-center">
-                            <div class="why-us-icon">
-                                <i class="flaticon-building"></i>
-                            </div>
-                            <div class="why-us-content">
-                                <h4>Hotel Accomodation</h4>
-                                <p class="mar-0">Travel worry free knowing that we're here if you need us, 24 hours a day</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="why-us-item why-us-item1 text-center">
-                            <div class="why-us-icon">
-                                <i class="flaticon-location-pin"></i>
-                            </div>
-                            <div class="why-us-content">
-                                <h4>Tour Peckages</h4>
-                                <p class="mar-0">Travel worry free knowing that we're here if you need us, 24 hours a day</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- why us ends -->
+  
 
      <!-- why us about starts -->
     <section class="why-us pad-top-80 bg-grey">
         <div class="container">
-            <div class="why-us-about">
-                <div class="row display-flex">
+        <div class="why-us-about">
+            <div class="row display-flex justify-content-center">
                     <div class="col-md-6 col-xs-12">
                         <div class="why-about-inner">
-                            <h4>Amazing Places To Enjony Your Travel</h4>
                             <h2>We Provide <span>Best Services</span></h2>
-                            <p class="mar-bottom-25">Aliquam erat volutpat. Curabitur tempor nibh quis arcu convallis, sed viverra quam sollicitudin. Proin sed augue sed neque ultricies condimentum. In ac ultrices lectus.<br> Nullam ex elit, vestibulum ut urna non, tincidunt condimentum sem. Sed enim tortor, accumsan at consequat et, tempus sit ame</p>
-                            <a href="#" class="biz-btn biz-btn1">Read More</a>
+                            <h4>Amazing Places To Enjony Your Travel</h4>
+                        <p class="mar-bottom-25 ">Aliquam erat volutpat. Curabitur tempor nibh quis arcu convallis, sed viverra quam sollicitudin. Proin sed augue sed neque ultricies condimentum. In ac ultrices lectus.<br> Nullam ex elit, vestibulum ut urna non, tincidunt condimentum sem. Sed enim tortor, accumsan at consequat et, tempus sit ame</p>
+                        
                         </div>
                     </div>
-                    <div class="col-md-6 col-xs-12">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="why-about-image">
-                                    <img src="images/list3.jpg" alt="about">
+            
+                    <div class="row justify-content-center">
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="why-us-item why-us-item1 text-center">
+                                <div class="why-us-icon">
+                                    <i class="flaticon-call"></i>
+                                </div>
+                                <div class="why-us-content">
+                                    <h4>Advice & Support</h4>
+                                    <p class="mar-0">Travel worry free knowing that we're here if you need us, 24 hours a day</p>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="why-about-image">
-                                    <img src="images/list1.jpg" alt="about">
+                        </div>
+
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="why-us-item why-us-item1 text-center">
+                                <div class="why-us-icon">
+                                    <i class="flaticon-building"></i>
+                                </div>
+                                <div class="why-us-content">
+                                    <h4>Hotel Accomodation</h4>
+                                    <p class="mar-0">Travel worry free knowing that we're here if you need us, 24 hours a day</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="why-us-item why-us-item1 text-center">
+                                <div class="why-us-icon">
+                                    <i class="flaticon-location-pin"></i>
+                                </div>
+                                <div class="why-us-content">
+                                    <h4>Tour Peckages</h4>
+                                    <p class="mar-0">Travel worry free knowing that we're here if you need us, 24 hours a day</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                
                 </div>
             </div>
         </div>
@@ -476,128 +278,30 @@
                 <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
             </div>
             <div class="content">
-                <div class="row">
+            <div class="row">
+                @for (int i = 0; i < Math.Min(Model.Count, 3); i++)
+                {
+                    var tour = Model[i];
                     <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">
                         <div class="td-item td-item">
-                            <div class="td-image">
-                                <img src="images/destination5.jpg" alt="image">
-                            </div>
+                            @if (tour != null && tour.Img != null)
+                            {
+                                <div class="td-image">
+                                    <img src="@tour.Img" alt="image" height="300px">
+                                </div>
+                            }
                             <p class="price white">From <span>$350.00</span></p>
                             <div class="td-content">
-                                <div class="rating mar-bottom-15">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                               <h3><i class="fa fa-map-marker-alt"></i> Ukraine</h3>
-                               <p class="white">Amet mauris commodo quis. Magna iaculis eu non diam phasellus vestibulum lorem</p>
+                                <h3><i class="fa fa-map-marker-alt"></i> @tour.Name</h3>
+                                <p class="white">@tour.Description</p>
                                 <a href="#" class="biz-btn">Book Now</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">
-                        <div class="td-item">
-                            <div class="td-image">
-                                <img src="images/destination4.jpg" alt="image">
-                            </div>
-                            <p class="price white">From <span>$350.00</span></p>
-                            <div class="td-content">
-                                <div class="rating mar-bottom-15">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                               <h3><i class="fa fa-map-marker-alt"></i> France</h3>
-                               <p class="white">Amet mauris commodo quis. Magna iaculis eu non diam phasellus vestibulum lorem</p>
-                                <a href="#" class="biz-btn">Book Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">
-                        <div class="td-item">
-                            <div class="td-image">
-                                <img src="images/destination3.jpg" alt="image">
-                            </div>
-                            <p class="price white">From <span>$350.00</span></p>
-                            <div class="td-content">
-                                <div class="rating mar-bottom-15">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                               <h3><i class="fa fa-map-marker-alt"></i> India</h3>
-                                <p class="white">Amet mauris commodo quis. Magna iaculis eu non diam phasellus vestibulum lorem</p>
-                                <a href="#" class="biz-btn">Book Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="td-item td-item">
-                            <div class="td-image">
-                                <img src="images/destination6.jpg" alt="image">
-                            </div>
-                            <p class="price white">From <span>$350.00</span></p>
-                            <div class="td-content">
-                                <div class="rating mar-bottom-15">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                               <h3><i class="fa fa-map-marker-alt"></i> Ukraine</h3>
-                               <p class="white">Amet mauris commodo quis. Magna iaculis eu non diam phasellus vestibulum lorem</p>
-                                <a href="#" class="biz-btn">Book Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="td-item">
-                            <div class="td-image">
-                                <img src="images/destination7.jpg" alt="image">
-                            </div>
-                            <p class="price white">From <span>$350.00</span></p>
-                            <div class="td-content">
-                                <div class="rating mar-bottom-15">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                               <h3><i class="fa fa-map-marker-alt"></i> France</h3>
-                               <p class="white">Amet mauris commodo quis. Magna iaculis eu non diam phasellus vestibulum lorem</p>
-                                <a href="#" class="biz-btn">Book Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="td-item">
-                            <div class="td-image">
-                                <img src="images/destination8.jpg" alt="image">
-                            </div>
-                            <p class="price white">From <span>$350.00</span></p>
-                            <div class="td-content">
-                                <div class="rating mar-bottom-15">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </div>
-                               <h3><i class="fa fa-map-marker-alt"></i> India</h3>
-                                <p class="white">Amet mauris commodo quis. Magna iaculis eu non diam phasellus vestibulum lorem</p>
-                                <a href="#" class="biz-btn">Book Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                }
+            </div>
+
+           
             </div>
         </div>
     </section>
@@ -621,7 +325,7 @@
                                     <div class="trend-item">
                                         <div class="ribbon ribbon-top-left"><span>25% OFF</span></div>
                                         <div class="trend-image">
-                                            <img src="images/trending1.jpg" alt="image">
+                                    <img src="https://images.unsplash.com/photo-1486299267070-83823f5448dd?auto=format&fit=crop&q=80&w=2071&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="image" width="300px" height="300px">
                                             <div class="trend-tags">
                                                 <a href="#"><i class="flaticon-like"></i></a>
                                             </div>
@@ -647,7 +351,7 @@
                                 <div class="col-md-4">
                                     <div class="trend-item">
                                         <div class="trend-image">
-                                            <img src="images/trending2.jpg" alt="image">
+                                    <img src="https://wallpapercave.com/wp/wp2953021.jpg" alt="image" width="300px" height="300px">
                                             <div class="trend-tags">
                                                 <a href="#"><i class="flaticon-like"></i></a>
                                             </div>
@@ -675,7 +379,7 @@
                                     <div class="trend-item">
                                         <div class="ribbon ribbon-top-left"><span>Featured</span></div>
                                         <div class="trend-image">
-                                            <img src="images/trending3.jpg" alt="image">
+                                    <img src="https://wallpapers.com/images/hd/colosseum-in-rome-italy-7iqtaywcklbmptxa.webp" alt="image" width="300px" height="300px">
                                             <div class="trend-tags">
                                                 <a href="#"><i class="flaticon-like"></i></a>
                                             </div>
@@ -685,7 +389,7 @@
                                             </div>
                                         </div>
                                         <div class="trend-content">
-                                            <p><i class="flaticon-location-pin"></i> Denmark</p>
+                                            <p><i class="flaticon-location-pin"></i> Italy</p>
                                             <h4><a href="#">NYC One World Observatory Skip-the-Line Ticket</a></h4>
                                             <div class="rating mar-bottom-15">
                                                 <span class="fa fa-star checked"></span>
@@ -702,7 +406,7 @@
                                 <div class="col-md-4">
                                     <div class="trend-item">
                                         <div class="trend-image">
-                                            <img src="images/trending4.jpg" alt="image">
+                                    <img src="https://wallpapercave.com/dwp1x/wp8968593.jpg" alt="image" width="300px" height="300px">
                                             <div class="trend-tags">
                                                 <a href="#"><i class="flaticon-like"></i></a>
                                             </div>
@@ -711,7 +415,7 @@
                                             </div>
                                         </div>
                                         <div class="trend-content">
-                                            <p><i class="flaticon-location-pin"></i> Japan</p>
+                                    <p><i class="flaticon-location-pin"></i> switzerland</p>
                                             <h4><a href="#">Stonehenge, Windsor Castle, and Bath from London</a></h4>
                                             <div class="rating mar-bottom-15">
                                                 <span class="fa fa-star checked"></span>
@@ -752,7 +456,7 @@
                     <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">
                         <div class="slider-item">
                             <div class="slider-image">
-                                <img src="images/trending7.jpg" alt="image">
+                            <img src="https://images.unsplash.com/photo-1454537468202-b7ff71d51c2e?auto=format&fit=crop&q=80&w=2069&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="image">
                             </div>
                             <div class="slider-content">
                                 <h6 class="mar-bottom-10"><i class="fa fa-map-marker-alt"></i> United Kingdom</h6>
@@ -771,7 +475,7 @@
                     <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">
                         <div class="slider-item">
                             <div class="slider-image">
-                                <img src="images/trending8.jpg" alt="image">
+                            <img src="https://c4.wallpaperflare.com/wallpaper/481/1018/366/5bd33b3230b20-wallpaper-preview.jpg" alt="image">
                             </div>
                             <div class="slider-content">
                                 <h6 class="mar-bottom-10"><i class="fa fa-map-marker-alt"></i> Thailand</h6>
@@ -790,7 +494,7 @@
                     <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">    
                         <div class="slider-item">
                             <div class="slider-image">
-                                <img src="images/trending9.jpg" alt="image">
+                            <img src="https://wallpaperaccess.com/full/1523028.jpg" alt="image">
                             </div>
                             <div class="slider-content">
                                 <h6 class="mar-bottom-10"><i class="fa fa-map-marker-alt"></i> South Korea</h6>
@@ -809,7 +513,7 @@
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="slider-item">
                             <div class="slider-image">
-                                <img src="images/trending10.jpg" alt="image">
+                            <img src="https://wallpapercosmos.com/cdn-cgi/image/width=1920,quality=40,format=auto/w/full/2/f/0/34338-3840x2160-desktop-4k-germany-wallpaper-image.jpg" alt="image">
                             </div>
                             <div class="slider-content">
                                 <h6 class="mar-bottom-10"><i class="fa fa-map-marker-alt"></i> Germany</h6>
@@ -829,7 +533,7 @@
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="slider-item">
                             <div class="slider-image">
-                                <img src="images/trending6.jpg" alt="image">
+                            <img src="https://c4.wallpaperflare.com/wallpaper/563/432/897/mexico-maya-pyramid-chichen-itza-wallpaper-preview.jpg" alt="image">
                             </div>
                             <div class="slider-content">
                                 <h6 class="mar-bottom-10"><i class="fa fa-map-marker-alt"></i> Mexico</h6>
@@ -849,10 +553,10 @@
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="slider-item">
                             <div class="slider-image">
-                                <img src="images/trending5.jpg" alt="image">
+                            <img src="https://wallpapers.com/images/featured/spain-j1g26le08m3c8fks.webp" alt="image">
                             </div>
                             <div class="slider-content">
-                                <h6 class="mar-bottom-10"><i class="fa fa-map-marker-alt"></i> Nepal</h6>
+                                <h6 class="mar-bottom-10"><i class="fa fa-map-marker-alt"></i> Spain</h6>
                                 <h4 class="mar-bottom-15">Earning Asiana Club Miles</h4>
                                 <div class="rate-rev mar-bottom-20">
                                     <span class="num-rating mar-right-5">4.6/5</span>
