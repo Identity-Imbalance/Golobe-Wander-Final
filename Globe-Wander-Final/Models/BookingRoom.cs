@@ -11,7 +11,8 @@
         public decimal Cost { get; set; }
 
         public int Duration { get; set; }
-
+        public DateTime CheckIn { get; set; }
+        public DateTime CheckOut { get; set; }
         public decimal TotalPrice { get; set; }
 
         public string Username { get; set; }

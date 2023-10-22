@@ -38,12 +38,11 @@
     <section class="breadcrumb-outer text-center">
         <div class="container">
             <div class="breadcrumb-content">
-                <h2 class="white">Flight Grid</h2>
+                <h2 class="white">Trips</h2>
                 <nav aria-label="breadcrumb">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Flight</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Flight Grid</li>
+                        <li class="breadcrumb-item active" aria-current="page">Trips</li>
                     </ul>
                 </nav>
             </div>
@@ -97,7 +96,10 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="ticket-item list-ticket">
                                     <div class="ticket-image">
-                                        <img src="~/imgs/petra.jpg" alt="image">
+                                            @foreach (var image in item.TripImages.Take(1))
+                                            {
+                                                <img src="@image.Path" alt="@item.Name">
+                                            }
                                     </div>
                                     <div class="flight-content">
                                         <div class="ticket-content">

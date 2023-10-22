@@ -12,10 +12,11 @@ namespace Globe_Wander_Final.Models.Services
     public class IdentityUserService : IUser
     {
         private readonly UserManager<ApplicationUser> _UserManager;
-
-        public IdentityUserService(UserManager<ApplicationUser> manager)
+        private SignInManager<ApplicationUser> _signInManager;
+        public IdentityUserService(UserManager<ApplicationUser> manager,SignInManager<ApplicationUser>sim)
         {
             _UserManager = manager;
+            _signInManager = sim;
         }
 
 
@@ -26,15 +27,17 @@ namespace Globe_Wander_Final.Models.Services
         /// <param name="password">Password of the user.</param>
         public async Task<UserDTO> Authenticate(string username, string password)
         {
-            var user = await _UserManager.FindByNameAsync(username);
-            bool isValidPass = await _UserManager.CheckPasswordAsync(user, password);
-            if (isValidPass)
+            var result = await _signInManager.PasswordSignInAsync(username,password,true,false);
+
+           
+            if (result.Succeeded)
             {
+                var user = await _UserManager.FindByNameAsync(username);
                 return new UserDTO
                 {
                     Id = user.Id,
                     UserName = user.UserName,
-                    //Token = await tokenService.GetToken(user, System.TimeSpan.FromMinutes(100)),
+                 //Token = await tokenService.GetToken(user, System.TimeSpan.FromMinutes(100)),
                     Roles = await _UserManager.GetRolesAsync(user)
                 };
             }
@@ -72,50 +75,88 @@ namespace Globe_Wander_Final.Models.Services
         /// <param name="modelState">ModelStateDictionary to store validation errors.</param>
         public async Task<UserDTO> Register(RegisterUserDTO registerUserDto, ModelStateDictionary modelState, ClaimsPrincipal User)
         {
-            bool IsAdminManager = User.IsInRole("Admin Manager");
-
-            if (IsAdminManager || registerUserDto.Roles.Contains("User"))
+            if (!modelState.IsValid)
             {
-                var user = new ApplicationUser()
-                {
-                    UserName = registerUserDto.UserName,
-                    Email = registerUserDto.Email,
-                    PhoneNumber = registerUserDto.PhoneNumber,
-                };
-                var result = await _UserManager.CreateAsync(user, registerUserDto.Password);
-                if (result.Succeeded)
-                {
-                    await _UserManager.AddToRolesAsync(user, registerUserDto.Roles);
-                    return new UserDTO
-                    {
-                        Id = user.Id,
-                        UserName = user.UserName,
-                        //Token = await tokenService.GetToken(user, System.TimeSpan.FromMinutes(100)),
-                        Roles = await _UserManager.GetRolesAsync(user)
-
-                    };
-                }
-                else
-                {
-                    foreach (var error in result.Errors)
-                    {
-                        var errorMessage = error.Code.Contains("Password") ? nameof(registerUserDto.Password) :
-                                           error.Code.Contains("Email") ? nameof(registerUserDto.Email) :
-                                           error.Code.Contains("Username") ? nameof(registerUserDto.UserName) :
-                                           //  error.Code.Contains("Phone") ? nameof(registerUserDto.Phone) :
-                                           "";
-                        modelState.AddModelError(errorMessage, error.Description);
-
-                    };
-                    return null;
-                }
-
-            }
-            else
-            {
-                modelState.AddModelError("", "You don't have permission to create this type of account.");
                 return null;
             }
+            var newUser = new ApplicationUser
+            {
+                UserName = registerUserDto.UserName,
+                Email = registerUserDto.Email,
+                PhoneNumber = registerUserDto.PhoneNumber,
+            };
+            var result = await _UserManager.CreateAsync(newUser,registerUserDto.Password);
+            if (result.Succeeded)
+            {
+                await _UserManager.AddToRolesAsync(newUser, registerUserDto.Roles);
+                return new UserDTO
+                {
+                    Id = newUser.Id,
+                    UserName = newUser.UserName,
+                    Roles = await _UserManager.GetRolesAsync(newUser)
+                };
+            
+            }
+            var exisitngUser = await _UserManager.FindByEmailAsync(registerUserDto.Email);
+            if (exisitngUser != null)
+            {
+                modelState.AddModelError(nameof(registerUserDto.Email), "Email Is Already Exisit!!");
+                return null;
+            }
+            foreach(var error in result.Errors)
+            {
+                var errorKey =
+                    error.Code.Contains("Password") ? nameof(registerUserDto.Password) :
+                    error.Code.Contains("Email") ? nameof(registerUserDto.Email) :
+                    error.Code.Contains("UserName") ? nameof(registerUserDto.UserName) :
+                    "";
+                modelState.AddModelError(errorKey, error.Description);
+            }
+            return null;
+            //bool IsAdminManager = User.IsInRole("Admin Manager");
+
+            //if (IsAdminManager || registerUserDto.Roles.Contains("User"))
+            //{
+            //    var user = new ApplicationUser()
+            //    {
+            //        UserName = registerUserDto.UserName,
+            //        Email = registerUserDto.Email,
+            //        PhoneNumber = registerUserDto.PhoneNumber,
+            //    };
+            //    var result = await _UserManager.CreateAsync(user, registerUserDto.Password);
+            //    if (result.Succeeded)
+            //    {
+            //        await _UserManager.AddToRolesAsync(user, registerUserDto.Roles);
+            //        return new UserDTO
+            //        {
+            //            Id = user.Id,
+            //            UserName = user.UserName,
+            //            //Token = await tokenService.GetToken(user, System.TimeSpan.FromMinutes(100)),
+            //            Roles = await _UserManager.GetRolesAsync(user)
+
+            //        };
+            //    }
+            //    else
+            //    {
+            //        foreach (var error in result.Errors)
+            //        {
+            //            var errorMessage = error.Code.Contains("Password") ? nameof(registerUserDto.Password) :
+            //                               error.Code.Contains("Email") ? nameof(registerUserDto.Email) :
+            //                               error.Code.Contains("Username") ? nameof(registerUserDto.UserName) :
+            //                               //  error.Code.Contains("Phone") ? nameof(registerUserDto.Phone) :
+            //                               "";
+            //            modelState.AddModelError(errorMessage, error.Description);
+
+            //        };
+            //        return null;
+            //    }
+
+            //}
+            //else
+            //{
+            //    modelState.AddModelError("", "You don't have permission to create this type of account.");
+            //    return null;
+            //}
 
         }
 

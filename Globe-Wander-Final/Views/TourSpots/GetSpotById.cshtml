@@ -1,0 +1,410 @@
+﻿@model Globe_Wander_Final.Models.DTOs.TourSpotDTO
+
+
+
+
+@{
+  
+}
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status"></div>
+    </div>
+    <!-- Preloader Ends -->
+    <!-- header starts -->
+    <!-- header ends -->
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-outer text-center" style="height:40vh !important">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <h2 class="white">Tour Details</h2>
+                <nav aria-label="breadcrumb">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"></li>
+                       
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    <div class="overlay">
+            <img src="https://cdn.pixabay.com/photo/2012/08/27/14/19/mountains-55067_1280.png"width="100%" />
+        </div>
+    </section>
+    <!-- BreadCrumb Ends -->
+    <!-- hotel detail starts -->
+    <div class="hotel-single-wrapper">
+        <section class="hotel-single">
+            <div class="container">
+                <div class="row">
+                    <div class="">
+                        <div class="single-content">
+                            <div class="single-title mar-bottom-30">
+                                <h2>@Model.Name - @Model.City</h2>
+                             
+                           
+                            </div>
+                            <div class="single-slider mar-bottom-30">
+                                <div class="slider-1 slider-store">
+                                    <div class="detail-slider-item">
+                                        <img src="https://pdtra.gov.jo/EchoBusV3.0/SystemAssets/New%20folder/%D8%A7%D9%84%D8%B3%D9%8A%D9%82.jpg" width="500" height="600px" alt="image">
+                                    </div>
+                                    <div class="detail-slider-item">
+                                        <img src="https://pdtra.gov.jo/EchoBusV3.0/SystemAssets/New%20folder/%D8%A7%D9%84%D8%B3%D8%AF.jpg" width="500" height="600px" alt="image">
+                                    </div>
+                                    <div class="detail-slider-item">
+                                        <img src="https://pdtra.gov.jo/EchoBusV3.0/SystemAssets/New%20folder/%D8%A7%D9%84%D8%B3%D9%8A%D9%82---%D8%A7%D9%84%D9%85%D8%B3%D9%84%D8%A7%D8%AA.jpg" width="500px" height="600px" alt="image">
+                                    </div>
+                                    <div class="detail-slider-item">
+                                        <img src="https://pdtra.gov.jo/EchoBusV3.0/SystemAssets/New%20folder/%D8%A7%D9%84%D8%AF%D9%8A%D8%B1.jpg" width="500" height="550px" alt="image">
+                                    </div>
+                                    <div class="detail-slider-item">
+                                        <img src="https://pdtra.gov.jo/EchoBusV3.0/SystemAssets/New%20folder/%D9%85%D8%AF%D9%81%D9%86-%D8%A7%D9%84%D8%AD%D8%B1%D9%8A%D8%B1.jpg" width="500px" height="600px" alt="image">
+                                    </div>
+                                    <div class="detail-slider-item">
+                                        <img src="https://pdtra.gov.jo/EchoBusV3.0/SystemAssets/New%20folder/%D9%82%D8%A8%D8%B1-%D8%A7%D9%84%D8%AC%D8%B1%D8%A9.jpg" width="500px" height="600px" alt="image">
+                                    </div>
+                                    <div class="detail-slider-item">
+                                        <img src="https://pdtra.gov.jo/EchoBusV3.0/SystemAssets/New%20folder/%D8%A7%D9%84%D9%85%D8%B3%D8%B1%D8%AD.jpg" width="500px" height="600px" alt="image">
+                                    </div>
+                                    <div class="detail-slider-item">
+                                        <img src="https://pdtra.gov.jo/EchoBusV3.0/SystemAssets/New%20folder/%D8%B4%D8%A7%D8%B1%D8%B9-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%AF%D8%A9.jpg" width="500px" height="600px" alt="image">
+                                    </div>
+                                    <div class="detail-slider-item">
+                                        <img src="https://safarin.net/wp-content/uploads/2019/01/19-01-09_15-48-16.jpg" width="500px" height="600px" alt="image">
+                                    </div>
+                                </div>
+                                <div class="slider-1 slider-thumbs">
+                                    <div class="detail-slider-item">
+                                        <img src="https://pdtra.gov.jo/EchoBusV3.0/SystemAssets/New%20folder/%D8%A7%D9%84%D8%B3%D9%8A%D9%82.jpg" width="150px" height="150px" alt="image">
+                                    </div>
+                                    <div class="detail-slider-item">
+                                        <img src="https://pdtra.gov.jo/EchoBusV3.0/SystemAssets/New%20folder/%D8%A7%D9%84%D8%B3%D8%AF.jpg" width="150px" height="150px" alt="image">
+                                    </div>
+                                    <div class="detail-slider-item">
+                                        <img src="https://pdtra.gov.jo/EchoBusV3.0/SystemAssets/New%20folder/%D8%A7%D9%84%D8%B3%D9%8A%D9%82---%D8%A7%D9%84%D9%85%D8%B3%D9%84%D8%A7%D8%AA.jpg" width="150px" height="150px" alt="image">
+                                    </div>
+                                    <div class="detail-slider-item">
+                                        <img src="https://pdtra.gov.jo/EchoBusV3.0/SystemAssets/New%20folder/%D8%A7%D9%84%D8%AF%D9%8A%D8%B1.jpg" width="150px" height="150px" alt="image">
+                                    </div>
+                                    <div class="detail-slider-item">
+                                        <img src="https://pdtra.gov.jo/EchoBusV3.0/SystemAssets/New%20folder/%D9%85%D8%AF%D9%81%D9%86-%D8%A7%D9%84%D8%AD%D8%B1%D9%8A%D8%B1.jpg" width="150px" height="150px" alt="image">
+                                    </div>
+                                    <div class="detail-slider-item">
+                                        <img src="https://pdtra.gov.jo/EchoBusV3.0/SystemAssets/New%20folder/%D9%82%D8%A8%D8%B1-%D8%A7%D9%84%D8%AC%D8%B1%D8%A9.jpg" width="150px" height="150px" alt="image">
+                                    </div>
+                                    <div class="detail-slider-item">
+                                        <img src="https://pdtra.gov.jo/EchoBusV3.0/SystemAssets/New%20folder/%D8%A7%D9%84%D9%85%D8%B3%D8%B1%D8%AD.jpg" width="150px" height="150px" alt="image">
+                                    </div>
+                                    <div class="detail-slider-item">
+                                        <img src="https://pdtra.gov.jo/EchoBusV3.0/SystemAssets/New%20folder/%D8%B4%D8%A7%D8%B1%D8%B9-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%AF%D8%A9.jpg" width="150px" height="150px" alt="image">
+                                    </div>
+                                    <div class="detail-slider-item">
+                                        <img src="https://safarin.net/wp-content/uploads/2019/01/19-01-09_15-48-16.jpg" width="150px" height="150px" alt="image">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- blog review -->
+
+
+                        </div>
+                    </div>
+                    <div class="description detail-box">
+                        <div class="detail-title">
+                            <h3>Description</h3>
+                        </div>
+                        <div class="description-content">
+                            <p>
+                                Petra is an ancient archaeological site located in southern Jordan, known for its remarkable rock-cut architecture and historical significance. It was the capital of the Nabatean Kingdom, an ancient Arab civilization, and is now a UNESCO World Heritage Site.
+
+                                One of Petra's most iconic structures is the Al-Khazneh, also known as the "Treasury," which is a grand temple carved into a rose-red cliff. The city is renowned for its intricate tombs, temples, and monuments, all intricately carved into the rugged desert landscape. Notable structures include the Monastery (Ad Deir), the Royal Tombs, and the High Place of Sacrifice.
+
+                                Petra's history dates back to around 312 BC, and it served as a major trading hub connecting Arabia, Egypt, and the Mediterranean. Its unique architecture and rock-cut facades make it an architectural marvel and a significant cultural heritage site. The city was abandoned and lost to the Western world for centuries, only to be rediscovered in the early 19th century by Swiss explorer Johann Ludwig Burckhardt.
+
+                                Today, Petra stands as one of the most visited tourist attractions in Jordan, drawing travelers from around the world to marvel at its ancient wonders and explore the rich history of the Nabateans. It is a testament to the ingenuity and craftsmanship of ancient civilizations and continues to captivate visitors with its awe-inspiring beauty and historical significance. @Model.Description
+                            </p>
+
+
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <section class="hotel-nearby bg-grey">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Related <span>Holiday</span> Plan</h2>
+                        <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                    </div>
+                    <div class="row top-deal-slider">
+                        <div class="col-md-4">
+                            <div class="trend-item">
+                                <div class="trend-image">
+                                    <img src="images/trending4.jpg" alt="image">
+                                    <div class="trend-tags">
+                                        <a href="#"><i class="flaticon-like"></i></a>
+                                    </div>
+                                    <div class="trend-price">
+                                        <p class="price">From <span>$350.00</span></p>
+                                    </div>
+                                </div>
+                                <div class="trend-content">
+                                    <p><i class="flaticon-location-pin"></i> Japan</p>
+                                    <h4><a href="#">Stonehenge, Windsor Castle, and Bath from London</a></h4>
+                                    <div class="rating mar-bottom-15">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star-half checked"></span>
+                                    </div>
+                                    <span class="mar-left-5">21 Reviews</span>
+                                    <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> 3 days & 2 night</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="trend-item">
+                                <div class="ribbon ribbon-top-left"><span>25% OFF</span></div>
+                                <div class="trend-image">
+                                    <img src="images/trending5.jpg" alt="image">
+                                    <div class="trend-tags">
+                                        <a href="#"><i class="flaticon-like"></i></a>
+                                    </div>
+                                    <div class="trend-price">
+                                        <p>Multi-day Tours</p>
+                                        <p class="price">From <span>$899.00</span></p>
+                                    </div>
+                                </div>
+                                <div class="trend-content">
+                                    <p><i class="flaticon-location-pin"></i> Italy</p>
+                                    <h4><a href="#">Bosphorus Strait and Black Sea Half-Day Cruise from Istanbul</a></h4>
+                                    <div class="rating mar-bottom-15">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star-half checked"></span>
+                                        <span class="fa fa-star-half checked"></span>
+                                    </div>
+                                    <span class="mar-left-5">48 Reviews</span>
+                                    <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> 3 days & 2 night</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="trend-item">
+                                <div class="trend-image">
+                                    <img src="images/trending6.jpg" alt="image">
+                                    <div class="trend-tags">
+                                        <a href="#"><i class="flaticon-like"></i></a>
+                                    </div>
+                                    <div class="trend-price">
+                                        <p>Attraction Tickets</p>
+                                        <p class="price">From <span>$350.00</span></p>
+                                    </div>
+                                </div>
+                                <div class="trend-content">
+                                    <p><i class="flaticon-location-pin"></i> Turkey</p>
+                                    <h4><a href="#">NYC One World Observatory Skip-the-Line Ticket</a></h4>
+                                    <div class="rating mar-bottom-15">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                    </div>
+                                    <span class="mar-left-5">18 Reviews</span>
+                                    <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> 3 days & 2 night</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="trend-item">
+                                <div class="ribbon ribbon-top-left"><span>Featured</span></div>
+                                <div class="trend-image">
+                                    <img src="images/trending3.jpg" alt="image">
+                                    <div class="trend-tags">
+                                        <a href="#"><i class="flaticon-like"></i></a>
+                                    </div>
+                                    <div class="trend-price">
+                                        <p>Attraction Tickets</p>
+                                        <p class="price">From <span>$350.00</span></p>
+                                    </div>
+                                </div>
+                                <div class="trend-content">
+                                    <p><i class="flaticon-location-pin"></i> Denmark</p>
+                                    <h4><a href="#">NYC One World Observatory Skip-the-Line Ticket</a></h4>
+                                    <div class="rating mar-bottom-15">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                    </div>
+                                    <span class="mar-left-5">32 Reviews</span>
+                                    <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> 3 days & 2 night</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </div>
+
+    
+    <!-- hotel detail Ends -->
+    <!-- hotel-nearby starts -->
+   
+   
+    <!-- BreadCrumb Ends -->
+    <!-- tour list starts -->
+   
+  
+
+
+    <!-- tour list ends -->
+    <!-- Recommended Hotels-->
+    <section class="hotel-nearby bg-grey">
+        <div class="container">
+            <div class="section-title">
+                <h2>Related <span>Hotels</span></h2>
+                <p>this other hotels you might be intrested in </p>
+            </div>
+            <div class="row top-deal-slider">
+                @foreach (var item in Model.Hotels)
+                {
+                    <div class="col-md-4">
+                        <div class="trend-item">
+                            <div class="trend-image">
+                                @foreach (var image in item.HotelImages.Take(1))
+                                {
+                                    <img src="@image.Path" alt="@item.Name">
+                                }
+                                <div class="trend-tags">
+                                    <a href="#"><i class="flaticon-like"></i></a>
+                                </div>
+                                <div class="trend-price">
+                                    <p class="price">From <span></span></p>
+                                </div>
+                            </div>
+                            <a asp-area="" asp-controller="Hotels" asp-action="SingleHotel" asp-route-id="@item.Id">
+                                <div class="trend-content">
+                                    <p><i class="flaticon-location-pin"></i> @item.Name</p>
+                                    <h4>@item.Description</h4>
+                                    <div class="rating mar-bottom-15">
+                                        @for (int a = item.StarRate; a > 0; a--)
+                                        {
+                                            <span class="fa fa-star checked"></span>
+
+                                        }
+
+                                    </div>
+
+                                    <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i>@item.HotelRoom.Count.ToString() rooms</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!--Recommended Trips-->
+    <section style="margin-top:25px" class="trending bg-grey" >
+        <div class="container">
+            <div class="section-title">
+                <h2><span>Recommended</span> Trips</h2>
+                <p>In Petra, visitors can explore intricately carved tombs and facades, hike through the narrow Siq gorge to reach the iconic Treasury, and enjoy panoramic views from the High Place of Sacrifice. Traditional activities like horseback riding and camel tours offer unique transportation options, providing a memorable journey through this ancient archaeological site. Petra offers a captivating glimpse into the rich history of the Nabatean Kingdom.</p>
+            </div>
+            <div class="row">
+                @foreach (var trip in Model.Trips)
+                {
+                    <div class="col-md-6 col-sm-6 col-xs-12 mar-bottom-30">
+                        <div class="trend-item">
+                            <div class="ribbon ribbon-top-left"><span>25% OFF</span></div>
+                            <div class="trend-image">
+                                <img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/0d/08/eb/30.jpg" alt="image">
+                                <div class="trend-tags">
+                                    <a href="#"><i class="flaticon-like"></i></a>
+                                </div>
+                                <div class="trend-price">
+                                    <p class="price">From <span>$ @trip.Cost</span></p>
+                                </div>
+                            </div>
+                            <div class="trend-content">
+                                <p><i class="flaticon-location-pin"></i> @trip.Activity</p>
+                                <h4><a href="#">@trip.Name</a></h4>
+                       
+                                @{
+                                    int sum = 0;
+                                    int avg = 0;
+                                }
+                                @foreach(var rate in trip.Rates){
+                                    sum = sum +rate.Rating;
+                                     
+                                }
+                               
+                                @{
+                                    if(trip.Rates.Count !=0)
+                                        avg = sum / trip.Rates.Count;
+
+                                }
+                                @if (avg > 0)
+                                {
+                                    <span class="mar-left-5">@avg</span>
+                                }
+                                else
+                                {
+                                    <span class="mar-left-5">Not Rated</span>
+                                }
+                                <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i>From @trip.StartDate To @trip.EndDate</p>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </section>
+
+
+    <!-- footer starts -->
+    <!-- footer ends -->
+    <!-- Back to top start -->
+    <div id="back-to-top">
+        <a href="#"></a>
+    </div>
+    <!-- Back to top ends -->
+    <!-- search popup -->
+    <div id="search1">
+        <button type="button" class="close">×</button>
+        <form>
+            <input type="search" value="" placeholder="type keyword(s) here" />
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+
+
+
+    <!-- *Scripts* -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/color-switcher.js"></script>
+    <script src="js/plugin.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/custom-nav.js"></script>
+
+</body>
+</html>
+
+<script src="~/js/plugin.js"></script> 
+ <script src="~/js/main.js"></script>

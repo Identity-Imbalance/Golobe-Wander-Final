@@ -323,10 +323,10 @@ Change the following styles to modify the appearance of the menu.
 /* Button */
 
 .slicknav_btn {
-    margin: 0;
+    margin: 5px;
     text-decoration: none;
     background-color: transparent;
-    padding: 0;
+    padding: 2px;
     position: relative;
     top: 0;
     right: 0;
@@ -1724,7 +1724,7 @@ section.flash-post {
 
 section.banner-form {
     overflow: visible;
-    padding: 76px 0 64px;
+    padding: 40px 0 64px;
     z-index: 2;
 }
 
@@ -1736,7 +1736,7 @@ section.banner-form .nav-tabs > li > a {
     border-radius: 0;
     background: #f1f1f1;
     border: none;
-    padding: 15px 25px;
+    padding: 0px 0px;
     transition: all 0.5s;
     border-radius: 10px 10px 0 0;
 }
@@ -1747,10 +1747,10 @@ section.banner-form .nav-tabs {
 }
 
 .filter-box, .filter-box1 {
-    padding: 38px 20px 40px;
+    padding: 0px 0px 40px;
     position: relative;
     box-shadow: 0px 0px 30px #cccccc57;
-    margin: 0;
+    margin-top: -20px;
     display: flex;
     align-items: center;
     border-radius: 10px;
@@ -1760,8 +1760,8 @@ section.banner-form .nav-tabs {
     .filter-box.filter-box1 {
         display: inline-block;
         width: 100%;
-        margin-top: -120px;
-        padding-top: 90px;
+        margin-top: -180px;
+        padding-top: 30px;
         background: transparent
     }
 
@@ -7827,3 +7827,4 @@ section.ready-block {
     background-size: cover;
     position: relative;
 }
+
