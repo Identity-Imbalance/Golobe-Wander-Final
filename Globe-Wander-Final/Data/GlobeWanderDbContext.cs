@@ -84,23 +84,23 @@ namespace Globe_Wander_Final.Data
 );
             modelBuilder.Entity<HotelRoom>().HasData(
        new HotelRoom { RoomNumber = 101, HotelID = 1,RoomID = 1, Description = " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", SquareFeet = 500, Bathrooms = 1, Beds = 2,PricePerDay = 150.00m, IsAvailable = true },
-    new HotelRoom { RoomNumber = 102, HotelID = 1, RoomID = 2, Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", SquareFeet = 700, Bathrooms = 2,Beds = 2, PricePerDay = 200.00m, IsAvailable = false},
+    new HotelRoom { RoomNumber = 102, HotelID = 1, RoomID = 2, Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", SquareFeet = 700, Bathrooms = 2,Beds = 2, PricePerDay = 200.00m, IsAvailable = true },
     new HotelRoom {  RoomNumber = 103, HotelID = 1, RoomID = 3, Description = "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", SquareFeet = 1000, Bathrooms = 2, Beds = 1,PricePerDay = 300.00m,  IsAvailable = true },
 
      new HotelRoom { RoomNumber = 201, HotelID = 2, RoomID = 1, Description = " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", SquareFeet = 500, Bathrooms = 1, Beds = 2, PricePerDay = 150.00m, IsAvailable = true },
-    new HotelRoom { RoomNumber = 202, HotelID = 2, RoomID = 2, Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", SquareFeet = 700, Bathrooms = 2, Beds = 2, PricePerDay = 200.00m, IsAvailable = false },
+    new HotelRoom { RoomNumber = 202, HotelID = 2, RoomID = 2, Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", SquareFeet = 700, Bathrooms = 2, Beds = 2, PricePerDay = 200.00m, IsAvailable = true },
     new HotelRoom { RoomNumber = 203, HotelID = 2, RoomID = 3, Description = "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", SquareFeet = 1000, Bathrooms = 2, Beds = 1, PricePerDay = 300.00m, IsAvailable = true },
 
      new HotelRoom { RoomNumber = 301, HotelID = 3, RoomID = 1, Description = " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", SquareFeet = 500, Bathrooms = 1, Beds = 2, PricePerDay = 150.00m, IsAvailable = true },
-    new HotelRoom { RoomNumber = 302, HotelID = 3, RoomID = 2, Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", SquareFeet = 700, Bathrooms = 2, Beds = 2, PricePerDay = 200.00m, IsAvailable = false },
+    new HotelRoom { RoomNumber = 302, HotelID = 3, RoomID = 2, Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", SquareFeet = 700, Bathrooms = 2, Beds = 2, PricePerDay = 200.00m, IsAvailable = true },
     new HotelRoom { RoomNumber = 303, HotelID = 3, RoomID = 3, Description = "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", SquareFeet = 1000, Bathrooms = 2, Beds = 1, PricePerDay = 300.00m, IsAvailable = true },
 
      new HotelRoom { RoomNumber = 401, HotelID = 4, RoomID = 1, Description = " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", SquareFeet = 500, Bathrooms = 1, Beds = 2, PricePerDay = 150.00m, IsAvailable = true },
-    new HotelRoom { RoomNumber = 402, HotelID = 4, RoomID = 2, Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", SquareFeet = 700, Bathrooms = 2, Beds = 2, PricePerDay = 200.00m, IsAvailable = false },
+    new HotelRoom { RoomNumber = 402, HotelID = 4, RoomID = 2, Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", SquareFeet = 700, Bathrooms = 2, Beds = 2, PricePerDay = 200.00m, IsAvailable = true },
     new HotelRoom { RoomNumber = 403, HotelID = 4, RoomID = 3, Description = "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", SquareFeet = 1000, Bathrooms = 2, Beds = 1, PricePerDay = 300.00m, IsAvailable = true },
 
      new HotelRoom { RoomNumber = 501, HotelID = 5, RoomID = 1, Description = " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", SquareFeet = 500, Bathrooms = 1, Beds = 2, PricePerDay = 150.00m, IsAvailable = true },
-    new HotelRoom { RoomNumber = 502, HotelID = 5, RoomID = 2, Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", SquareFeet = 700, Bathrooms = 2, Beds = 2, PricePerDay = 200.00m, IsAvailable = false },
+    new HotelRoom { RoomNumber = 502, HotelID = 5, RoomID = 2, Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", SquareFeet = 700, Bathrooms = 2, Beds = 2, PricePerDay = 200.00m, IsAvailable = true },
     new HotelRoom { RoomNumber = 503, HotelID = 5, RoomID = 3, Description = "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", SquareFeet = 1000, Bathrooms = 2, Beds = 1, PricePerDay = 300.00m, IsAvailable = true }
 
 
@@ -519,6 +519,7 @@ new Image { Id = 20, Path = "https://globewanderimages.blob.core.windows.net/glo
         public DbSet<Image> Images { get; set; }
         public DbSet<HotelFacility> HotelFacilities { get; set; }
         public DbSet<BookingTrip> bookingTrips { get; set; }
+        public DbSet<UPDATEBOOKINGTEMP> UPDATEBOOKINGTEMPs { get; set; }
 
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Globe_Wander_Final.Migrations
 {
     /// <inheritdoc />
-    public partial class basharr : Migration
+    public partial class osama : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -95,6 +95,21 @@ namespace Globe_Wander_Final.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TourSpots", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UPDATEBOOKINGTEMPs",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdForUpdate = table.Column<int>(type: "int", nullable: false),
+                    CheckIn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CheckOut = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UPDATEBOOKINGTEMPs", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -419,6 +434,8 @@ namespace Globe_Wander_Final.Migrations
                     RoomNumber = table.Column<int>(type: "int", nullable: false),
                     Cost = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Duration = table.Column<int>(type: "int", nullable: false),
+                    CheckIn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CheckOut = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Username = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -485,10 +502,10 @@ namespace Globe_Wander_Final.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "018e073d-1ad8-4941-80fb-723ceb2817b3", "adminUser@example.com", true, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAEEgz6YuU9N7r/F8oJV1dlF1WFF6rLs86CpAyXq5VpzuNxTfguEB4FxICRroVXqupFA==", "1234567890", false, "3f10f608-80a2-462b-b8ab-0afc78e4c0ca", false, "admin" },
-                    { "2", 0, "fa310117-09d1-4ff7-a079-46d90478c68e", "hotel@example.com", true, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAEFAaSSvKnl4M/1gSvRkkw17q57uZBV5KU7QMm1WfR3o7hey3FDANKg+ductBFmf5aQ==", "1234567890", false, "2611a458-9e6c-4ed5-8a9e-585688b065bf", false, "hotel" },
-                    { "3", 0, "28c05590-7e25-4769-9eee-981fc81ee15c", "trip@example.com", true, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAELsk3JwZlHTuGtIHFY2KU6p1bBmfLAmOznpC9xGmZrjzawcuCcpkV6PA6fA5+G3xag==", "1234567890", false, "1fbba7c5-a412-416c-9f43-35ccd73a6626", false, "trip" },
-                    { "4", 0, "5b3cf43c-e91d-4802-9a3d-b4923e48e82d", "User@example.com", true, false, null, null, "USER", "AQAAAAIAAYagAAAAEFo4vSQgcjeDTwZ+1ue5anGrbMiCBb1JpcSA71htDbp/tUnR3x8zx47CnuiDLtGwjA==", "1234567890", false, "7e0cdfd7-1fcb-4187-9efd-152c593b5976", false, "User" }
+                    { "1", 0, "fc37bbf4-22fe-41a1-801a-286ab4d0d69f", "adminUser@example.com", true, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAEGqShZtGPh1dz8bw91gZb68JQEPVAcZ+Vbow6kKqvude5Cb6q4jar/FccqyRrxDsMw==", "1234567890", false, "90f226f7-5e07-4c8f-8e96-4438a0fad6dc", false, "admin" },
+                    { "2", 0, "d03a3500-63e8-428e-b902-aa9dd7162fb8", "hotel@example.com", true, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAEKHO4OABElFPj+Q31X99J+OBaku10ksu+JoKO0n2UYUip4YrzTd+J2bnTWwWXvbJ/g==", "1234567890", false, "d961cbb4-18ee-47ff-9074-9e6612a117b4", false, "hotel" },
+                    { "3", 0, "abbd5c5e-0578-42d3-8a2e-ec788660ec58", "trip@example.com", true, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAEOPYNdbeqcbKrLelfCWXPOkyfmijUsJDS2pIEnc/GubF6xjpXVwXnGL8R1eHbRo6gw==", "1234567890", false, "ccb98b17-0ad5-4c23-ab19-8548456eecad", false, "trip" },
+                    { "4", 0, "95c8615f-9400-46cb-9cb1-57621bd59463", "User@example.com", true, false, null, null, "USER", "AQAAAAIAAYagAAAAEC9xGmVTDPMe/NicntvnWB8KnW1JJwajuvndKqTTFy5UqN1heZpui7YLXMjVT5ehVw==", "1234567890", false, "fe1e2df1-b5f5-4b62-ba13-17ebe427795c", false, "User" }
                 });
 
             migrationBuilder.InsertData(
@@ -568,9 +585,9 @@ namespace Globe_Wander_Final.Migrations
                 columns: new[] { "Id", "Activity", "Capacity", "Cost", "Count", "Description", "EndDate", "Name", "StartDate", "TourSpotID" },
                 values: new object[,]
                 {
-                    { 1, "walking", 30, 20m, 0, "trip start at 8 am and going from Amman to Petra", new DateTime(2023, 10, 20, 12, 36, 53, 377, DateTimeKind.Utc).AddTicks(6026), "Petra ride", new DateTime(2023, 10, 20, 15, 36, 53, 377, DateTimeKind.Local).AddTicks(6012), 1 },
-                    { 2, "visiting", 22, 30m, 0, "Amman to Jerash with a trip manager who can speak many languages", new DateTime(2023, 10, 20, 12, 36, 53, 377, DateTimeKind.Utc).AddTicks(6029), "Jerash ride", new DateTime(2023, 10, 20, 15, 36, 53, 377, DateTimeKind.Local).AddTicks(6029), 2 },
-                    { 3, "climbing", 40, 40m, 0, "Amman to Irbid with a trip manager who can speak many languages", new DateTime(2023, 10, 20, 12, 36, 53, 377, DateTimeKind.Utc).AddTicks(6032), "Um-Qais ride", new DateTime(2023, 10, 20, 15, 36, 53, 377, DateTimeKind.Local).AddTicks(6031), 3 }
+                    { 1, "walking", 30, 20m, 0, "trip start at 8 am and going from Amman to Petra", new DateTime(2023, 10, 21, 22, 9, 36, 811, DateTimeKind.Utc).AddTicks(6506), "Petra ride", new DateTime(2023, 10, 22, 1, 9, 36, 811, DateTimeKind.Local).AddTicks(6453), 1 },
+                    { 2, "visiting", 22, 30m, 0, "Amman to Jerash with a trip manager who can speak many languages", new DateTime(2023, 10, 21, 22, 9, 36, 811, DateTimeKind.Utc).AddTicks(6512), "Jerash ride", new DateTime(2023, 10, 22, 1, 9, 36, 811, DateTimeKind.Local).AddTicks(6509), 2 },
+                    { 3, "climbing", 40, 40m, 0, "Amman to Irbid with a trip manager who can speak many languages", new DateTime(2023, 10, 21, 22, 9, 36, 811, DateTimeKind.Utc).AddTicks(6552), "Um-Qais ride", new DateTime(2023, 10, 22, 1, 9, 36, 811, DateTimeKind.Local).AddTicks(6550), 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -596,19 +613,19 @@ namespace Globe_Wander_Final.Migrations
                 values: new object[,]
                 {
                     { 1, 101, 1, 2, " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", true, 150.00m, 1, 500 },
-                    { 1, 102, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", false, 200.00m, 2, 700 },
+                    { 1, 102, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", true, 200.00m, 2, 700 },
                     { 1, 103, 2, 1, "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", true, 300.00m, 3, 1000 },
                     { 2, 201, 1, 2, " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", true, 150.00m, 1, 500 },
-                    { 2, 202, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", false, 200.00m, 2, 700 },
+                    { 2, 202, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", true, 200.00m, 2, 700 },
                     { 2, 203, 2, 1, "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", true, 300.00m, 3, 1000 },
                     { 3, 301, 1, 2, " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", true, 150.00m, 1, 500 },
-                    { 3, 302, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", false, 200.00m, 2, 700 },
+                    { 3, 302, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", true, 200.00m, 2, 700 },
                     { 3, 303, 2, 1, "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", true, 300.00m, 3, 1000 },
                     { 4, 401, 1, 2, " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", true, 150.00m, 1, 500 },
-                    { 4, 402, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", false, 200.00m, 2, 700 },
+                    { 4, 402, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", true, 200.00m, 2, 700 },
                     { 4, 403, 2, 1, "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", true, 300.00m, 3, 1000 },
                     { 5, 501, 1, 2, " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", true, 150.00m, 1, 500 },
-                    { 5, 502, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", false, 200.00m, 2, 700 },
+                    { 5, 502, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", true, 200.00m, 2, 700 },
                     { 5, 503, 2, 1, "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", true, 300.00m, 3, 1000 }
                 });
 
@@ -905,6 +922,9 @@ namespace Globe_Wander_Final.Migrations
 
             migrationBuilder.DropTable(
                 name: "RoomAmenities");
+
+            migrationBuilder.DropTable(
+                name: "UPDATEBOOKINGTEMPs");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

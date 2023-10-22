@@ -42,7 +42,10 @@
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="TourSpots" asp-action="Index">Tours</a></li>
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Trips" asp-action="Trips">Trips</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Hotels" asp-action="Hotel">Hotels</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Hotels" asp-action="Index">Hotels</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Hotels" asp-action="Hotel">Hotels LIST 2</a></li>
+        
+n
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-page="/Dashboard">Dashboard</a></li>
                             </ul>
 
@@ -64,6 +67,7 @@
                                                 <li class="nav-item">
                                                     <span class="nav-link active">Welcome, @User.Identity.Name!</span>
                                                 </li>
+                                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="BookingRooms" asp-action="MyBookings">My Booking </a></li>
                                                 <li><a asp-area="" asp-controller="User" asp-action="Logout"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
                                             }
                                         </ul>
