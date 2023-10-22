@@ -67,7 +67,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>CHECK-IN</label>
-                                                        <input asp-for="updateBooking.CheckIn" type="date" placeholder="YYYY-MM-DD" min="@DateTime.Now.ToString("yyyy-MM-dd")">
+                                                        <input asp-for="updateBooking.CheckIn" type="date" placeholder="YYYY-MM-DD" min="@DateTime.Now.ToString("yyyy-MM-dd")" id="CheckIn">
 
                                                         <input asp-for=updateBooking.ID hidden type="number" value="@Model.bookingRoom.ID">
                                                     </div>
@@ -75,7 +75,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>CHECK-OUT</label>
-                                                        <input asp-for=updateBooking.CheckOut type="date" placeholder="YYYY-MM-DD" min="@Model.bookingRoom.CheckIn.AddDays(1).ToString("yyyy-MM-dd")">
+                                                        <input asp-for=updateBooking.CheckOut type="date" placeholder="YYYY-MM-DD"  id="CheckOut">
                                                     </div>
                                                 </div>
 
@@ -157,3 +157,20 @@
     <!-- Back to top ends -->
 
     <!-- search popup -->
+<script>
+    var CheckIn = document.getElementById("CheckIn");
+    var CheckOut = document.getElementById("CheckOut");
+
+    CheckIn.addEventListener("change", function () {
+        var checkInDate = new Date(CheckIn.value);
+        var nextDay = new Date(checkInDate);
+        nextDay.setDate(checkInDate.getDate() + 1);
+
+        var year = nextDay.getFullYear();
+        var month = String(nextDay.getMonth() + 1).padStart(2, '0');
+        var day = String(nextDay.getDate()).padStart(2, '0');
+
+        var formattedDate = year + '-' + month + '-' + day;
+        CheckOut.min = formattedDate;
+    });
+</script>
