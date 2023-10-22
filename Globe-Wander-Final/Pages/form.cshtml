@@ -1,0 +1,40 @@
+﻿@page
+@model Globe_Wander_Final.Pages.IndexModel
+@{
+}
+
+<div class="contact-map">
+    <div class="row">
+        <div class="col-md-6">
+            <div id="map" style="height: 535px; width: 100%;"></div>
+        </div>
+        <div class="col-md-6">
+            <div id="contact-form1" class="contact-form">
+                <h3>Keep in Touch</h3>
+                <div id="contactform-error-msg"></div>
+
+                <form method="post" action="#" name="contactform" id="contactform">
+                    <div class="form-group">
+                        <input type="text" name="first_name" class="form-control" id="fname" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="last_name" class="form-control" id="lname" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="phone" class="form-control" id="phnumber" placeholder="Phone">
+                    </div>
+                    <div class="textarea">
+                        <textarea name="comments" placeholder="Enter a message"></textarea>
+                    </div>
+                    <div class="comment-btn text-right mar-top-15">
+                        <input type="submit" class="biz-btn" id="submit" value="Send Message">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+       
