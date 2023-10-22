@@ -4,7 +4,7 @@
 
 
 @{
-
+  
 }
 <body>
 
@@ -271,46 +271,48 @@
 
     <!-- tour list ends -->
     <!-- Recommended Hotels-->
-    <section class="trending bg-grey">
+    <section class="hotel-nearby bg-grey">
         <div class="container">
             <div class="section-title">
-                <h2><span>Recommended</span> Hotels</h2>
-                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                <h2>Related <span>Hotels</span></h2>
+                <p>this other hotels you might be intrested in </p>
             </div>
-            <div class="trend-box">
-                <div class="row mix tour">
-                    @foreach (var item in Model.Hotels)
-                    {
-                        <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">
-                            <div class="trend-item">
-
-                                <div class="trend-image">
-                                    <img src="https://images.unsplash.com/photo-1495365200479-c4ed1d35e1aa?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=2070" alt="image">
-                                    <div class="trend-tags">
-                                        <a href="#"><i class="flaticon-like"></i></a>
-                                    </div>
-                                    <div class="trend-price">
-                                        <p class="price">From <span>$350.00</span></p>
-                                    </div>
+            <div class="row top-deal-slider">
+                @foreach (var item in Model.Hotels)
+                {
+                    <div class="col-md-4">
+                        <div class="trend-item">
+                            <div class="trend-image">
+                                @foreach (var image in item.HotelImages.Take(1))
+                                {
+                                    <img src="@image.Path" alt="@item.Name">
+                                }
+                                <div class="trend-tags">
+                                    <a href="#"><i class="flaticon-like"></i></a>
                                 </div>
-                                <div class="trend-content">
-                                    <p><i class="flaticon-location-pin"></i> @item.Name</p>
-                                    <h4> <a class="dropdown-item" asp-area="" asp-controller="Hotels" asp-action="GetById" asp-route-id="@item.Id">@item.Description</a></h4>
-                                    <div class="rating mar-bottom-15">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                    </div>
-                                    <span class="mar-left-5">38 Reviews</span>
-                                    <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> @item.HotelRoom.Count.ToString() has hotel rooms</p>
+                                <div class="trend-price">
+                                    <p class="price">From <span></span></p>
                                 </div>
                             </div>
-                        </div>
-                    }
+                            <a asp-area="" asp-controller="Hotels" asp-action="SingleHotel" asp-route-id="@item.Id">
+                                <div class="trend-content">
+                                    <p><i class="flaticon-location-pin"></i> @item.Name</p>
+                                    <h4>@item.Description</h4>
+                                    <div class="rating mar-bottom-15">
+                                        @for (int a = item.StarRate; a > 0; a--)
+                                        {
+                                            <span class="fa fa-star checked"></span>
 
-                </div>
+                                        }
+
+                                    </div>
+
+                                    <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i>@item.HotelRoom.Count.ToString() rooms</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </section>
@@ -403,3 +405,6 @@
 
 </body>
 </html>
+
+<script src="~/js/plugin.js"></script> 
+ <script src="~/js/main.js"></script>

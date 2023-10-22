@@ -4,7 +4,7 @@ namespace Globe_Wander_Final.Models.Interfaces
 {
     public interface IHotel
     {
-        Task<NewHotelDTO> CreateHotel(NewHotelDTO hotelDTO);
+        Task<Hotel> CreateHotel(NewHotelDTO hotelDTO);
 
         Task<List<HotelDTO>> GetAllHotels();
 

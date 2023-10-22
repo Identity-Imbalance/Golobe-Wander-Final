@@ -1,0 +1,84 @@
+﻿@model List<Globe_Wander_Final.Models.DTOs.HotelRoomDTO>
+@{
+}
+
+<div id="container-wrapper">
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <partial name="_Navigation"></partial>
+
+        <div class="dashboard-content">
+            <div class="list-outer">
+                @* this should be responsive *@
+                @foreach (var item in Model)
+                {
+
+                    <div class="list-item-1">
+                        <div class="row display-flex">
+                            <div class="col-md-4 col-sm-12">
+                                <div class="list-image1">
+                                    @if (item.HotelRoomImages != null && item.HotelRoomImages.Any())
+                                    {
+                                        var firstImage = item.HotelRoomImages.First();
+                                        <img src="@firstImage.Path" alt="@item.Rooms.Name">
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="list-content">
+                                    <h3><a asp-action="HotelRoomDetail">@item.Rooms.Name</a></h3>
+                                    <p>
+                                        Has @item.Beds Beds
+                                    </p>
+                                    <p>
+                                        <span class="fw-semibold">Description :</span> @item.Description
+                                    </p>
+                                    <p>
+                                        Has @item.Bathrooms Bathrooms
+                                    </p>
+                                    <p>
+                                        <span class="fw-semibold">The Size of the room: </span>@item.SquareFeet
+                                    </p>
+                                    <p><span class="Price">Price: </span>@item.PricePerDay $</p>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-12">
+
+
+                                @Html.ActionLink("Edit", "EditHotelRoom", "HotelRooms", new { RoomNumber = item.RoomNumber, HotelID = item.HotelID }, new { @class = "biz-btn biz-btn1 mar-top-5" })
+
+                                
+                                @* <a asp-controller="HotelRooms" asp-action="EditHotelRoom" asp-route-id="@item.RoomNumber" class="biz-btn biz-btn1 mar-top-5">Edit</a> *@
+                                <form asp-controller="HotelRooms" asp-action="DeleteHotelRoom" method="post">
+
+                                    <input type="hidden" name="HotelID" value="@item.HotelID"/>
+                                    <input type="hidden" name="RoomNumber" value="@item.RoomNumber" />
+
+                                <button class="biz-btn biz-btn1 mar-top-5" type="submit" >Delete</button>
+                                </form>
+
+                                
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                }
+                <div class="pagination-content text-center">
+                    <ul class="pagination">
+                        <li><a href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- end Container Wrapper -->
+</div>
