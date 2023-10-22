@@ -25,7 +25,7 @@
     <div class="dashboard-nav-inner">
         <ul>
             <li id="dash">
-                <a asp-controller="User" asp-action="Dashboard"><i class="sl sl-icon-settings"></i> Dashboard</a>
+                <a asp-page="/Dashboard"><i class="sl sl-icon-settings"></i> Dashboard</a>
             </li>
             <li id="user">
                 <a asp-controller="User" asp-action="Profile"><i class="sl sl-icon-user"></i> Profile</a>
@@ -34,7 +34,7 @@
                 <a><i class="fa-solid fa-plane-departure pe-2 me-2"></i>Tours</a>
                 <ul>
                     <li>
-                        <a asp-controller="Tours" asp-action="ListTours">List of Tours</a>
+                        <a asp-controller="Tours" asp-action="ListTours">All Tours</a>
                     </li>
                     <li>
                         <a asp-controller="Tours" asp-action="CreateTour">Add New Tour</a>
@@ -45,7 +45,7 @@
                 <a><i class="sl sl-icon-layers"></i>Trips</a>
                 <ul>
                     <li>
-                        <a asp-controller="Trips" asp-action="ListTrips">List of Trips</a>
+                        <a asp-controller="Trips" asp-action="ListTrips">All Trips</a>
                     </li>
                     <li>
                         <a asp-controller="Trips" asp-action="CreateTrip">Add New Trip</a>
@@ -56,10 +56,32 @@
                 <a><i class="sl sl-icon-layers"></i> Hotel</a>
                 <ul>
                     <li>
-                        <a asp-controller="Hotels" asp-action="ListHotels">List of Hotels</a>
+                        <a asp-controller="Hotels" asp-action="ListHotels">All Hotels</a>
                     </li>
                     <li>
                         <a asp-controller="Hotels" asp-action="CreateHotel">Add New Hotel</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a><i class="sl sl-icon-layers"></i> Room</a>
+                <ul>
+                    <li>
+                        <a asp-controller="Rooms" asp-action="ListRooms">All Rooms </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Rooms" asp-action="CreateRoom">Add A Room </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a><i class="sl sl-icon-layers"></i> Hotel Rooms</a>
+                <ul>
+                    <li>
+                        <a asp-controller="HotelRooms" asp-action="ListHotelRooms">All Hotel Rooms</a>
+                    </li>
+                    <li>
+                        <a asp-controller="HotelRooms" asp-action="CreateHotelRoom">Create Hotel Room</a>
                     </li>
                 </ul>
             </li>

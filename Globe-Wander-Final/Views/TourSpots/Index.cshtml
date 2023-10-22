@@ -3,12 +3,6 @@
 
 
 
-@{
-
-}
-
-<body>
-
     <!-- Preloader -->
     <div id="preloader">
         <div id="status"></div>
@@ -20,211 +14,7 @@
  
     <!-- BreadCrumb Ends -->
     <!-- tour list starts -->
-   @*  <section class="list">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-xs-12 pull-right">
-                    <div class="trend-box">
-                        <div class="list-results display-flex space-between">
-                            <div class="list-results-sort pull-left pad-top-5">
-                                <p class="mar-0">Showing 1-5 of 80 results      ****JQuery****</p>
-                            </div>
-                            <div class="click-menu pull-right">
-                                <div class="change-list mar-right-10"><a href="tourlist-2.html"><i class="fa fa-bars"></i></a></div>
-                                <div class="change-grid f-active"><a href="tourlist-1.html"><i class="fa fa-th"></i></a></div>
-                            </div>
-                        </div>
-                        <div class="row ">
-
-
-
-                            <div class="container">
-
-                                <div class="row mar-top-50">
-                                    @foreach (var tour in Model)
-                                    {
-                                        <div class="col-md-3 col-sm-6 col-xs-12">
-                                            <div class="gallery-item">
-                                                <div class="gallery-image">
-                                                    <img src="https://images.pexels.com/photos/1631665/pexels-photo-1631665.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="image">
-                                                </div>
-                                                <div class="gallery-content">
-                                                    <ul>
-                                                        <li><a href="images/gallery/gallery1.jpg" data-lightbox="gallery" data-title="@tour.Name"><i class="fa fa-eye"></i></a></li>
-                                                        <li>
-                                                            <a asp-action="GetSpotById" asp-controller="TourSpots" asp-route-spotId="@tour.ID"><i class="fa fa-link"></i></a>
-
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
-
-                                </div>
-                            </div>
-
-
-
-                            <div class="col-xs-12">
-                                <div class="blog-button text-center">
-                                    <a href="car-detail.html" class="biz-btn biz-btn1">Load More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-xs-12">
-                    <div class="list-sidebar">
-                        <div class="sidebar-item">
-                            <form class="filter-box">
-                                <h3 class="white">Find The Places</h3>
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <div class="form-group">
-                                            <label class="white">Your Destination</label>
-                                            <div class="input-box">
-                                                <i class="flaticon-placeholder"></i>
-                                                <select class="niceSelect">
-                                                    <option value="1">Where are you going?</option>
-                                                    <option value="2">Amman</option>
-                                                    <option value="3">Aqaba</option>
-                                                    <option value="4">Irbid</option>
-                                                    <option value="5">Wadi-Rum</option>
-                                                    <option value="5">Tafila</option>
-                                                    <option value="5">Ajloun</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                  
-
-                                    <div class="col-xs-12">
-                                        <div class="form-group mar-top-15">
-                                            <a href="#" class="biz-btn">Search</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="sidebar-item">
-                            <h3>Services</h3>
-                            <div class="pretty p-default p-thick p-pulse mar-bottom-15">
-                                <input type="checkbox" />
-                                <div class="state p-warning-o">
-                                    <label>24/7 Reception</label>
-                                </div>
-                            </div>
-                            <div class="pretty p-default p-thick p-pulse mar-bottom-15">
-                                <input type="checkbox" />
-                                <div class="state p-warning-o">
-                                    <label>Parking</label>
-                                </div>
-                            </div>
-
-                            <div class="pretty p-default p-thick p-pulse mar-bottom-15">
-                                <input type="checkbox" />
-                                <div class="state p-warning-o">
-                                    <label>Restaurant</label>
-                                </div>
-                            </div>
-                            <div class="pretty p-default p-thick p-pulse mar-bottom-15">
-                                <input type="checkbox" />
-                                <div class="state p-warning-o">
-                                    <label>Satellite Television</label>
-                                </div>
-                            </div>
-
-                            <div class="pretty p-default p-thick p-pulse">
-                                <input type="checkbox" />
-                                <div class="state p-warning-o">
-                                    <label>Luggage Storage </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="sidebar-item">
-                            <h3>Star Rating</h3>
-                            <div class="pretty p-default p-thick p-pulse">
-                                <input type="checkbox" />
-                                <div class="state">
-                                    <label>
-                                        <div class="star-rating">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                        </div>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="pretty p-default p-thick p-pulse">
-                                <input type="checkbox" />
-                                <div class="state">
-                                    <label>
-                                        <div class="star-rating">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                        </div>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="pretty p-default p-thick p-pulse">
-                                <input type="checkbox" />
-                                <div class="state">
-                                    <label>
-                                        <div class="star-rating">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                        </div>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="pretty p-default p-thick p-pulse">
-                                <input type="checkbox" />
-                                <div class="state">
-                                    <label>
-                                        <div class="star-rating">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                        </div>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="pretty p-default p-thick p-pulse">
-                                <input type="checkbox" />
-                                <div class="state">
-                                    <label>
-                                        <div class="star-rating">
-                                            <span class="fa fa-star checked"></span>
-                                        </div>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sidebar-item">
-                            <h3>Price Range($)</h3>
-                            <div class="range-slider">
-                                <div data-min="0" data-max="500" data-unit="$" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false">
-                                    <span class="min-value">0 $</span>
-                                    <span class="max-value">500 $</span>
-                                    <div class="ui-slider-range ui-widget-header ui-corner-all full" style="left: 0%; width: 100%;"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-       *@
+  
 
     <!-- Breadcrumb -->
     <section class="breadcrumb-outer text-center" style="height:40vh !important">
@@ -276,16 +66,14 @@
                     </div>
                 </div>
                }
+
             </div>
         </div>
     </section>
 
     <!-- tour list ends -->
 
-
   
-    <!-- footer starts -->
-    <!-- footer ends -->
     <!-- Back to top start -->
     <div id="back-to-top">
         <a href="#"></a>
@@ -387,7 +175,4 @@
     <script src="js/menu.js"></script>
     <script src="js/custom-nav.js"></script>
 
-</body>
-</html>
 
-@* -------------------------------------------------------- *@

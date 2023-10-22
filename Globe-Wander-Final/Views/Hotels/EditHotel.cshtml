@@ -16,11 +16,11 @@
 
                 <h2 class="text-center">Edit Hotel</h2>
 
-                <form asp-controller="Hotels" asp-action="EditHotel" method="post">
+                <form asp-controller="Hotels" asp-action="EditHotel" method="post" enctype="multipart/form-data">
                     <input hidden asp-for="Id" />
                     @foreach (var item in Model.HotelRoom)
                     {
-                        <input hidden asp-for="@item"/> 
+                        <input hidden asp-for="@item" />
                     }
                     <div class="form-group">
                         <label asp-for="Name"></label>
@@ -36,12 +36,12 @@
                         <label asp-for="StarRate"></label>
                         <input asp-for="StarRate" />
                     </div>
-                  
+
                     <div class="col-sm-12">
                         <label asp-for="Description"></label>
                         <textarea asp-for="Description" required></textarea>
                     </div>
-                    
+
                     <select asp-for="TourSpotID" required>
                         <option value="">Select a Tour Spot</option>
                         @foreach (var spot in ViewBag.TourSpots)
@@ -52,9 +52,25 @@
 
                     @foreach (var facility in ViewBag.Facilities)
                     {
-                        <input type="checkbox" name="selectedFacilityIds" value="@facility.Id" @(selectedFacilityIds.Contains(facility.Id) ? "checked" : "") />
-                        <label>@facility.Name</label>
+                        <div class="facilities mx-2 my-3">
+
+                            <input type="checkbox" name="selectedFacilityIds" value="@facility.Id" @(selectedFacilityIds.Contains(facility.Id) ? "checked" : "") />
+                            @facility.Name
+
+                        </div>
                     }
+
+                    <div class="row">
+                        <div class="col-md-6 col-xs-12">
+                            <div class="rooms-info">
+                                <h4>Add Gallery Images</h4>
+                                <span class="text-danger">Not required</span>
+                                <div class="image-add">
+                                    <input type="file" name="images" multiple accept=".png, .jpg, .jpeg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <input type="submit" class="biz-btn biz-btn1" value="Save" />
                 </form>

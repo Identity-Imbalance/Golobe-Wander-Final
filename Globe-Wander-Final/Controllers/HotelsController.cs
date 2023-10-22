@@ -13,10 +13,14 @@ namespace Globe_Wander_Final.Controllers
 
         private readonly ITourSpot _tourSpot;
 
-        public HotelsController(IHotel hotels, ITourSpot tourSpot)
+        private readonly IAddImage _uploadImage;
+
+
+        public HotelsController(IHotel hotels, ITourSpot tourSpot, IAddImage uploadImage)
         {
             _hotels = hotels;
             _tourSpot = tourSpot;
+            _uploadImage = uploadImage;
         }
         public  async Task<IActionResult> Index()
         {
@@ -64,7 +68,7 @@ namespace Globe_Wander_Final.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateHotel(NewHotelDTO hotel, List<int> selectedFacilityIds)
+        public async Task<IActionResult> CreateHotel(NewHotelDTO hotel, List<int> selectedFacilityIds,List<IFormFile> files)
         {
             if (ModelState.IsValid)
             {
@@ -83,11 +87,23 @@ namespace Globe_Wander_Final.Controllers
                     }
                 }
 
+                if (files.Count > 0)
+                {
+                    await _uploadImage.UploadHotelImages(files,newHotel);
+                }
+
                 return RedirectToAction("CreateHotel","Hotels");
             }
             else
             {
-                return NotFound();
+                var tourSpots = await _tourSpot.GetAllTourSpots();
+
+                var facilities = await _hotels.GetAllFacilities();
+
+                // Store the tour spots in ViewBag to pass it to the view
+                ViewBag.TourSpots = tourSpots;
+                ViewBag.Facilities = facilities;
+                return View();
             }
         }
 
@@ -110,7 +126,7 @@ namespace Globe_Wander_Final.Controllers
         // TODO: Make the facilits came from the database and Make the admin choose which one he should add 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditHotel(HotelDTO model, List<int> selectedFacilityIds)
+        public async Task<IActionResult> EditHotel(HotelDTO model, List<int> selectedFacilityIds, List<IFormFile> images)
         {
             var existingHotelFacilities = await _hotels.GetAllHotelFacilityByHotelId(model.Id);
 
@@ -133,10 +149,14 @@ namespace Globe_Wander_Final.Controllers
                     await _hotels.RemoveHotelFacility(existHotelFacility);
                 }
             }
-
+           
             var updatedHotel = await _hotels.UpdateHotel(model.Id, model); 
             if (updatedHotel != null)
             {
+                if (images.Count > 0)
+                {
+                    await _uploadImage.UpdateHotelImages(images, updatedHotel);
+                }
                 return RedirectToAction("EditHotel", "Hotels");
             }
 
@@ -153,7 +173,7 @@ namespace Globe_Wander_Final.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteHotel(int id)
         {
-            var deletedHotel = await _hotels.DeleteHotel(id);
+                var deletedHotel = await _hotels.DeleteHotel(id);
           
                 return RedirectToAction("ListHotels","Hotels");
           

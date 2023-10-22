@@ -77,6 +77,7 @@
                        <div class="single-rooms mar-bottom-30">
                             <h3>Select Your Room</h3>
                         @foreach (var item in Model.hotel.HotelRoom)
+                        @if(item.IsAvailable)
                         {
                            <a asp-area="" asp-controller="HotelRooms" asp-action="SingleRoom" asp-route-Id="@item.HotelID" asp-route-RoomNumber="@item.RoomNumber">  
                                <div class="room-item">

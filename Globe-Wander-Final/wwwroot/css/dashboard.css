@@ -1810,7 +1810,7 @@ mark {
 }
 
 .tab-content {
-    padding: 28px 33px;
+    padding: 0px 4px;
     position: relative;
     z-index: 10;
     display: inline-block;

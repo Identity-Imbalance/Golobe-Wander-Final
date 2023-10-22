@@ -1,0 +1,56 @@
+﻿@model Globe_Wander_Final.Models.DTOs.RoomDTO
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    List<int> selectedAmentias = new List<int>();
+}
+
+<div id="container-wrapper">
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <partial name="_Navigation"></partial>
+
+        <div class="dashboard-content">
+            <div class="dashboard-form mar-bottom-30">
+
+                <h2 class="text-center">Edit Hotel</h2>
+
+                <form id="roomForm" method="post" action="EditRoom">
+                    <div class="row">
+                        <input type="hidden" name="id" value="@Model.ID" />
+                        <div class="col-sm-12">
+
+                            <label asp-for="Name">Room Name</label>
+                            <input asp-for="Name" />
+                        </div>
+                        <div class="col-sm-12">
+                            <label for="roomDetail">Room Layout</label>
+                            <select id="roomLayout" name="Layout" placeholder="Select Room Layout" required>
+                                <option value="">Select a layout</option>
+                                @foreach (Layout layout in Enum.GetValues(typeof(Layout)))
+                                {
+                                    var layoutValue = (int)layout;
+                                    <option value="@layoutValue">@layout.ToString()</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="rooms-info">
+                        <h3>Amentias</h3>
+                        @foreach (var item in ViewBag.Amenities)
+                        {
+                            <div class="facilities">
+                                <input type="checkbox" name="selectedAmentias" value="@item.Id">@item.Name
+                            </div>
+                        }
+
+                        <!-- Add more facilities checkboxes here -->
+                    </div>
+                    <button type="submit" class="biz-btn biz-btn1 mar-top-5">Save Room</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

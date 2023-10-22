@@ -2,6 +2,7 @@ using Globe_Wander_Final.Data;
 using Globe_Wander_Final.Models;
 using Globe_Wander_Final.Models.Interfaces;
 using Globe_Wander_Final.Models.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,14 +34,16 @@ namespace Globe_Wander_Final
                 (options =>
                 {
                     options.User.RequireUniqueEmail = true;
-                }).AddEntityFrameworkStores<GlobeWanderDbContext>()
-                .AddDefaultTokenProviders();
+                }).AddEntityFrameworkStores<GlobeWanderDbContext>();
+             
 
-            builder.Services.AddAuthorization(options => {
+                builder.Services.AddAuthentication();
+
+                builder.Services.AddAuthorization(options => {
                 options.AddPolicy("create", policy => policy.RequireClaim("persmissions", "create"));
                 options.AddPolicy("update", policy => policy.RequireClaim("persmissions", "update"));
                 options.AddPolicy("delete", policy => policy.RequireClaim("persmissions", "delete"));
-                options.AddPolicy("read", policy => policy.RequireClaim("persmissions", "read"));
+                options.AddPolicy("read", policy   => policy.RequireClaim("persmissions", "read"));
             });
 
             builder.Services.AddTransient<ITourSpot, TourSpotService>();
@@ -52,7 +55,9 @@ namespace Globe_Wander_Final
             builder.Services.AddTransient<IBookingTrip, BookingTripService>();
             builder.Services.AddTransient<IRate, RateService>();
             builder.Services.AddTransient<IUser, IdentityUserService>();
+            builder.Services.AddTransient<IAddImage, AddImageService>();
 
+            builder.Services.AddTransient<UPDATEBOOKINGTEMPServices>();
             builder.Services.AddAuthorization();
 
             builder.Services.ConfigureApplicationCookie(options =>
@@ -76,10 +81,10 @@ namespace Globe_Wander_Final
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseAuthentication();
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
-            app.UseCookiePolicy();
+            //app.UseCookiePolicy();
             app.MapRazorPages();
 
             app.MapControllerRoute(
