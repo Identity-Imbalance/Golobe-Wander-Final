@@ -205,8 +205,12 @@ namespace Globe_Wander_Final.Controllers
         [HttpPost]
         public async Task<IActionResult> UserUpdateBooking(DurationBookingRoomDTO UpdateBooking)
         {
-
             var BookingData = await _bookingRoom.GetBookingRoomById(UpdateBooking.ID);
+            if (UpdateBooking.CheckIn<= DateTime.MinValue)
+            {
+                UpdateBooking.CheckIn = BookingData.CheckIn;
+            }     
+
             var totalBeforeUpdate = BookingData.TotalPrice;
             TimeSpan duration = UpdateBooking.CheckOut - UpdateBooking.CheckIn;
             int totalDays = (int)duration.TotalDays;
