@@ -1,0 +1,83 @@
+﻿@model Globe_Wander_Final.Models.DTOs.HotelRoomDTOCreate
+
+<div id="container-wrapper">
+    <!-- Dashboard -->
+    <div id="dashboard">
+
+        <partial name="_Navigation"></partial>
+        <div class="dashboard-content">
+            <div class="add-box">
+
+                <div class="add-content">
+                    <h3>Hotel Room Information</h3>
+                    <form id="hotelRoomForm" method="post" asp-action="CreateHotelRoom" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-sm-12 my-3">
+                                <label asp-for="HotelID"> Select A Hotel </label>
+                                <select id="hotelID" name="HotelID" required>
+                                    <option value="">Select a Hotel</option>
+                                    @foreach (var hotel in ViewBag.Hotels)
+                                    {
+                                        <option value="@hotel.Id">@hotel.Name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-sm-12 my-3">
+                                <label asp-for="RoomID">Select A Room</label>
+                                <select id="roomID" name="RoomID" required>
+                                    <option value="">Select a Room</option>
+                                    @foreach (var room in ViewBag.Rooms)
+                                    {
+                                        <option value="@room.ID">@room.Name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="PricePerDay">Price Per Day</label>
+                                <input type="number" id="pricePerDay" asp-for="PricePerDay" placeholder="Enter Price Per Day" required step="5">
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="SquareFeet">Square Feet</label>
+                                <input type="number" id="squareFeet" asp-for="SquareFeet" placeholder="Enter Room Square Feet" required>
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="Bathrooms">Number of Bathrooms</label>
+                                <input type="number" id="bathrooms" asp-for="Bathrooms" placeholder="Enter Number of Bathrooms" required>
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="Beds">Number of Beds</label>
+                                <input type="number" id="beds" asp-for="Beds" placeholder="Enter Number of Beds" required>
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="Description">Description</label>
+                                <textarea id="description" asp-for="Description" placeholder="Enter Room Description" required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="add-box add-rooms">
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="rooms-info">
+                                        <h4>Add Gallery Images</h4>
+                                        <span class="text-danger">Not required</span>
+                                        <div class="image-add">
+                                            <input type="file" name="images" multiple accept=".png, .jpg, .jpeg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-btn">
+                                    <button type="submit" class="biz-btn biz-btn1 mar-top-5">Create Hotel Room</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Dashboard / End -->
+</div>
+<!-- end Container Wrapper -->

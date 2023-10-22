@@ -23,7 +23,7 @@ namespace Globe_Wander_Final.Models.Services
         /// Create a new hotel.
         /// </summary>
         /// <param name="hotelDTO">Data for the new hotel.</param>
-        public async Task<NewHotelDTO> CreateHotel(NewHotelDTO hotelDTO)
+        public async Task<Hotel> CreateHotel(NewHotelDTO hotelDTO)
         {
             var tour = await _context.TourSpots.FindAsync(hotelDTO.TourSpotID);
             string location = tour.Country + ", " + tour.City;
@@ -40,9 +40,9 @@ namespace Globe_Wander_Final.Models.Services
             _context.Entry(hotel).State = EntityState.Added;
             await _context.SaveChangesAsync();
 
-            hotelDTO.Id = hotel.Id;
+            
 
-            return hotelDTO;
+            return hotel;
         }
 
         /// <summary>
@@ -50,12 +50,17 @@ namespace Globe_Wander_Final.Models.Services
         /// </summary>
         /// <param name="id">ID of the hotel.</param>
         public async Task<Hotel> DeleteHotel(int id)
-
         {
+            var imagHotel = await _context.Images.Where(h => h.HotelId == id)
+                .ToListAsync();
             // Hotel hoteldto = await GetHotelId(id);
             var hotel = await _context.Hotels.FindAsync(id);
             if (hotel != null)
             {
+                foreach (var image in imagHotel)
+                {
+                    _context.Entry(image).State = EntityState.Deleted;
+                }
                 _context.Entry(hotel).State = EntityState.Deleted;
                 await _context.SaveChangesAsync();
             }

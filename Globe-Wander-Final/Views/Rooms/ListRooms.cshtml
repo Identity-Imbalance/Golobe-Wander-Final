@@ -1,0 +1,57 @@
+﻿@model List<Globe_Wander_Final.Models.DTOs.RoomDTO>
+@{
+}
+
+<div id="container-wrapper">
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <partial name="_Navigation"></partial>
+        <div class="dashboard-content">
+            <div class="list-outer">
+                @* this should be responsive *@
+                @foreach (var item in Model)
+                {
+                    <div class="list-item-1">
+                        <div class="row display-flex">
+                            <div class="col-md-4 col-sm-12">
+                                <div class="list-content ps-4">
+                                    <h3>@item.Name</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <p class="fw-semibold fs-5">
+                                     @item.Layout.ToString()
+                                </p>
+                                @foreach (var amenity in item.RoomAmenities)
+                                {
+                                    <div class="facilities mx-2">
+
+                                        @amenity.Amenity.Name
+                                    </div>
+                                }
+                            </div>
+                        <div class="col-md-2 col-sm-12">
+                            <a asp-controller="Rooms" asp-action="EditRoom" asp-route-id="@item.ID" class="biz-btn biz-btn1 mar-top-5">Edit</a>
+                            <form method="post" asp-controller="Rooms" asp-action="DeleteRoom">
+                                <input type="hidden" name="id" value="@item.ID" />
+                                <button type="submit" class="biz-btn biz-btn1 mar-top-5">Delete</button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                }
+                <div class="pagination-content text-center">
+                    <ul class="pagination">
+                        <li><a href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end Container Wrapper -->
+</div>

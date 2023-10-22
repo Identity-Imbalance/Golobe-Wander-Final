@@ -22,6 +22,40 @@ namespace Globe_Wander_Final.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Globe_Wander_Final.Models.Amenity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Amenities");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Free Wi-Fi"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "TV"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Air conditioning"
+                        });
+                });
+
             modelBuilder.Entity("Globe_Wander_Final.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -91,15 +125,15 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3f9e9af7-72d5-405b-94fb-72b4cd07026e",
+                            ConcurrencyStamp = "cb7ea920-910a-4d4d-b7c3-2c656c331ded",
                             Email = "User@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKhjWMKJ6vxQYTZiU7RJnNxuGTNvu8A403eFw4kmqios3CjriClNWYE7zMp7CHIg1g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEB5FefTEvtAiV6GPF21U4uL4oNEFC434Du4ZMbE04mb5suhZFBUbcwavUWwdxA5CkQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "177bf410-32c7-4477-b481-63ee20955988",
+                            SecurityStamp = "19f8ae42-4305-42a2-90af-43455a5621a1",
                             TwoFactorEnabled = false,
                             UserName = "User"
                         },
@@ -107,16 +141,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c512f721-d03a-42b1-96ec-b4306eaef676",
+                            ConcurrencyStamp = "50bfdd7b-e900-4681-a446-033358b68505",
                             Email = "adminUser@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "adminUser@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEG9LxxzOIppQ7j6jjKTQvBQ2w6b9pZ5VpCfQEik0IkE8mmOLkYw+37eKHYNmXjDNlw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIl8nWBLIzcKhjmxl3iySwYHjkIdFi6x1xul0lKuNNHyeXJF/dSgfNi/IlKBdth42g==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "75d8addf-c09e-48bf-86e5-f62a5480a448",
+                            SecurityStamp = "dcbf5e7a-5bad-4006-8c91-e4932e535489",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -124,16 +158,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "568bb2b5-7e6c-4d6c-ae6f-08f31be8ff59",
+                            ConcurrencyStamp = "2fcdffc5-7395-4776-86cb-ff33809e8632",
                             Email = "trip@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "trip@EXAMPLE.COM",
                             NormalizedUserName = "TRIP",
-                            PasswordHash = "AQAAAAIAAYagAAAAEC6A9Z3zcBNY0lsRtqq/g+qnuTCYUjowcaaCSS2ZpcQIcIonpb0flfHAikjOqVCTig==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMNG4jSYbFWu+tvm55G/QUQwPZT4HtIdHWw07BHTWB2Li36cQtDyZ+6iu0gxydUhgg==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3d69e644-7740-42d4-bfd9-a4f2d6a7440f",
+                            SecurityStamp = "505a896b-4c68-4197-a32a-9e4ed3384298",
                             TwoFactorEnabled = false,
                             UserName = "trip"
                         },
@@ -141,16 +175,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "15dbe904-e016-4bef-8527-af81bb0b1842",
+                            ConcurrencyStamp = "cff401e8-9b58-4003-852c-2b9b93795a20",
                             Email = "hotel@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "hotel@EXAMPLE.COM",
                             NormalizedUserName = "HOTEL",
-                            PasswordHash = "AQAAAAIAAYagAAAAECzp1ZrGPKvRK7i6+mMf2Y7UDNY5XDRKy7aF8VJXbuJecPZtb5YAlUYpAzZ5ZSK8Cg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEC2xsf61uqmk/jZBZFiVqljxGCpDEWpuaKBNmJi9heLImQ2No3f2LFx6mLsOw1mRig==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2de1db5a-364b-4fc0-8dca-6943d8a66d1b",
+                            SecurityStamp = "032f7d02-e673-4072-8048-d924b90f4a6f",
                             TwoFactorEnabled = false,
                             UserName = "hotel"
                         });
@@ -225,6 +259,40 @@ namespace Globe_Wander_Final.Migrations
                     b.ToTable("bookingTrips");
                 });
 
+            modelBuilder.Entity("Globe_Wander_Final.Models.Facility", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Facilities");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Swming pool"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "resturants"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "GYM"
+                        });
+                });
+
             modelBuilder.Entity("Globe_Wander_Final.Models.Hotel", b =>
                 {
                     b.Property<int>("Id")
@@ -237,14 +305,26 @@ namespace Globe_Wander_Final.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("FacilityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StarRate")
+                        .HasColumnType("int");
 
                     b.Property<int>("TourSpotID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FacilityId");
 
                     b.HasIndex("TourSpotID");
 
@@ -254,23 +334,132 @@ namespace Globe_Wander_Final.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "A unique hotel that you can't find in this place",
-                            Name = "Paradise",
+                            Description = "A peaceful retreat in the heart of the city",
+                            Location = "amman",
+                            Name = "Harmony",
+                            StarRate = 4,
                             TourSpotID = 1
                         },
                         new
                         {
                             Id = 2,
-                            Description = "A unique hotel that you can't find in this place",
-                            Name = "Wander ",
+                            Description = "The perfect base for your desert adventure",
+                            Location = "wadi rum",
+                            Name = "Adventure",
+                            StarRate = 3,
                             TourSpotID = 2
                         },
                         new
                         {
                             Id = 3,
-                            Description = "A unique hotel that y    ou can't find in this place",
-                            Name = "Amazing",
+                            Description = "A luxury resort on the shores of the Dead Sea",
+                            Location = "dead sea",
+                            Name = "Oasis",
+                            StarRate = 5,
                             TourSpotID = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Experience the rich history of Jerash",
+                            Location = "jerash",
+                            Name = "Heritage",
+                            StarRate = 4,
+                            TourSpotID = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Stunning sea views in a modern setting",
+                            Location = "aqaba",
+                            Name = "Horizon",
+                            StarRate = 5,
+                            TourSpotID = 2
+                        });
+                });
+
+            modelBuilder.Entity("Globe_Wander_Final.Models.HotelFacility", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("FacilityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HotelId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FacilityId");
+
+                    b.HasIndex("HotelId");
+
+                    b.ToTable("HotelFacilities");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FacilityId = 1,
+                            HotelId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            FacilityId = 1,
+                            HotelId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            FacilityId = 2,
+                            HotelId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            FacilityId = 3,
+                            HotelId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            FacilityId = 1,
+                            HotelId = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            FacilityId = 1,
+                            HotelId = 3
+                        },
+                        new
+                        {
+                            Id = 7,
+                            FacilityId = 2,
+                            HotelId = 4
+                        },
+                        new
+                        {
+                            Id = 8,
+                            FacilityId = 3,
+                            HotelId = 5
+                        },
+                        new
+                        {
+                            Id = 10,
+                            FacilityId = 1,
+                            HotelId = 4
+                        },
+                        new
+                        {
+                            Id = 11,
+                            FacilityId = 2,
+                            HotelId = 5
                         });
                 });
 
@@ -280,7 +469,20 @@ namespace Globe_Wander_Final.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("RoomNumber")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoomNumber"));
+
+                    b.Property<int>("Bathrooms")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Beds")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsAvailable")
                         .HasColumnType("bit");
@@ -291,11 +493,1176 @@ namespace Globe_Wander_Final.Migrations
                     b.Property<int>("RoomID")
                         .HasColumnType("int");
 
+                    b.Property<int>("SquareFeet")
+                        .HasColumnType("int");
+
                     b.HasKey("HotelID", "RoomNumber");
 
                     b.HasIndex("RoomID");
 
                     b.ToTable("HotelRooms");
+
+                    b.HasData(
+                        new
+                        {
+                            HotelID = 1,
+                            RoomNumber = 101,
+                            Bathrooms = 1,
+                            Beds = 2,
+                            Description = " A spacious room with a king-size bed, modern amenities, and a beautiful city view.",
+                            IsAvailable = true,
+                            PricePerDay = 150.00m,
+                            RoomID = 1,
+                            SquareFeet = 500
+                        },
+                        new
+                        {
+                            HotelID = 1,
+                            RoomNumber = 102,
+                            Bathrooms = 2,
+                            Beds = 2,
+                            Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.",
+                            IsAvailable = false,
+                            PricePerDay = 200.00m,
+                            RoomID = 2,
+                            SquareFeet = 700
+                        },
+                        new
+                        {
+                            HotelID = 1,
+                            RoomNumber = 103,
+                            Bathrooms = 2,
+                            Beds = 1,
+                            Description = "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.",
+                            IsAvailable = true,
+                            PricePerDay = 300.00m,
+                            RoomID = 3,
+                            SquareFeet = 1000
+                        },
+                        new
+                        {
+                            HotelID = 2,
+                            RoomNumber = 201,
+                            Bathrooms = 1,
+                            Beds = 2,
+                            Description = " A spacious room with a king-size bed, modern amenities, and a beautiful city view.",
+                            IsAvailable = true,
+                            PricePerDay = 150.00m,
+                            RoomID = 1,
+                            SquareFeet = 500
+                        },
+                        new
+                        {
+                            HotelID = 2,
+                            RoomNumber = 202,
+                            Bathrooms = 2,
+                            Beds = 2,
+                            Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.",
+                            IsAvailable = false,
+                            PricePerDay = 200.00m,
+                            RoomID = 2,
+                            SquareFeet = 700
+                        },
+                        new
+                        {
+                            HotelID = 2,
+                            RoomNumber = 203,
+                            Bathrooms = 2,
+                            Beds = 1,
+                            Description = "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.",
+                            IsAvailable = true,
+                            PricePerDay = 300.00m,
+                            RoomID = 3,
+                            SquareFeet = 1000
+                        },
+                        new
+                        {
+                            HotelID = 3,
+                            RoomNumber = 301,
+                            Bathrooms = 1,
+                            Beds = 2,
+                            Description = " A spacious room with a king-size bed, modern amenities, and a beautiful city view.",
+                            IsAvailable = true,
+                            PricePerDay = 150.00m,
+                            RoomID = 1,
+                            SquareFeet = 500
+                        },
+                        new
+                        {
+                            HotelID = 3,
+                            RoomNumber = 302,
+                            Bathrooms = 2,
+                            Beds = 2,
+                            Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.",
+                            IsAvailable = false,
+                            PricePerDay = 200.00m,
+                            RoomID = 2,
+                            SquareFeet = 700
+                        },
+                        new
+                        {
+                            HotelID = 3,
+                            RoomNumber = 303,
+                            Bathrooms = 2,
+                            Beds = 1,
+                            Description = "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.",
+                            IsAvailable = true,
+                            PricePerDay = 300.00m,
+                            RoomID = 3,
+                            SquareFeet = 1000
+                        },
+                        new
+                        {
+                            HotelID = 4,
+                            RoomNumber = 401,
+                            Bathrooms = 1,
+                            Beds = 2,
+                            Description = " A spacious room with a king-size bed, modern amenities, and a beautiful city view.",
+                            IsAvailable = true,
+                            PricePerDay = 150.00m,
+                            RoomID = 1,
+                            SquareFeet = 500
+                        },
+                        new
+                        {
+                            HotelID = 4,
+                            RoomNumber = 402,
+                            Bathrooms = 2,
+                            Beds = 2,
+                            Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.",
+                            IsAvailable = false,
+                            PricePerDay = 200.00m,
+                            RoomID = 2,
+                            SquareFeet = 700
+                        },
+                        new
+                        {
+                            HotelID = 4,
+                            RoomNumber = 403,
+                            Bathrooms = 2,
+                            Beds = 1,
+                            Description = "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.",
+                            IsAvailable = true,
+                            PricePerDay = 300.00m,
+                            RoomID = 3,
+                            SquareFeet = 1000
+                        },
+                        new
+                        {
+                            HotelID = 5,
+                            RoomNumber = 501,
+                            Bathrooms = 1,
+                            Beds = 2,
+                            Description = " A spacious room with a king-size bed, modern amenities, and a beautiful city view.",
+                            IsAvailable = true,
+                            PricePerDay = 150.00m,
+                            RoomID = 1,
+                            SquareFeet = 500
+                        },
+                        new
+                        {
+                            HotelID = 5,
+                            RoomNumber = 502,
+                            Bathrooms = 2,
+                            Beds = 2,
+                            Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.",
+                            IsAvailable = false,
+                            PricePerDay = 200.00m,
+                            RoomID = 2,
+                            SquareFeet = 700
+                        },
+                        new
+                        {
+                            HotelID = 5,
+                            RoomNumber = 503,
+                            Bathrooms = 2,
+                            Beds = 1,
+                            Description = "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.",
+                            IsAvailable = true,
+                            PricePerDay = 300.00m,
+                            RoomID = 3,
+                            SquareFeet = 1000
+                        });
+                });
+
+            modelBuilder.Entity("Globe_Wander_Final.Models.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("HotelId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("HotelRoomHotelID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("HotelRoomRoomNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Path")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("RoomNumber")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HotelId");
+
+                    b.HasIndex("HotelRoomHotelID", "HotelRoomRoomNumber");
+
+                    b.ToTable("Images");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel2image2.jpg"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel2image1.jpg"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel2image3.jpg"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel2image4.jpg"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel2image5.jpg"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel2image3.jpg"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel2image4.jpg"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg",
+                            RoomNumber = 101
+                        },
+                        new
+                        {
+                            Id = 37,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 101
+                        },
+                        new
+                        {
+                            Id = 38,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 101
+                        },
+                        new
+                        {
+                            Id = 39,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg",
+                            RoomNumber = 101
+                        },
+                        new
+                        {
+                            Id = 40,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg",
+                            RoomNumber = 101
+                        },
+                        new
+                        {
+                            Id = 41,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 101
+                        },
+                        new
+                        {
+                            Id = 42,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 101
+                        },
+                        new
+                        {
+                            Id = 43,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg",
+                            RoomNumber = 102
+                        },
+                        new
+                        {
+                            Id = 44,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 102
+                        },
+                        new
+                        {
+                            Id = 45,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 102
+                        },
+                        new
+                        {
+                            Id = 46,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg",
+                            RoomNumber = 102
+                        },
+                        new
+                        {
+                            Id = 47,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg",
+                            RoomNumber = 102
+                        },
+                        new
+                        {
+                            Id = 48,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 102
+                        },
+                        new
+                        {
+                            Id = 49,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 102
+                        },
+                        new
+                        {
+                            Id = 50,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg",
+                            RoomNumber = 103
+                        },
+                        new
+                        {
+                            Id = 51,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 103
+                        },
+                        new
+                        {
+                            Id = 52,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 103
+                        },
+                        new
+                        {
+                            Id = 53,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg",
+                            RoomNumber = 103
+                        },
+                        new
+                        {
+                            Id = 54,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg",
+                            RoomNumber = 103
+                        },
+                        new
+                        {
+                            Id = 55,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 103
+                        },
+                        new
+                        {
+                            Id = 56,
+                            HotelId = 1,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 103
+                        },
+                        new
+                        {
+                            Id = 57,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg",
+                            RoomNumber = 201
+                        },
+                        new
+                        {
+                            Id = 58,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 201
+                        },
+                        new
+                        {
+                            Id = 59,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 201
+                        },
+                        new
+                        {
+                            Id = 60,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg",
+                            RoomNumber = 201
+                        },
+                        new
+                        {
+                            Id = 61,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg",
+                            RoomNumber = 201
+                        },
+                        new
+                        {
+                            Id = 62,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 201
+                        },
+                        new
+                        {
+                            Id = 63,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 201
+                        },
+                        new
+                        {
+                            Id = 64,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 202
+                        },
+                        new
+                        {
+                            Id = 65,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg",
+                            RoomNumber = 202
+                        },
+                        new
+                        {
+                            Id = 66,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 202
+                        },
+                        new
+                        {
+                            Id = 67,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg",
+                            RoomNumber = 202
+                        },
+                        new
+                        {
+                            Id = 68,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg",
+                            RoomNumber = 202
+                        },
+                        new
+                        {
+                            Id = 69,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 202
+                        },
+                        new
+                        {
+                            Id = 70,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 202
+                        },
+                        new
+                        {
+                            Id = 71,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 203
+                        },
+                        new
+                        {
+                            Id = 72,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 203
+                        },
+                        new
+                        {
+                            Id = 73,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg",
+                            RoomNumber = 203
+                        },
+                        new
+                        {
+                            Id = 74,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg",
+                            RoomNumber = 203
+                        },
+                        new
+                        {
+                            Id = 75,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg",
+                            RoomNumber = 203
+                        },
+                        new
+                        {
+                            Id = 76,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 203
+                        },
+                        new
+                        {
+                            Id = 77,
+                            HotelId = 2,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 203
+                        },
+                        new
+                        {
+                            Id = 78,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg",
+                            RoomNumber = 301
+                        },
+                        new
+                        {
+                            Id = 79,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 301
+                        },
+                        new
+                        {
+                            Id = 80,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 301
+                        },
+                        new
+                        {
+                            Id = 81,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg",
+                            RoomNumber = 301
+                        },
+                        new
+                        {
+                            Id = 82,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg",
+                            RoomNumber = 301
+                        },
+                        new
+                        {
+                            Id = 83,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 301
+                        },
+                        new
+                        {
+                            Id = 84,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 301
+                        },
+                        new
+                        {
+                            Id = 85,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg",
+                            RoomNumber = 302
+                        },
+                        new
+                        {
+                            Id = 86,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 302
+                        },
+                        new
+                        {
+                            Id = 87,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 302
+                        },
+                        new
+                        {
+                            Id = 88,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg",
+                            RoomNumber = 302
+                        },
+                        new
+                        {
+                            Id = 89,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg",
+                            RoomNumber = 302
+                        },
+                        new
+                        {
+                            Id = 90,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 302
+                        },
+                        new
+                        {
+                            Id = 91,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 302
+                        },
+                        new
+                        {
+                            Id = 92,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 303
+                        },
+                        new
+                        {
+                            Id = 93,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 303
+                        },
+                        new
+                        {
+                            Id = 94,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 303
+                        },
+                        new
+                        {
+                            Id = 95,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg",
+                            RoomNumber = 303
+                        },
+                        new
+                        {
+                            Id = 96,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg",
+                            RoomNumber = 303
+                        },
+                        new
+                        {
+                            Id = 97,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg",
+                            RoomNumber = 303
+                        },
+                        new
+                        {
+                            Id = 98,
+                            HotelId = 3,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 303
+                        },
+                        new
+                        {
+                            Id = 99,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg",
+                            RoomNumber = 401
+                        },
+                        new
+                        {
+                            Id = 100,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 401
+                        },
+                        new
+                        {
+                            Id = 101,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 401
+                        },
+                        new
+                        {
+                            Id = 102,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg",
+                            RoomNumber = 401
+                        },
+                        new
+                        {
+                            Id = 103,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg",
+                            RoomNumber = 401
+                        },
+                        new
+                        {
+                            Id = 104,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 401
+                        },
+                        new
+                        {
+                            Id = 105,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg",
+                            RoomNumber = 401
+                        },
+                        new
+                        {
+                            Id = 106,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 402
+                        },
+                        new
+                        {
+                            Id = 107,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 402
+                        },
+                        new
+                        {
+                            Id = 108,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg",
+                            RoomNumber = 402
+                        },
+                        new
+                        {
+                            Id = 109,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg",
+                            RoomNumber = 402
+                        },
+                        new
+                        {
+                            Id = 110,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg",
+                            RoomNumber = 402
+                        },
+                        new
+                        {
+                            Id = 111,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 402
+                        },
+                        new
+                        {
+                            Id = 112,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 402
+                        },
+                        new
+                        {
+                            Id = 113,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg",
+                            RoomNumber = 403
+                        },
+                        new
+                        {
+                            Id = 114,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 403
+                        },
+                        new
+                        {
+                            Id = 115,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 403
+                        },
+                        new
+                        {
+                            Id = 116,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg",
+                            RoomNumber = 403
+                        },
+                        new
+                        {
+                            Id = 117,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg",
+                            RoomNumber = 403
+                        },
+                        new
+                        {
+                            Id = 118,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 403
+                        },
+                        new
+                        {
+                            Id = 119,
+                            HotelId = 4,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 403
+                        },
+                        new
+                        {
+                            Id = 120,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg",
+                            RoomNumber = 501
+                        },
+                        new
+                        {
+                            Id = 121,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 501
+                        },
+                        new
+                        {
+                            Id = 122,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 501
+                        },
+                        new
+                        {
+                            Id = 123,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg",
+                            RoomNumber = 501
+                        },
+                        new
+                        {
+                            Id = 124,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg",
+                            RoomNumber = 501
+                        },
+                        new
+                        {
+                            Id = 125,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 501
+                        },
+                        new
+                        {
+                            Id = 126,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 501
+                        },
+                        new
+                        {
+                            Id = 127,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg",
+                            RoomNumber = 502
+                        },
+                        new
+                        {
+                            Id = 128,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg",
+                            RoomNumber = 502
+                        },
+                        new
+                        {
+                            Id = 129,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 502
+                        },
+                        new
+                        {
+                            Id = 130,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 502
+                        },
+                        new
+                        {
+                            Id = 131,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg",
+                            RoomNumber = 502
+                        },
+                        new
+                        {
+                            Id = 132,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 502
+                        },
+                        new
+                        {
+                            Id = 133,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 502
+                        },
+                        new
+                        {
+                            Id = 134,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 503
+                        },
+                        new
+                        {
+                            Id = 135,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg",
+                            RoomNumber = 503
+                        },
+                        new
+                        {
+                            Id = 136,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 503
+                        },
+                        new
+                        {
+                            Id = 137,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg",
+                            RoomNumber = 503
+                        },
+                        new
+                        {
+                            Id = 138,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg",
+                            RoomNumber = 503
+                        },
+                        new
+                        {
+                            Id = 139,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg",
+                            RoomNumber = 503
+                        },
+                        new
+                        {
+                            Id = 140,
+                            HotelId = 5,
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg",
+                            RoomNumber = 503
+                        });
                 });
 
             modelBuilder.Entity("Globe_Wander_Final.Models.Rate", b =>
@@ -335,6 +1702,9 @@ namespace Globe_Wander_Final.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<int?>("AmenityId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Layout")
                         .HasColumnType("int");
 
@@ -343,6 +1713,8 @@ namespace Globe_Wander_Final.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("AmenityId");
 
                     b.ToTable("Rooms");
 
@@ -364,6 +1736,67 @@ namespace Globe_Wander_Final.Migrations
                             ID = 3,
                             Layout = 1,
                             Name = "Studio room"
+                        });
+                });
+
+            modelBuilder.Entity("Globe_Wander_Final.Models.RoomAmenity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AmenityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AmenityId");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("RoomAmenities");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AmenityId = 1,
+                            RoomId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AmenityId = 2,
+                            RoomId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AmenityId = 3,
+                            RoomId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AmenityId = 1,
+                            RoomId = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AmenityId = 2,
+                            RoomId = 3
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AmenityId = 3,
+                            RoomId = 3
                         });
                 });
 
@@ -488,9 +1921,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 20m,
                             Count = 0,
                             Description = "trip start at 8 am and going from Amman to Petra",
-                            EndDate = new DateTime(2023, 10, 17, 22, 12, 1, 955, DateTimeKind.Utc).AddTicks(3835),
+                            EndDate = new DateTime(2023, 10, 19, 8, 9, 14, 212, DateTimeKind.Utc).AddTicks(4236),
                             Name = "Petra ride",
-                            StartDate = new DateTime(2023, 10, 18, 1, 12, 1, 955, DateTimeKind.Local).AddTicks(3820),
+                            StartDate = new DateTime(2023, 10, 19, 11, 9, 14, 212, DateTimeKind.Local).AddTicks(4183),
                             TourSpotID = 1
                         },
                         new
@@ -501,9 +1934,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 30m,
                             Count = 0,
                             Description = "Amman to Jerash with a trip manager who can speak many languages",
-                            EndDate = new DateTime(2023, 10, 17, 22, 12, 1, 955, DateTimeKind.Utc).AddTicks(3839),
+                            EndDate = new DateTime(2023, 10, 19, 8, 9, 14, 212, DateTimeKind.Utc).AddTicks(4263),
                             Name = "Jerash ride",
-                            StartDate = new DateTime(2023, 10, 18, 1, 12, 1, 955, DateTimeKind.Local).AddTicks(3838),
+                            StartDate = new DateTime(2023, 10, 19, 11, 9, 14, 212, DateTimeKind.Local).AddTicks(4261),
                             TourSpotID = 2
                         },
                         new
@@ -514,9 +1947,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 40m,
                             Count = 0,
                             Description = "Amman to Irbid with a trip manager who can speak many languages",
-                            EndDate = new DateTime(2023, 10, 17, 22, 12, 1, 955, DateTimeKind.Utc).AddTicks(3843),
+                            EndDate = new DateTime(2023, 10, 19, 8, 9, 14, 212, DateTimeKind.Utc).AddTicks(4266),
                             Name = "Um-Qais ride",
-                            StartDate = new DateTime(2023, 10, 18, 1, 12, 1, 955, DateTimeKind.Local).AddTicks(3842),
+                            StartDate = new DateTime(2023, 10, 19, 11, 9, 14, 212, DateTimeKind.Local).AddTicks(4265),
                             TourSpotID = 3
                         });
                 });
@@ -730,6 +2163,10 @@ namespace Globe_Wander_Final.Migrations
 
             modelBuilder.Entity("Globe_Wander_Final.Models.Hotel", b =>
                 {
+                    b.HasOne("Globe_Wander_Final.Models.Facility", null)
+                        .WithMany("HotelFacilities")
+                        .HasForeignKey("FacilityId");
+
                     b.HasOne("Globe_Wander_Final.Models.TourSpot", "TourSpot")
                         .WithMany("Hotels")
                         .HasForeignKey("TourSpotID")
@@ -737,6 +2174,25 @@ namespace Globe_Wander_Final.Migrations
                         .IsRequired();
 
                     b.Navigation("TourSpot");
+                });
+
+            modelBuilder.Entity("Globe_Wander_Final.Models.HotelFacility", b =>
+                {
+                    b.HasOne("Globe_Wander_Final.Models.Facility", "Facility")
+                        .WithMany()
+                        .HasForeignKey("FacilityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Globe_Wander_Final.Models.Hotel", "Hotel")
+                        .WithMany("HotelFacilities")
+                        .HasForeignKey("HotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Facility");
+
+                    b.Navigation("Hotel");
                 });
 
             modelBuilder.Entity("Globe_Wander_Final.Models.HotelRoom", b =>
@@ -758,6 +2214,21 @@ namespace Globe_Wander_Final.Migrations
                     b.Navigation("Rooms");
                 });
 
+            modelBuilder.Entity("Globe_Wander_Final.Models.Image", b =>
+                {
+                    b.HasOne("Globe_Wander_Final.Models.Hotel", "Hotel")
+                        .WithMany("HotelImages")
+                        .HasForeignKey("HotelId");
+
+                    b.HasOne("Globe_Wander_Final.Models.HotelRoom", "HotelRoom")
+                        .WithMany("HotelRoomImages")
+                        .HasForeignKey("HotelRoomHotelID", "HotelRoomRoomNumber");
+
+                    b.Navigation("Hotel");
+
+                    b.Navigation("HotelRoom");
+                });
+
             modelBuilder.Entity("Globe_Wander_Final.Models.Rate", b =>
                 {
                     b.HasOne("Globe_Wander_Final.Models.Trip", "Trip")
@@ -767,6 +2238,32 @@ namespace Globe_Wander_Final.Migrations
                         .IsRequired();
 
                     b.Navigation("Trip");
+                });
+
+            modelBuilder.Entity("Globe_Wander_Final.Models.Room", b =>
+                {
+                    b.HasOne("Globe_Wander_Final.Models.Amenity", null)
+                        .WithMany("RoomAmenities")
+                        .HasForeignKey("AmenityId");
+                });
+
+            modelBuilder.Entity("Globe_Wander_Final.Models.RoomAmenity", b =>
+                {
+                    b.HasOne("Globe_Wander_Final.Models.Amenity", "Amenity")
+                        .WithMany()
+                        .HasForeignKey("AmenityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Globe_Wander_Final.Models.Room", "Room")
+                        .WithMany("RoomAmenities")
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Amenity");
+
+                    b.Navigation("Room");
                 });
 
             modelBuilder.Entity("Globe_Wander_Final.Models.Trip", b =>
@@ -831,19 +2328,37 @@ namespace Globe_Wander_Final.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Globe_Wander_Final.Models.Amenity", b =>
+                {
+                    b.Navigation("RoomAmenities");
+                });
+
+            modelBuilder.Entity("Globe_Wander_Final.Models.Facility", b =>
+                {
+                    b.Navigation("HotelFacilities");
+                });
+
             modelBuilder.Entity("Globe_Wander_Final.Models.Hotel", b =>
                 {
+                    b.Navigation("HotelFacilities");
+
+                    b.Navigation("HotelImages");
+
                     b.Navigation("HotelRoom");
                 });
 
             modelBuilder.Entity("Globe_Wander_Final.Models.HotelRoom", b =>
                 {
                     b.Navigation("BookingRoom");
+
+                    b.Navigation("HotelRoomImages");
                 });
 
             modelBuilder.Entity("Globe_Wander_Final.Models.Room", b =>
                 {
                     b.Navigation("HotelRooms");
+
+                    b.Navigation("RoomAmenities");
                 });
 
             modelBuilder.Entity("Globe_Wander_Final.Models.TourSpot", b =>
