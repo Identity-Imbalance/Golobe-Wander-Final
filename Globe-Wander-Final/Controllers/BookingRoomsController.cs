@@ -64,7 +64,7 @@ namespace Globe_Wander_Final.Controllers
 
                 var options = new SessionCreateOptions
                 {
-                    SuccessUrl = domain + "BookingRooms/MyBookings",
+                    SuccessUrl = domain + $"BookingRooms/CompletedPaidBooking/{booking.ID}",
                     CancelUrl = domain + $"BookingRooms/FailedPayment/{booking.ID}",
                     LineItems = new List<SessionLineItemOptions>(),
                     Mode = "payment",
@@ -103,7 +103,24 @@ namespace Globe_Wander_Final.Controllers
 
 
         }
+        public async Task<IActionResult> CompletedPaidBooking(int ID)
+        {
 
+        var booking =  await _bookingRoom.GetBookingRoomById(ID);
+
+
+            return View(booking);
+
+        }
+        public async Task<IActionResult> RefundMessage(int ID)
+        {
+
+            
+
+
+            return View(ID);
+
+        }
         public async Task<IActionResult> CompletedPaymentMessage(int ID)
         {
 
@@ -199,9 +216,11 @@ namespace Globe_Wander_Final.Controllers
             
 if(totalBeforeUpdate > totalAfterUpdate)
             {
-                var updated = await _bookingRoom.UpdateBookingRoom(UpdateBooking.ID, UpdateBooking);
+      await _bookingRoom.UpdateBookingRoom(UpdateBooking.ID, UpdateBooking);
               var totalRefund =  totalBeforeUpdate - totalAfterUpdate;
-                return RedirectToAction("MyBookings");
+                int totalRefundInt = Convert.ToInt32(totalRefund);
+
+                return RedirectToAction("RefundMessage", new { ID = totalRefundInt });
 
             }
 
@@ -219,7 +238,7 @@ if(totalBeforeUpdate > totalAfterUpdate)
                 var options = new SessionCreateOptions
                 {
                     SuccessUrl = domain + $"BookingRooms/CompletedPaymentMessage/{UPDATEBOOKINGTEMP.ID}",
-                    CancelUrl = domain + $"BookingRooms/FailedPaymentExtra",
+                    CancelUrl = domain + $"BookingRooms/FailedPaymentExtra/{UPDATEBOOKINGTEMP.ID}",
                     LineItems = new List<SessionLineItemOptions>(),
                     Mode = "payment",
                 };
