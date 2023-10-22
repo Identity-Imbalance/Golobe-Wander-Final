@@ -167,8 +167,9 @@ namespace Globe_Wander_Final.Models.Services
 
 
 
-
                 bookingRoom.Duration = totalDays;
+                bookingRoom.CheckOut = updatedBookingRoomDTO.CheckOut;
+                bookingRoom.CheckIn = updatedBookingRoomDTO.CheckIn;
                 bookingRoom.TotalPrice = totalDays * bookingRoom.Cost;
                 _context.Entry(bookingRoom).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
@@ -181,7 +182,7 @@ namespace Globe_Wander_Final.Models.Services
         {
 
             var bookingRooms = await _context.BookingRooms.ToListAsync();
-            var bookingRoomDTOs = bookingRooms.Where(x=>userId == x.Username).Select(bookingRoom => new BookingRoomDTO
+            var bookingRoomDTOs =  bookingRooms.Where(x=>userId == x.Username).Select(bookingRoom => new BookingRoomDTO
             {
                 ID = bookingRoom.ID,
                 HotelID = bookingRoom.HotelID,
