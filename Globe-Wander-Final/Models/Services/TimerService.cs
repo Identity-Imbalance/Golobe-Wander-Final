@@ -19,20 +19,21 @@ namespace Globe_Wander_Final.Models.Services
             // Initialize and start a timer to run the cleanup function every hour
             cleanupTimer = new System.Timers.Timer();
             cleanupTimer.Elapsed += CleanupBookings;
-            cleanupTimer.Interval = TimeSpan.FromHours(1).TotalMilliseconds; // Set the interval to 1 hour
+            cleanupTimer.Interval = TimeSpan.FromSeconds(2).TotalMilliseconds; // Set the interval to 1 hour
             cleanupTimer.AutoReset = true;
             cleanupTimer.Enabled = true;
+       
         }
 
-        public void CleanupBookings(object sender, ElapsedEventArgs e)
+        public async void CleanupBookings(object sender, ElapsedEventArgs e)
         {
             // This function will be called every hour to delete past bookings
-            DeletePastBookings();
+          await  DeletePastBookings();
         }
 
-        private async void DeletePastBookings()
+        private async Task DeletePastBookings()
         {
-
+            Console.WriteLine("2");
             using (var scope = _serviceProvider.CreateScope())
             {
                 var scopedContext = scope.ServiceProvider.GetRequiredService<GlobeWanderDbContext>();
@@ -51,6 +52,7 @@ namespace Globe_Wander_Final.Models.Services
                         hotelRoom.IsAvailable = true;
                     }
                     scopedContext.BookingRooms.Remove(booking);
+                    Console.WriteLine("1");
                 }
 
                 await scopedContext.SaveChangesAsync();
