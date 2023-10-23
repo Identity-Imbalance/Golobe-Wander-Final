@@ -35,11 +35,11 @@ namespace Globe_Wander_Final.Models.Services
 
             var trip = await _context.Trips.FindAsync(bookingTrip.TripID);
 
-            var existBookingTrip = await _context.bookingTrips
-                .Where(x => x.TripID == bookingTrip.TripID)
-                .FirstOrDefaultAsync(b => b.Username == user.UserName && trip.Id == bookingTrip.TripID);
+            //var existBookingTrip = await _context.bookingTrips
+            //    .Where(x => x.TripID == bookingTrip.TripID)
+            //    .FirstOrDefaultAsync(b => b.Username == user.UserName && trip.Id == bookingTrip.TripID);
 
-            if (existBookingTrip == null)
+            if (null == null)
             {
                 if (trip.Capacity >= (trip.Count + bookingTrip.NumberOfPersons))
                 {
