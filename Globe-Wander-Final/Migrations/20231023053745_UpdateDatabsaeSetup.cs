@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Globe_Wander_Final.Migrations
 {
     /// <inheritdoc />
-    public partial class data : Migration
+    public partial class UpdateDatabsaeSetup : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -45,6 +45,7 @@ namespace Globe_Wander_Final.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -95,6 +96,21 @@ namespace Globe_Wander_Final.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TourSpots", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UPDATEBOOKINGTEMPs",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdForUpdate = table.Column<int>(type: "int", nullable: false),
+                    CheckIn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CheckOut = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UPDATEBOOKINGTEMPs", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -419,6 +435,8 @@ namespace Globe_Wander_Final.Migrations
                     RoomNumber = table.Column<int>(type: "int", nullable: false),
                     Cost = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Duration = table.Column<int>(type: "int", nullable: false),
+                    CheckIn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CheckOut = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TotalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Username = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -488,13 +506,13 @@ namespace Globe_Wander_Final.Migrations
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "ImageUrl", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "41baff86-aafa-4af8-a002-f8b8cb1dd106", "adminUser@example.com", true, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAEEZKZdiFgjbLBoYFvYlBIgiQfx/qcmVlGe9Q2qHPqhTXQk4IppVhe1v40NTk+qhn7w==", "1234567890", false, "fdceb46e-de57-4623-bacd-ea6f27226c45", false, "admin" },
-                    { "2", 0, "b963ff88-dd10-47a5-bde7-2667b0602aa0", "hotel@example.com", true, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAEHyudxmGBRmX1N9+qJooY/orM973l6zFYeOPasLK35w6maHSES7c8gKX7lyhwAB9PA==", "1234567890", false, "ff9fcd92-c420-4511-9730-b60835d3117e", false, "hotel" },
-                    { "3", 0, "5d59cf00-d948-46bc-804e-83a878075a65", "trip@example.com", true, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAEMq+bgv5fu0J3HyNK/fq9fUyDpeqvGn+TDSyXk3xOgg4VFSw/ahcVct08FiDjOJLZQ==", "1234567890", false, "f6f12be4-8d34-4408-a14a-69d0ce2dc0df", false, "trip" },
-                    { "4", 0, "4cde008d-ca9a-4b42-a5df-8b5542af973f", "User@example.com", true, false, null, null, "USER", "AQAAAAIAAYagAAAAEOoYN8bXr+RtsmfLDrq5MoZzrPC1phWbe4YiAp4Xkw9F7VILnKyJUs1o3prt53WEQA==", "1234567890", false, "348e457f-7427-4800-bdd8-6b32eb273837", false, "User" }
+                    { "1", 0, "b01bc188-0640-43de-acdd-24b133e39e1e", "adminUser@example.com", true, null, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAEFhtdLwAPTJ3bBL1KsZLl23ux/IKX6dSOD6sKAGlFg1CifINl8591UYFa6IQE90BGQ==", "1234567890", false, "d056d336-a936-4746-a814-8f7adc1a8129", false, "admin" },
+                    { "2", 0, "bdccc1ee-8ca7-4264-bc98-ac629eeec46e", "hotel@example.com", true, null, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAEHz7jyLIyCsk06FhhOz2X3KRdkrHWixPDRV+OP+zJWFUiIzh6h1hwiKaO/3mPL3plg==", "1234567890", false, "e6ba08d4-a229-40af-af5f-cac3e2815624", false, "hotel" },
+                    { "3", 0, "78ad77f5-be82-4694-8c09-b5dd068bcc81", "trip@example.com", true, null, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAECbHMQKfCHVECvt9hIzkvggUp1auFetKAEzOSXz/qU+rvKLWX3XXzrapTQL6fJmCuA==", "1234567890", false, "dfb4b8ff-f623-4741-94d0-85ab10eb1016", false, "trip" },
+                    { "4", 0, "43d78e53-040c-47eb-9e13-95b54cf0a902", "User@example.com", true, null, false, null, null, "USER", "AQAAAAIAAYagAAAAEKOKGDJRV/duFIidnP73M7T2rReC9eF0tnu7RoqV0mHh3aALXGqSX8CCKVfgQxfGdA==", "1234567890", false, "6389f8cd-8004-4bf7-8502-9a7d49931767", false, "User" }
                 });
 
             migrationBuilder.InsertData(
@@ -574,36 +592,36 @@ namespace Globe_Wander_Final.Migrations
                 columns: new[] { "Id", "Activity", "Capacity", "Cost", "Count", "Description", "EndDate", "Name", "StartDate", "TourSpotID" },
                 values: new object[,]
                 {
-                    { 1, "walking", 30, 20m, 0, "trip start at 8 am and going from Amman to Petra", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3690), "Petra ride", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3659), 1 },
-                    { 2, "visiting", 22, 30m, 0, "Amman to Jerash with a trip manager who can speak many languages", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3701), "Jerash ride", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3699), 1 },
-                    { 3, "climbing", 40, 40m, 0, "Amman to Irbid with a trip manager who can speak many languages", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3708), "Um-Qais ride", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3707), 1 },
-                    { 4, "desert safari", 20, 50m, 0, "Explore the breathtaking Wadi Rum desert in Jordan.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3715), "Wadi Rum Adventure", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3713), 2 },
-                    { 5, "swimming and mud baths", 15, 25m, 0, "Relax at the world-famous Dead Sea and experience its healing properties.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3721), "Dead Sea Relaxation", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3719), 2 },
-                    { 6, "scuba diving", 10, 60m, 0, "Discover the vibrant marine life of the Red Sea in Aqaba.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3726), "Aqaba Diving Expedition", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3725), 2 },
-                    { 7, "sightseeing", 25, 15m, 0, "Explore the historical and cultural landmarks of Amman.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3733), "Amman City Tour", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3731), 3 },
-                    { 8, "hiking", 12, 35m, 0, "Trek through the stunning Dana Biosphere Reserve.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3739), "Dana Biosphere Reserve Hike", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3737), 3 },
-                    { 9, "canyoning", 18, 45m, 0, "Experience the adventure of canyoning in Wadi Mujib.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3744), "Wadi Mujib Canyoning", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3743), 3 },
-                    { 10, "relaxation", 30, 20m, 0, "Relax in the soothing hot springs of Ma'in.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3750), "Ma'in Hot Springs Visit", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3749), 4 },
-                    { 11, "historical tour", 20, 25m, 0, "Explore the historic Kerak Castle in Jordan.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3758), "Kerak Castle Tour", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3757), 4 },
-                    { 12, "nature walk", 15, 30m, 0, "Take a nature walk in the Ajloun Forest Reserve.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3764), "Ajloun Forest Reserve Trek", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3763), 4 },
-                    { 13, "food tasting", 12, 40m, 0, "Indulge in a culinary journey through Amman's cuisine.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3770), "Amman Culinary Tour", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3769), 4 },
-                    { 14, "mosaic art", 25, 20m, 0, "Discover the mosaic art of Madaba.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3794), "Mosaic City Madaba", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3792), 4 },
-                    { 15, "historical tour", 18, 30m, 0, "Explore the historic Ajloun Castle.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3800), "Ajloun Castle Exploration", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3798), 4 },
-                    { 16, "beach relaxation", 20, 55m, 0, "Relax on the beautiful beaches of Aqaba.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3806), "Aqaba Beach Getaway", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3805), 5 },
-                    { 17, "snorkeling", 15, 40m, 0, "Explore the underwater world of the Red Sea through snorkeling in Aqaba.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3813), "Aqaba Snorkeling Adventure", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3811), 5 },
-                    { 18, "boat tour", 25, 30m, 0, "View marine life through a glass-bottom boat tour in Aqaba.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3819), "Aqaba Glass-Bottom Boat Tour", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3817), 5 },
-                    { 19, "desert adventure", 12, 45m, 0, "Embark on an exciting jeep safari in the Aqaba desert.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3825), "Aqaba Desert Jeep Safari", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3824), 6 },
-                    { 20, "nightclub hopping", 20, 25m, 0, "Experience the vibrant nightlife of Aqaba.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3831), "Aqaba Nightlife Tour", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3830), 6 },
-                    { 21, "historical tour", 15, 60m, 0, "Explore the iconic Pyramids of Giza in Egypt.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3842), "Pyramids of Giza Tour", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3841), 6 },
-                    { 22, "theater", 18, 60m, 0, "Attend a Broadway show in the heart of New York City.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3848), "Broadway Show Experience", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3847), 7 },
-                    { 23, "museum visit", 20, 30m, 0, "Explore the museums along Museum Mile.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3855), "Museum Mile Tour", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3853), 7 },
-                    { 24, "walking tour", 35, 20m, 0, "Take a scenic walk across the historic Brooklyn Bridge.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3861), "Brooklyn Bridge Walk", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3859), 7 },
-                    { 25, "sightseeing", 30, 35m, 0, "Enjoy panoramic views from the Empire State Building.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3867), "Empire State Building Observation Deck", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3866), 8 },
-                    { 26, "boat tour", 25, 45m, 0, "Cruise along the Hudson River and see Manhattan's skyline.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3874), "Hudson River Boat Tour", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3872), 8 },
-                    { 27, "cultural tour", 20, 45m, 0, "Immerse in the rich culture of Ubud, Bali.", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3881), "Ubud Cultural Experience", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3879), 8 },
-                    { 28, "snorkeling", 30, 60m, 0, "Explore the vibrant marine life of the Red Sea in Aqaba", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3887), "Red Sea Adventure", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3885), 9 },
-                    { 29, "off-roading", 20, 50m, 0, "Experience the thrill of a desert adventure in Aqaba", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(3974), "Desert Safari", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3972), 9 },
-                    { 30, "scuba diving", 15, 70m, 0, "Discover submerged historical sites in the Red Sea", new DateTime(2023, 10, 20, 16, 37, 44, 447, DateTimeKind.Utc).AddTicks(4020), "Historical Dive", new DateTime(2023, 10, 20, 19, 37, 44, 447, DateTimeKind.Local).AddTicks(3996), 9 }
+                    { 1, "walking", 30, 20m, 0, "trip start at 8 am and going from Amman to Petra", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2507), "Petra ride", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2492), 1 },
+                    { 2, "visiting", 22, 30m, 0, "Amman to Jerash with a trip manager who can speak many languages", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2511), "Jerash ride", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2510), 1 },
+                    { 3, "climbing", 40, 40m, 0, "Amman to Irbid with a trip manager who can speak many languages", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2514), "Um-Qais ride", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2513), 1 },
+                    { 4, "desert safari", 20, 50m, 0, "Explore the breathtaking Wadi Rum desert in Jordan.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2516), "Wadi Rum Adventure", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2515), 2 },
+                    { 5, "swimming and mud baths", 15, 25m, 0, "Relax at the world-famous Dead Sea and experience its healing properties.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2519), "Dead Sea Relaxation", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2518), 2 },
+                    { 6, "scuba diving", 10, 60m, 0, "Discover the vibrant marine life of the Red Sea in Aqaba.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2524), "Aqaba Diving Expedition", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2524), 2 },
+                    { 7, "sightseeing", 25, 15m, 0, "Explore the historical and cultural landmarks of Amman.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2527), "Amman City Tour", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2526), 3 },
+                    { 8, "hiking", 12, 35m, 0, "Trek through the stunning Dana Biosphere Reserve.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2529), "Dana Biosphere Reserve Hike", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2529), 3 },
+                    { 9, "canyoning", 18, 45m, 0, "Experience the adventure of canyoning in Wadi Mujib.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2532), "Wadi Mujib Canyoning", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2531), 3 },
+                    { 10, "relaxation", 30, 20m, 0, "Relax in the soothing hot springs of Ma'in.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2534), "Ma'in Hot Springs Visit", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2534), 4 },
+                    { 11, "historical tour", 20, 25m, 0, "Explore the historic Kerak Castle in Jordan.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2537), "Kerak Castle Tour", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2536), 4 },
+                    { 12, "nature walk", 15, 30m, 0, "Take a nature walk in the Ajloun Forest Reserve.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2540), "Ajloun Forest Reserve Trek", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2539), 4 },
+                    { 13, "food tasting", 12, 40m, 0, "Indulge in a culinary journey through Amman's cuisine.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2542), "Amman Culinary Tour", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2541), 4 },
+                    { 14, "mosaic art", 25, 20m, 0, "Discover the mosaic art of Madaba.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2553), "Mosaic City Madaba", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2552), 4 },
+                    { 15, "historical tour", 18, 30m, 0, "Explore the historic Ajloun Castle.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2555), "Ajloun Castle Exploration", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2554), 4 },
+                    { 16, "beach relaxation", 20, 55m, 0, "Relax on the beautiful beaches of Aqaba.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2558), "Aqaba Beach Getaway", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2557), 5 },
+                    { 17, "snorkeling", 15, 40m, 0, "Explore the underwater world of the Red Sea through snorkeling in Aqaba.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2560), "Aqaba Snorkeling Adventure", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2560), 5 },
+                    { 18, "boat tour", 25, 30m, 0, "View marine life through a glass-bottom boat tour in Aqaba.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2563), "Aqaba Glass-Bottom Boat Tour", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2562), 5 },
+                    { 19, "desert adventure", 12, 45m, 0, "Embark on an exciting jeep safari in the Aqaba desert.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2566), "Aqaba Desert Jeep Safari", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2566), 6 },
+                    { 20, "nightclub hopping", 20, 25m, 0, "Experience the vibrant nightlife of Aqaba.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2570), "Aqaba Nightlife Tour", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2568), 6 },
+                    { 21, "historical tour", 15, 60m, 0, "Explore the iconic Pyramids of Giza in Egypt.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2572), "Pyramids of Giza Tour", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2571), 6 },
+                    { 22, "theater", 18, 60m, 0, "Attend a Broadway show in the heart of New York City.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2575), "Broadway Show Experience", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2574), 7 },
+                    { 23, "museum visit", 20, 30m, 0, "Explore the museums along Museum Mile.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2577), "Museum Mile Tour", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2577), 7 },
+                    { 24, "walking tour", 35, 20m, 0, "Take a scenic walk across the historic Brooklyn Bridge.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2580), "Brooklyn Bridge Walk", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2579), 7 },
+                    { 25, "sightseeing", 30, 35m, 0, "Enjoy panoramic views from the Empire State Building.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2582), "Empire State Building Observation Deck", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2582), 8 },
+                    { 26, "boat tour", 25, 45m, 0, "Cruise along the Hudson River and see Manhattan's skyline.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2585), "Hudson River Boat Tour", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2584), 8 },
+                    { 27, "cultural tour", 20, 45m, 0, "Immerse in the rich culture of Ubud, Bali.", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2587), "Ubud Cultural Experience", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2586), 8 },
+                    { 28, "snorkeling", 30, 60m, 0, "Explore the vibrant marine life of the Red Sea in Aqaba", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2590), "Red Sea Adventure", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2589), 9 },
+                    { 29, "off-roading", 20, 50m, 0, "Experience the thrill of a desert adventure in Aqaba", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2592), "Desert Safari", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2591), 9 },
+                    { 30, "scuba diving", 15, 70m, 0, "Discover submerged historical sites in the Red Sea", new DateTime(2023, 10, 23, 5, 37, 44, 733, DateTimeKind.Utc).AddTicks(2620), "Historical Dive", new DateTime(2023, 10, 23, 8, 37, 44, 733, DateTimeKind.Local).AddTicks(2603), 9 }
                 });
 
             migrationBuilder.InsertData(
@@ -629,19 +647,19 @@ namespace Globe_Wander_Final.Migrations
                 values: new object[,]
                 {
                     { 1, 101, 1, 2, " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", true, 150.00m, 1, 500 },
-                    { 1, 102, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", false, 200.00m, 2, 700 },
+                    { 1, 102, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", true, 200.00m, 2, 700 },
                     { 1, 103, 2, 1, "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", true, 300.00m, 3, 1000 },
                     { 2, 201, 1, 2, " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", true, 150.00m, 1, 500 },
-                    { 2, 202, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", false, 200.00m, 2, 700 },
+                    { 2, 202, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", true, 200.00m, 2, 700 },
                     { 2, 203, 2, 1, "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", true, 300.00m, 3, 1000 },
                     { 3, 301, 1, 2, " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", true, 150.00m, 1, 500 },
-                    { 3, 302, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", false, 200.00m, 2, 700 },
+                    { 3, 302, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", true, 200.00m, 2, 700 },
                     { 3, 303, 2, 1, "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", true, 300.00m, 3, 1000 },
                     { 4, 401, 1, 2, " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", true, 150.00m, 1, 500 },
-                    { 4, 402, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", false, 200.00m, 2, 700 },
+                    { 4, 402, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", true, 200.00m, 2, 700 },
                     { 4, 403, 2, 1, "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", true, 300.00m, 3, 1000 },
                     { 5, 501, 1, 2, " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", true, 150.00m, 1, 500 },
-                    { 5, 502, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", false, 200.00m, 2, 700 },
+                    { 5, 502, 2, 2, " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", true, 200.00m, 2, 700 },
                     { 5, 503, 2, 1, "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", true, 300.00m, 3, 1000 }
                 });
 
@@ -973,6 +991,9 @@ namespace Globe_Wander_Final.Migrations
 
             migrationBuilder.DropTable(
                 name: "RoomAmenities");
+
+            migrationBuilder.DropTable(
+                name: "UPDATEBOOKINGTEMPs");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

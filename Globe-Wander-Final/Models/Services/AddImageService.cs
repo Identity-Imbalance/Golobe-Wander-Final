@@ -4,6 +4,8 @@ using Globe_Wander_Final.Models.Interfaces;
 using Globe_Wander_Final.Data;
 using Globe_Wander_Final.Models.DTOs;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using SendGrid.Helpers.Mail;
 
 namespace Globe_Wander_Final.Models.Services
 {
@@ -18,7 +20,7 @@ namespace Globe_Wander_Final.Models.Services
             _context = context;
         }
 
-        public async Task<T> UploadImage<T>(IFormFile file, T Model) where T : IHasImage
+        public async Task<TourSpot> UploadImage(IFormFile file, TourSpot Model)
         {
             BlobContainerClient blobContainerClient =
                 new BlobContainerClient(_configuration.GetConnectionString("StorageAccount"), "globe-wander-images");
@@ -39,8 +41,7 @@ namespace Globe_Wander_Final.Models.Services
             {
                 await blobClient.UploadAsync(fileStream, blobUploadOptions);
             }
-
-            Model.ImageURL = blobClient.Uri.ToString();
+            Model.Img = blobClient.Uri.ToString();
 
             return Model;
 
@@ -71,9 +72,6 @@ namespace Globe_Wander_Final.Models.Services
                 }
                 await AddHotelImage(blobClient.Uri.ToString(), Model);
             }
-
-            //Model.ImageURL = blobClient.Uri.ToString();
-            //Model.HotelImages.FirstOrDefault().Path = blobClient.Uri.ToString();
 
             return Model;
         }
@@ -110,7 +108,7 @@ namespace Globe_Wander_Final.Models.Services
 
         public async Task<HotelRoomDTO> UploadHotelRoomImages(List<IFormFile> files, HotelRoomDTO Model)
         {
-            await DeleteHotelRoomImages(Model.HotelID,Model.HotelID);
+            await DeleteHotelRoomImages(Model.HotelID, Model.HotelID);
             BlobContainerClient blobContainerClient =
               new BlobContainerClient(_configuration.GetConnectionString("StorageAccount"), "globe-wander-images");
 
@@ -134,9 +132,6 @@ namespace Globe_Wander_Final.Models.Services
                 }
                 await AddHotelRoomImage(blobClient.Uri.ToString(), Model);
             }
-
-            //Model.ImageURL = blobClient.Uri.ToString();
-            //Model.HotelImages.FirstOrDefault().Path = blobClient.Uri.ToString();
 
             return Model;
         }
@@ -185,16 +180,13 @@ namespace Globe_Wander_Final.Models.Services
                 }
                 await PutHotelImage(blobClient.Uri.ToString(), Model);
             }
-            
-            //Model.ImageURL = blobClient.Uri.ToString();
-            //Model.HotelImages.FirstOrDefault().Path = blobClient.Uri.ToString();
 
             return Model;
         }
 
         public async Task DeleteHotelImages(int hotelID)
         {
-            var images = await _context.Images.Where(h=> h.HotelId == hotelID && h.RoomNumber == null).ToListAsync();
+            var images = await _context.Images.Where(h => h.HotelId == hotelID && h.RoomNumber == null).ToListAsync();
             if (images.Count > 0)
             {
                 foreach (var img in images)
@@ -203,7 +195,7 @@ namespace Globe_Wander_Final.Models.Services
                     await _context.SaveChangesAsync();
                 }
             }
-          
+
         }
 
         public async Task<Image> PutHotelImage(string imageURL, HotelDTO model)
@@ -223,5 +215,124 @@ namespace Globe_Wander_Final.Models.Services
             return null;
 
         }
+
+        public async Task<TripDTO> UploadTripImages(List<IFormFile> files, TripDTO Model)
+        {
+            BlobContainerClient blobContainerClient =
+                new BlobContainerClient(_configuration.GetConnectionString("StorageAccount"), "globe-wander-images");
+
+            // Create if images container not exist 
+            await blobContainerClient.CreateIfNotExistsAsync();
+
+            foreach (var file in files)
+            {
+                BlobClient blobClient = blobContainerClient.GetBlobClient(file.FileName);
+
+                using var fileStream = file.OpenReadStream();
+
+                BlobUploadOptions blobUploadOptions = new BlobUploadOptions()
+                {
+                    HttpHeaders = new BlobHttpHeaders { ContentType = file.ContentType }
+                };
+
+                if (!blobClient.Exists())
+                {
+                    await blobClient.UploadAsync(fileStream, blobUploadOptions);
+                }
+                await AddTripImages(blobClient.Uri.ToString(), Model);
+            }
+
+            return Model;
+        }
+
+        public async Task AddTripImages(string imageURL, TripDTO model)
+        {
+            if (model != null && (imageURL != "" || imageURL != null))
+            {
+                Image newHotelImage = new Image
+                {
+                    Path = imageURL,
+                    TripId = model.Id
+                };
+                await _context.Images.AddAsync(newHotelImage);
+                await _context.SaveChangesAsync();
+
+            }
+        }
+
+
+
+        public async Task<TripDTO> UpdateTripImages(List<IFormFile> files, TripDTO Model)
+        {
+            await DeleteTripImages(Model.Id);
+            BlobContainerClient blobContainerClient =
+               new BlobContainerClient(_configuration.GetConnectionString("StorageAccount"), "globe-wander-images");
+
+            // Create if images container not exist 
+            await blobContainerClient.CreateIfNotExistsAsync();
+
+            foreach (var file in files)
+            {
+                BlobClient blobClient = blobContainerClient.GetBlobClient(file.FileName);
+
+                using var fileStream = file.OpenReadStream();
+
+                BlobUploadOptions blobUploadOptions = new BlobUploadOptions()
+                {
+                    HttpHeaders = new BlobHttpHeaders { ContentType = file.ContentType }
+                };
+
+                if (!blobClient.Exists())
+                {
+                    await blobClient.UploadAsync(fileStream, blobUploadOptions);
+                }
+                await AddTripImages(blobClient.Uri.ToString(), Model);
+            }
+
+            return Model;
+        }
+        public async Task DeleteTripImages(int id)
+        {
+            var images = await _context.Images.Where(h => h.TripId == id).ToListAsync();
+            if (images.Count > 0)
+            {
+                foreach (var img in images)
+                {
+                    _context.Entry(img).State = EntityState.Deleted;
+                    await _context.SaveChangesAsync();
+                }
+            }
+        }
+
+        public async Task<UserUpdateDTO> UpdateProfileImage(IFormFile file, UserUpdateDTO model)
+        {
+
+            BlobContainerClient blobContainerClient =
+                new BlobContainerClient(_configuration.GetConnectionString("StorageAccount"), "globe-wander-images");
+
+            // Create if images container not exist 
+
+            await blobContainerClient.CreateIfNotExistsAsync();
+
+            BlobClient blobClient = blobContainerClient.GetBlobClient(file.FileName);
+
+            using var fileStream = file.OpenReadStream();
+
+            BlobUploadOptions blobUploadOptions = new BlobUploadOptions()
+            {
+                HttpHeaders = new BlobHttpHeaders { ContentType = file.ContentType }
+            };
+
+            if (!blobClient.Exists())
+            {
+                await blobClient.UploadAsync(fileStream, blobUploadOptions);
+            }
+
+            model.ImageUrl = blobClient.Uri.ToString();
+
+
+            return model;
+        }
+
     }
 }

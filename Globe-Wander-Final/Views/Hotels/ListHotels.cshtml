@@ -1,12 +1,13 @@
 ﻿@model List<Globe_Wander_Final.Models.DTOs.HotelDTO>
 @{
+    Layout = "_DashboardLayout";
 }
-
+<div id="preloader">
+    <div id="status"></div>
+</div>
 <div id="container-wrapper">
     <!-- Dashboard -->
     <div id="dashboard">
-        <partial name="_Navigation"></partial>
-
         <div class="dashboard-content">
             <div class="list-outer">
                 @* this should be responsive *@
