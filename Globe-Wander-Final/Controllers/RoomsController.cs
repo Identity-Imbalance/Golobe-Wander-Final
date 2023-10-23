@@ -1,6 +1,7 @@
 ﻿using Globe_Wander_Final.Models;
 using Globe_Wander_Final.Models.DTOs;
 using Globe_Wander_Final.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Globe_Wander_Final.Controllers
@@ -21,6 +22,7 @@ namespace Globe_Wander_Final.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Hotel Manager , Admin Manager")]
         [HttpPost]
         public async Task<IActionResult> CreateRoom(RoomDTO model, List<int> selectedAmentias)
         {
@@ -45,6 +47,8 @@ namespace Globe_Wander_Final.Controllers
                 return RedirectToAction("CreateRoom", "Rooms");
         
         }
+
+        [Authorize(Roles = "Hotel Manager , Admin Manager")]
         public async Task<IActionResult> ListRooms()
         {
             var rooms = await _room.GetRooms();
@@ -52,6 +56,7 @@ namespace Globe_Wander_Final.Controllers
             return View(rooms);
         }
 
+        [Authorize(Roles = "Hotel Manager , Admin Manager")]
         public async Task<IActionResult> EditRoom(int id)
         {
             var room = await _room.GetRoomId(id);
@@ -62,6 +67,7 @@ namespace Globe_Wander_Final.Controllers
             return View(room);
         }
 
+        [Authorize(Roles = "Hotel Manager , Admin Manager")]
         [HttpPost]
         public async Task<IActionResult> EditRoom(int id, RoomDTO model, List<int> selectedAmentias)
         {
@@ -81,6 +87,7 @@ namespace Globe_Wander_Final.Controllers
                 }
             }
 
+
             foreach (var existRoomAmenity in existRoomAmenities)
             {
                 if (!selectedAmentias.Contains(existRoomAmenity.AmenityId))
@@ -91,6 +98,7 @@ namespace Globe_Wander_Final.Controllers
             return RedirectToAction("ListRooms", "Rooms");
         }
 
+        [Authorize(Roles = "Hotel Manager , Admin Manager")]
         [HttpPost]
         public async Task<IActionResult> DeleteRoom(int id)
         {

@@ -1,6 +1,7 @@
 ﻿using Globe_Wander_Final.Models.DTOs;
 using Globe_Wander_Final.Models.Interfaces;
 using Globe_Wander_Final.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Globe_Wander_Final.Controllers
@@ -38,6 +39,7 @@ namespace Globe_Wander_Final.Controllers
             return View(tripAndRecomanded);
         }
 
+        [Authorize(Roles = "Trip Manager , AdminManager")]
         public async Task<IActionResult> ListTrips()
         {
             var trips = await _trips.GetAllTrips();
@@ -45,6 +47,7 @@ namespace Globe_Wander_Final.Controllers
             return View(trips);
         }
 
+        [Authorize(Roles = "Trip Manager , AdminManager")]
         public async Task<IActionResult> CreateTrip()
         {
             var tours = await _tour.GetAllTourSpots();
@@ -54,6 +57,7 @@ namespace Globe_Wander_Final.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Trip Manager , AdminManager")]
         [HttpPost]
         public async Task<IActionResult> CreateTrip(NewTripDTO model,List<IFormFile> files)
         {
@@ -77,6 +81,7 @@ namespace Globe_Wander_Final.Controllers
             }
         }
 
+        [Authorize(Roles = "Trip Manager , AdminManager")]
         public async Task<IActionResult> EditTrip(int id)
         {
             var trip = await _trips.GetTripByID(id);
@@ -87,6 +92,8 @@ namespace Globe_Wander_Final.Controllers
             return View(trip);
             
         }
+
+        [Authorize(Roles = "Trip Manager , AdminManager")]
         [HttpPost]
         public async Task<IActionResult> EditTrip(NewTripDTO model, int id, List<IFormFile> files)
         {
@@ -107,6 +114,7 @@ namespace Globe_Wander_Final.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Trip Manager , AdminManager")]
         [HttpPost]
         public async Task<IActionResult> DeleteTrip(int id)
         {
