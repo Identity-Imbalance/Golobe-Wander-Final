@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Globe_Wander_Final.Migrations
 {
     [DbContext(typeof(GlobeWanderDbContext))]
-    [Migration("20231020123653_basharr")]
-    partial class basharr
+    [Migration("20231023192846_newVM")]
+    partial class newVM
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -128,15 +128,15 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5b3cf43c-e91d-4802-9a3d-b4923e48e82d",
+                            ConcurrencyStamp = "aa967611-8fef-48d0-b83f-aefe394798a0",
                             Email = "User@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFo4vSQgcjeDTwZ+1ue5anGrbMiCBb1JpcSA71htDbp/tUnR3x8zx47CnuiDLtGwjA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENswcylHQtAGr+yy74MnVvqWNTEYYnyMIYgfR50/yfngd2GveJCQEECBSh5HbJHL4Q==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7e0cdfd7-1fcb-4187-9efd-152c593b5976",
+                            SecurityStamp = "ea55b209-4c30-419f-9d8d-29dd0cdce37b",
                             TwoFactorEnabled = false,
                             UserName = "User"
                         },
@@ -144,16 +144,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "018e073d-1ad8-4941-80fb-723ceb2817b3",
+                            ConcurrencyStamp = "0ece62a3-24fc-416a-b1cc-2484a42e4f56",
                             Email = "adminUser@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "adminUser@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEgz6YuU9N7r/F8oJV1dlF1WFF6rLs86CpAyXq5VpzuNxTfguEB4FxICRroVXqupFA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEy+2M4DzV+gWyWoD/vw6vZ8sk5X0waOUwXvbI6oEuFq6u7sLyu70X0sr3aFUJagWQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3f10f608-80a2-462b-b8ab-0afc78e4c0ca",
+                            SecurityStamp = "7e5fa92a-eebf-4898-bb19-0f835ba9483c",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -161,16 +161,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "28c05590-7e25-4769-9eee-981fc81ee15c",
+                            ConcurrencyStamp = "aba1d0fe-1eed-4da2-889c-1c684cec61a8",
                             Email = "trip@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "trip@EXAMPLE.COM",
                             NormalizedUserName = "TRIP",
-                            PasswordHash = "AQAAAAIAAYagAAAAELsk3JwZlHTuGtIHFY2KU6p1bBmfLAmOznpC9xGmZrjzawcuCcpkV6PA6fA5+G3xag==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBW3qsMlsAdPr0EfNpvCaNWBii/IlaAU9T1MY/ESeJU41EgHiK8iAiT7w6+Gx2BonQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1fbba7c5-a412-416c-9f43-35ccd73a6626",
+                            SecurityStamp = "7f8d245b-a19b-4156-8f46-f8c24923ef89",
                             TwoFactorEnabled = false,
                             UserName = "trip"
                         },
@@ -178,16 +178,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fa310117-09d1-4ff7-a079-46d90478c68e",
+                            ConcurrencyStamp = "6415631f-74a6-439c-a3c5-bc36286b0499",
                             Email = "hotel@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "hotel@EXAMPLE.COM",
                             NormalizedUserName = "HOTEL",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFAaSSvKnl4M/1gSvRkkw17q57uZBV5KU7QMm1WfR3o7hey3FDANKg+ductBFmf5aQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJvx831kC7uui1NjSsuKuXn+U892rCd1wEQdWWuLUdZqPwUIBftU3VMpS8mbZHPPfg==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2611a458-9e6c-4ed5-8a9e-585688b065bf",
+                            SecurityStamp = "c9107085-caab-4c5c-9038-17277ce4e084",
                             TwoFactorEnabled = false,
                             UserName = "hotel"
                         });
@@ -1997,9 +1997,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 20m,
                             Count = 0,
                             Description = "trip start at 8 am and going from Amman to Petra",
-                            EndDate = new DateTime(2023, 10, 20, 12, 36, 53, 377, DateTimeKind.Utc).AddTicks(6026),
+                            EndDate = new DateTime(2023, 10, 23, 19, 28, 46, 280, DateTimeKind.Utc).AddTicks(6875),
                             Name = "Petra ride",
-                            StartDate = new DateTime(2023, 10, 20, 15, 36, 53, 377, DateTimeKind.Local).AddTicks(6012),
+                            StartDate = new DateTime(2023, 10, 23, 22, 28, 46, 280, DateTimeKind.Local).AddTicks(6862),
                             TourSpotID = 1
                         },
                         new
@@ -2010,9 +2010,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 30m,
                             Count = 0,
                             Description = "Amman to Jerash with a trip manager who can speak many languages",
-                            EndDate = new DateTime(2023, 10, 20, 12, 36, 53, 377, DateTimeKind.Utc).AddTicks(6029),
+                            EndDate = new DateTime(2023, 10, 23, 19, 28, 46, 280, DateTimeKind.Utc).AddTicks(6878),
                             Name = "Jerash ride",
-                            StartDate = new DateTime(2023, 10, 20, 15, 36, 53, 377, DateTimeKind.Local).AddTicks(6029),
+                            StartDate = new DateTime(2023, 10, 23, 22, 28, 46, 280, DateTimeKind.Local).AddTicks(6877),
                             TourSpotID = 2
                         },
                         new
@@ -2023,9 +2023,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 40m,
                             Count = 0,
                             Description = "Amman to Irbid with a trip manager who can speak many languages",
-                            EndDate = new DateTime(2023, 10, 20, 12, 36, 53, 377, DateTimeKind.Utc).AddTicks(6032),
+                            EndDate = new DateTime(2023, 10, 23, 19, 28, 46, 280, DateTimeKind.Utc).AddTicks(6880),
                             Name = "Um-Qais ride",
-                            StartDate = new DateTime(2023, 10, 20, 15, 36, 53, 377, DateTimeKind.Local).AddTicks(6031),
+                            StartDate = new DateTime(2023, 10, 23, 22, 28, 46, 280, DateTimeKind.Local).AddTicks(6879),
                             TourSpotID = 3
                         });
                 });

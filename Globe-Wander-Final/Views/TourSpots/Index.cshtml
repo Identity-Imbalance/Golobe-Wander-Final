@@ -49,7 +49,10 @@
                         <div class="gallery-content">
                                     <ul>
                                 <li><a href="images/gallery/gallery1.jpg" data-lightbox="gallery" data-title="@tour.Name"><i class="fa fa-eye"></i></a></li>
-                                    <li><a asp-action="GetSpotById" asp-controller="TourSpots" asp-route-spotId="@tour.ID"><i class="fa fa-link"></i></a></li><br>
+                                    <li>
+                                        <a asp-action="GetSpotById" asp-controller="TourSpots" asp-route-spotId="@tour.ID"><i class="fa fa-link"></i>   </a>  
+                                    </li>
+                                    <br>
                             </ul>
                             @if(tour.ID %2 == 0){
                                     <div class="ribbon ribbon-top-left"><span>25% OFF</span></div>

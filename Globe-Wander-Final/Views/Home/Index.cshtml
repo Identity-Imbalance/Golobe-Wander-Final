@@ -1,4 +1,6 @@
-@model List<Globe_Wander_Final.Models.DTOs.TourSpotDTO>
+@model Globe_Wander_Final.Models.ViewModels.TourViewModel
+
+
 
        <link rel="shortcut icon" type="image/x-icon" href="~/images/favicon.png">
 <link href="~/fonts/flaticon.css" rel="stylesheet" type="text/css">   
@@ -278,9 +280,9 @@
             </div>
             <div class="content">
             <div class="row">
-                @for (int i = 0; i < Math.Min(Model.Count, 3); i++)
+                @for (int i = 0; i < Math.Min(Model.TourSpots.Count, 3); i++)
                 {
-                    var tour = Model[i];
+                    var tour = Model.TourSpots[i];
                     <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">
                         <div class="td-item td-item">
                             @if (tour != null && tour.Img != null)
@@ -320,11 +322,14 @@
                         </div>
                         <div class="col-md-8 col-sm-12 col-xs-12">
                             <div class="row review-slider">
+                            @foreach(var item in Model.TourSpots){ 
                                 <div class="col-md-4">
                                     <div class="trend-item">
                                         <div class="ribbon ribbon-top-left"><span>25% OFF</span></div>
                                         <div class="trend-image">
-                                    <img src="https://images.unsplash.com/photo-1486299267070-83823f5448dd?auto=format&fit=crop&q=80&w=2071&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="image" width="300px" height="300px">
+                                            <a asp-action="GetSpotById" asp-controller="TourSpots" asp-route-spotId="@item.ID">
+                                    <img src="@item.Img" alt="image" width="300px" height="300px">
+                                    </a>
                                             <div class="trend-tags">
                                                 <a href="#"><i class="flaticon-like"></i></a>
                                             </div>
@@ -333,101 +338,44 @@
                                             </div>
                                         </div>
                                         <div class="trend-content">
-                                            <p><i class="flaticon-location-pin"></i> United Kingdom</p>
-                                            <h4><a href="#">Stonehenge, Windsor Castle, and Bath from London</a></h4>
-                                            <div class="rating mar-bottom-15">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                            </div>
-                                            <span class="mar-left-5">38 Reviews</span>
-                                            <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> 3 days & 2 night</p>
+                                            <p><i class="flaticon-location-pin"></i>@item.Name</p>
+                                        <p ><i class="fa fa-clock-o" aria-hidden="true"></i> @item.Country</p>
+                                            <p>Tour Type: @item.Category</p>
+                                        <h4>
+                                            <a asp-action="GetSpotById" asp-controller="TourSpots" asp-route-spotId="@item.ID"><i class="fa fa-link"></i> @item.Description  </a>
+                                        
+                                    </h4>
+                                    @foreach(var trip in item.Trips){
+                                      
+                                            int sum = 0;
+                                            int avg = 0;
+                                       
+                                        @foreach (var rate in trip.Rates)
+                                        {
+                                            sum = sum + rate.Rating;
+
+                                        }
+
+                                       
+                                            if (trip.Rates.Count != 0)
+                                                avg = sum / trip.Rates.Count;
+
+                                      
+                                        @if (avg > 0)
+                                        {
+                                            <span class="mar-left-5">@avg</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="mar-left-5">Not Rated</span>
+                                        }
+                                           
+                                           }
+
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="trend-item">
-                                        <div class="trend-image">
-                                    <img src="https://wallpapercave.com/wp/wp2953021.jpg" alt="image" width="300px" height="300px">
-                                            <div class="trend-tags">
-                                                <a href="#"><i class="flaticon-like"></i></a>
-                                            </div>
-                                            <div class="trend-price">
-                                                <p>Multi-day Tours</p>
-                                                <p class="price">From <span>$899.00</span></p>
-                                            </div>
-                                        </div>
-                                        <div class="trend-content">
-                                            <p><i class="flaticon-location-pin"></i> Germany</p>
-                                            <h4><a href="#">Bosphorus Strait and Black Sea Half-Day Cruise from Istanbul</a></h4>
-                                            <div class="rating mar-bottom-15">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star-half checked"></span>
-                                                <span class="fa fa-star-half checked"></span>
-                                            </div>
-                                            <span class="mar-left-5">48 Reviews</span>
-                                            <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> 3 days & 2 night</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="trend-item">
-                                        <div class="ribbon ribbon-top-left"><span>Featured</span></div>
-                                        <div class="trend-image">
-                                    <img src="https://wallpapers.com/images/hd/colosseum-in-rome-italy-7iqtaywcklbmptxa.webp" alt="image" width="300px" height="300px">
-                                            <div class="trend-tags">
-                                                <a href="#"><i class="flaticon-like"></i></a>
-                                            </div>
-                                            <div class="trend-price">
-                                                <p>Attraction Tickets</p>
-                                                <p class="price">From <span>$350.00</span></p>
-                                            </div>
-                                        </div>
-                                        <div class="trend-content">
-                                            <p><i class="flaticon-location-pin"></i> Italy</p>
-                                            <h4><a href="#">NYC One World Observatory Skip-the-Line Ticket</a></h4>
-                                            <div class="rating mar-bottom-15">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                            </div>
-                                            <span class="mar-left-5">32 Reviews</span>
-                                            <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> 3 days & 2 night</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="trend-item">
-                                        <div class="trend-image">
-                                    <img src="https://wallpapercave.com/dwp1x/wp8968593.jpg" alt="image" width="300px" height="300px">
-                                            <div class="trend-tags">
-                                                <a href="#"><i class="flaticon-like"></i></a>
-                                            </div>
-                                            <div class="trend-price">
-                                                <p class="price">From <span>$350.00</span></p>
-                                            </div>
-                                        </div>
-                                        <div class="trend-content">
-                                    <p><i class="flaticon-location-pin"></i> switzerland</p>
-                                            <h4><a href="#">Stonehenge, Windsor Castle, and Bath from London</a></h4>
-                                            <div class="rating mar-bottom-15">
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star-half checked"></span>
-                                            </div>
-                                            <span class="mar-left-5">21 Reviews</span>
-                                            <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> 3 days & 2 night</p>
-                                        </div>
-                                    </div>
-                                </div>
+                            }
                             </div>    
                         </div>
                     </div>
@@ -452,122 +400,59 @@
             </div>
             <div class="top-deal-main">
                 <div class="row">
-                    <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">
-                        <div class="slider-item">
-                            <div class="slider-image">
-                            <img src="https://images.unsplash.com/photo-1454537468202-b7ff71d51c2e?auto=format&fit=crop&q=80&w=2069&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="image">
-                            </div>
-                            <div class="slider-content">
-                                <h6 class="mar-bottom-10"><i class="fa fa-map-marker-alt"></i> United Kingdom</h6>
-                                <h4 class="mar-bottom-15">Earning Asiana Club Miles</h4>
-                                <div class="rate-rev mar-bottom-20">
-                                    <span class="num-rating mar-right-5">4.6/5</span>
-                                    <span class="review">(166 reviews)</span>
-                                </div>    
-                                <p>Book and save with Trip.com on your next stay</p>
-                                <div class="deal-price">
-                                    <p class="price">From <span>$250.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>    
-                    <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">
-                        <div class="slider-item">
-                            <div class="slider-image">
-                            <img src="https://c4.wallpaperflare.com/wallpaper/481/1018/366/5bd33b3230b20-wallpaper-preview.jpg" alt="image">
-                            </div>
-                            <div class="slider-content">
-                                <h6 class="mar-bottom-10"><i class="fa fa-map-marker-alt"></i> Thailand</h6>
-                                <h4 class="mar-bottom-15">Save big on hotels!</h4>
-                                <div class="rate-rev mar-bottom-20">
-                                    <span class="num-rating mar-right-5">4.6/5</span>
-                                    <span class="review">(166 reviews)</span>
-                                </div>  
-                                <p>Book and save with Trip.com on your next stay</p>
-                                <div class="deal-price">
-                                    <p class="price">From <span>$250.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
+                   @foreach(var trip in Model.Trips){
+
                     <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">    
                         <div class="slider-item">
+                          
                             <div class="slider-image">
-                            <img src="https://wallpaperaccess.com/full/1523028.jpg" alt="image">
+                            <img src="@trip." alt="image">
                             </div>
                             <div class="slider-content">
-                                <h6 class="mar-bottom-10"><i class="fa fa-map-marker-alt"></i> South Korea</h6>
-                                <h4 class="mar-bottom-15">Experience Europe Your Way</h4>
+                                <h6 class="mar-bottom-10"><i class="fa fa-map-marker-alt"></i>@trip.Name</h6>
+                                <h4 class="mar-bottom-15"@trip.Description></h4>
                                 <div class="rate-rev mar-bottom-20">
-                                    <span class="num-rating mar-right-5">4.6/5</span>
-                                    <span class="review">(166 reviews)</span>
+                                    <span class="num-rating mar-right-5">@trip.Count Of @trip.Capacity</span>
+                                   @foreach(var tripRate in trip.Rates){
+                                    <span class="review">@tripRate.Rating</span>
+                                   }
                                 </div>  
-                                <p>With upto 30% Off, experience Europe your way!</p>
+                                <p>@trip.Description</p>
                                 <div class="deal-price">
-                                    <p class="price">From <span>$250.00</span></p>
+                                    <p class="price">From <span>$@trip.Cost</span></p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                   }
+                 @foreach(var hotel in Model.recomandedHotels.Take(3)){
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="slider-item">
+                @foreach(var hotelImg in hotel.HotelImages.Take(1)){
                             <div class="slider-image">
-                            <img src="https://wallpapercosmos.com/cdn-cgi/image/width=1920,quality=40,format=auto/w/full/2/f/0/34338-3840x2160-desktop-4k-germany-wallpaper-image.jpg" alt="image">
+                            <img src="@hotelImg.Path" alt="image">
                             </div>
-                            <div class="slider-content">
-                                <h6 class="mar-bottom-10"><i class="fa fa-map-marker-alt"></i> Germany</h6>
-                                <h4 class="mar-bottom-15">Earning Asiana Club Miles</h4>
-                                <div class="rate-rev mar-bottom-20">
-                                    <span class="num-rating mar-right-5">4.6/5</span>
-                                    <span class="review">(166 reviews)</span>
-                                </div>  
-                                <p>Everest Base Camp Trek through 3 High Passes</p>
-                                <div class="deal-price">
-                                    <p class="price">From <span>$250.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+             }
 
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="slider-item">
-                            <div class="slider-image">
-                            <img src="https://c4.wallpaperflare.com/wallpaper/563/432/897/mexico-maya-pyramid-chichen-itza-wallpaper-preview.jpg" alt="image">
-                            </div>
                             <div class="slider-content">
-                                <h6 class="mar-bottom-10"><i class="fa fa-map-marker-alt"></i> Mexico</h6>
-                                <h4 class="mar-bottom-15">Earning Asiana Club Miles</h4>
+                                <h6 class="mar-bottom-10"><i class="fa fa-map-marker-alt"></i> @hotel.Location</h6>
+                                <h4 class="mar-bottom-15">@hotel.Name</h4>
                                 <div class="rate-rev mar-bottom-20">
-                                    <span class="num-rating mar-right-5">4.6/5</span>
+                                    <span class="num-rating mar-right-5">@hotel.StarRate /5</span>
                                     <span class="review">(166 reviews)</span>
                                 </div>  
-                                <p>Everest Base Camp Trek through 3 High Passes</p>
+                                <p>@hotel.Description</p>
+                                @foreach(var price in hotel.HotelRoom.Take(1)){
                                 <div class="deal-price">
-                                    <p class="price">From <span>$250.00</span></p>
+                                    <p class="price">From <span>$@price.PricePerDay</span></p>
                                 </div>
+                                }
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="slider-item">
-                            <div class="slider-image">
-                            <img src="https://wallpapers.com/images/featured/spain-j1g26le08m3c8fks.webp" alt="image">
-                            </div>
-                            <div class="slider-content">
-                                <h6 class="mar-bottom-10"><i class="fa fa-map-marker-alt"></i> Spain</h6>
-                                <h4 class="mar-bottom-15">Earning Asiana Club Miles</h4>
-                                <div class="rate-rev mar-bottom-20">
-                                    <span class="num-rating mar-right-5">4.6/5</span>
-                                    <span class="review">(166 reviews)</span>
-                                </div>  
-                                <p>Everest Base Camp Trek through 3 High Passes</p>
-                                <div class="deal-price">
-                                    <p class="price">From <span>$250.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                }
+                  
                 </div>    
 
             </div>
