@@ -35,11 +35,13 @@ namespace Globe_Wander_Final.Controllers
             return View(tours);
         }
 
+        [Authorize(Roles = "Admin Manager")]
         public async Task<IActionResult> CreateTourSpot()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin Manager")]
         [HttpPost]
         public async Task<IActionResult> CreateTourSpot(newTourSpotDTO model, IFormFile image)
         {
@@ -52,6 +54,7 @@ namespace Globe_Wander_Final.Controllers
             return View(model); 
         }
 
+        [Authorize(Roles = "Admin Manager")]
         public async Task<IActionResult> EditTourSpot(int id)
         {
             var tour = await _tours.GetSpotById(id);
@@ -59,6 +62,7 @@ namespace Globe_Wander_Final.Controllers
             return View(tour);
         }
 
+        [Authorize(Roles = "Admin Manager")]
         [HttpPost]
         public async Task<IActionResult> EditTourSpot(newTourSpotDTO model, IFormFile image)
         {
@@ -73,6 +77,7 @@ namespace Globe_Wander_Final.Controllers
             return View(notValidTour);
         }
 
+        [Authorize(Roles = "Admin Manager")]
         [HttpPost]
         public async Task<IActionResult> DeleteTourSpot(int id)
         {

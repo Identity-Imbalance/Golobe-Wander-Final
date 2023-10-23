@@ -2,6 +2,7 @@
 using Globe_Wander_Final.Models.DTOs;
 using Globe_Wander_Final.Models.Interfaces;
 using Globe_Wander_Final.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Globe_Wander_Final.Controllers
@@ -31,6 +32,7 @@ namespace Globe_Wander_Final.Controllers
             return View(hotelandhotelroom);
         }
 
+        [Authorize(Roles = "Hotel Manager , Admin Manager")]
         public async Task<IActionResult> CreateHotelRoom()
         {
             var hotels = await _hotels.GetAllHotels();
@@ -43,6 +45,7 @@ namespace Globe_Wander_Final.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Hotel Manager , Admin Manager")]
         [HttpPost]
         public async Task<IActionResult> CreateHotelRoom(HotelRoomDTOCreate hotelRoom,List<IFormFile> images)
         {
@@ -70,6 +73,7 @@ namespace Globe_Wander_Final.Controllers
             }
         }
 
+        [Authorize(Roles = "Hotel Manager , Admin Manager")]
         public async Task<IActionResult> ListHotelRooms()
         {
             var hotelRoomsList = await _hotelRoom.GetHotelRooms();
@@ -77,6 +81,7 @@ namespace Globe_Wander_Final.Controllers
             return View(hotelRoomsList);
         }
 
+        [Authorize(Roles = "Hotel Manager , Admin Manager")]
         public async Task<IActionResult> EditHotelRoom(int RoomNumber, int HotelID)
         {
             var hotelRoom = await _hotelRoom.GetHotelRoomId(HotelID, RoomNumber);
@@ -92,6 +97,8 @@ namespace Globe_Wander_Final.Controllers
 
             //var hotelRoomToEdit = await _hotelRoom.UpdateHotelRoom(HotelID, RoomNumber, hotelRoom);
         }
+
+        [Authorize(Roles = "Hotel Manager , Admin Manager")]
         [HttpPost]
         public async Task<IActionResult> EditHotelRoom(HotelRoomDTO hotelRoom, List<IFormFile> images)
         {
@@ -117,6 +124,7 @@ namespace Globe_Wander_Final.Controllers
             //}
         }
 
+        [Authorize(Roles = "Hotel Manager , Admin Manager")]
         [HttpPost]
         public async Task<IActionResult> DeleteHotelRoom(int HotelID, int RoomNumber)
         {

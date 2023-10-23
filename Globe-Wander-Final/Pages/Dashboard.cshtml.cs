@@ -1,12 +1,14 @@
 using Globe_Wander_Final.Models.DTOs;
 using Globe_Wander_Final.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Globe_Wander_Final.Pages
 {
+    [Authorize(Roles = "Admin Manager, Trip Manager, Hotel Manager")]
     [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)] // Disable caching
-    public class DashboardModel : PageModel
+    public class DashboardModel<T> : PageModel 
     {
 
         private readonly ITourSpot _tour;
@@ -33,6 +35,8 @@ namespace Globe_Wander_Final.Pages
         public int BookingsCount { get; set; }
         public int RateCount { get; set; }
 
+
+        
         public async Task OnGet()
         {
             var tours  = await _tour.GetAllTourSpots();
@@ -51,6 +55,11 @@ namespace Globe_Wander_Final.Pages
 
             var rates = await _rate.GetAllRate();
             RateCount = rates.Count();
+
+            // TODO: Add the both bookings inside this list and filter it and should be returned in the view sorted on the start date.
+            List<T> bookings = new List<T>();
+
+
 
         }
     }
