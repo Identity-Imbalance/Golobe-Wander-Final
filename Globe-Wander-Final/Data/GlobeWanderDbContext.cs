@@ -302,9 +302,9 @@ new Image { Id = 20, Path = "https://globewanderimages.blob.core.windows.net/glo
         new Image { Id = 148, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip8.jpg", TripId = 8 },
         new Image { Id = 149, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip9.jpg", TripId = 9 },
         new Image { Id = 150, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip10.jpg", TripId = 10 },
-        new Image { Id = 151, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip30.jpg", TripId = 11 },
-        new Image { Id = 152, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip31.jpg", TripId = 12 },
-        new Image { Id = 153, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip32.jpg", TripId = 13 },
+        new Image { Id = 151, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip3.jpg", TripId = 11 },
+        new Image { Id = 152, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg", TripId = 12 },
+        new Image { Id = 153, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip2.jpg", TripId = 13 },
         new Image { Id = 154, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip9.jpg", TripId = 14 },
         new Image { Id = 155, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip9.jpg", TripId = 15 },
         new Image { Id = 156, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg", TripId = 16 },
@@ -520,6 +520,8 @@ new Image { Id = 20, Path = "https://globewanderimages.blob.core.windows.net/glo
         public DbSet<HotelFacility> HotelFacilities { get; set; }
         public DbSet<BookingTrip> bookingTrips { get; set; }
         public DbSet<UPDATEBOOKINGTEMP> UPDATEBOOKINGTEMPs { get; set; }
+
+        public DbSet<UPDATEBOOKINGTRIP> UPDATEBOOKINGTRIPs { get; set; }
 
     }
 }
