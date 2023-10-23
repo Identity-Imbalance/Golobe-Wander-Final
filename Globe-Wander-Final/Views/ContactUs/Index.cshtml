@@ -1,41 +1,6 @@
-﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
+﻿@model Globe_Wander_Final.Models.DTOs.EmailDTO
 
-<head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Nepayatri - Tour & Travel Multipurpose Template</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <!--Default CSS-->
-    <link href="css/default.css" rel="stylesheet" type="text/css">
-    <!--Custom CSS-->
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <!--Color Switcher CSS-->
-    <link rel="stylesheet" href="css/color/color-default.css">
-    <!--Plugin CSS-->
-    <link href="css/plugin.css" rel="stylesheet" type="text/css">
-    <!--Flaticons CSS-->
-    <link href="fonts/flaticon.css" rel="stylesheet" type="text/css">
-    <!--Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-</head>
-<body>
-
-    <!-- Preloader -->
-    <div id="preloader">
-        <div id="status"></div>
-    </div>
-    <!-- Preloader Ends -->
-    <!-- header ends -->
-    
-    <!-- Breadcrumb -->
-    
     <section class="banner">
         <div class="slider">
           
@@ -100,22 +65,18 @@
                             <h3>Keep in Touch</h3>
                             <div id="contactform-error-msg"></div>
 
-                            <form method="post" action="#" name="contactform" id="contactform">
+                        <form asp-action="Index" method="post">
+                         
                                 <div class="form-group">
-                                    <input type="text" name="first_name" class="form-control" id="fname" placeholder="First Name">
+                                <input type="email" placeholder="Email" asp-for="Email" id="Email" >
+                                <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" name="last_name" class="form-control" id="lname" placeholder="Last Name">
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" name="email"  class="form-control" id="email" placeholder="Email">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="phone" class="form-control" id="phnumber" placeholder="Phone">
-                                </div>
+                               
+                                
                                 <div class="textarea">
-                                    <textarea name="comments" placeholder="Enter a message"></textarea>
-                                </div>
+                                <textarea placeholder="Message" asp-for="Message" id="Message"></textarea>
+                                <span asp-validation-for="Message" class="text-danger"></span>
+                          
                                 <div class="comment-btn text-right mar-top-15">
                                     <input type="submit" class="biz-btn" id="submit" value="Send Message">
                                 </div>
@@ -134,106 +95,4 @@
         <a href="#"></a>
     </div>
     <!-- Back to top ends -->
-
-    <!-- search popup -->
-    <div id="search1">
-        <button type="button" class="close">×</button>
-        <form>
-            <input type="search" value="" placeholder="type keyword(s) here" />
-            <button type="submit" class="btn btn-primary">Search</button>
-        </form>
-    </div>
-
-    <div class="modal fade" id="login" role="dialog">
-        <div class="modal-dialog">
-            <div class="login-content">
-                <div class="login-title section-border">
-                    <h3>Login</h3>                    
-                </div>
-                <div class="login-form section-border">
-                    <form>
-                        <div class="form-group">
-                            <input type="email" placeholder="Enter email address">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Enter password">
-                        </div>
-                    </form>
-                    <div class="form-btn">
-                        <a href="#" class="biz-btn biz-btn1">LOGIN</a>
-                    </div>
-                    <div class="form-group form-checkbox">
-                        <input type="checkbox"> Remember Me
-                        <a href="#">Forgot password?</a>
-                    </div>
-                </div>
-                <div class="login-social section-border">
-                    <p>or continue with</p>
-                    <a href="#" class="btn-facebook"><i class="fab fa-facebook" aria-hidden="true"></i> Facebook</a>
-                    <a href="#" class="btn-twitter"><i class="fab fa-twitter" aria-hidden="true"></i> Twitter</a>
-                </div>
-                <div class="sign-up">
-                    <p>Do not have an account?<a href="#">Sign Up</a></p>
-                </div>                
-            </div>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-    </div>
-
-    <div class="modal fade" id="register" role="dialog">
-        <div class="modal-dialog">
-            <div class="login-content">
-                <div class="login-title section-border">
-                    <h3>Register</h3>                    
-                </div>
-                <div class="login-form section-border">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="User Name">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Full Name">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Password">
-                        </div>
-                    </form>
-                    <div class="form-btn">
-                        <a href="#" class="biz-btn biz-btn1">REGISTER</a>
-                    </div>
-                    <div class="form-group form-checkbox">
-                        <input type="checkbox"> Remember Me
-                        <a href="#">Forgot password?</a>
-                    </div>
-                </div>
-                <div class="login-social section-border">
-                    <p>or continue with</p>
-                    <a href="#" class="btn-facebook"><i class="fab fa-facebook" aria-hidden="true"></i> Facebook</a>
-                    <a href="#" class="btn-twitter"><i class="fab fa-twitter" aria-hidden="true"></i> Twitter</a>
-                </div>
-                <div class="sign-up">
-                    <p>Do not have an account?<a href="#">Sign Up</a></p>
-                </div>                
-            </div>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-    </div>
-
-    <!-- *Scripts* -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/color-switcher.js"></script>
-    <script src="js/plugin.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/menu.js"></script>
-    <script src="js/custom-nav.js"></script>
-     <script src="js/map.js"></script>
-    <!-- google map Jquery -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4JwWo5VPt9WyNp3Ne2uc2FMGEePHpqJ8&amp;callback=initMap" async defer></script>
-
-</body>
-</html>
 

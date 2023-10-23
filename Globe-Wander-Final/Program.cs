@@ -55,9 +55,14 @@ namespace Globe_Wander_Final
             builder.Services.AddTransient<IBookingTrip, BookingTripService>();
             builder.Services.AddTransient<IRate, RateService>();
             builder.Services.AddTransient<IUser, IdentityUserService>();
+
+            builder.Services.AddTransient<EmailService>();
+
+            //builder.Services.AddSingleton<TimerService>();
             builder.Services.AddTransient<IAddImage, AddImageService>();
 
             builder.Services.AddTransient<UPDATEBOOKINGTEMPServices>();
+
             builder.Services.AddAuthorization();
 
             builder.Services.ConfigureApplicationCookie(options =>

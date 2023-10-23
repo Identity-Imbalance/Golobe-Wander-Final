@@ -70,16 +70,20 @@ namespace Globe_Wander_Final.Controllers
             return View();
         }
         [HttpPost]
+
         public async Task<ActionResult<UserDTO>> Login(LogInDTO data)
+
         {
             if (ModelState.IsValid)
             {
                 var user = await userService.Authenticate(data.UserName, data.Password);
 
+
                 if (user == null)
                 {
                     this.ModelState.AddModelError(String.Empty, "Invalid Login");
                      return View(data);
+
                 }
             }
                     return RedirectToAction("Index", "Home");
@@ -88,18 +92,20 @@ namespace Globe_Wander_Final.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult<UserDTO>> Register(RegisterUserDTO dataDTO)
         {
-            var existingUser= await _userManager.FindByEmailAsync(dataDTO.Email);
+            var existingUser = await _userManager.FindByEmailAsync(dataDTO.Email);
             if (existingUser != null)
             {
                 ModelState.AddModelError(nameof(dataDTO.Email), "Email is already in use.");
                 return View();
             }
+
             var result = await userService.Register(dataDTO,this.ModelState,User);
 
             if (result!=null)
+
             {
                 return Redirect("/");
-             }
+            }
             return null;
         }
 
@@ -110,13 +116,10 @@ namespace Globe_Wander_Final.Controllers
             return View();
         }
 
-        
-
-
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            
+
             return RedirectToAction("Login");
         }
     }
