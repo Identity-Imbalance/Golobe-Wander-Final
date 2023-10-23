@@ -32,26 +32,12 @@
                                     <h3>Let us know who you are</h3>
                                     <form method="post" asp-action="BookingForm">
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>CHECK-IN</label>
-                                                    <input asp-for="NewBookingTripDTO.StartDate" type="date" placeholder="YYYY-MM-DD" min="@DateTime.Now.ToString("yyyy-MM-dd")" id="CheckIn">
-                                                    <input asp-for=NewBookingTripDTO.TripID hidden type="number" value="@Model.TripDTO.Id">
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label>CHECK-OUT</label>
-                                                    <input asp-for=NewBookingTripDTO.EndDate type="date" placeholder="YYYY-MM-DD" id="CheckOut">
-
-                                                </div>
-                                            </div>
+                                         
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label># NO. PERSONS</label>
-                                                   
+                                                    <input asp-for=NewBookingTripDTO.TripID hidden type="number" value="@Model.TripDTO.Id">
                                                     <input asp-for=NewBookingTripDTO.NumberOfPersons min=1 type="number">
 
                                                 </div>

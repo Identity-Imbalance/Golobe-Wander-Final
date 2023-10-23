@@ -46,17 +46,14 @@ namespace Globe_Wander_Final.Models.Services
                 {
                     trip.Count += bookingTrip.NumberOfPersons;
 
-                    // Calculate the duration based on StartDate and EndDate
-                    int duration = (int)(bookingTrip.EndDate - bookingTrip.StartDate).TotalDays;
-
+                    
                     var newBookingTrip = new BookingTrip()
                     {
                         TripID = bookingTrip.TripID,
                         NumberOfPersons = bookingTrip.NumberOfPersons,
-                        StartDate = bookingTrip.StartDate,
-                        EndDate = bookingTrip.EndDate,
+                        StartDate = trip.StartDate,
+                        EndDate = trip.EndDate,
                         CostPerPerson = trip.Cost,
-                        Duration = duration,
                         TotalPrice = bookingTrip.NumberOfPersons * trip.Cost,
                         Username = user.UserName
                     };
@@ -94,7 +91,6 @@ namespace Globe_Wander_Final.Models.Services
                     StartDate = bookingTrip.StartDate,
                     EndDate = bookingTrip.EndDate,
                     CostPerPerson = bookingTrip.CostPerPerson,
-                    Duration = bookingTrip.Duration,
                     TotalPrice = bookingTrip.TotalPrice,
                     Username = bookingTrip.Username
                 };
@@ -120,7 +116,6 @@ namespace Globe_Wander_Final.Models.Services
                 StartDate = bt.StartDate,
                 EndDate = bt.EndDate,
                 CostPerPerson = bt.CostPerPerson,
-                Duration = bt.Duration,
                 TotalPrice = bt.TotalPrice,
                 Username = bt.Username
             }).ToList();
@@ -142,8 +137,7 @@ namespace Globe_Wander_Final.Models.Services
       
             if (bookingTrip != null && trip != null)
             {
-                // Calculate the updated duration based on StartDate and EndDate
-                int duration = (int)(updateBookingTrip.EndDate - updateBookingTrip.StartDate).TotalDays;
+                
 
                 // Calculate the cost based on the trip's cost
                 decimal cost = trip.Cost * updateBookingTrip.NumberOfPersons;
@@ -151,10 +145,9 @@ namespace Globe_Wander_Final.Models.Services
                 if (trip.Capacity >= (trip.Count - bookingTrip.NumberOfPersons + updateBookingTrip.NumberOfPersons))
                 {
                     bookingTrip.NumberOfPersons = updateBookingTrip.NumberOfPersons;
-                    bookingTrip.StartDate = updateBookingTrip.StartDate;
-                    bookingTrip.EndDate = updateBookingTrip.EndDate;
+                    bookingTrip.StartDate = trip.StartDate;
+                    bookingTrip.EndDate = trip.EndDate;
                     bookingTrip.CostPerPerson = trip.Cost;
-                    bookingTrip.Duration = duration;
                     bookingTrip.TotalPrice = cost;
 
                     trip.Count = trip.Count - bookingTrip.NumberOfPersons + updateBookingTrip.NumberOfPersons;
@@ -180,8 +173,7 @@ namespace Globe_Wander_Final.Models.Services
 
             if (bookingTrip != null && trip != null)
             {
-                // Calculate the updated duration based on StartDate and EndDate
-                int duration = (int)(updateBookingTrip.EndDate - updateBookingTrip.StartDate).TotalDays;
+               
 
                 // Calculate the cost based on the trip's cost
                 decimal cost = trip.Cost * updateBookingTrip.NumberOfPersons;
@@ -189,9 +181,8 @@ namespace Globe_Wander_Final.Models.Services
                 if (trip.Capacity >= (trip.Count - bookingTrip.NumberOfPersons + updateBookingTrip.NumberOfPersons))
                 {
                     bookingTrip.NumberOfPersons = updateBookingTrip.NumberOfPersons;
-                    bookingTrip.StartDate = updateBookingTrip.StartDate;
-                    bookingTrip.EndDate = updateBookingTrip.EndDate;
-                    bookingTrip.Duration = duration;
+                    bookingTrip.StartDate = trip.StartDate;
+                    bookingTrip.EndDate = trip.EndDate;
                     bookingTrip.TotalPrice = updateBookingTrip.NumberOfPersons * trip.Cost;
 
                     trip.Count = trip.Count - bookingTrip.NumberOfPersons + updateBookingTrip.NumberOfPersons;
@@ -240,7 +231,6 @@ namespace Globe_Wander_Final.Models.Services
                 StartDate = bt.StartDate,
                 EndDate = bt.EndDate,
                 CostPerPerson = bt.CostPerPerson,
-                Duration = bt.Duration,
                 TotalPrice = bt.TotalPrice,
                 Username = bt.Username
             }).ToList();

@@ -13,7 +13,6 @@
 
         public decimal CostPerPerson { get; set; }
 
-        public int Duration { get; set; }
 
         public decimal TotalPrice { get; set; }
 

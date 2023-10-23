@@ -128,6 +128,12 @@ namespace Globe_Wander_Final.Controllers
         {
             var BookingTripData = await _bookingTrip.GetAllBookingRoomsForUser(User.Identity.Name);
 
+            var Trip = await _trip.GetTripByID(tripAndBookingForm.NewBookingTripDTO.TripID);
+
+            tripAndBookingForm.NewBookingTripDTO.StartDate = Trip.StartDate;
+
+            tripAndBookingForm.NewBookingTripDTO.EndDate = Trip.EndDate;
+
             foreach (var trip in BookingTripData)
             {
                 if (tripAndBookingForm.NewBookingTripDTO.StartDate <= trip.EndDate && tripAndBookingForm.NewBookingTripDTO.EndDate >= trip.StartDate)
@@ -138,7 +144,7 @@ namespace Globe_Wander_Final.Controllers
 
 
             }
-            var Trip = await _trip.GetTripByID(tripAndBookingForm.NewBookingTripDTO.TripID);
+            
             var booking = await _bookingTrip.Create(tripAndBookingForm.NewBookingTripDTO, User);
             var nameOfTrip = Trip.Name;
             StripeConfiguration.ApiKey = "sk_test_51NubdTFevC2H5P3dnpmteGXkcBY9039zcaJJYEs6S5frHIj0BzpWYid6eXGNJPjfKo1nuw7rb3Pm0kEwSZKspkOX00Z1a00TTs";

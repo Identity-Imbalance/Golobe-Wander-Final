@@ -5,8 +5,8 @@
         public int TripID { get; set; }
 
         public int NumberOfPersons { get; set; }
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
     }
 }
