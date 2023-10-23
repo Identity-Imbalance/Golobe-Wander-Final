@@ -1,0 +1,22 @@
+﻿@using Globe_Wander_Final.Models.Interfaces
+@inject IUser _user
+
+@{
+    var user = await _user.GetUser(User);
+}
+<div class="content-right pull-right">
+    <div class="profile-sec bg-dark">
+        <div class="dash-content">
+            <h4 class="text-white">@user.UserName</h4>
+            <span class="text-white"></span>
+        </div>
+        <div class="dash-image" style="width:50px; height:50px; object-fit:cover;">
+
+            @if (user.ImageUrl != null)
+            {
+                <img src="@user.ImageUrl" alt="@user.UserName" style="height:100%;">
+            }
+
+        </div>
+    </div>
+</div>

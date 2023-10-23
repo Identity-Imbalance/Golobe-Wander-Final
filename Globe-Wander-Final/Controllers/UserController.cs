@@ -20,9 +20,49 @@ namespace Globe_Wander_Final.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Profile()
+        public async Task<IActionResult> Profile()
         {
-            return View();
+             var user = await userService.GetUser(User);
+            return View(user);
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> Profile(UserUpdateDTO model, IFormFile? image)
+        {
+            if (_signInManager.IsSignedIn(User) && ModelState.IsValid)
+            {
+                var newUser = await userService.UpdateProfile(model, User.Identity.Name, image);
+                if (newUser != null)
+                {
+                    return RedirectToAction("Profile", "User");
+                }
+                else
+                {
+                    return View(model);
+                }
+
+            }
+            else
+            {
+                return RedirectToAction("Login","User");
+            }
+           
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(string currentPassword, string newPassword, string confirmPassword)
+        {
+           var result = await userService.ChangePassword(currentPassword, newPassword, confirmPassword,User.Identity.Name);
+            if (result)
+            {
+                return RedirectToAction("Profile", "User");
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Failed to change the password.");
+                return RedirectToAction("Profile", "User");
+            }
+
         }
 
         public IActionResult Login()
@@ -75,7 +115,6 @@ namespace Globe_Wander_Final.Controllers
         {
             return View();
         }
-
 
         public async Task<IActionResult> Logout()
         {

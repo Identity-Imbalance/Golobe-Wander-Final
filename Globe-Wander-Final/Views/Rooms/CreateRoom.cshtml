@@ -1,13 +1,15 @@
 ﻿@model Globe_Wander_Final.Models.DTOs.RoomDTO
 @{
+    Layout = "_DashboardLayout";
     List<int> selectedAmentias = new List<int>();
 }
-@*TODO: Better to make it as a step progress *@
+
+<div id="preloader">
+    <div id="status"></div>
+</div>
 <div id="container-wrapper">
     <!-- Dashboard -->
     <div id="dashboard">
-
-        <partial name="_Navigation"></partial>
         <div class="dashboard-content">
             <div class="add-box add-rooms">
                 <div class="rooms-info">

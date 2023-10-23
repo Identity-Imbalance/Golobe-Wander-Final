@@ -1,8 +1,6 @@
-﻿@model Globe_Wander_Final.Models.DTOs.NewHotelDTO
-
+﻿@model Globe_Wander_Final.Models.DTOs.NewTripDTO
 @{
     Layout = "_DashboardLayout";
-    List<int> selectedFacilityIds = new List<int>();
 }
 <div id="preloader">
     <div id="status"></div>
@@ -10,48 +8,54 @@
 <div id="container-wrapper">
     <!-- Dashboard -->
     <div id="dashboard">
+
         <div class="dashboard-content">
             <div class="add-box">
 
                 <div class="add-content">
                     <h3>Hotel Information</h3>
-                    <form id="hotelForm" method="post" asp-action="CreateHotel" enctype="multipart/form-data">
+                    <form id="hotelForm" method="post" asp-controller="Trips" asp-action="CreateTrip" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-sm-12">
-                                <label for="Name">Hotel Name</label>
-                                <input type="text" id="hotelName" name="Name" placeholder="Enter Hotel Name" required>
+                                <label asp-for="Name">Hotel Name</label>
+                                <input type="text" asp-for="Name" placeholder="Enter Trip Name" required>
                             </div>
                             <div class="col-sm-12">
-                                <label for="Description">Description</label>
-                                <textarea id="description" name="Description" placeholder="Enter Hotel Description" required></textarea>
+                                <label asp-for="Description">Description</label>
+                                <textarea asp-for="Description" placeholder="Enter Trip Description" required></textarea>
                             </div>
                             <div class="col-sm-12">
-                                <label for="hotelStarRate">Hotel Star Rate</label>
-                                <input type="number" id="hotelStarRate" name="StarRate" placeholder="Enter Hotel Star Rate" required>
+                                <label asp-for="Cost">Trip Cost</label>
+                                <input asp-for="Cost" placeholder="Enter Trip Cost" required>
                             </div>
+                            <div class="col-sm-12">
+                                <label asp-for="Activity">Trip Activity</label>
+                                <input asp-for="Activity" placeholder="Enter Trip Activity" required>
+                            </div>
+                            <div class="col-sm-12">
+                                <label asp-for="Capacity">Trip Capacity</label>
+                                <input asp-for="Capacity" placeholder="Enter Trip Capacity" required>
+                            </div>
+                            <div class="col-sm-12">
+                                <label asp-for="StartDate">Trip StartDate</label>
+                                <input asp-for="StartDate" placeholder="Enter Trip StartDate" required>
+                            </div>
+                            <div class="col-sm-12">
+                                <label asp-for="EndDate">Trip EndDate</label>
+                                <input asp-for="EndDate" placeholder="Enter Trip EndDate" required>
+                            </div>
+
                             <div class="col-sm-12 my-3">
                                 <label for="TourSpotID">Select Tour Spot</label>
                                 <select id="tourSpotID" name="TourSpotID" required>
                                     <option value="">Select a Tour Spot</option>
-                                    @foreach (var spot in ViewBag.TourSpots)
+                                    @foreach (var spot in ViewBag.Tours)
                                     {
                                         <option value="@spot.ID">@spot.Name</option>
                                     }
                                 </select>
 
                             </div>
-
-                            <div class="col-sm-12 my-3">
-
-                            @foreach (var facility in ViewBag.Facilities)
-                            {
-                                <div class="facilities mx-2">
-                                <input type="checkbox" name="selectedFacilityIds" value="@facility.Id" />
-                                @facility.Name
-                                </div>
-                            }
-                            </div>
-                           
                         </div>
 
                         <div class="add-box add-rooms">
@@ -62,7 +66,7 @@
                                         <h4>Add Gallery Images</h4>
                                         <span class="text-danger">Not required</span>
                                         <div class="image-add">
-                                            <input type="file" name="files" multiple accept=".png, .jpg, .jpeg" >
+                                            <input type="file" name="files" multiple accept=".png, .jpg, .jpeg">
                                         </div>
                                     </div>
                                 </div>

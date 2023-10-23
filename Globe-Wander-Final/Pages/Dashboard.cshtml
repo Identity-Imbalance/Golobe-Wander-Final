@@ -1,17 +1,16 @@
 ﻿@page
 @model Globe_Wander_Final.Pages.DashboardModel
 @{
+    Layout = "_DashboardLayout";
 }
 
 <!-- Preloader -->
-@* <div id="preloader">
+<div id="preloader">
     <div id="status"></div>
-</div> *@
+</div>
 <div id="container-wrapper">
     <!-- Dashboard -->
     <div id="dashboard">
-        <partial name="_Navigation"></partial>
-
         <!-- Responsive Navigation Trigger -->
         <!-- Content / Start -->
         <div class="dashboard-content">
@@ -50,7 +49,7 @@
                 @* Lookig for smething to put it here  *@
                 <div class="col-lg-3 col-md-6 col-xs-6">
                     <div class="dashboard-stat color-4">
-                        <div class="dashboard-stat-content"><h4>@Model.HotelCount</h4> <span>Total Hotesl</span></div>
+                        <div class="dashboard-stat-content"><h4>@Model.HotelCount</h4> <span>Total Hotels</span></div>
                         <div class="dashboard-stat-icon"><i class="im im-icon-Heart"></i></div>
                         <div class="dashboard-stat-item"><p>Someone bookmarked your listing!</p></div>
                     </div>
@@ -114,8 +113,8 @@
             </div>
             <div class="row">
                 <!-- Recent Activity -->
-                <div class="col-lg-12 col-md-12 col-xs-12">
-                    <div class="dashboard-list-box margin-top-20 user-list" style="height:400px; overflow-y:auto;">
+                <div class="col-lg-12 col-md-12 col-xs-12 ">
+                    <div class="dashboard-list-box margin-top-10 mb-4 user-list" style="height:400px; overflow-y:auto;">
                         <h4 class="gray">Users List</h4>
                         <ul>
                             <li>
