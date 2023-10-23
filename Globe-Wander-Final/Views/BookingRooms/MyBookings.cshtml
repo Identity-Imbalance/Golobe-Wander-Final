@@ -58,3 +58,53 @@
         </div>
     </div>
 </section>
+
+<section class="trending bg-grey">
+    <div class="container">
+        <div class="section-title">
+            <h2><span>Booked</span> Trips</h2>
+            <p>this is the trips that you are booked on know or the future.</p>
+        </div>
+        <div class="trend-box">
+            <div class="row mix tour">
+                @foreach (var bookingTrip in Model.BookingTripDTO)
+
+                {
+
+
+
+
+                    <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">
+
+                        <div class="trend-item">
+
+
+                            <div class="trend-content">
+                                <div class="trend-image">
+                                    <img src="@Model.TripDTOs.Where(x=>x.Id==bookingTrip.TripID).First().TripImages.First().Path" alt="image">
+                                </div>
+                                <h4> Trip Name : @Model.TripDTOs.Where(x=>x.Id==bookingTrip.TripID).First().Name</h4>
+
+                                <h4> TotalPrice : @bookingTrip.TotalPrice $</h4>
+                                <h4> Duration: @bookingTrip.Duration  Days</h4>
+                                <h4>Activity:  @Model.TripDTOs.Where(x=>x.Id==bookingTrip.TripID).First().Activity </h4>
+                                <h4>Cost preDay : @bookingTrip.CostPerPerson $</h4>
+                                <h4> CheckIn : @bookingTrip.StartDate</h4>
+                                <h4>CheckOut : @bookingTrip.EndDate</h4>
+                                <a class="biz-btn-black" asp-area="" asp-controller="BookingTrips" asp-action="UserUpdateBooking" asp-route-ID="@bookingTrip.ID">Update</a>
+
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                }
+            </div>
+        </div>
+    </div>
+</section>

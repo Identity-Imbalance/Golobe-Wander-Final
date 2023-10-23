@@ -30,13 +30,15 @@ namespace Globe_Wander_Final.Models.Services
             return UPDATEBOOKINGTEMP;
 
         }
-        public async Task<UPDATEBOOKINGTRIP> Create(DurationBookingTripDTO updated )
+        public async Task<UPDATEBOOKINGTRIP> Create(UpdateBookingTripDTO updated )
         {
             UPDATEBOOKINGTRIP uPDATEBOOKINGTREP = new UPDATEBOOKINGTRIP()
             {
                 IdForUpdate= updated.ID,
             StartDate = updated.StartDate,
             EndDate = updated.EndDate,
+            NumberOfPersons= updated.NumberOfPersons,
+            
 
             };
 

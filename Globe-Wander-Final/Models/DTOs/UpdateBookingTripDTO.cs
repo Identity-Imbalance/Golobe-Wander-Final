@@ -2,6 +2,8 @@
 {
     public class UpdateBookingTripDTO
     {
+        public int ID { get; set; }
+
         public int NumberOfPersons { get; set; }
 
         public DateTime StartDate { get; set; }

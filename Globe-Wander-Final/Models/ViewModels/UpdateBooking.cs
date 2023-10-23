@@ -1,4 +1,5 @@
-﻿using Globe_Wander_Final.Models.DTOs;
+﻿
+using Globe_Wander_Final.Models.DTOs;
 
 namespace Globe_Wander_Final.Models.ViewModels
 {
