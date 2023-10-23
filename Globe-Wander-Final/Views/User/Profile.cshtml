@@ -1,16 +1,14 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Globe_Wander_Final.Models.DTOs.UserUpdateDTO
 @{
+    Layout = "_DashboardLayout";
 }
+
 <div id="preloader">
     <div id="status"></div>
 </div>
 <div id="container-wrapper">
     <!-- Dashboard -->
     <div id="dashboard">
-        <partial name="_Navigation"></partial>
-
         <div class="dashboard-content">
             <div class="dashboard-form mar-bottom-30">
                 <div class="row">
@@ -18,71 +16,78 @@
                     <!-- Profile -->
                     <div class="col-lg-6 col-md-6 col-xs-12 padding-right-30">
                         <div class="dashboard-list-box">
-                            <h4 class="gray">Profile Details</h4>
-                            <div class="dashboard-list-box-static">
+                            <form asp-controller="User" asp-action="Profile" method="post" enctype="multipart/form-data">
+                                <h4 class="gray">Profile Details</h4>
+                                <div class="dashboard-list-box-static">
 
-                                <!-- Avatar -->
-                                <div class="edit-profile-photo">
-                                    <img src="images/user-avatar.jpg" alt="">
-                                    <div class="change-photo-btn">
-                                        <div class="photoUpload">
-                                            <span><i class="fa fa-upload"></i> Upload Photo</span>
-                                            <input type="file" class="upload" />
+                                    <!-- Avatar -->
+                                    <div class="edit-profile-photo">
+                                        @if (Model.ImageUrl != null)
+                                        {
+                                            <img src="@Model.ImageUrl" alt="@Model.UserName">
+                                        }
+                                        <div class="change-photo-btn">
+                                            <div class="photoUpload">
+                                                <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                                <input type="file" class="upload" name="image" />
+                                            </div>
                                         </div>
                                     </div>
+
+                                    <!-- Details -->
+                                    <div class="my-profile">
+                                        <input type="hidden" asp-for="ImageUrl" />
+
+                                        <label asp-for="UserName">Your User Name </label>
+                                        <input asp-for="UserName" type="text">
+
+                                        <label asp-for="PhoneNumber">Phone Number </label>
+                                        <input asp-for="PhoneNumber" type="text">
+
+                                        <label asp-for="Email"> Email Address</label>
+                                        <input asp-for="Email" type="text">
+
+                                    </div>
+
+                                    <button type="submit" class="biz-btn biz-btn1">Save Changes</button>
+
                                 </div>
+                            </form>
 
-                                <!-- Details -->
-                                <div class="my-profile">
-
-                                    <label>Your Name *</label>
-                                    <input placeholder="Tom Perrin" type="text">
-
-                                    <label>Phone Number *</label>
-                                    <input placeholder="(123) 123-456" type="text">
-
-                                    <label>Email Address *</label>
-                                    <input placeholder="tom@example.com" type="text">
-
-                                </div>
-
-                                <button class="biz-btn biz-btn1">Save Changes</button>
-
-                            </div>
                         </div>
                     </div>
 
                 </div>
-                </div>
-                <div class="dashboard-form mar-bottom-30">
-                    <div class="dashboard-password">
-                        <h3>Change Password</h3>
-                        <form>
-                            <div class="row">
-                                <div class="col-sm-4 col-xs-12">
-                                    <label>Current Password</label>
-                                    <input type="password" placeholder="*********">
-                                </div>
-                                <div class="col-sm-4 col-xs-12">
-                                    <label>New Password</label>
-                                    <input type="password">
-                                </div>
-                                <div class="col-sm-4 col-xs-12">
-                                    <label>Re-enter Password</label>
-                                    <input type="password">
-                                </div>
-                                <div class="col-xs-12">
-                                    <div class="form-btn mar-top-15">
-                                        <a href="#" class="biz-btn biz-btn1">SAVE CHANGE</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>  
             </div>
-            <!-- Dashboard / End -->
+            <div class="dashboard-form mar-bottom-30">
+                <div class="dashboard-password">
+                    <h3>Change Password</h3>
+                    <form asp-action="ChangePassword" method="post">
+                        <div class="my-profile">
+                            <label for="currentPassword">Current Password</label>
+                            <input type="password" name="currentPassword"/>
+
+                        </div>
+
+                        <div class="my-profile">
+                            <label for="newPassword">New Password</label>   
+                            <input type="password" name="newPassword"/>
+
+                        </div>
+
+                        <div class="my-profile ">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" name="confirmPassword"/>
+
+                        </div>
+
+                        <button type="submit" class="biz-btn biz-btn1">Change Password</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        </div>
-        <!-- end Container Wrapper -->
+        <!-- Dashboard / End -->
+    </div>
+</div>
+<!-- end Container Wrapper -->
     </div>

@@ -10,10 +10,12 @@ namespace Globe_Wander_Final.Models.Interfaces
 
         public Task<UserDTO> Authenticate(string username, string password);
 
-        public Task<UserDTO> GetUser(ClaimsPrincipal principal);
+        public Task<UserUpdateDTO> GetUser(ClaimsPrincipal principal);
 
         public Task<ApplicationUser> GetUserByIdAsync(string userId);
 
-        public Task<UserDTO> UpdateProfile(UserUpdateDTO updateDTO, ClaimsPrincipal claimsPrincipal);
+        public Task<ApplicationUser> UpdateProfile(UserUpdateDTO updateDTO, string userName, IFormFile file);
+
+        public Task<bool> ChangePassword(string currentPassword, string newPassword, string confirmPassword, string userName);
     }
 }

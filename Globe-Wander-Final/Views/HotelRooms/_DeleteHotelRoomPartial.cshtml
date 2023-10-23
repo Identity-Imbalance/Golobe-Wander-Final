@@ -1,0 +1,24 @@
+﻿@model Globe_Wander_Final.Models.DTOs.HotelRoomDTO
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete Hotel</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are You sure you want to Delete this Hotel Room @Model.Rooms.Name ? with Room number @Model.RoomNumber
+            </div>
+            <div class="modal-footer">
+                <form asp-controller="HotelRooms" asp-action="DeleteHotelRoom" method="post">
+                    <input type="hidden" name="HotelID" value="@Model.HotelID" />
+                    <input type="hidden" name="RoomNumber" value="@Model.RoomNumber"/>
+                    <input />
+                    <input type="submit" class="biz-btn biz-btn1 mar-top-5" value="Submit" />
+                    <button type="button" class="biz-btn biz-btn1 mar-top-5" data-bs-dismiss="modal">No</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>

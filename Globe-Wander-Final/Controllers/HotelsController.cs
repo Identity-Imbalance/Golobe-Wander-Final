@@ -2,6 +2,7 @@
 using Globe_Wander_Final.Models.DTOs;
 using Globe_Wander_Final.Models.Interfaces;
 using Globe_Wander_Final.Models.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
 
@@ -13,10 +14,14 @@ namespace Globe_Wander_Final.Controllers
 
         private readonly ITourSpot _tourSpot;
 
-        public HotelsController(IHotel hotels, ITourSpot tourSpot)
+        private readonly IAddImage _uploadImage;
+
+
+        public HotelsController(IHotel hotels, ITourSpot tourSpot, IAddImage uploadImage)
         {
             _hotels = hotels;
             _tourSpot = tourSpot;
+            _uploadImage = uploadImage;
         }
         public  async Task<IActionResult> Index()
         {
@@ -43,6 +48,7 @@ namespace Globe_Wander_Final.Controllers
             return View(reco);
         }
 
+        [Authorize(Roles = "Hotel Manager , Admin Manager")]
         public async Task<IActionResult> CreateHotel()
         {
             var tourSpots = await _tourSpot.GetAllTourSpots();
@@ -56,15 +62,17 @@ namespace Globe_Wander_Final.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Hotel Manager , Admin Manager")]
         public async Task<IActionResult> ListHotels()
         {
             var hotels = await _hotels.GetAllHotels();
             return View(hotels);
         }
 
+        [Authorize(Roles = "Hotel Manager , Admin Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateHotel(NewHotelDTO hotel, List<int> selectedFacilityIds)
+        public async Task<IActionResult> CreateHotel(NewHotelDTO hotel, List<int> selectedFacilityIds,List<IFormFile> files)
         {
             if (ModelState.IsValid)
             {
@@ -83,14 +91,27 @@ namespace Globe_Wander_Final.Controllers
                     }
                 }
 
+                if (files.Count > 0)
+                {
+                    await _uploadImage.UploadHotelImages(files,newHotel);
+                }
+
                 return RedirectToAction("CreateHotel","Hotels");
             }
             else
             {
-                return NotFound();
+                var tourSpots = await _tourSpot.GetAllTourSpots();
+
+                var facilities = await _hotels.GetAllFacilities();
+
+                // Store the tour spots in ViewBag to pass it to the view
+                ViewBag.TourSpots = tourSpots;
+                ViewBag.Facilities = facilities;
+                return View();
             }
         }
 
+        [Authorize(Roles = "Hotel Manager , Admin Manager")]
         public async Task<IActionResult> EditHotel(int id)
         {
             var hotel = await _hotels.GetHotelId(id);
@@ -107,10 +128,10 @@ namespace Globe_Wander_Final.Controllers
             return View(hotel);
         }
 
-        // TODO: Make the facilits came from the database and Make the admin choose which one he should add 
+        [Authorize(Roles = "Hotel Manager , Admin Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditHotel(HotelDTO model, List<int> selectedFacilityIds)
+        public async Task<IActionResult> EditHotel(HotelDTO model, List<int> selectedFacilityIds, List<IFormFile> images)
         {
             var existingHotelFacilities = await _hotels.GetAllHotelFacilityByHotelId(model.Id);
 
@@ -133,10 +154,14 @@ namespace Globe_Wander_Final.Controllers
                     await _hotels.RemoveHotelFacility(existHotelFacility);
                 }
             }
-
+           
             var updatedHotel = await _hotels.UpdateHotel(model.Id, model); 
             if (updatedHotel != null)
             {
+                if (images.Count > 0)
+                {
+                    await _uploadImage.UpdateHotelImages(images, updatedHotel);
+                }
                 return RedirectToAction("EditHotel", "Hotels");
             }
 
@@ -149,11 +174,12 @@ namespace Globe_Wander_Final.Controllers
         //    return View();
         //}
 
+        [Authorize(Roles = "Hotel Manager , Admin Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteHotel(int id)
         {
-            var deletedHotel = await _hotels.DeleteHotel(id);
+                var deletedHotel = await _hotels.DeleteHotel(id);
           
                 return RedirectToAction("ListHotels","Hotels");
           

@@ -30,7 +30,11 @@ namespace Globe_Wander_Final.Models.Services
             {
                 HotelID = hotelRoomdto.HotelID,
                 RoomID = hotelRoomdto.RoomID,
+                Description = hotelRoomdto.Description,
                 PricePerDay = hotelRoomdto.PricePerDay,
+                SquareFeet = hotelRoomdto.SquareFeet,
+                Bathrooms = hotelRoomdto.Bathrooms,
+                Beds = hotelRoomdto.Beds,
                 IsAvailable = true,
 
             };
@@ -133,9 +137,15 @@ namespace Globe_Wander_Final.Models.Services
         public async Task<HotelRoom> DeleteHotelRoom(int hotelID, int roomNumber)
         {
 
+            var images = await _context.Images.Where(hr => hr.HotelId == hotelID && hr.RoomNumber == roomNumber).ToListAsync();
+
             HotelRoom hotelRoom = await _context.HotelRooms.FindAsync(hotelID, roomNumber);
             if (hotelRoom != null)
             {
+                foreach (var img in images)
+                {
+                    _context.Entry(img).State = EntityState.Deleted;
+                }
                 _context.Entry(hotelRoom).State = EntityState.Deleted;
                 await _context.SaveChangesAsync();
             }
@@ -213,18 +223,23 @@ namespace Globe_Wander_Final.Models.Services
         /// <param name="hotelId">ID of the hotel.</param>
         /// <param name="roomNumber">Number of the room.</param>
         /// <param name="updatedHotelRoom">Updated hotel room data.</param>
-        public async Task<HotelRoomDTOCreate> UpdateHotelRoom(int hotelId, int roomNumber, HotelRoomDTOCreate updatedHotelRoom)
+        public async Task<HotelRoomDTO> UpdateHotelRoom(int hotelId, int roomNumber, HotelRoomDTO updatedHotelRoom)
         {
-            HotelRoom hotelRoom = await _context.HotelRooms.FindAsync(hotelId, roomNumber);
+            HotelRoom? hotelRoom = await _context.HotelRooms.FindAsync(hotelId, roomNumber);
 
+            hotelRoom.RoomID = updatedHotelRoom.RoomID;
+            hotelRoom.Description = updatedHotelRoom.Description;
+            hotelRoom.Beds = updatedHotelRoom.Beds;
+            hotelRoom.Bathrooms = updatedHotelRoom.Bathrooms;
+            hotelRoom.SquareFeet = updatedHotelRoom.SquareFeet;
             hotelRoom.PricePerDay = updatedHotelRoom.PricePerDay;
             hotelRoom.IsAvailable = updatedHotelRoom.IsAvailable;
             _context.Entry(hotelRoom).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
-            updatedHotelRoom.HotelID = hotelId;
-            updatedHotelRoom.RoomNumber = roomNumber;
-            updatedHotelRoom.RoomID = hotelRoom.RoomID;
+            //updatedHotelRoom.HotelID = hotelId;
+            //updatedHotelRoom.RoomNumber = roomNumber;
+            //updatedHotelRoom.RoomID = hotelRoom.RoomID;
             return updatedHotelRoom;
 
         }

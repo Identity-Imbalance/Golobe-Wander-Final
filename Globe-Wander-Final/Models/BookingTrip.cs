@@ -7,10 +7,12 @@
         public int TripID { get; set; }
 
         public int NumberOfPersons { get; set; }
+        public DateTime StartDate { get; set; }
+
+        public DateTime EndDate { get; set; }
 
         public decimal CostPerPerson { get; set; }
 
-        public int Duration { get; set; }
 
         public decimal TotalPrice { get; set; }
 

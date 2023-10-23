@@ -1,0 +1,71 @@
+﻿@model List<Globe_Wander_Final.Models.DTOs.TourSpotDTO>
+@{
+    Layout = "_DashboardLayout";
+}
+<div id="preloader">
+    <div id="status"></div>
+</div>
+<div id="container-wrapper">
+    <!-- Dashboard -->
+    <div id="dashboard">
+
+        <div class="dashboard-content">
+            <div class="list-outer">
+                @* this should be responsive *@
+                @foreach (var item in Model)
+                {
+
+                    <div class="list-item-1">
+                        <div class="row display-flex">
+                            <div class="col-md-4 col-sm-12">
+                                <div class="list-image1">
+                                   
+                                        <img src="@item.Img" alt="@item.Name">
+                                   
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="list-content">
+                                    <h3>@item.Name</h3>
+                                    <p>
+                                        @item.Country , @item.City
+                                    </p>
+                                    <p>
+                                        @item.Description
+                                    </p>
+                                    @item.Category.ToString()
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-12">
+
+                                <a asp-controller="TourSpots" asp-action="EditTourSpot" asp-route-id="@item.ID" class="biz-btn biz-btn1 mar-top-5">Edit</a>
+                                <form method="post" asp-controller="TourSpots" asp-action="DeleteTourSpot">
+                                    <input type="hidden" name="id" value="@item.ID" />
+                                    <button type="submit" class="biz-btn biz-btn1 mar-top-5">Delete</button>
+                                </form>
+                                @*  <a type="button" class="biz-btn biz-btn1 mar-top-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="@item.Id">
+                            <span>Delete</span>
+                            <i class="fa-solid fa-trash"></i>
+                            </a> *@
+                            </div>
+                        </div>
+
+                    </div>
+                }
+                <div class="pagination-content text-center">
+                    <ul class="pagination">
+                        <li><a href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- end Container Wrapper -->
+</div>

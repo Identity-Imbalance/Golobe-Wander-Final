@@ -12,11 +12,20 @@ namespace Globe_Wander_Final.Models.Services
     public class IdentityUserService : IUser
     {
         private readonly UserManager<ApplicationUser> _UserManager;
+
         private SignInManager<ApplicationUser> _signInManager;
-        public IdentityUserService(UserManager<ApplicationUser> manager,SignInManager<ApplicationUser>sim)
+
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+
+        private readonly IAddImage _upload;
+
+        public IdentityUserService(UserManager<ApplicationUser> manager, SignInManager<ApplicationUser> sim, IAddImage upload, IHttpContextAccessor httpContextAccessor)
         {
             _UserManager = manager;
             _signInManager = sim;
+            _upload = upload;
+            _httpContextAccessor = httpContextAccessor;
         }
 
 
@@ -27,9 +36,9 @@ namespace Globe_Wander_Final.Models.Services
         /// <param name="password">Password of the user.</param>
         public async Task<UserDTO> Authenticate(string username, string password)
         {
-            var result = await _signInManager.PasswordSignInAsync(username,password,true,false);
+            var result = await _signInManager.PasswordSignInAsync(username, password, true, false);
 
-           
+
             if (result.Succeeded)
             {
                 var user = await _UserManager.FindByNameAsync(username);
@@ -37,7 +46,6 @@ namespace Globe_Wander_Final.Models.Services
                 {
                     Id = user.Id,
                     UserName = user.UserName,
-                 //Token = await tokenService.GetToken(user, System.TimeSpan.FromMinutes(100)),
                     Roles = await _UserManager.GetRolesAsync(user)
                 };
             }
@@ -49,17 +57,21 @@ namespace Globe_Wander_Final.Models.Services
         /// Get user information based on the ClaimsPrincipal.
         /// </summary>
         /// <param name="principal">ClaimsPrincipal representing the user.</param>
-        public async Task<UserDTO> GetUser(ClaimsPrincipal principal)
+        public async Task<UserUpdateDTO> GetUser(ClaimsPrincipal principal)
         {
             var user = await _UserManager.GetUserAsync(principal);
-
-            return new UserDTO
+            if (user != null)
             {
-                Id = user.Id,
-                UserName = user.UserName,
-                //Token = await tokenService.GetToken(user, System.TimeSpan.FromMinutes(100)),
-                Roles = await _UserManager.GetRolesAsync(user)
-            };
+                return new UserUpdateDTO
+                {
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber,
+                    ImageUrl = user.ImageUrl
+                };
+            }
+            return null;
+
         }
 
         public async Task<ApplicationUser> GetUserByIdAsync(string userId)
@@ -85,7 +97,7 @@ namespace Globe_Wander_Final.Models.Services
                 Email = registerUserDto.Email,
                 PhoneNumber = registerUserDto.PhoneNumber,
             };
-            var result = await _UserManager.CreateAsync(newUser,registerUserDto.Password);
+            var result = await _UserManager.CreateAsync(newUser, registerUserDto.Password);
             if (result.Succeeded)
             {
                 await _UserManager.AddToRolesAsync(newUser, registerUserDto.Roles);
@@ -95,7 +107,7 @@ namespace Globe_Wander_Final.Models.Services
                     UserName = newUser.UserName,
                     Roles = await _UserManager.GetRolesAsync(newUser)
                 };
-            
+
             }
             var exisitngUser = await _UserManager.FindByEmailAsync(registerUserDto.Email);
             if (exisitngUser != null)
@@ -103,7 +115,7 @@ namespace Globe_Wander_Final.Models.Services
                 modelState.AddModelError(nameof(registerUserDto.Email), "Email Is Already Exisit!!");
                 return null;
             }
-            foreach(var error in result.Errors)
+            foreach (var error in result.Errors)
             {
                 var errorKey =
                     error.Code.Contains("Password") ? nameof(registerUserDto.Password) :
@@ -160,37 +172,58 @@ namespace Globe_Wander_Final.Models.Services
 
         }
 
-        public async Task<UserDTO> UpdateProfile(UserUpdateDTO updateDTO, ClaimsPrincipal claimsPrincipal)
+        public async Task<ApplicationUser> UpdateProfile(UserUpdateDTO updateDTO, string Username, IFormFile file)
         {
-            var hasher = new PasswordHasher<ApplicationUser>();
-            var getUserId = claimsPrincipal.FindFirstValue(ClaimTypes.NameIdentifier);
-            var user = await _UserManager.FindByIdAsync(getUserId);
+            var existUser = await _UserManager.FindByNameAsync(Username);
 
-            if (user == null)
+            if (existUser != null)
             {
-                return null;
+                existUser.UserName = updateDTO.UserName;
+                existUser.Email = updateDTO.Email;
+                existUser.PhoneNumber = updateDTO.PhoneNumber;
+
+                if (file != null)
+                {
+                    await _upload.UpdateProfileImage(file, updateDTO);
+                    existUser.ImageUrl = updateDTO.ImageUrl;
+                }
+
+                await _UserManager.UpdateAsync(existUser);
+
+                // Clear the user's session data and re-authenticate
+                await _signInManager.RefreshSignInAsync(existUser);
+
+
+                return existUser;
             }
-            var userByUserNameExist = await _UserManager.FindByNameAsync(updateDTO.UserName);
-            var userByEmailExist = await _UserManager.FindByEmailAsync(updateDTO.Email);
-            if ((userByUserNameExist != null && userByUserNameExist != user) || (userByEmailExist != null && userByEmailExist != user))
+
+            return null;
+        }
+
+        public async Task<bool> ChangePassword(string currentPassword, string newPassword, string confirmPassword, string userName)
+        {
+            var existUser = await _UserManager.FindByNameAsync(userName);
+
+            if (existUser != null)
             {
-                return null;
+                if (newPassword != confirmPassword)
+                {
+                    return false;
+                }
+                    
+                var isCorrect = await _UserManager.ChangePasswordAsync(existUser,currentPassword,newPassword);
+
+                if (isCorrect.Succeeded)
+                {
+                    await _signInManager.RefreshSignInAsync(existUser);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            user.UserName = updateDTO.UserName;
-            user.Email = updateDTO.Email;
-            user.PhoneNumber = updateDTO.PhoneNumber;
-
-            var update = new UserDTO
-            {
-                Id = user.Id,
-                UserName = updateDTO.UserName,
-                //Token = await tokenService.GetToken(user, System.TimeSpan.FromMinutes(100)),
-                Roles = await _UserManager.GetRolesAsync(user)
-            };
-            user.PasswordHash = hasher.HashPassword(user, updateDTO.Password);
-            await _UserManager.UpdateAsync(user);
-
-            return update;
+            return false;
         }
     }
 }

@@ -14,5 +14,13 @@ namespace Globe_Wander_Final.Models.Interfaces
 
         Task<RoomDTO> DeleteRoom(int roomId);
 
+        Task<List<Amenity>> GetAllAmenities();
+
+        Task<List<RoomAmenity>> GetAllRoomAmenitiesById(int roomId);
+
+        Task AddRoomAmenity(RoomAmenity roomAmenity);
+
+        Task RemoveRoomAmenity(RoomAmenity roomAmenity);
+
     }
 }

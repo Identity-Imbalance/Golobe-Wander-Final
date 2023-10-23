@@ -17,6 +17,12 @@ namespace Globe_Wander_Final.Models.Services
             _context = context;
         }
 
+        public async Task AddRoomAmenity(RoomAmenity roomAmenity)
+        {
+            await _context.RoomAmenities.AddAsync(roomAmenity);
+            await _context.SaveChangesAsync();
+        }
+
         /// <summary>
         /// Create a new room type.
         /// </summary>
@@ -50,6 +56,19 @@ namespace Globe_Wander_Final.Models.Services
             return room1;
 
 
+        }
+
+        public async Task<List<Amenity>> GetAllAmenities()
+        {
+            var amenities = await _context.Amenities.ToListAsync();
+            return amenities;
+        }
+
+        public async Task<List<RoomAmenity>> GetAllRoomAmenitiesById(int roomId)
+        {
+            var roomAmenities = await _context.RoomAmenities.Where(rm=>rm.RoomId == roomId)
+                .ToListAsync();
+            return roomAmenities;
         }
 
 
@@ -104,6 +123,12 @@ namespace Globe_Wander_Final.Models.Services
 
             return RoomDTO;
 
+        }
+
+        public async Task RemoveRoomAmenity(RoomAmenity roomAmenity)
+        {
+            _context.RoomAmenities.Remove(roomAmenity);
+            await _context.SaveChangesAsync();
         }
 
 

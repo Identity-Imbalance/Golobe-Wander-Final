@@ -1,13 +1,14 @@
 ﻿@model List<Globe_Wander_Final.Models.DTOs.TripDTO>
 
-@* <div id="preloader">
+@{
+    Layout = "_DashboardLayout";
+}
+<div id="preloader">
     <div id="status"></div>
-</div> *@
+</div>
 <div id="container-wrapper">
     <!-- Dashboard -->
     <div id="dashboard">
-        <partial name="_Navigation"></partial>
-
         <div class="dashboard-content">
             <div class="list-outer">
                 @foreach (var trip in Model)
@@ -16,7 +17,11 @@
                         <div class="row display-flex">
                             <div class="col-md-4 col-sm-12">
                                 <div class="list-image">
-                                    <img src="https://globewanderimages.blob.core.windows.net/globe-wander-images/noimageroom.jpg" alt="@trip.Name">
+                                    @if (trip.TripImages != null && trip.TripImages.Any())
+                                    {
+                                        var firstImage = trip.TripImages.First();
+                                        <img src="@firstImage.Path" alt="@trip.Name">
+                                    }
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
@@ -42,7 +47,10 @@
                             </div>
                             <div class="col-md-2 col-sm-12">
                                 <a asp-controller="Trips" asp-action="EditTrip" asp-route-id="@trip.Id" class="biz-btn biz-btn1 mar-top-5">Edit</a>
-                                <a asp-controller="Trips" asp-action="DeleteTrip" asp-route-id="@trip.Id" class="biz-btn biz-btn1 mar-top-5">Delete</a>
+                                <form asp-controller="Trips" asp-action="DeleteTrip" method="post">
+                                    <input type="hidden" name="id" value="@trip.Id" />
+                                    <button type="submit" class="biz-btn biz-btn1 mar-top-5">Delete</button>
+                                </form>
                             </div>
                         </div>
                     </div>

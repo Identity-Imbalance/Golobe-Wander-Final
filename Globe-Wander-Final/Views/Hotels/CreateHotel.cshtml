@@ -1,20 +1,21 @@
 ﻿@model Globe_Wander_Final.Models.DTOs.NewHotelDTO
 
 @{
+    Layout = "_DashboardLayout";
     List<int> selectedFacilityIds = new List<int>();
 }
-
+<div id="preloader">
+    <div id="status"></div>
+</div>
 <div id="container-wrapper">
     <!-- Dashboard -->
     <div id="dashboard">
-
-        <partial name="_Navigation"></partial>
         <div class="dashboard-content">
             <div class="add-box">
 
                 <div class="add-content">
                     <h3>Hotel Information</h3>
-                    <form id="hotelForm" method="post" asp-action="CreateHotel">
+                    <form id="hotelForm" method="post" asp-action="CreateHotel" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-sm-12">
                                 <label for="Name">Hotel Name</label>
@@ -50,11 +51,7 @@
                                 </div>
                             }
                             </div>
-                            <div class="col-sm-12">
-                                <div class="form-btn">
-                                    <button type="submit" class="biz-btn biz-btn1 mar-top-5">Create Hotel</button>
-                                </div>
-                            </div>
+                           
                         </div>
 
                         <div class="add-box add-rooms">
@@ -63,16 +60,9 @@
                                 <div class="col-md-6 col-xs-12">
                                     <div class="rooms-info">
                                         <h4>Add Gallery Images</h4>
+                                        <span class="text-danger">Not required</span>
                                         <div class="image-add">
-                                            <input type="file" name="Image">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-xs-12">
-                                    <div class="rooms-info">
-                                        <h4>Add Cover Images</h4>
-                                        <div class="image-add">
-                                            <input type="file" name="coverImage">
+                                            <input type="file" name="files" multiple accept=".png, .jpg, .jpeg" >
                                         </div>
                                     </div>
                                 </div>
@@ -80,122 +70,12 @@
 
                             <div class="col-sm-12">
                                 <div class="form-btn">
-                                    <button type="submit" class="biz-btn biz-btn1 mar-top-5">Save Changes </button>
+                                    <button type="submit" class="biz-btn biz-btn1 mar-top-5">Create Hotel</button>
                                 </div>
                             </div>
 
                         </div>
                     </form>
-                </div>
-            </div>
-
-            <div class="add-box add-rooms">
-
-                <div class="row">
-                    <div class="col-md-6 col-xs-12">
-                        <div class="rooms-info">
-                            <h4>Add Gallery Images</h4>
-                            <div class="rooms-image">
-                                <img src="images/destination4.jpg" alt="image">
-                            </div>
-                            <div class="rooms-image">
-                                <img src="images/destination6.jpg" alt="image">
-                            </div>
-                            <div class="rooms-image">
-                                <img src="images/destination7.jpg" alt="image">
-                            </div>
-                            <div class="image-add">
-                                <input type="file">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xs-12">
-                        <div class="rooms-info">
-                            <h4>Add Cover Images</h4>
-                            <div class="rooms-image">
-                                <img src="images/destination3.jpg" alt="image">
-                            </div>
-                            <div class="rooms-image">
-                                <img src="images/destination4.jpg" alt="image">
-                            </div>
-                            <div class="image-add">
-                                <input type="file">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-12">
-                    <div class="form-btn">
-                        <button type="submit" class="biz-btn biz-btn1 mar-top-5">Save Changes </button>
-                    </div>
-                </div>
-
-            </div>
-
-            @* Better to make it as a step progress *@
-            <div class="add-box add-rooms">
-                <div class="rooms-info">
-                    <div class="info-content pad-0">
-                        <h3>Rooms Information</h3>
-                        <form id="roomForm" method="post" action="/YourController/CreateRoom">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <label for="roomTitle">Room Title</label>
-                                    <input type="text" id="roomTitle" name="Name" placeholder="Enter Room Title" required>
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="price">Price</label>
-                                    <input type="text" id="price" name="Price" placeholder="Enter Price" required>
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="guest">Guest</label>
-                                    <input type="text" id="guest" name="Guest" placeholder="Enter Number of Guests" required>
-                                </div>
-                                <div class="col-sm-12">
-                                    <label for="roomDetail">Room Detail</label>
-                                    <textarea id="roomDetail" name="Layout" placeholder="Enter Room Detail" required></textarea>
-                                </div>
-                            </div>
-                            <div class="rooms-info">
-                                <h3>Facilities</h3>
-                                <div class="facilities">
-                                    <input type="checkbox">Wifi
-                                </div>
-                                <div class="facilities">
-                                    <input type="checkbox">Wifi
-                                </div>
-                                <div class="facilities">
-                                    <input type="checkbox">Wifi
-                                </div>
-                                <div class="facilities">
-                                    <input type="checkbox">Wifi
-                                </div>
-                                <div class="facilities">
-                                    <input type="checkbox">Wifi
-                                </div>
-                                <div class="facilities">
-                                    <input type="checkbox">Wifi
-                                </div>
-                                <!-- Add more facilities checkboxes here -->
-                            </div>
-                            <div class="rooms-info">
-                                <div class="rooms-image">
-                                    <img src="images/destination3.jpg" alt="image">
-                                </div>
-                                <div class="rooms-image">
-                                    <img src="images/destination4.jpg" alt="image">
-                                </div>
-                                <div class="rooms-image">
-                                    <img src="images/destination5.jpg" alt="image">
-                                </div>
-                                <div class="image-add">
-                                    <input type="file" name="RoomImages" multiple accept="image/*">
-                                </div>
-                            </div>
-                            <button type="submit" class="biz-btn biz-btn1 mar-top-5">Add Room</button>
-                        </form>
-                    </div>
                 </div>
             </div>
         </div>

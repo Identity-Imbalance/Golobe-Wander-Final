@@ -1,12 +1,13 @@
 ﻿@model List<Globe_Wander_Final.Models.DTOs.HotelDTO>
 @{
+    Layout = "_DashboardLayout";
 }
-
+<div id="preloader">
+    <div id="status"></div>
+</div>
 <div id="container-wrapper">
     <!-- Dashboard -->
     <div id="dashboard">
-        <partial name="_Navigation"></partial>
-
         <div class="dashboard-content">
             <div class="list-outer">
                 @* this should be responsive *@
@@ -17,8 +18,12 @@
                         <div class="row display-flex">
                         <div class="col-md-4 col-sm-12">
                             <div class="list-image1">
-                                @* <img src="@item.ImageURL" alt="@item.Name"> *@
-                            </div>
+                                    @if (item.HotelImages != null && item.HotelImages.Any())
+                                    {
+                                        var firstImage = item.HotelImages.First();
+                                        <img src="@firstImage.Path" alt="@item.Name">
+                                    }
+                                </div>
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <div class="list-content">
@@ -45,14 +50,14 @@
                         <div class="col-md-2 col-sm-12">
                             
                                 <a asp-controller="Hotels" asp-action="EditHotel" asp-route-id="@item.Id" class="biz-btn biz-btn1 mar-top-5">Edit</a>
-                                @* <a asp-controller="Hotels" asp-action="DeleteHotel" asp-route-id="@item.Id"  class="biz-btn biz-btn1 mar-top-5">Delete</a> *@
-                                <a type="button" class="biz-btn biz-btn1 mar-top-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="@item.Id">
+                                <form method="post" asp-controller="Hotels" asp-action="DeleteHotel">
+                                    <input type="hidden" name="id" value="@item.Id"/>
+                                <button type="submit"  class="biz-btn biz-btn1 mar-top-5">Delete</button>
+                                </form>
+                               @*  <a type="button" class="biz-btn biz-btn1 mar-top-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="@item.Id">
                                     <span>Delete</span>
                                     <i class="fa-solid fa-trash"></i>
-                                </a>
-                                <partial name="_DeleteHotelPartial" model="@item">
-
-                            
+                                </a> *@
                         </div>
                     </div>
 

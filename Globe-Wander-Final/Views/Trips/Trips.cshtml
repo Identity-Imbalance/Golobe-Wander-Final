@@ -132,7 +132,7 @@
                                         </div>
                                         <div class="flight-btn text-center">
                                                 <a class="biz-btn biz-btn1 mar-right-10" asp-controller="Trips" asp-action="TripDetails" asp-route-id="@item.Id">Trip Details</a>
-                                            <a href="#" class="biz-btn-black">Booking</a>
+                                                <a class="biz-btn-black" asp-controller="BookingTrips" asp-action="BookingForm" asp-route-TripID="@item.Id">Booking</a>
                                         </div>
                                     </div>
                                 </div>
