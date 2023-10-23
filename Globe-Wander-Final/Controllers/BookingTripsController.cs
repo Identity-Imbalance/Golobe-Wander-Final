@@ -20,7 +20,7 @@ namespace Globe_Wander_Final.Controllers
         private readonly IBookingTrip _bookingTrip;
         private readonly UPDATEBOOKINGTRIPServices _UPDATEBOOKINGTRIPServices;
 
-        public BookingTripsController(ITrip trip, IBookingTrip bookingTrip , UPDATEBOOKINGTRIPServices UPDATEBOOKINGTRIPServices)
+        public BookingTripsController(ITrip trip, IBookingTrip bookingTrip, UPDATEBOOKINGTRIPServices UPDATEBOOKINGTRIPServices)
         {
             _trip = trip;
             _bookingTrip = bookingTrip;
@@ -40,12 +40,19 @@ namespace Globe_Wander_Final.Controllers
         public async Task<IActionResult> UpdateOnlyCheckOut(int Id)
         {
 
-         var booking =   await _bookingTrip.GetBookingTripById(Id);
+            var booking = await _bookingTrip.GetBookingTripById(Id);
 
             return View(booking);
 
         }
+        public async Task<IActionResult> Overlap(int Id)
+        {
 
+            var booking = await _bookingTrip.GetBookingTripById(Id);
+
+            return View(booking);
+
+        }
         public async Task<IActionResult> CompletedPaidBooking(int ID)
         {
 
@@ -74,7 +81,7 @@ namespace Globe_Wander_Final.Controllers
                 ID = UpdateBooking.IdForUpdate,
                 StartDate = UpdateBooking.StartDate,
                 EndDate = UpdateBooking.EndDate,
-                NumberOfPersons= UpdateBooking.NumberOfPersons
+                NumberOfPersons = UpdateBooking.NumberOfPersons
 
             };
 
@@ -119,6 +126,18 @@ namespace Globe_Wander_Final.Controllers
         [HttpPost]
         public async Task<IActionResult> BookingForm(TripAndBookingTrip tripAndBookingForm)
         {
+            var BookingTripData = await _bookingTrip.GetAllBookingRoomsForUser(User.Identity.Name);
+
+            foreach (var trip in BookingTripData)
+            {
+                if (tripAndBookingForm.NewBookingTripDTO.StartDate <= trip.EndDate && tripAndBookingForm.NewBookingTripDTO.EndDate >= trip.StartDate)
+                {
+                    return RedirectToAction("Overlap", new { Id = trip.ID  });
+                }
+
+
+
+            }
             var Trip = await _trip.GetTripByID(tripAndBookingForm.NewBookingTripDTO.TripID);
             var booking = await _bookingTrip.Create(tripAndBookingForm.NewBookingTripDTO, User);
             var nameOfTrip = Trip.Name;
@@ -168,6 +187,15 @@ namespace Globe_Wander_Final.Controllers
 
         }
 
+        public async Task<IActionResult> UserDeleteBooking(int Id)
+        {
+
+            await _bookingTrip.Delete(Id);
+
+
+
+            return RedirectToAction("MyBookings","BookingRooms");
+        }
 
         public async Task<IActionResult> UserUpdateBooking(int Id)
         {
@@ -190,12 +218,12 @@ namespace Globe_Wander_Final.Controllers
             {
                 UpdateBooking.StartDate = BookingData.StartDate;
             }
-            if (UpdateBooking.NumberOfPersons == null || UpdateBooking.NumberOfPersons == 0 )
+            if (UpdateBooking.NumberOfPersons == null || UpdateBooking.NumberOfPersons == 0)
             {
                 UpdateBooking.NumberOfPersons = BookingData.NumberOfPersons;
             }
             var totalBeforeUpdate = BookingData.TotalPrice;
-          
+
             //var updated = await _bookingRoom.UpdateBookingRoom(UpdateBooking.ID, UpdateBooking);
             var totalAfterUpdate = UpdateBooking.NumberOfPersons * BookingData.CostPerPerson;
 
@@ -261,14 +289,14 @@ namespace Globe_Wander_Final.Controllers
                 return new StatusCodeResult(303);
 
             }
-         await _bookingTrip.UpdateBookingTripByUser(UpdateBooking.ID, UpdateBooking);
-            return RedirectToAction("UpdateOnlyCheckOut", new { Id= UpdateBooking.ID });
+            await _bookingTrip.UpdateBookingTripByUser(UpdateBooking.ID, UpdateBooking);
+            return RedirectToAction("UpdateOnlyCheckOut", new { Id = UpdateBooking.ID });
 
 
 
 
 
         }
-    
+
     }
 }
