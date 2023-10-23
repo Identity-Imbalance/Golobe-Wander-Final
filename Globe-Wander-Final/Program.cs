@@ -58,7 +58,7 @@ namespace Globe_Wander_Final
 
             builder.Services.AddTransient<EmailService>();
 
-            //builder.Services.AddSingleton<TimerService>();
+            builder.Services.AddSingleton<TimerService>();
             builder.Services.AddTransient<IAddImage, AddImageService>();
 
             builder.Services.AddTransient<UPDATEBOOKINGTEMPServices>();
