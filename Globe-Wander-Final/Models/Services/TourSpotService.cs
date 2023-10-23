@@ -132,7 +132,6 @@ namespace Globe_Wander_Final.Models.Services
                             NumberOfPersons = bt.NumberOfPersons,
                             CostPerPerson = bt.CostPerPerson,
                             TotalPrice = bt.TotalPrice,
-                            Duration = bt.Duration,
                             Username = bt.Username
                         }).ToList(),
                         Rates = trips.Rates.Select(r => new RateDTO
@@ -367,7 +366,6 @@ namespace Globe_Wander_Final.Models.Services
                             NumberOfPersons = bt.NumberOfPersons,
                             CostPerPerson = bt.CostPerPerson,
                             TotalPrice = bt.TotalPrice,
-                            Duration = bt.Duration,
                             Username = bt.Username
                         }).ToList(),
                         Rates = trips.Rates.Select(r => new RateDTO

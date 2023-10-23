@@ -18,13 +18,16 @@ namespace Globe_Wander_Final.Controllers
         private readonly IBookingRoom _bookingRoom;
         private readonly IHotel _hotel;
         private readonly UPDATEBOOKINGTEMPServices _UPDATEBOOKINGTEMPServices ;
-
-        public BookingRoomsController(IHotelRoom hotelRoom, IBookingRoom bookingRoom, IHotel hotel, UPDATEBOOKINGTEMPServices UPDATEBOOKINGTEMPServices)
+        private readonly IBookingTrip _bookingTrips;
+        private readonly ITrip _trip;
+        public BookingRoomsController(IHotelRoom hotelRoom, IBookingRoom bookingRoom, IHotel hotel, UPDATEBOOKINGTEMPServices UPDATEBOOKINGTEMPServices, IBookingTrip bookingTrips, ITrip trip)
         {
             _hotelRoom = hotelRoom;
             _bookingRoom = bookingRoom;
             _hotel = hotel;
             _UPDATEBOOKINGTEMPServices = UPDATEBOOKINGTEMPServices;
+            _bookingTrips  = bookingTrips;
+            _trip = trip;
 
 
 
@@ -165,13 +168,22 @@ namespace Globe_Wander_Final.Controllers
             var hotelRoomsData = await _hotelRoom.GetHotelRooms();
 
             var hotelsData = await _hotel.GetAllHotels();
-            var BookingData = await _bookingRoom.GetAllBookingRoomsForUser(User.Identity.Name);
+            var BookingHotelData = await _bookingRoom.GetAllBookingRoomsForUser(User.Identity.Name);
+
+            var BookingTripData = await _bookingTrips.GetAllBookingRoomsForUser(User.Identity.Name);
+            var TripData = await _trip.GetAllTrips();
+
+
+
             var userbooking = new MyBookingsDTO
             {
                 HotelRoomDTO = hotelRoomsData,
                 HotelDTOs= hotelsData,
-                BookingRoomDTO= BookingData
+                BookingRoomDTO= BookingHotelData,
+                 TripDTOs = TripData,
 
+
+                BookingTripDTO = BookingTripData
             };
 
 

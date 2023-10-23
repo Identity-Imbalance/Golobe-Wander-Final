@@ -104,7 +104,6 @@ namespace Globe_Wander_Final.Models.Services
                         TripID = bt.TripID,
                         NumberOfPersons = bt.NumberOfPersons,
                         CostPerPerson = bt.CostPerPerson,
-                        Duration = bt.Duration,
                         TotalPrice = bt.TotalPrice,
                         Username = bt.Username
 
@@ -155,7 +154,6 @@ namespace Globe_Wander_Final.Models.Services
                         TripID = bt.TripID,
                         NumberOfPersons = bt.NumberOfPersons,
                         CostPerPerson = bt.CostPerPerson,
-                        Duration = bt.Duration,
                         TotalPrice = bt.TotalPrice,
                         Username = bt.Username
                     }).ToList(),
