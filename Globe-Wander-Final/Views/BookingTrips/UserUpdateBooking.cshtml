@@ -5,19 +5,21 @@
     <section class="breadcrumb-outer text-center">
         <div class="container">
             <div class="breadcrumb-content">
-                <h2 class="white">Hotel Booking</h2>
+                <h2 class="white">Trip Booking</h2>
                 <nav aria-label="breadcrumb">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Hotel Booking</li>
+                        <li class="breadcrumb-item active" aria-current="page">Trip Booking</li>
                     </ul>
                 </nav>
             </div>
         </div>
-        <div class="overlay"></div>
+    <img style="object-fit:cover;" class="overlay" src="https://globewanderimages.blob.core.windows.net/globe-wander-images/pannertrip.jpg" alt="image" />
     </section>
     <!-- BreadCrumb Ends -->
-
+<head>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+</head>
     <!-- booking starts -->
     <section class="booking">
         <div class="container">
@@ -41,7 +43,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label>CHECK-IN</label>
+                                                        <label>Start-Date</label>
                                                         <input asp-for="updateBooking.StartDate" type="date" hidden value="@Model.bookingTripDTO.StartDate">
                                                         <p>You cant change the Start Date time </p>
                                                         <input asp-for=updateBooking.ID hidden type="number" value="@Model.bookingTripDTO.ID">
@@ -50,7 +52,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label>CHECK-OUT</label>
+                                                        <label>End-Date</label>
                                                         <input asp-for=updateBooking.EndDate type="date" placeholder="YYYY-MM-DD" min="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")">
                                                     </div>
                                                 </div>
@@ -67,7 +69,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label>CHECK-IN</label>
+                                                        <label>Start-Date</label>
                                                         <input asp-for="updateBooking.StartDate" type="date" placeholder="YYYY-MM-DD" min="@DateTime.Now.ToString("yyyy-MM-dd")" id="CheckIn">
 
                                                         <input asp-for=updateBooking.ID hidden type="number" value="@Model.bookingTripDTO.ID">
@@ -75,7 +77,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label>CHECK-OUT</label>
+                                                        <label>End-Date</label>
                                                         <input asp-for=updateBooking.EndDate type="date" placeholder="YYYY-MM-DD" id="CheckOut">
                                                     </div>
                                                 </div>

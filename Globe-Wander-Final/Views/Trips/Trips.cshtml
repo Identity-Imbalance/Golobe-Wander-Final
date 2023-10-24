@@ -8,23 +8,41 @@
         <div id="status"></div>
     </div>
     <!-- Preloader Ends -->
-    
-    <!-- Breadcrumb -->
-    <section class="breadcrumb-outer text-center">
-        <div class="container">
-            <div class="breadcrumb-content">
-                <h2 class="white">Trips</h2>
-                <nav aria-label="breadcrumb">
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Trips</li>
-                    </ul>
-                </nav>
+<!-- banner starts -->
+<section class="banner ver-banner">
+    <div class="slider">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                @foreach (var item in Model.Take(3))
+                {
+                    <div class="swiper-slide">
+                        <div class="slide-inner">
+                            @foreach (var image in item.TripImages.Take(1))
+                            {
+
+                                <div class="slide-image" style="background-image:url(@image.Path)"></div>
+                            }
+
+
+                            <div class="swiper-content">
+                                <h1><span>@item.Name</span></h1>
+                                <p class="mar-bottom-30">@item.Description </p>
+                                
+                            </div>
+                            <div class="overlay"></div>
+                        </div>
+                    </div>
+                }
+
             </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
-        <div class="overlay"></div>
-    </section>
-    <!-- BreadCrumb Ends -->
+    </div>
+    <div class="border-line" style="background-image: url();"></div>
+</section>
+<!-- banner ends -->
     <!-- flight-list starts -->
     <section class="list flight-list">
         <div class="container">
@@ -70,10 +88,10 @@
                             {
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="ticket-item list-ticket">
-                                    <div class="ticket-image">
+                                    <div>
                                             @foreach (var image in item.TripImages.Take(1))
                                             {
-                                                <img src="@image.Path" alt="@item.Name">
+                                                <img style="height:250px;border-radius:10px;" src="@image.Path" alt="@item.Name">
                                             }
                                     </div>
                                     <div class="flight-content">

@@ -5,39 +5,33 @@
     <section class="breadcrumb-outer text-center">
         <div class="container">
             <div class="breadcrumb-content">
-                <h2 class="white">Hotel Booking</h2>
+                <h2 class="white">Trip Booking</h2>
                 <nav aria-label="breadcrumb">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Hotel Booking</li>
+                        <li class="breadcrumb-item active" aria-current="page">Trip Booking</li>
                     </ul>
                 </nav>
             </div>
         </div>
-        <div class="overlay"></div>
+    <img style="object-fit:cover;" class="overlay" src="https://globewanderimages.blob.core.windows.net/globe-wander-images/pannertrip.jpg" alt="image" />
     </section>
     <!-- BreadCrumb Ends -->
+<head>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+</head>
     <!-- booking starts -->
-    <section class="booking">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-xs-12">
-                    <div class="price-tabmain">
-                       
+<section class="booking">
 
-                        <div class="tab-content">
+    <div class="tab-content">
+        <div class="tab-content centered-card">
+            <!-- Add a class to the container -->
                             <div id="customer">
                                 <div class="booking-box">
                                     <div class="customer-information">
                                     <h3 style="color:lightgreen">Your Booking Update Was Successful</h3>
                          
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                             
-                                                  
-                                                    </div>
-                                                </div>
+                                           
                                                 <div class="col-md-12">
                                                     <div class="form-btn">
                                                 <p>Dear @User.Identity.Name,</p>
@@ -55,11 +49,6 @@
                             </div>
                         
                         </div>
-                    </div>
-                </div>
-
-           
-            </div>
-        </div>
+                 
     </section>
  

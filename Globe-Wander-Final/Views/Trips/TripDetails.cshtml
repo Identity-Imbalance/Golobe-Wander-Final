@@ -19,7 +19,7 @@
                 </nav>
             </div>
         </div>
-        <div class="overlay"></div>
+    <img style="object-fit:cover;" class="overlay" src="https://globewanderimages.blob.core.windows.net/globe-wander-images/pannertrip.jpg" alt="image" />
     </section>
     <!-- BreadCrumb Ends -->
     <!-- flight desti starts -->
@@ -64,27 +64,27 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="title">Trip ID</td>
+                                            <td>Trip ID</td>
                                             <td><i aria-hidden="true"></i> @Model.trip.Id</td>
                                         </tr>
                                         <tr>
-                                            <td class="title">Location</td>
+                                            <td>Location</td>
                                             <td><i class="fa fa-map-marker" aria-hidden="true"></i> @Model.trip.Name</td>
                                         </tr>
                                         <tr>
-                                            <td class="title">Departure and return Time</td>
+                                            <td>Departure and return Time</td>
                                             <td><i class="fa fa-clock-o" aria-hidden="true"></i> Please arrive by <span style="color:#DC143C;">@Model.trip.StartDate</span> for a prompt departure at <span style="color:#DC143C;">@Model.trip.EndDate</span></td>
                                         </tr>
                                         <tr>
-                                            <td class="title">Maximum travellers</td>
+                                            <td>Maximum travellers</td>
                                             <td><i class="fa fa-user" aria-hidden="true"></i> @Model.trip.Capacity</td>
                                         </tr>
                                         <tr>
-                                            <td class="title">People that booked</td>
+                                            <td>People that booked</td>
                                             <td><i class="fa fa-user" aria-hidden="true"></i> @Model.trip.Count</td>
                                         </tr>
                                         <tr>
-                                            <td class="title">Activity</td>
+                                            <td>Activity</td>
                                             <td><i class="fa fa-check" aria-hidden="true"></i> @Model.trip.Activity</td>
                                         </tr>
 
