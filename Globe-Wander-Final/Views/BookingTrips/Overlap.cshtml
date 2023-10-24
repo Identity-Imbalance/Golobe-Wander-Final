@@ -1,0 +1,72 @@
+﻿@model Globe_Wander_Final.Models.DTOs.BookingTripDTO
+
+
+<!-- Breadcrumb -->
+<section class="breadcrumb-outer text-center">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2 class="white">Hotel Booking</h2>
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Hotel Booking</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="overlay"></div>
+</section>
+<!-- BreadCrumb Ends -->
+<!-- booking starts -->
+<section class="booking">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-xs-12">
+                <div class="price-tabmain">
+
+
+                    <div class="tab-content">
+                        <div id="customer">
+                            <div class="booking-box">
+                                <div class="customer-information">
+                                    <h3 style="color:red">Your Booking Failed</h3>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-btn">
+                                                <p>Dear @User.Identity.Name,</p>
+                                               <p>We are sorry to inform you that your lates progress for booking had failed for overlaping reasons with the booking info below</p>
+                                                <p>If you have any further requests or need assistance, please do not hesitate to visit our website or contact our customer service team.</p>
+                                                <p>Thank you once again for working with us. We look forward to serving you in the future.</p>
+                                                <p>Best regards,<br>Globe Wander</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-btn">
+                                                <p>Booking info:</p>
+                                                <p> Check-In :@Model.StartDate</p>
+                                                <p>Check-Out :@Model.EndDate</p>
+                                                <p> Duration :@Model.Duration</p>
+                                                <p>TotalPrice :@Model.TotalPrice $</p>
+
+                                             
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>

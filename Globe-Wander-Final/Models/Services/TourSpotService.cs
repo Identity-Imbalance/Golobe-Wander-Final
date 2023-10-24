@@ -12,16 +12,19 @@ namespace Globe_Wander_Final.Models.Services
     {
         private readonly GlobeWanderDbContext _context;
 
-        public TourSpotService(GlobeWanderDbContext context)
+        private readonly IAddImage _upload;
+
+        public TourSpotService(GlobeWanderDbContext context, IAddImage upload)
         {
             _context = context;
+            _upload = upload;
         }
 
         /// <summary>
         /// Create a new tour spot.
         /// </summary>
         /// <param name="tourSpot">Tour spot data.</param>
-        public async Task<TourSpotDTO> CreateTourSpot(newTourSpotDTO tourSpot)
+        public async Task<TourSpotDTO> CreateTourSpot(newTourSpotDTO tourSpot, IFormFile file)
         {
             var newTourSpot = new TourSpot()
             {
@@ -32,9 +35,12 @@ namespace Globe_Wander_Final.Models.Services
                 Description = tourSpot.Description,
                 Category = tourSpot.Category,
                 PhoneNumber = tourSpot.PhoneNumber,
-              
             };
             _context.Entry<TourSpot>(newTourSpot).State = EntityState.Added;
+            if (file != null)
+            {
+                await _upload.UploadImage(file, newTourSpot);
+            }
             await _context.SaveChangesAsync();
             var tourSpotDTO = await GetSpotById(newTourSpot.ID);
             tourSpot.ID = newTourSpot.ID;
@@ -126,7 +132,6 @@ namespace Globe_Wander_Final.Models.Services
                             NumberOfPersons = bt.NumberOfPersons,
                             CostPerPerson = bt.CostPerPerson,
                             TotalPrice = bt.TotalPrice,
-                            Duration = bt.Duration,
                             Username = bt.Username
                         }).ToList(),
                         Rates = trips.Rates.Select(r => new RateDTO
@@ -155,7 +160,7 @@ namespace Globe_Wander_Final.Models.Services
         {
             var tour = await _context.TourSpots.FindAsync(id);
 
-            string location = tour.City +", " + tour.Country;
+            string location = tour.City + ", " + tour.Country;
 
             return location;
         }
@@ -338,7 +343,7 @@ namespace Globe_Wander_Final.Models.Services
 
 
                         }).ToList(),
-                           
+
                     }).ToList(),
                     Trips = tours.Trips
                     .Where(x => x.TourSpotID == tours.ID)
@@ -361,7 +366,6 @@ namespace Globe_Wander_Final.Models.Services
                             NumberOfPersons = bt.NumberOfPersons,
                             CostPerPerson = bt.CostPerPerson,
                             TotalPrice = bt.TotalPrice,
-                            Duration = bt.Duration,
                             Username = bt.Username
                         }).ToList(),
                         Rates = trips.Rates.Select(r => new RateDTO
@@ -387,7 +391,7 @@ namespace Globe_Wander_Final.Models.Services
         /// </summary>
         /// <param name="tourSpot">Updated tour spot data.</param>
         /// <param name="id">ID of the tour spot to be updated.</param>
-        public async Task<TourSpotDTO> UpdateTourSpot(newTourSpotDTO tourSpot, int id)
+        public async Task<TourSpotDTO> UpdateTourSpot(newTourSpotDTO tourSpot, int id, IFormFile file)
         {
             var tourSpotRecord = await _context.TourSpots.FindAsync(id);
 
@@ -402,6 +406,11 @@ namespace Globe_Wander_Final.Models.Services
                 tourSpotRecord.PhoneNumber = tourSpot.PhoneNumber;
 
                 _context.Entry(tourSpotRecord).State = EntityState.Modified;
+                if (file != null)
+                {
+
+               await _upload.UploadImage(file, tourSpotRecord);
+                }
 
                 await _context.SaveChangesAsync();
 

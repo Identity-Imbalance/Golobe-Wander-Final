@@ -3170,7 +3170,7 @@ span.like-icon {
 .dashboard-nav {
     background-color: #333;
     display: block;
-    z-index: 11;
+    z-index: 99;
     position: fixed;
     width: 300px;
     top: 89px;
@@ -4587,6 +4587,7 @@ h4 span.headline-detail {
             opacity: 1;
             visibility: visible;
             max-height: 900px;
+            width: inherit !important;
         }
 
             .dashboard-nav ul, .dashboard-nav.active ul li ul, .dashboard-nav ul li ul {

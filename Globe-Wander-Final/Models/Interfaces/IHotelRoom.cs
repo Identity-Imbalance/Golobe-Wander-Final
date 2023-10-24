@@ -10,7 +10,7 @@ namespace Globe_Wander_Final.Models.Interfaces
 
         Task<HotelRoomDTO> GetHotelRoomId(int hotelID, int roomNumber);
 
-        Task<HotelRoomDTOCreate> UpdateHotelRoom(int hotelId, int roomNumber, HotelRoomDTOCreate hotelRoom);
+        Task<HotelRoomDTO> UpdateHotelRoom(int hotelId, int roomNumber, HotelRoomDTO hotelRoom);
 
         Task<HotelRoom> DeleteHotelRoom(int hotelID, int roomNumber);
 

@@ -8,13 +8,13 @@ namespace Globe_Wander_Final.Models.Interfaces
 
         public Task<TourSpotDTO> GetSpotById(int id);
 
-        public Task<TourSpotDTO> CreateTourSpot(newTourSpotDTO tourSpot);
+        public Task<TourSpotDTO> CreateTourSpot(newTourSpotDTO tourSpot, IFormFile file);
 
         // create a method to add a hotel and trip from the post by the id 
 
         public Task DeleteTourSpot(int id);
 
-        public Task<TourSpotDTO> UpdateTourSpot(newTourSpotDTO tourSpot, int id);
+        public Task<TourSpotDTO> UpdateTourSpot(newTourSpotDTO tourSpot, int id, IFormFile file);
 
         // create a method to update the hotel and trip and add them by the id 
 

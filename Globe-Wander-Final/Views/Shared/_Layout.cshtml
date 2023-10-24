@@ -34,7 +34,7 @@
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
                 <div class="container">
                     <div class="navbar-flex">
-                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Globe_Wander_Final</a>
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Globe Wander </a>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -42,8 +42,12 @@
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="TourSpots" asp-action="Index">Tours</a></li>
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Trips" asp-action="Trips">Trips</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Hotels" asp-action="Hotel">Hotels</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-page="/Dashboard">Dashboard</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Hotels" asp-action="Index">Hotels</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Hotels" asp-action="Hotel">Hotels LIST 2</a></li>
+                                @if (!User.IsInRole("User") || !User.Identity.IsAuthenticated)
+                                {
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-page="/Dashboard">Dashboard</a></li>                                    
+                                }
                             </ul>
 
                             <div class="header-content">
@@ -64,6 +68,8 @@
                                                 <li class="nav-item">
                                                     <span class="nav-link active">Welcome, @User.Identity.Name!</span>
                                                 </li>
+                                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="BookingRooms" asp-action="MyBookings">My Booking </a></li>
+                                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="BookingTrips" asp-action="MyBookings">My Booking </a></li>
                                                 <li><a asp-area="" asp-controller="User" asp-action="Logout"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
                                             }
                                         </ul>
@@ -167,11 +173,13 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
-    @* <script src="~/js/plugin.js"></script> *@
-    @* <script src="~/js/main.js"></script> *@
+
+    <script src="~/js/plugin.js"></script>
+    <script src="~/js/main.js"></script>
+
     <script src="~/js/menu.js"></script>
     <script src="~/js/custom-swiper3.js"></script>
-     @* <script src="~/js/custom-nav.js"></script>  *@
+     
     <script src="~/js/custom-date.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="~/js/jpanelmenu.min.js"></script>
