@@ -102,7 +102,7 @@ namespace Globe_Wander_Final.Controllers
             if (result != null)
             {
                 await userService.Authenticate(dataDTO.UserName, dataDTO.Password);
-                return RedirectToAction("/");
+                return Redirect("/");
             }
             return null;
         }
