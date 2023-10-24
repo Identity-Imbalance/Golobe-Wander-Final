@@ -3,6 +3,12 @@
 @{
     Layout = "_DashboardLayout";
 }
+@using Globe_Wander_Final.Models.DTOs
+@using Globe_Wander_Final.Models.Interfaces
+@inject IHotel _hotel;
+@{
+    
+}
 
 <!-- Preloader -->
 <div id="preloader">
@@ -19,9 +25,11 @@
                 <!-- Item -->
                 <div class="col-lg-3 col-md-6 col-xs-6">
                     <div class="dashboard-stat color-1">
-                        <div class="dashboard-stat-content"><h4>
-                            @Model.ToursCount
-                            </h4> <span>Active Tours Spots</span></div>
+                        <div class="dashboard-stat-content">
+                            <h4>
+                                @Model.ToursCount
+                            </h4> <span>Active Tours Spots</span>
+                        </div>
                         <div class="dashboard-stat-icon"><i class="im im-icon-Map2"></i></div>
                         <div class="dashboard-stat-item"><p>Someone Crossed your Tours!</p></div>
                     </div>
@@ -64,47 +72,40 @@
                             <table class="basic-table">
                                 <thead>
                                     <tr>
-                                        <th>Date</th>
                                         <th>Booking ID</th>
-                                        <th>Destination</th>
-                                        <th>No of Tickets</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
                                         <th>Type</th>
-                                        <th>Price</th>
+                                        <th>Total Price</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>01/01/2017</td>
-                                        <td class="t-id">C001</td>
-                                        <td>Dubai</td>
-                                        <td>5</td>
-                                        <td>Hotel</td>
-                                        <td>$300.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>01/01/2017</td>
-                                        <td class="t-id">C001</td>
-                                        <td>Dubai</td>
-                                        <td>5</td>
-                                        <td>Hotel</td>
-                                        <td>$300.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>01/01/2017</td>
-                                        <td class="t-id">C001</td>
-                                        <td>Dubai</td>
-                                        <td>5</td>
-                                        <td>Hotel</td>
-                                        <td>$300.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>01/01/2017</td>
-                                        <td class="t-id">C001</td>
-                                        <td>Dubai</td>
-                                        <td>5</td>
-                                        <td>Hotel</td>
-                                        <td>$300.00</td>
-                                    </tr>
+                                    @foreach (var item in Model.combinedList)
+                                    {
+                                        if (item is BookingRoomDTO bookingRoomDTO)
+                                        {
+                                            
+                                            <tr>
+                                                <td>@bookingRoomDTO.ID</td>
+                                                <td>@bookingRoomDTO.CheckIn</td>
+                                                <td class="t-id">@bookingRoomDTO.CheckOut</td>
+                                                <td>Hotel</td>
+                                                <td>@bookingRoomDTO.TotalPrice</td>
+                                            </tr>
+                                        }
+                                        if (item is BookingTripDTO bookingTripDTO)
+                                        {
+                                            <tr>
+                                                <td>@bookingTripDTO.ID</td>
+                                                <td>@bookingTripDTO.StartDate</td>
+                                                <td class="t-id">@bookingTripDTO.EndDate</td>
+                                                <td>Trip</td>
+                                                <td>@bookingTripDTO.TotalPrice</td>
+                                            </tr>
+                                        }
+
+                                    }
+
                                 </tbody>
                             </table>
                         </div>

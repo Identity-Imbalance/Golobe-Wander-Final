@@ -108,6 +108,7 @@ namespace Globe_Wander_Final.Models.Services
         /// </summary>
         public async Task<List<BookingTripDTO>> GetAllBookingTrips()
         {
+
             var bookingTrips = await _context.bookingTrips.ToListAsync();
             var bookingTripDTOs = bookingTrips.Select(bt => new BookingTripDTO
             {

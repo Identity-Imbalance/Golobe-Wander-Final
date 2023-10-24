@@ -66,6 +66,18 @@
                         
                         </div>
                     </div>
+                <form asp-controller="Rates" asp-action="BookingTripRate" method="post">
+                    <input type="hidden" asp-for="TripID" value="@Model.TripID" />
+                    <label>Rate number</label>
+                    <input type="number" name="Rating" min="0" max="5"  placeholder="5 Stars"/>
+                    <label>Coments message</label>
+                    <input type="text" name="Comments" placeholder="Enter your message"/>
+
+                    <button type="submit" class="biz btn">
+                        Rate
+                    </button>
+
+                </form>
                 </div>
 
            
