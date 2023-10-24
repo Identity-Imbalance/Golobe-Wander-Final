@@ -402,14 +402,15 @@
             <div class="top-deal-main">
                 <div class="row">
                    
-                   @foreach(var trip in Model.Trips){
+                   @foreach(var trip in Model.Trips.Take(3)){
 
                     <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">    
                         <div class="slider-item">
-                          
+                          @foreach(var tripImg in trip.TripImages.Take(1)){
                             <div class="slider-image">
-                            <img src="@trip." alt="image">
+                            <img src="@tripImg.Path" alt="image">
                             </div>
+                          }
                             <div class="slider-content">
                                 <h6 class="mar-bottom-10"><i class="fa fa-map-marker-alt"></i>@trip.Name</h6>
                                 <h4 class="mar-bottom-15"@trip.Description></h4>
