@@ -8,7 +8,7 @@ namespace Globe_Wander_Final.Pages
 {
     [Authorize(Roles = "Admin Manager, Trip Manager, Hotel Manager")]
     [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)] // Disable caching
-    public class DashboardModel<T> : PageModel 
+    public class DashboardModel : PageModel 
     {
 
         private readonly ITourSpot _tour;
@@ -57,7 +57,7 @@ namespace Globe_Wander_Final.Pages
             RateCount = rates.Count();
 
             // TODO: Add the both bookings inside this list and filter it and should be returned in the view sorted on the start date.
-            List<T> bookings = new List<T>();
+       
 
 
 
