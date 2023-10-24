@@ -3,6 +3,7 @@ using Globe_Wander_Final.Models.Interfaces;
 using Globe_Wander_Final.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace Globe_Wander_Final.Controllers
 {
@@ -19,11 +20,17 @@ namespace Globe_Wander_Final.Controllers
             _tour = tour;
             _upload = upload;
         }
-        public async Task<IActionResult> Trips()
+        public async Task<IActionResult> Trips(int? page)
         {
-            var Alltrip = await _trips.GetAllTrips();
+            int pageSize = 6; // Set your desired page size here.
+            int pageNumber = page ?? 1; // Default to the first page if no page number is provided.
 
-            return View(Alltrip);
+            var allTrips = await _trips.GetAllTrips();
+            
+            // Create a paged list of trips based on the requested page and page size.
+            var pagedList = allTrips.ToPagedList(pageNumber, pageSize);
+
+            return View(pagedList);
         }
 
         public async Task<IActionResult> TripDetails(int id)

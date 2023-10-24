@@ -938,6 +938,24 @@ a.rate-review {
             transition: all 200ms ease-in-out;
             font-size: 14px;
         }
+        .pagination ul li span {
+            border-radius: 50%;
+            width: 52px;
+            height: 52px;
+            padding: 0;
+            line-height: 52px;
+            border-bottom: none;
+            display: inline-block;
+            color: #f2f2f2;
+            background-color: #666;
+            font-weight: 700;
+            -moz-transition: all 200ms ease-in-out;
+            -o-transition: all 200ms ease-in-out;
+            -ms-transition: all 200ms ease-in-out;
+            transition: all 200ms ease-in-out;
+            font-size: 14px;
+           
+        }
 
         .pagination ul li a {
             border-radius: 50%;

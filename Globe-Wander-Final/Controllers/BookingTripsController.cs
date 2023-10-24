@@ -65,9 +65,6 @@ namespace Globe_Wander_Final.Controllers
         public async Task<IActionResult> RefundMessage(int ID)
         {
 
-
-
-
             return View(ID);
 
         }
@@ -87,7 +84,6 @@ namespace Globe_Wander_Final.Controllers
 
             var updated = await _bookingTrip.UpdateBookingTrip(UpdateBooking.IdForUpdate, newbooking);
 
-
             await _UPDATEBOOKINGTRIPServices.Delete(ID);
             return View(updated);
 
@@ -95,8 +91,9 @@ namespace Globe_Wander_Final.Controllers
 
         public async Task<IActionResult> FailedPayment(int Id)
         {
+            var bookingTrip = await _bookingTrip.GetBookingTripById(Id);
 
-            await _bookingTrip.Delete(Id);
+            await _bookingTrip.DeleteBookingTrip(Id,bookingTrip.TripID);
 
             return View();
 
@@ -193,12 +190,12 @@ namespace Globe_Wander_Final.Controllers
 
         }
 
+        [HttpPost]
         public async Task<IActionResult> UserDeleteBooking(int Id)
         {
+            var bookingTrip = await _bookingTrip.GetBookingTripById(Id);
 
-            await _bookingTrip.Delete(Id);
-
-
+            await _bookingTrip.DeleteBookingTrip(Id,bookingTrip.TripID);
 
             return RedirectToAction("MyBookings","BookingRooms");
         }
