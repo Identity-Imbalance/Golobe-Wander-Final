@@ -59,8 +59,17 @@ namespace Globe_Wander_Final.Controllers
         {
             var hotelRoom = await _hotelRoom.GetHotelRoomId(hotelRoomAndBookingForm.NewBookingRoomDTO.HotelID, hotelRoomAndBookingForm.NewBookingRoomDTO.RoomNumber);
            var user = User.Identity.Name;
-           var booking = await _bookingRoom.CreateBookingRoom(hotelRoomAndBookingForm.NewBookingRoomDTO, user);
+
+            if (hotelRoomAndBookingForm.NewBookingRoomDTO.CheckIn <= DateTime.MinValue || hotelRoomAndBookingForm.NewBookingRoomDTO.CheckOut <= DateTime.MinValue)
+            {
+                return RedirectToAction("noInput");
+            }
+            var booking = await _bookingRoom.CreateBookingRoom(hotelRoomAndBookingForm.NewBookingRoomDTO, user);
             var nameOfRoom = hotelRoom.Rooms.Name;
+
+         
+
+
                 StripeConfiguration.ApiKey = "sk_test_51NubdTFevC2H5P3dnpmteGXkcBY9039zcaJJYEs6S5frHIj0BzpWYid6eXGNJPjfKo1nuw7rb3Pm0kEwSZKspkOX00Z1a00TTs";
        
                 var domain = "https://localhost:7062/";
@@ -113,6 +122,16 @@ namespace Globe_Wander_Final.Controllers
 
 
             return View(booking);
+
+        }
+
+        public async Task<IActionResult> noInput()
+        {
+
+        
+
+
+            return View();
 
         }
         public async Task<IActionResult> RefundMessage(int ID)
@@ -221,8 +240,11 @@ namespace Globe_Wander_Final.Controllers
             if (UpdateBooking.CheckIn<= DateTime.MinValue)
             {
                 UpdateBooking.CheckIn = BookingData.CheckIn;
-            }     
-
+            }
+            if (UpdateBooking.CheckIn <= DateTime.MinValue || UpdateBooking.CheckOut <= DateTime.MinValue)
+            {
+                return RedirectToAction("noInput");
+            }
             var totalBeforeUpdate = BookingData.TotalPrice;
             TimeSpan duration = UpdateBooking.CheckOut - UpdateBooking.CheckIn;
             int totalDays = (int)duration.TotalDays;
@@ -291,7 +313,8 @@ if(totalBeforeUpdate > totalAfterUpdate)
                 return new StatusCodeResult(303);
 
             }
-
+ await _UPDATEBOOKINGTEMPServices.Delete(UPDATEBOOKINGTEMP.ID);
+            await _bookingRoom.UpdateBookingRoom(UpdateBooking.ID, UpdateBooking);
             return RedirectToAction("MyBookings");
 
 
