@@ -46,15 +46,21 @@ namespace Globe_Wander_Final.Controllers
             return View(tripAndRecomanded);
         }
 
-        [Authorize(Roles = "Trip Manager , AdminManager")]
-        public async Task<IActionResult> ListTrips()
+        [Authorize(Roles = "Trip Manager, Admin Manager")]
+        public async Task<IActionResult> ListTrips(int? page)
         {
+            int pageSize = 6;
+
+            int pageNumber = page ?? 1;
+
             var trips = await _trips.GetAllTrips();
 
-            return View(trips);
+            var pagedList = trips.ToPagedList(pageNumber, pageSize);
+
+            return View(pagedList);
         }
 
-        [Authorize(Roles = "Trip Manager , AdminManager")]
+        [Authorize(Roles = "Trip Manager, Admin Manager")]
         public async Task<IActionResult> CreateTrip()
         {
             var tours = await _tour.GetAllTourSpots();
@@ -64,7 +70,7 @@ namespace Globe_Wander_Final.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Trip Manager , AdminManager")]
+        [Authorize(Roles = "Trip Manager , Admin Manager")]
         [HttpPost]
         public async Task<IActionResult> CreateTrip(NewTripDTO model,List<IFormFile> files)
         {
@@ -88,7 +94,7 @@ namespace Globe_Wander_Final.Controllers
             }
         }
 
-        [Authorize(Roles = "Trip Manager , AdminManager")]
+        [Authorize(Roles = "Trip Manager , Admin Manager")]
         public async Task<IActionResult> EditTrip(int id)
         {
             var trip = await _trips.GetTripByID(id);
@@ -100,7 +106,7 @@ namespace Globe_Wander_Final.Controllers
             
         }
 
-        [Authorize(Roles = "Trip Manager , AdminManager")]
+        [Authorize(Roles = "Trip Manager , Admin Manager")]
         [HttpPost]
         public async Task<IActionResult> EditTrip(NewTripDTO model, int id, List<IFormFile> files)
         {
@@ -121,7 +127,7 @@ namespace Globe_Wander_Final.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Trip Manager , AdminManager")]
+        [Authorize(Roles = "Trip Manager , Admin Manager")]
         [HttpPost]
         public async Task<IActionResult> DeleteTrip(int id)
         {
