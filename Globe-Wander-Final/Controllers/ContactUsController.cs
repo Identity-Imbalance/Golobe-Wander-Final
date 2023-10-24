@@ -4,6 +4,7 @@ using Globe_Wander_Final.Models.Interfaces;
 using Globe_Wander_Final.Models.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Globe_Wander_Final.Controllers
 {
@@ -23,16 +24,12 @@ namespace Globe_Wander_Final.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Index([Bind(Prefix = "")] EmailDTO email)
+        public async Task<IActionResult> Index( EmailDTO email)
         {
 
-            if (!ModelState.IsValid)
-            {
-               
-                return View(email);
-            }
-
-            await _emailService.sendEmail(email);
+            email.Email = User.FindFirst(ClaimTypes.Email)?.Value;
+            var user = User.Identity.Name;
+            await _emailService.sendEmail(user,email);
 
             return RedirectToAction("Index", "Home");
         }
