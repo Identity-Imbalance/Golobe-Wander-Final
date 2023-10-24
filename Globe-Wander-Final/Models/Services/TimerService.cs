@@ -1,62 +1,48 @@
-﻿using Globe_Wander_Final.Data;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using System.Timers;
-using static System.Formats.Asn1.AsnWriter;
+﻿
+using Globe_Wander_Final.Data;
+using System.Threading;
 
 namespace Globe_Wander_Final.Models.Services
 {
-    public class TimerService
+    public class TimerService : IHostedService, IDisposable
     {
-        
-        private System.Timers.Timer cleanupTimer; // Timer for cleanup tasks
-        private readonly IServiceProvider _serviceProvider;
-        public TimerService( IServiceProvider serviceProvider)
+        private Timer _timer;
+        private readonly IServiceScopeFactory _scopeFactory;
+
+        public TimerService(IServiceScopeFactory scopeFactory)
         {
-
-            _serviceProvider = serviceProvider;
-
-            // Initialize and start a timer to run the cleanup function every hour
-            cleanupTimer = new System.Timers.Timer();
-            cleanupTimer.Elapsed += CleanupBookings;
-            cleanupTimer.Interval = TimeSpan.FromSeconds(2).TotalMilliseconds; // Set the interval to 1 hour
-            cleanupTimer.AutoReset = true;
-            cleanupTimer.Enabled = true;
-       
+            _scopeFactory = scopeFactory;
         }
 
-        public async void CleanupBookings(object sender, ElapsedEventArgs e)
+        public Task StartAsync(CancellationToken cancellationToken)
         {
-            // This function will be called every hour to delete past bookings
-          await  DeletePastBookings();
+            _timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromMinutes(5));
+            return Task.CompletedTask;
         }
 
-        private async Task DeletePastBookings()
+        private void DoWork(object state)
         {
-            Console.WriteLine("2");
-            using (var scope = _serviceProvider.CreateScope())
+            using (var scope = _scopeFactory.CreateScope())
             {
-                var scopedContext = scope.ServiceProvider.GetRequiredService<GlobeWanderDbContext>();
-                DateTime currentDate = DateTime.Now;
+              
+                var context = scope.ServiceProvider.GetRequiredService<GlobeWanderDbContext>();
 
-                // Get and delete bookings with past checkout dates from the scoped context
-                var pastBookings = await scopedContext.BookingRooms
-                    .Where(booking => booking.CheckOut < currentDate)
-                    .ToListAsync();
+                var expiredBookings = context.BookingRooms.Where(b => b.CheckOut < DateTime.Now);
+                context.BookingRooms.RemoveRange(expiredBookings);
 
-                foreach (var booking in pastBookings)
-                {
-                    var hotelRoom = await scopedContext.HotelRooms.FindAsync(booking.HotelID, booking.RoomNumber);
-                    if (hotelRoom != null)
-                    {
-                        hotelRoom.IsAvailable = true;
-                    }
-                    scopedContext.BookingRooms.Remove(booking);
-                    Console.WriteLine("1");
-                }
-
-                await scopedContext.SaveChangesAsync();
+                context.SaveChanges();
             }
+        }
+
+        public Task StopAsync(CancellationToken cancellationToken)
+        {
+            _timer?.Change(Timeout.Infinite, 0);
+            return Task.CompletedTask;
+        }
+
+        public void Dispose()
+        {
+            _timer?.Dispose();
         }
     }
 }
