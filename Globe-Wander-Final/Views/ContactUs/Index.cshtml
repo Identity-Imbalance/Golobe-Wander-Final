@@ -3,13 +3,13 @@
 
     <section class="banner">
         <div class="slider">
-          
-                <div class="slide-image" style="background-image:url(images/slider/slider5.jpg)"></div>
+
+        <div class="slide-image" style="background-image:url(https://globewanderimages.blob.core.windows.net/globe-wander-images/CONTACTUS.jpeg)"></div>
                 <div class="swiper-content">
                     <h2 class="white">Contact Us One</h2>
                     
-                </div> 
-                <div class="overlay"></div>
+                </div>
+        <img class="overlay" src="https://globewanderimages.blob.core.windows.net/globe-wander-images/contactus1.jpg">
            
         </div>
     </section>
@@ -30,59 +30,40 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="info-item">
-                            <div class="info-icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="info-content">
-                                <p>977-444-666-888</p>
-                                <p>977-444-222-000</p>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="info-item">
                             <div class="info-icon">
                                 <i class="fa fa-envelope"></i>
                             </div>
                             <div class="info-content">
-                                <p>info@Nepayatri.com</p>
-                                <p>help@Nepayatri.com</p>
+                            <p>globel.wander@gmail.com</p>
+                            <p>globel.wander@gmail.com</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="contact-map">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div id="map" style="height: 535px; width: 100%;"></div>
-                    </div>
+        <div class="mar-bottom-30">
+           
+                   
                     <div class="col-md-6">
                         <div id="contact-form1" class="contact-form">
                             <h3>Keep in Touch</h3>
                             <div id="contactform-error-msg"></div>
 
                         <form asp-action="Index" method="post">
-                         
-                                <div class="form-group">
-                                <input type="email" placeholder="Email" asp-for="Email" id="Email" >
-                                <span asp-validation-for="Email" class="text-danger"></span>
-                                </div>
-                               
-                                
                                 <div class="textarea">
                                 <textarea placeholder="Message" asp-for="Message" id="Message"></textarea>
-                                <span asp-validation-for="Message" class="text-danger"></span>
-                          
-                                <div class="comment-btn text-right mar-top-15">
+                            
+
+                            <div class="comment-btn text-right mar-top-15">
                                     <input type="submit" class="biz-btn" id="submit" value="Send Message">
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
