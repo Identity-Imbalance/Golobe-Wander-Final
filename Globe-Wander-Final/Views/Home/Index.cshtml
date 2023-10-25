@@ -46,7 +46,7 @@
     <!-- banner ends -->
 
     <!-- form starts -->
-<section class="banner-form form-style2">
+@* <section class="banner-form form-style2">
     <div class="container">
         <div class="form-content">
             <div class="price-navtab text-center">
@@ -64,7 +64,6 @@
                 </ul>
             </div>
 
-
             <div class="tab-content">
                 <div id="hotel" class="tab-pane active">
                     <div class="row filter-box">
@@ -73,56 +72,19 @@
                                 <label>Your Destination</label>
                                 <div class="input-box">
                                     <i class="flaticon-placeholder"></i>
-                                    <select class="niceSelect" style="display: none;">
-                                        <option value="1">Where are you going?</option>
-                                        <option value="2">Argentina</option>
-                                        <option value="3">Belgium</option>
-                                        <option value="4">Canada</option>
-                                        <option value="5">Denmark</option>
-                                    </select><div class="nice-select niceSelect" tabindex="0"><span class="current">Where are you going?</span><ul class="list"><li data-value="1" class="option selected">Where are you going?</li><li data-value="2" class="option">Argentina</li><li data-value="3" class="option">Belgium</li><li data-value="4" class="option">Canada</li><li data-value="5" class="option">Denmark</li></ul></div>
+                                    <select asp-for="TourSpots" class="niceSelect" style="display: none;">
+                                        <option value="">Where are you going?</option>
+                                        @foreach (var tour in Model.TourSpots)
+                                        {
+                                            <option value="@tour.ID">@tour.Name</option>
+                                        }
+                                    </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Reserved Date</label>
-                                <div class="input-box">
-                                    <i class="flaticon-calendar"></i>
-                                    <input id="date-range0" type="text" placeholder="yyyy-mm-dd">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Hotel Types</label>
-                                <div class="input-box">
-                                    <i class="flaticon-add-user"></i>
-                                    <select class="niceSelect" style="display: none;">
-                                        <option value="1">High Class</option>
-                                        <option value="2">Middle Class</option>
-                                        <option value="3">Low Class</option>
-                                    </select><div class="nice-select niceSelect" tabindex="0"><span class="current">High Class</span><ul class="list"><li data-value="1" class="option selected">High Class</li><li data-value="2" class="option">Middle Class</li><li data-value="3" class="option">Low Class</li></ul></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Person</label>
-                                <div class="input-box">
-                                    <i class="flaticon-add-user"></i>
-                                    <select class="niceSelect" style="display: none;">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select><div class="nice-select niceSelect" tabindex="0"><span class="current">1</span><ul class="list"><li data-value="1" class="option selected">1</li><li data-value="2" class="option">2</li><li data-value="3" class="option">3</li><li data-value="4" class="option">4</li><li data-value="5" class="option">5</li></ul></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="col-md-3 col-sm-12 col-xs-12 mt-5">
                             <div class="form-group mar-0">
-                                <a href="#" class="biz-btn"><i class="fa fa-search"></i> Find Now</a>
+                                <a href="#" class="biz-btn" id="hotelSearchButton"><i class="fa fa-search"></i> Find Now</a>
                             </div>
                         </div>
                     </div>
@@ -134,78 +96,29 @@
                                 <label>Your Destination</label>
                                 <div class="input-box">
                                     <i class="flaticon-placeholder"></i>
-                                    <select class="niceSelect" style="display: none;">
-                                        <option value="1">Where are you going?</option>
-                                        <option value="2">Argentina</option>
-                                        <option value="3">Belgium</option>
-                                        <option value="4">Canada</option>
-                                        <option value="5">Denmark</option>
-                                    </select><div class="nice-select niceSelect" tabindex="0"><span class="current">Where are you going?</span><ul class="list"><li data-value="1" class="option selected">Where are you going?</li><li data-value="2" class="option">Argentina</li><li data-value="3" class="option">Belgium</li><li data-value="4" class="option">Canada</li><li data-value="5" class="option">Denmark</li></ul></div>
+                                    <select asp-for="TourSpots" class="niceSelect" style="display: none;">
+                                        <option value="">Where are you going?</option>
+                                        @foreach (var tour in Model.TourSpots)
+                                        {
+                                            <option value="@tour.ID">@tour.Name</option>
+                                        }
+                                    </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Check In</label>
-                                <div class="input-box">
-                                    <i class="flaticon-calendar"></i>
-                                    <input id="date-range0" type="text" placeholder="yyyy-mm-dd">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Check Out</label>
-                                <div class="input-box">
-                                    <i class="flaticon-calendar"></i>
-                                    <input id="date-range1" type="text" placeholder="yyyy-mm-dd">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Adult</label>
-                                <div class="input-box">
-                                    <i class="flaticon-add-user"></i>
-                                    <select class="niceSelect" style="display: none;">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select><div class="nice-select niceSelect" tabindex="0"><span class="current">1</span><ul class="list"><li data-value="1" class="option selected">1</li><li data-value="2" class="option">2</li><li data-value="3" class="option">3</li><li data-value="4" class="option">4</li><li data-value="5" class="option">5</li></ul></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Children</label>
-                                <div class="input-box">
-                                    <i class="flaticon-add-user"></i>
-                                    <select class="niceSelect" style="display: none;">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select><div class="nice-select niceSelect" tabindex="0"><span class="current">1</span><ul class="list"><li data-value="1" class="option selected">1</li><li data-value="2" class="option">2</li><li data-value="3" class="option">3</li><li data-value="4" class="option">4</li><li data-value="5" class="option">5</li></ul></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="col-md-3 col-sm-12 col-xs-12 mt-5">
                             <div class="form-group mar-0">
-                                <a href="#" class="biz-btn"><i class="fa fa-search"></i> Find Now</a>
+                                <a href="#" class="biz-btn" id="tourSearchButton"><i class="fa fa-search"></i> Find Now</a>
                             </div>
                         </div>
                     </div>
                 </div>
-  
-       
-             
             </div>
         </div>
     </div>
 </section>
+
+ *@
     <!-- form ends -->
 
   
@@ -215,14 +128,14 @@
         <div class="container">
         <div class="why-us-about">
             <div class="row display-flex justify-content-center">
-                    <div class="col-md-6 col-xs-12">
-                        <div class="why-about-inner">
-                            <h2>We Provide <span>Best Services</span></h2>
-                            <h4>Amazing Places To Enjony Your Travel</h4>
-                        <p class="mar-bottom-25 ">Aliquam erat volutpat. Curabitur tempor nibh quis arcu convallis, sed viverra quam sollicitudin. Proin sed augue sed neque ultricies condimentum. In ac ultrices lectus.<br> Nullam ex elit, vestibulum ut urna non, tincidunt condimentum sem. Sed enim tortor, accumsan at consequat et, tempus sit ame</p>
-                        
-                        </div>
+                <div class="col-md-6 col-xs-12 mx-auto">
+                    <div class="why-about-inner">
+                        <h2>We Provide <span>Best Services</span></h2>
+                        <h4>Amazing Places To Enjoy Your Travel</h4>
+                        <p class="mar-bottom-25 ">Introducing our all-in-one service for seamless travel planning! With us, you can effortlessly book the perfect hotel, plan unforgettable trips, and reach out for any assistance you need. Find accommodations that suit your style and budget, embark on curated adventures, and get in touch with our dedicated team anytime. Say goodbye to travel hassles and hello to a worry-free getaway!</p>
                     </div>
+                </div>
+
             
                     <div class="row justify-content-center">
                         <div class="col-md-3 col-sm-6 col-xs-12">
@@ -232,7 +145,7 @@
                                 </div>
                                 <div class="why-us-content">
                                     <h4>Advice & Support</h4>
-                                    <p class="mar-0">Travel worry free knowing that we're here if you need us, 24 hours a day</p>
+                                <p class="mar-0">Have questions or need assistance? Our dedicated team is here to help! Reach out to us through our 'Contact Us' section and we'll be happy to assist you.</p>
                                 </div>
                             </div>
                         </div>
@@ -244,7 +157,7 @@
                                 </div>
                                 <div class="why-us-content">
                                     <h4>Hotel Accomodation</h4>
-                                    <p class="mar-0">Travel worry free knowing that we're here if you need us, 24 hours a day</p>
+                                <p class="mar-0">Explore a world of comfort and luxury with our seamless hotel booking service. Whether it's a cozy bed and breakfast or a lavish resort, we've got you covered.</p>
                                 </div>
                             </div>
                         </div>
@@ -256,7 +169,7 @@
                                 </div>
                                 <div class="why-us-content">
                                     <h4>Tour Peckages</h4>
-                                    <p class="mar-0">Travel worry free knowing that we're here if you need us, 24 hours a day</p>
+                                <p class="mar-0">Embark on unforgettable journeys with our curated trip booking service. Discover new horizons, from breathtaking landscapes to vibrant cities, all tailored to your preferences.</p>
                                 </div>
                             </div>
                         </div>
@@ -273,7 +186,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Top <span>Destinations</span></h2>
-                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+               
             </div>
             <div class="content">
             <div class="row">
@@ -313,20 +226,19 @@
                         <div class="col-md-4 col-sm-12 col-xs-12">
                             <div class="section-title">
                                 <h2>Top <span>Vaccation</span> Idea</h2>
-                                <p class="mar-bottom-25">Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                               
                                 <a href="#" class="biz-btn">View Details</a>
                             </div>
                         </div>
                         <div class="col-md-8 col-sm-12 col-xs-12">
                             <div class="row review-slider">
                             @foreach(var item in Model.TourSpots){ 
+                               
                                 <div class="col-md-4">
                                     <div class="trend-item">
                                         <div class="ribbon ribbon-top-left"><span>25% OFF</span></div>
                                         <div class="trend-image">
-                                            <a asp-action="GetSpotById" asp-controller="TourSpots" asp-route-spotId="@item.ID">
                                     <img src="@item.Img" alt="image" width="300px" height="300px">
-                                    </a>
                                             <div class="trend-tags">
                                                 <a href="#"><i class="flaticon-like"></i></a>
                                             </div>
@@ -334,12 +246,13 @@
                                                 <p class="price">From <span>$350.00</span></p>
                                             </div>
                                         </div>
+                                 <a asp-action="GetSpotById" asp-controller="TourSpots" asp-route-spotId="@item.ID">
                                         <div class="trend-content">
                                             <p><i class="flaticon-location-pin"></i>@item.Name</p>
                                         <p ><i class="fa fa-clock-o" aria-hidden="true"></i> @item.Country</p>
                                             <p>Tour Type: @item.Category</p>
                                         <h4>
-                                            <a asp-action="GetSpotById" asp-controller="TourSpots" asp-route-spotId="@item.ID"><i class="fa fa-link"></i> @item.Description  </a>
+                                        @item.Description  
                                         
                                     </h4>
                                     @foreach(var trip in item.Trips){
@@ -360,18 +273,21 @@
                                       
                                         @if (avg > 0)
                                         {
-                                            <span class="mar-left-5">@avg</span>
-                                        }
-                                        else
-                                        {
-                                            <span class="mar-left-5">Not Rated</span>
-                                        }
+                                                <span class="mar-left-5">@avg</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="mar-left-5">Not Rated</span>
+                                                break;
+                                            }
                                            
                                            }
 
                                         </div>
+                              </a>  
                                     </div>
                                 </div>
+                                  
                             }
                             </div>    
                         </div>
@@ -388,7 +304,7 @@
                 <div class="col-md-8 col-xs-12">
                     <div class="section-title title-full width100">
                         <h2>Today's Top <span>Deals</span></h2>
-                        <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                        <p>Here you can find the top deals for hotels and trips </p>
                     </div>
                 </div>
                 <div class="col-md-4 col-xs-12">
@@ -397,34 +313,44 @@
             </div>
             <div class="top-deal-main">
                 <div class="row">
-                   
-                   @foreach(var trip in Model.Trips.Take(3)){
 
-                    <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">    
+
+
+                @foreach (var trip in Model.Trips.Take(3))
+                {
+
+                    <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">
                         <div class="slider-item">
-                          @foreach(var tripImg in trip.TripImages.Take(1)){
-                            <div class="slider-image">
-                            <img src="@tripImg.Path" alt="image">
-                            </div>
-                          }
+
+                            @foreach (var tripImg in trip.TripImages.Take(1))
+                            {
+                                <div class="slider-image">
+                                    <img src="@tripImg.Path" alt="image">
+                                </div>
+                            }
+
                             <div class="slider-content">
+                                <a asp-action="TripDetails" asp-controller="Trips" asp-route-id="@trip.Id">
                                 <h6 class="mar-bottom-10"><i class="fa fa-map-marker-alt"></i>@trip.Name</h6>
-                                <h4 class="mar-bottom-15"@trip.Description></h4>
+                                <h4 class="mar-bottom-15" @trip.Description></h4>
                                 <div class="rate-rev mar-bottom-20">
-                                    <span class="num-rating mar-right-5">@trip.Count Of @trip.Capacity</span>
-                                   @foreach(var tripRate in trip.Rates){
-                                    <span class="review">@tripRate.Rating</span>
-                                   }
-                                </div>  
+                                    <span ><i class="fa-solid fa-person-circle-check"></i> Reserved by: @trip.Count Of @trip.Capacity </span>
+                                    @foreach (var tripRate in trip.Rates)
+                                    {
+                                        <span class="review">@tripRate.Rating</span>
+                                    }
+                                </div>
                                 <p>@trip.Description</p>
                                 <div class="deal-price">
                                     <p class="price">From <span>$@trip.Cost</span></p>
                                 </div>
+                                </a>
                             </div>
                         </div>
                     </div>
-                   }
-                 @foreach(var hotel in Model.recomandedHotels.Take(3)){
+                }
+
+                @foreach(var hotel in Model.recomandedHotels.Take(3)){
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="slider-item">
                 @foreach(var hotelImg in hotel.HotelImages.Take(1)){
@@ -434,11 +360,12 @@
              }
 
                             <div class="slider-content">
+                                <a asp-action="SingleHotel" asp-controller="Hotels" asp-route-Id="@hotel.Id">
                                 <h6 class="mar-bottom-10"><i class="fa fa-map-marker-alt"></i> @hotel.Location</h6>
                                 <h4 class="mar-bottom-15">@hotel.Name</h4>
                                 <div class="rate-rev mar-bottom-20">
-                                    <span class="num-rating mar-right-5">@hotel.StarRate /5</span>
-                                    <span class="review">(166 reviews)</span>
+                                    <span class="num-rating mar-right-5"><i class="fa-solid fa-star" style="color: #d30d0d;"></i> @hotel.StarRate /5</span>
+                               
                                 </div>  
                                 <p>@hotel.Description</p>
                                 @foreach(var price in hotel.HotelRoom.Take(1)){
@@ -446,6 +373,7 @@
                                     <p class="price">From <span>$@price.PricePerDay</span></p>
                                 </div>
                                 }
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -458,120 +386,6 @@
     </section>
     <!-- top deal ends -->
 
-    <!-- Reviews starts-->
-    <section class="home-testimonial bg-grey">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Happy Costumers</h2>
-                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
-            </div>
-            <div class="row testimonial-slider">
-                <div class="ts-item col-md-4">
-                    <div class="ts-image">
-                        <img src="images/inbox1.jpg" alt="image">
-                    </div>
-                    <div class="ts-content">
-                        <h4 class="mar-bottom-5">John Doe</h4>
-                        <p class="mar-bottom-5"> CEO/Mario Brand</p>
-                        <ul class="list-inline">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <p class="content mar-0">This is the third time I've used Travelo Website and telling you the truth their services are always reliable and it ony takes few minutes to plan and finalize.</p>
-                        <div class="ts-icon">
-                            <i class="fa fa-quote-left" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="ts-item col-md-4">
-                    <div class="ts-image">
-                        <img src="images/inbox4.jpg" alt="image">
-                    </div>
-                    <div class="ts-content">
-                        <h4 class="mar-bottom-5">John Doe</h4>
-                        <p class="mar-bottom-5"> CEO/Mario Brand</p>
-                        <ul class="list-inline">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <p class="content mar-0">This is the third time I've used Travelo Website and telling you the truth their services are always reliable and it ony takes few minutes to plan and finalize.</p>
-                        <div class="ts-icon">
-                            <i class="fa fa-quote-left" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="ts-item col-md-4">
-                    <div class="ts-image">
-                        <img src="images/inbox3.jpg" alt="image">
-                    </div>
-                    <div class="ts-content">
-                        <h4 class="mar-bottom-5">John Doe</h4>
-                        <p class="mar-bottom-5"> CEO/Mario Brand</p>
-                        <ul class="list-inline">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <p class="content mar-0">This is the third time I've used Travelo Website and telling you the truth their services are always reliable and it ony takes few minutes to plan and finalize.</p>
-                        <div class="ts-icon">
-                            <i class="fa fa-quote-left" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="ts-item col-md-4">
-                    <div class="ts-image">
-                        <img src="images/inbox2.jpg" alt="image">
-                    </div>
-                    <div class="ts-content">
-                        <h4 class="mar-bottom-5">John Doe</h4>
-                        <p class="mar-bottom-5"> CEO/Mario Brand</p>
-                        <ul class="list-inline">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <p class="content mar-0">This is the third time I've used Travelo Website and telling you the truth their services are always reliable and it ony takes few minutes to plan and finalize.</p>
-                        <div class="ts-icon">
-                            <i class="fa fa-quote-left" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="ts-item col-md-4">
-                    <div class="ts-image">
-                        <img src="images/inbox1.jpg" alt="image">
-                    </div>
-                    <div class="ts-content">
-                        <h4 class="mar-bottom-5">John Doe</h4>
-                        <p class="mar-bottom-5"> CEO/Mario Brand</p>
-                        <ul class="list-inline">
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-star"></i></li>
-                        </ul>
-                        <p class="content mar-0">This is the third time I've used Travelo Website and telling you the truth their services are always reliable and it ony takes few minutes to plan and finalize.</p>
-                        <div class="ts-icon">
-                            <i class="fa fa-quote-left" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Reviews -->
-
-
-
+  
 <script src="~/js/plugin.js"></script> 
  <script src="~/js/main.js"></script>
