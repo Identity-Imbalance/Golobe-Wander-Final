@@ -29,7 +29,7 @@
                         <div id="customer">
                             <div class="booking-box">
                                 <div class="customer-information">
-                                    <h3>Let us know who you are</h3>
+                                    <h3>Booking Form:</h3>
                                     <form method="post" asp-action="BookingForm">
                                         <div class="row">
                                          
@@ -37,8 +37,12 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label># NO. PERSONS</label>
+
+                                                    @{
+                                                        var maxperson = Model.TripDTO.Capacity - Model.TripDTO.Count;
+                                                    }
                                                     <input asp-for=NewBookingTripDTO.TripID hidden type="number" value="@Model.TripDTO.Id">
-                                                    <input asp-for=NewBookingTripDTO.NumberOfPersons min=1 type="number">
+                                                    <input asp-for=NewBookingTripDTO.NumberOfPersons min=1 type="number" max="@maxperson">
 
                                                 </div>
                                             </div>
@@ -70,8 +74,8 @@
                                     }
                                 </div>
                                 <div class="content-list mar-top-15">
-                                    <div class="date mar-bottom-5">Jun 28, 2019</div>
-                                    <h4 class="mar-0"><a href="blog-single.html">Takes on Baboon, and It Doesn’t Go Well for It</a></h4>
+                                    <div class="date mar-bottom-5">@Model.TripDTO.Name</div>
+                                    <h4 class="mar-0">@Model.TripDTO.Description</h4>
                                 </div>
 
                             </article>

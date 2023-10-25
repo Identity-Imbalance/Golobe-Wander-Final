@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Globe_Wander_Final.Models;
+using System.Security.Claims;
 
 namespace Globe_Wander_Final.Controllers
 {
@@ -19,12 +20,15 @@ namespace Globe_Wander_Final.Controllers
         private readonly ITrip _trip; // Replace ITrip with the appropriate interface for your trips
         private readonly IBookingTrip _bookingTrip;
         private readonly UPDATEBOOKINGTRIPServices _UPDATEBOOKINGTRIPServices;
+        private readonly EmailService _emailService;
 
-        public BookingTripsController(ITrip trip, IBookingTrip bookingTrip, UPDATEBOOKINGTRIPServices UPDATEBOOKINGTRIPServices)
+        public BookingTripsController(ITrip trip, IBookingTrip bookingTrip, UPDATEBOOKINGTRIPServices UPDATEBOOKINGTRIPServices, EmailService emailService)
         {
             _trip = trip;
             _bookingTrip = bookingTrip;
             _UPDATEBOOKINGTRIPServices = UPDATEBOOKINGTRIPServices;
+            _emailService = emailService;
+
         }
 
         public IActionResult Index()
@@ -57,6 +61,13 @@ namespace Globe_Wander_Final.Controllers
         {
 
             var booking = await _bookingTrip.GetBookingTripById(ID);
+            var name = User.Identity.Name;
+
+
+
+            var Email = User.FindFirst(ClaimTypes.Email)?.Value;
+            await _emailService.InvoiceForBookingTrip(Email, name, booking);
+            await _emailService.sendEmailTankYou(Email, name);
 
 
             return View(booking);
@@ -64,25 +75,37 @@ namespace Globe_Wander_Final.Controllers
         }
         public async Task<IActionResult> RefundMessage(int ID)
         {
+   
+            var name = User.Identity.Name;
+
+
+
+            var Email = User.FindFirst(ClaimTypes.Email)?.Value;
+            await _emailService.sendEmailRefund(Email, name, ID);
+            await _emailService.sendEmailTankYou(Email, name);
 
             return View(ID);
 
         }
         public async Task<IActionResult> CompletedPaymentMessage(int ID)
         {
+           
+        
 
             var UpdateBooking = await _UPDATEBOOKINGTRIPServices.get(ID);
             UpdateBookingTripDTO newbooking = new UpdateBookingTripDTO()
             {
 
                 ID = UpdateBooking.IdForUpdate,
-                StartDate = UpdateBooking.StartDate,
-                EndDate = UpdateBooking.EndDate,
                 NumberOfPersons = UpdateBooking.NumberOfPersons
 
             };
 
             var updated = await _bookingTrip.UpdateBookingTrip(UpdateBooking.IdForUpdate, newbooking);
+            var name = User.Identity.Name;
+            var Email = User.FindFirst(ClaimTypes.Email)?.Value;
+            await _emailService.InvoiceForBookingTrip(Email, name, updated);
+            await _emailService.sendEmailTankYou(Email, name);
 
             await _UPDATEBOOKINGTRIPServices.Delete(ID);
             return View(updated);
@@ -205,10 +228,11 @@ namespace Globe_Wander_Final.Controllers
         {
 
             var BookingData = await _bookingTrip.GetBookingTripById(Id);
+            var trip = await _trip.GetTripByID(BookingData.TripID);
             var BOOKING = new UpdateTripBooking()
             {
                 bookingTripDTO = BookingData,
-
+                TripDTO = trip
             };
 
             return View(BOOKING);
@@ -218,14 +242,8 @@ namespace Globe_Wander_Final.Controllers
         public async Task<IActionResult> UserUpdateBooking(UpdateBookingTripDTO UpdateBooking)
         {
             var BookingData = await _bookingTrip.GetBookingTripById(UpdateBooking.ID);
-            if (UpdateBooking.StartDate <= DateTime.MinValue)
-            {
-                UpdateBooking.StartDate = BookingData.StartDate;
-            }
-            if (UpdateBooking.NumberOfPersons == null || UpdateBooking.NumberOfPersons == 0)
-            {
-                UpdateBooking.NumberOfPersons = BookingData.NumberOfPersons;
-            }
+             UpdateBooking.StartDate = BookingData.StartDate;
+            UpdateBooking.EndDate = BookingData.EndDate;
             var totalBeforeUpdate = BookingData.TotalPrice;
 
             //var updated = await _bookingRoom.UpdateBookingRoom(UpdateBooking.ID, UpdateBooking);
@@ -293,8 +311,8 @@ namespace Globe_Wander_Final.Controllers
                 return new StatusCodeResult(303);
 
             }
-            await _bookingTrip.UpdateBookingTripByUser(UpdateBooking.ID, UpdateBooking);
-            return RedirectToAction("UpdateOnlyCheckOut", new { Id = UpdateBooking.ID });
+            await _UPDATEBOOKINGTRIPServices.Delete(UpdateBooking.ID);
+            return RedirectToAction("MyBookings", "BookingRooms");
 
 
 
