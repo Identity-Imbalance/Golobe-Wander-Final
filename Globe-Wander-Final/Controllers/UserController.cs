@@ -3,6 +3,7 @@ using Globe_Wander_Final.Models.DTOs;
 using Globe_Wander_Final.Models.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Globe_Wander_Final.Controllers
 {
@@ -72,20 +73,18 @@ namespace Globe_Wander_Final.Controllers
         // TODO: Valiadation the error mesage
         [HttpPost]
         public async Task<ActionResult<UserDTO>> Login(LogInDTO data)
-
         {
-            if (ModelState.IsValid)
+            var user = await userService.Authenticate(data.UserName, data.Password, this.ModelState);
+            if (user != null)
             {
-                var user = await userService.Authenticate(data.UserName, data.Password);
-
-
-                if (user == null)
+                if (user.Roles[0] != "User" && user.Roles[0] != null)
                 {
-                    this.ModelState.AddModelError(String.Empty, "Invalid Login");
-                    return View(data);
+                    return Redirect("/Dashboard");
                 }
+                return Redirect("/");
             }
-            return RedirectToAction("Index", "Home");
+            ModelState.AddModelError(nameof(data.Password), "Password is wrong or username not exist");
+            return View(user);
         }
 
         // TODO: Validation for the inputs -- Abdallah
@@ -104,21 +103,20 @@ namespace Globe_Wander_Final.Controllers
 
             if (result != null)
             {
-                await userService.Authenticate(dataDTO.UserName, dataDTO.Password);
-                return Redirect("/");
+               var loginInUser =  await userService.Authenticate(dataDTO.UserName, dataDTO.Password, this.ModelState);
+                if(loginInUser.Roles[0] != "User" && loginInUser.Roles[0] != null)
+                {
+                    return Redirect("/Dashboard");
+                }
+                    return Redirect("/");
             }
-            return null;
+            return View(dataDTO);
         }
-
-
 
         public IActionResult Register()
         {
             return View();
         }
-
-
-
 
         public async Task<IActionResult> Logout()
         {

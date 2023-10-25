@@ -34,7 +34,7 @@ namespace Globe_Wander_Final.Models.Services
         /// </summary>
         /// <param name="username">Username of the user.</param>
         /// <param name="password">Password of the user.</param>
-        public async Task<UserDTO> Authenticate(string username, string password)
+        public async Task<UserDTO> Authenticate(string username, string password, ModelStateDictionary modelState)
         {
             var result = await _signInManager.PasswordSignInAsync(username, password, true, false);
 
@@ -49,7 +49,9 @@ namespace Globe_Wander_Final.Models.Services
                     Roles = await _UserManager.GetRolesAsync(user)
                 };
             }
+            modelState.AddModelError(string.Empty, "Username or password wrong");
             return null;
+            
 
         }
 

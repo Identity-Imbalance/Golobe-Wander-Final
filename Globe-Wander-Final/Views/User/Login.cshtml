@@ -5,22 +5,28 @@
 <div class="form-container">
     <h2 style="text-align:center;">Sign into your account</h2>
     <form asp-action="Login" method="post">
-        
+
         <label asp-for="UserName"></label>
-            <input asp-for="UserName" class="form-control" id="username" placeholder="Enter username">
-            <span asp-validation-for="UserName" class="text-danger"></span>
+        <input asp-for="UserName" class="form-control" id="username" placeholder="Enter username">
+        <span asp-validation-for="UserName" class="text-danger"></span>
+
         <label asp-for="Password"></label>
-            <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Enter password">
-            <span asp-validation-for="Password" class="text-danger"></span>
-        
+        <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Enter password">
+        <span asp-validation-for="Password" class="text-danger"></span>
+
         <div style="padding:20px;justify-content:center; margin-left:80px;">
             <button type="submit" class="biz-btn biz-btn1 mar-bottom-20">LOGIN</button>
         </div>
         <p>Need an Account?<a asp-area="" asp-controller="User" asp-action="Register" style="color:#ef2853;"> Create your account</a></p>
-        
+
     </form>
 
-   
+
 </div>
 <div class="space"></div>
 <!-- Login Ends -->
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

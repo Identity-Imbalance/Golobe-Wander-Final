@@ -25,14 +25,15 @@
 </head>
 <body>
     <header>
-        <a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
+        <a asp-page="/Dashboard" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
         <div class="dashboard-sticky-nav">
             <div class="content-left pull-left">
-                <a asp-page="/Dashboard"><img src="~/imgs/pngwing.com.png" height="60" alt="logo"></a>
+                <a asp-page="/Dashboard"><img src="~/imgs/logo.png" height="60" alt="logo"></a>
             </div>
             <partial name="_UserInfo" />
         </div>
         <div class="dashboard-nav">
+
             <div class="dashboard-nav-inner">
                 <ul>
                     <li id="dash">
