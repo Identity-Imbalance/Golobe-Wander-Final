@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Globe_Wander_Final.Migrations
 {
     [DbContext(typeof(GlobeWanderDbContext))]
-    [Migration("20231024120840_dbSetup")]
-    partial class dbSetup
+    [Migration("20231025075550_osama")]
+    partial class osama
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -131,15 +131,15 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a4654b51-2da3-4e01-a7b0-d2ad0e10d366",
+                            ConcurrencyStamp = "b3194ed3-97b0-4ce5-868d-cea32a03fc1f",
                             Email = "User@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJJcYKmbVKedpgmooBqJnYL+lv3AQmBVpmR0sobb+HEoZ3uWfrYFzzlmvQj/Bgvc1g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOsPXcexydC3SCHbqHcZgLRNvtPgkSa5Sr8r730A5tTAZyuLIFSFgHSXlVxdk5Ej5A==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d22c3125-3ef4-4549-90d1-94059c8061f6",
+                            SecurityStamp = "4fc34ede-4681-4b0e-9ef1-67b0c9c77937",
                             TwoFactorEnabled = false,
                             UserName = "User"
                         },
@@ -147,16 +147,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2ef3c30c-dded-461d-9939-68fbae6799d0",
+                            ConcurrencyStamp = "7b4c96cd-d6a8-4553-8b79-0e05e0ee2c99",
                             Email = "adminUser@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "adminUser@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEF033NJgJWhTq4TC29KDuTMoQQX9M0l0KDC+eGa9GeW1oo/lhJklEjrd+Lmxhb+HEw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEK5QUOzDCbNLJrqMLuoH6Qw0/A3EH0hqkWXUrSkbY+rLpI5rrVsDvEkvXH/Eszf2Yw==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5ccdaddf-a165-441c-8e00-57a885a034f3",
+                            SecurityStamp = "ace6a81f-942a-4cd7-9482-d031d96c6e79",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -164,16 +164,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d07774d1-ce62-4c03-aef9-3e81d4845a04",
+                            ConcurrencyStamp = "2cb43f5a-784e-45f7-b851-235f00665821",
                             Email = "trip@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "trip@EXAMPLE.COM",
                             NormalizedUserName = "TRIP",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGirQF0Sjy62ztPkEEap7p6Tcm70RwTcZDBGWs54rNPprmOYgnKWv3kX6jgJlZH4lA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHBQ+5ukSNsmDx0cx67aMisl7h5FFuiD+EWIeiVlmk5IIN4fD69n4YPxntNrfm0aFw==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "01ecd87b-d6e9-4114-8b41-2d85246b1eec",
+                            SecurityStamp = "fbf8b0ee-5107-48d6-ab3c-e97511599d38",
                             TwoFactorEnabled = false,
                             UserName = "trip"
                         },
@@ -181,16 +181,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2c846246-89fb-4af8-ba9b-5764af031251",
+                            ConcurrencyStamp = "390bc76b-8bd1-43b8-a3e9-abfbb9329cf9",
                             Email = "hotel@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "hotel@EXAMPLE.COM",
                             NormalizedUserName = "HOTEL",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKVnFuc/3/u1XSFia5qkhehhw0P6N/o/BH1NzwiAkAfdNcbfMnSktpdbaocnjVecnA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEfr1DxphwZK9Sg+RzvJ1LK3RDIE3IM3bjVqiDii5RHI881GdBlIcPpnhY/M04kPPw==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "19688162-5e22-4e6a-a026-0b1b23d46966",
+                            SecurityStamp = "238ebab3-c601-4302-a048-d729fdb8a433",
                             TwoFactorEnabled = false,
                             UserName = "hotel"
                         });
@@ -1704,13 +1704,13 @@ namespace Globe_Wander_Final.Migrations
                         new
                         {
                             Id = 144,
-                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip4.png",
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip4.jpg",
                             TripId = 4
                         },
                         new
                         {
                             Id = 145,
-                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip5.jpg",
+                            Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip5.jpeg",
                             TripId = 5
                         },
                         new
@@ -2193,10 +2193,10 @@ namespace Globe_Wander_Final.Migrations
                             Capacity = 30,
                             Cost = 20m,
                             Count = 0,
-                            Description = "trip start at 8 am and going from Amman to Petra",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1918),
+                            Description = "trip starts at 8 am and goes from Amman to Petra",
+                            EndDate = new DateTime(2023, 10, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Petra ride",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1906),
+                            StartDate = new DateTime(2023, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 1
                         },
                         new
@@ -2207,9 +2207,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 30m,
                             Count = 0,
                             Description = "Amman to Jerash with a trip manager who can speak many languages",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1923),
+                            EndDate = new DateTime(2023, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Jerash ride",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1922),
+                            StartDate = new DateTime(2023, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 1
                         },
                         new
@@ -2220,9 +2220,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 40m,
                             Count = 0,
                             Description = "Amman to Irbid with a trip manager who can speak many languages",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1926),
+                            EndDate = new DateTime(2023, 11, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Um-Qais ride",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1925),
+                            StartDate = new DateTime(2023, 11, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 1
                         },
                         new
@@ -2233,9 +2233,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 50m,
                             Count = 0,
                             Description = "Explore the breathtaking Wadi Rum desert in Jordan.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1929),
+                            EndDate = new DateTime(2023, 11, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Wadi Rum Adventure",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1928),
+                            StartDate = new DateTime(2023, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 2
                         },
                         new
@@ -2246,9 +2246,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 25m,
                             Count = 0,
                             Description = "Relax at the world-famous Dead Sea and experience its healing properties.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1931),
+                            EndDate = new DateTime(2023, 11, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Dead Sea Relaxation",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1930),
+                            StartDate = new DateTime(2023, 11, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 2
                         },
                         new
@@ -2259,9 +2259,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 60m,
                             Count = 0,
                             Description = "Discover the vibrant marine life of the Red Sea in Aqaba.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1934),
+                            EndDate = new DateTime(2023, 11, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Aqaba Diving Expedition",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1933),
+                            StartDate = new DateTime(2023, 11, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 2
                         },
                         new
@@ -2272,9 +2272,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 15m,
                             Count = 0,
                             Description = "Explore the historical and cultural landmarks of Amman.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1938),
+                            EndDate = new DateTime(2023, 11, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Amman City Tour",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1937),
+                            StartDate = new DateTime(2023, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 3
                         },
                         new
@@ -2285,9 +2285,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 35m,
                             Count = 0,
                             Description = "Trek through the stunning Dana Biosphere Reserve.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1940),
+                            EndDate = new DateTime(2023, 12, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Dana Biosphere Reserve Hike",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1940),
+                            StartDate = new DateTime(2023, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 3
                         },
                         new
@@ -2298,9 +2298,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 45m,
                             Count = 0,
                             Description = "Experience the adventure of canyoning in Wadi Mujib.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1943),
+                            EndDate = new DateTime(2023, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Wadi Mujib Canyoning",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1942),
+                            StartDate = new DateTime(2023, 12, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 3
                         },
                         new
@@ -2311,9 +2311,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 20m,
                             Count = 0,
                             Description = "Relax in the soothing hot springs of Ma'in.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1946),
+                            EndDate = new DateTime(2023, 12, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Ma'in Hot Springs Visit",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1945),
+                            StartDate = new DateTime(2023, 12, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 4
                         },
                         new
@@ -2324,9 +2324,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 25m,
                             Count = 0,
                             Description = "Explore the historic Kerak Castle in Jordan.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1948),
+                            EndDate = new DateTime(2023, 12, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Kerak Castle Tour",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1947),
+                            StartDate = new DateTime(2023, 12, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 4
                         },
                         new
@@ -2337,9 +2337,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 30m,
                             Count = 0,
                             Description = "Take a nature walk in the Ajloun Forest Reserve.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1951),
+                            EndDate = new DateTime(2023, 12, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Ajloun Forest Reserve Trek",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1950),
+                            StartDate = new DateTime(2023, 12, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 4
                         },
                         new
@@ -2350,9 +2350,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 40m,
                             Count = 0,
                             Description = "Indulge in a culinary journey through Amman's cuisine.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1953),
+                            EndDate = new DateTime(2024, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Amman Culinary Tour",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1953),
+                            StartDate = new DateTime(2023, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 4
                         },
                         new
@@ -2363,9 +2363,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 20m,
                             Count = 0,
                             Description = "Discover the mosaic art of Madaba.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1961),
+                            EndDate = new DateTime(2024, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Mosaic City Madaba",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1960),
+                            StartDate = new DateTime(2024, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 4
                         },
                         new
@@ -2376,9 +2376,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 30m,
                             Count = 0,
                             Description = "Explore the historic Ajloun Castle.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1964),
+                            EndDate = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Ajloun Castle Exploration",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1963),
+                            StartDate = new DateTime(2024, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 4
                         },
                         new
@@ -2389,9 +2389,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 55m,
                             Count = 0,
                             Description = "Relax on the beautiful beaches of Aqaba.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1966),
+                            EndDate = new DateTime(2024, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Aqaba Beach Getaway",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1965),
+                            StartDate = new DateTime(2024, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 5
                         },
                         new
@@ -2402,9 +2402,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 40m,
                             Count = 0,
                             Description = "Explore the underwater world of the Red Sea through snorkeling in Aqaba.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1969),
+                            EndDate = new DateTime(2024, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Aqaba Snorkeling Adventure",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1968),
+                            StartDate = new DateTime(2024, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 5
                         },
                         new
@@ -2415,9 +2415,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 30m,
                             Count = 0,
                             Description = "View marine life through a glass-bottom boat tour in Aqaba.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1972),
+                            EndDate = new DateTime(2024, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Aqaba Glass-Bottom Boat Tour",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1971),
+                            StartDate = new DateTime(2024, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 5
                         },
                         new
@@ -2428,9 +2428,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 45m,
                             Count = 0,
                             Description = "Embark on an exciting jeep safari in the Aqaba desert.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1977),
+                            EndDate = new DateTime(2024, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Aqaba Desert Jeep Safari",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1976),
+                            StartDate = new DateTime(2024, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 6
                         },
                         new
@@ -2441,9 +2441,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 25m,
                             Count = 0,
                             Description = "Experience the vibrant nightlife of Aqaba.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1980),
+                            EndDate = new DateTime(2024, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Aqaba Nightlife Tour",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1979),
+                            StartDate = new DateTime(2024, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 6
                         },
                         new
@@ -2454,9 +2454,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 60m,
                             Count = 0,
                             Description = "Explore the iconic Pyramids of Giza in Egypt.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1983),
+                            EndDate = new DateTime(2024, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Pyramids of Giza Tour",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1982),
+                            StartDate = new DateTime(2024, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 6
                         },
                         new
@@ -2467,9 +2467,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 60m,
                             Count = 0,
                             Description = "Attend a Broadway show in the heart of New York City.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1985),
+                            EndDate = new DateTime(2024, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Broadway Show Experience",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1984),
+                            StartDate = new DateTime(2024, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 7
                         },
                         new
@@ -2480,9 +2480,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 30m,
                             Count = 0,
                             Description = "Explore the museums along Museum Mile.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1988),
+                            EndDate = new DateTime(2024, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Museum Mile Tour",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1987),
+                            StartDate = new DateTime(2024, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 7
                         },
                         new
@@ -2493,9 +2493,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 20m,
                             Count = 0,
                             Description = "Take a scenic walk across the historic Brooklyn Bridge.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1991),
+                            EndDate = new DateTime(2024, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Brooklyn Bridge Walk",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1990),
+                            StartDate = new DateTime(2024, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 7
                         },
                         new
@@ -2506,9 +2506,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 35m,
                             Count = 0,
                             Description = "Enjoy panoramic views from the Empire State Building.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1993),
+                            EndDate = new DateTime(2024, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Empire State Building Observation Deck",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1992),
+                            StartDate = new DateTime(2024, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 8
                         },
                         new
@@ -2519,9 +2519,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 45m,
                             Count = 0,
                             Description = "Cruise along the Hudson River and see Manhattan's skyline.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1996),
+                            EndDate = new DateTime(2024, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Hudson River Boat Tour",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1995),
+                            StartDate = new DateTime(2024, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 8
                         },
                         new
@@ -2532,9 +2532,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 45m,
                             Count = 0,
                             Description = "Immerse in the rich culture of Ubud, Bali.",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(1999),
+                            EndDate = new DateTime(2024, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Ubud Cultural Experience",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(1999),
+                            StartDate = new DateTime(2024, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 8
                         },
                         new
@@ -2545,9 +2545,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 60m,
                             Count = 0,
                             Description = "Explore the vibrant marine life of the Red Sea in Aqaba",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(2002),
+                            EndDate = new DateTime(2024, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Red Sea Adventure",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(2001),
+                            StartDate = new DateTime(2024, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 9
                         },
                         new
@@ -2558,9 +2558,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 50m,
                             Count = 0,
                             Description = "Experience the thrill of a desert adventure in Aqaba",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(2004),
+                            EndDate = new DateTime(2024, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Desert Safari",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(2004),
+                            StartDate = new DateTime(2024, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 9
                         },
                         new
@@ -2571,9 +2571,9 @@ namespace Globe_Wander_Final.Migrations
                             Cost = 70m,
                             Count = 0,
                             Description = "Discover submerged historical sites in the Red Sea",
-                            EndDate = new DateTime(2023, 10, 24, 12, 8, 39, 558, DateTimeKind.Utc).AddTicks(2022),
+                            EndDate = new DateTime(2024, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Historical Dive",
-                            StartDate = new DateTime(2023, 10, 24, 15, 8, 39, 558, DateTimeKind.Local).AddTicks(2015),
+                            StartDate = new DateTime(2024, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             TourSpotID = 9
                         });
                 });
