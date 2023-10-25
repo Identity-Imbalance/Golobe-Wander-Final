@@ -4,6 +4,7 @@ using Globe_Wander_Final.Models.Interfaces;
 using Globe_Wander_Final.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace Globe_Wander_Final.Controllers
 {
@@ -74,11 +75,17 @@ namespace Globe_Wander_Final.Controllers
         }
 
         [Authorize(Roles = "Hotel Manager , Admin Manager")]
-        public async Task<IActionResult> ListHotelRooms()
+        public async Task<IActionResult> ListHotelRooms(int? page)
         {
+            var pageSize = 6;
+
+            var pageNumber = page ?? 1;
+
             var hotelRoomsList = await _hotelRoom.GetHotelRooms();
 
-            return View(hotelRoomsList);
+            var pageList = hotelRoomsList.ToPagedList(pageNumber, pageSize);
+
+            return View(pageList);
         }
 
         [Authorize(Roles = "Hotel Manager , Admin Manager")]

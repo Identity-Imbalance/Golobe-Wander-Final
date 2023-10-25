@@ -9,6 +9,7 @@ using Stripe.Checkout;
 using Stripe;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Globe_Wander_Final.Models.Services;
+using System.Security.Claims;
 
 namespace Globe_Wander_Final.Controllers
 {
@@ -20,7 +21,8 @@ namespace Globe_Wander_Final.Controllers
         private readonly UPDATEBOOKINGTEMPServices _UPDATEBOOKINGTEMPServices ;
         private readonly IBookingTrip _bookingTrips;
         private readonly ITrip _trip;
-        public BookingRoomsController(IHotelRoom hotelRoom, IBookingRoom bookingRoom, IHotel hotel, UPDATEBOOKINGTEMPServices UPDATEBOOKINGTEMPServices, IBookingTrip bookingTrips, ITrip trip)
+        private readonly EmailService _emailService;
+       public BookingRoomsController(IHotelRoom hotelRoom, IBookingRoom bookingRoom, IHotel hotel, UPDATEBOOKINGTEMPServices UPDATEBOOKINGTEMPServices, IBookingTrip bookingTrips, ITrip trip, EmailService emailService)
         {
             _hotelRoom = hotelRoom;
             _bookingRoom = bookingRoom;
@@ -28,6 +30,7 @@ namespace Globe_Wander_Final.Controllers
             _UPDATEBOOKINGTEMPServices = UPDATEBOOKINGTEMPServices;
             _bookingTrips  = bookingTrips;
             _trip = trip;
+            _emailService = emailService;
 
 
 
@@ -119,8 +122,13 @@ namespace Globe_Wander_Final.Controllers
         {
 
         var booking =  await _bookingRoom.GetBookingRoomById(ID);
+      var name =User.Identity.Name;
 
 
+
+         var Email = User.FindFirst(ClaimTypes.Email)?.Value;
+            await _emailService.InvoiceForBookingRoom(Email, name, booking);
+            await _emailService.sendEmailTankYou(Email, name);
             return View(booking);
 
         }
@@ -136,8 +144,14 @@ namespace Globe_Wander_Final.Controllers
         }
         public async Task<IActionResult> RefundMessage(int ID)
         {
+            var name = User.Identity.Name;
 
-            
+
+
+            var Email = User.FindFirst(ClaimTypes.Email)?.Value;
+ await _emailService.sendEmailRefund(Email, name,ID);
+            await _emailService.sendEmailTankYou(Email, name);
+
 
 
             return View(ID);
@@ -158,7 +172,14 @@ namespace Globe_Wander_Final.Controllers
 
             var updated = await _bookingRoom.UpdateBookingRoom(UpdateBooking.IdForUpdate, newbooking);
 
+            var booking = await _bookingRoom.GetBookingRoomById(UpdateBooking.IdForUpdate);
+            var name = User.Identity.Name;
 
+
+
+            var Email = User.FindFirst(ClaimTypes.Email)?.Value;
+            await _emailService.InvoiceForBookingRoom(Email, name, booking);
+            await _emailService.sendEmailTankYou(Email, name);
             await _UPDATEBOOKINGTEMPServices.Delete(ID);
             return View(updated);
 

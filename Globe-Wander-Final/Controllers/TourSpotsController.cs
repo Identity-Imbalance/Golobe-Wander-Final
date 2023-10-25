@@ -3,6 +3,7 @@ using Globe_Wander_Final.Models.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Differencing;
+using X.PagedList;
 
 namespace Globe_Wander_Final.Controllers
 {
@@ -28,11 +29,16 @@ namespace Globe_Wander_Final.Controllers
             return View(tourId);
         }
 
-        public async Task<IActionResult> ListTourSpots()
+        public async Task<IActionResult> ListTourSpots(int? page)
         {
+            int pageSize = 6;
+            int pageNumber = page ?? 1;
+
             var tours = await _tours.GetAllTourSpots();
 
-            return View(tours);
+            var pageList = tours.ToPagedList(pageNumber, pageSize);
+
+            return View(pageList);
         }
 
         [Authorize(Roles = "Admin Manager")]
