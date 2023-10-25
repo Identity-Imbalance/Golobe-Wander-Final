@@ -12,24 +12,33 @@
     <h2 style="text-align:center;">Create an Account</h2>
     <form method="post" asp-action="Register">
 
-            <label asp-for="UserName"></label>
-            <input type="text" asp-for="UserName" class="form-control" placeholder="Enter username">
-        
-            <label asp-for="Email"></label>
-            <input type="email" asp-for="Email" class="form-control" placeholder="Enter email address">
-        
-            <label asp-for="Password"></label>
-            <input type="password" asp-for="Password" class="form-control" placeholder="Enter password">
-        
-            <label asp-for="PhoneNumber"></label>
-            <input type="number" asp-for="PhoneNumber" class="form-control" placeholder="Phone Number">
-        
-            <input type="hidden" asp-for="Roles">
-        
+        <label asp-for="UserName"></label>
+        <input type="text" asp-for="UserName" class="form-control" placeholder="Enter username">
+        <span asp-validation-for="UserName" class="text-danger"></span>
+
+        <label asp-for="Email"></label>
+        <input type="email" asp-for="Email" class="form-control" placeholder="Enter email address">
+        <span asp-validation-for="Email" class="text-danger"></span>
+
+        <label asp-for="Password"></label>
+        <input type="password" asp-for="Password" class="form-control" placeholder="Enter password">
+        <span asp-validation-for="Password" class="text-danger"></span>
+
+        <label asp-for="PhoneNumber"></label>
+        <input type="number" asp-for="PhoneNumber" class="form-control" placeholder="Phone Number">
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+        <input type="hidden" asp-for="Roles">
+
         <div style="padding:20px;justify-content:center; margin-left:80px;">
             <input style="background-color:#ef2853;" type="submit" class="biz-btn biz-btn1 mar-bottom-20" value="Sign Up" />
         </div>
     </form>
-    
+
 </div>
 <div class="space"></div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

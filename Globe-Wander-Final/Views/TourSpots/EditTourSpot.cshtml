@@ -18,18 +18,23 @@
                             <div class="col-sm-12">
                                 <label asp-for="Name">Name</label>
                                 <input type="text" asp-for="Name" value="@Model.Name" placeholder="Enter Tour Spot Name" required>
+                                <span asp-validation-for="Name" class="text-danger"></span>
+
                             </div>
                             <div class="col-sm-12">
                                 <label asp-for="Country">Country</label>
                                 <input asp-for="Country" value="@Model.Country" placeholder="Enter Tour Spot Country" required />
+                                <span asp-validation-for="Country" class="text-danger"></span>
                             </div>
                             <div class="col-sm-12">
                                 <label asp-for="City">City</label>
                                 <input asp-for="City" value="@Model.City" placeholder="Enter Tour Spot City" required>
+                                <span asp-validation-for="City" class="text-danger"></span>
                             </div>
                             <div class="col-sm-12">
                                 <label asp-for="Description">Description</label>
                                 <input asp-for="Description" value="@Model.Description" placeholder="Enter Tour Spot Description" required>
+                                <span asp-validation-for="Description" class="text-danger"></span>
                             </div>
                             <div class="col-sm-12">
                                 <label asp-for="Category">Tour Layout</label>
@@ -41,10 +46,12 @@
                                         <option value="@categoryValue">@category.ToString()</option>
                                     }
                                 </select>
+                                <span asp-validation-for="Category" class="text-danger"></span>
                             </div>
                             <div class="col-sm-12">
                                 <label asp-for="PhoneNumber">PhoneNumber</label>
                                 <input asp-for="PhoneNumber" value="@Model.PhoneNumber" placeholder="Enter Tour PhoneNumber" required>
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="add-box add-rooms">
@@ -76,3 +83,8 @@
     <!-- Dashboard / End -->
 </div>
 <!-- end Container Wrapper -->
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

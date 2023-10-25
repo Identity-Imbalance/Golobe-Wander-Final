@@ -9,7 +9,7 @@ namespace Globe_Wander_Final.Models.Interfaces
     {
         public Task<UserDTO> Register(RegisterUserDTO registerUser, ModelStateDictionary modelState, ClaimsPrincipal User);
 
-        public Task<UserDTO> Authenticate(string username, string password);
+        public Task<UserDTO> Authenticate(string username, string password, ModelStateDictionary modelState);
 
         public Task<UserUpdateDTO> GetUser(ClaimsPrincipal principal);
 
