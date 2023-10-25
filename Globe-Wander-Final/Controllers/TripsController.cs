@@ -3,6 +3,7 @@ using Globe_Wander_Final.Models.Interfaces;
 using Globe_Wander_Final.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace Globe_Wander_Final.Controllers
 {
@@ -19,11 +20,17 @@ namespace Globe_Wander_Final.Controllers
             _tour = tour;
             _upload = upload;
         }
-        public async Task<IActionResult> Trips()
+        public async Task<IActionResult> Trips(int? page)
         {
-            var Alltrip = await _trips.GetAllTrips();
+            int pageSize = 6; // Set your desired page size here.
+            int pageNumber = page ?? 1; // Default to the first page if no page number is provided.
 
-            return View(Alltrip);
+            var allTrips = await _trips.GetAllTrips();
+            
+            // Create a paged list of trips based on the requested page and page size.
+            var pagedList = allTrips.ToPagedList(pageNumber, pageSize);
+
+            return View(pagedList);
         }
 
         public async Task<IActionResult> TripDetails(int id)
@@ -39,15 +46,21 @@ namespace Globe_Wander_Final.Controllers
             return View(tripAndRecomanded);
         }
 
-        [Authorize(Roles = "Trip Manager , AdminManager")]
-        public async Task<IActionResult> ListTrips()
+        [Authorize(Roles = "Trip Manager, Admin Manager")]
+        public async Task<IActionResult> ListTrips(int? page)
         {
+            int pageSize = 6;
+
+            int pageNumber = page ?? 1;
+
             var trips = await _trips.GetAllTrips();
 
-            return View(trips);
+            var pagedList = trips.ToPagedList(pageNumber, pageSize);
+
+            return View(pagedList);
         }
 
-        [Authorize(Roles = "Trip Manager , AdminManager")]
+        [Authorize(Roles = "Trip Manager, Admin Manager")]
         public async Task<IActionResult> CreateTrip()
         {
             var tours = await _tour.GetAllTourSpots();
@@ -57,7 +70,7 @@ namespace Globe_Wander_Final.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Trip Manager , AdminManager")]
+        [Authorize(Roles = "Trip Manager , Admin Manager")]
         [HttpPost]
         public async Task<IActionResult> CreateTrip(NewTripDTO model,List<IFormFile> files)
         {
@@ -81,7 +94,7 @@ namespace Globe_Wander_Final.Controllers
             }
         }
 
-        [Authorize(Roles = "Trip Manager , AdminManager")]
+        [Authorize(Roles = "Trip Manager , Admin Manager")]
         public async Task<IActionResult> EditTrip(int id)
         {
             var trip = await _trips.GetTripByID(id);
@@ -93,7 +106,7 @@ namespace Globe_Wander_Final.Controllers
             
         }
 
-        [Authorize(Roles = "Trip Manager , AdminManager")]
+        [Authorize(Roles = "Trip Manager , Admin Manager")]
         [HttpPost]
         public async Task<IActionResult> EditTrip(NewTripDTO model, int id, List<IFormFile> files)
         {
@@ -114,7 +127,7 @@ namespace Globe_Wander_Final.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Trip Manager , AdminManager")]
+        [Authorize(Roles = "Trip Manager , Admin Manager")]
         [HttpPost]
         public async Task<IActionResult> DeleteTrip(int id)
         {

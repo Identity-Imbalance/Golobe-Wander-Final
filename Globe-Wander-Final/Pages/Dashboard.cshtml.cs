@@ -3,12 +3,14 @@ using Globe_Wander_Final.Models.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Linq;
 
 namespace Globe_Wander_Final.Pages
 {
     [Authorize(Roles = "Admin Manager, Trip Manager, Hotel Manager")]
     [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)] // Disable caching
-    public class DashboardModel : PageModel 
+
+    public class DashboardModel : PageModel
     {
 
         private readonly ITourSpot _tour;
@@ -26,6 +28,7 @@ namespace Globe_Wander_Final.Pages
             _bookingRoom = bookingRoom;
             _bookingTrip = bookingTrip;
             _rate = rate;
+            combinedList = new List<object>();
         }
 
 
@@ -35,11 +38,12 @@ namespace Globe_Wander_Final.Pages
         public int BookingsCount { get; set; }
         public int RateCount { get; set; }
 
+        public List<object> combinedList { get; set; }
 
-        
+
         public async Task OnGet()
         {
-            var tours  = await _tour.GetAllTourSpots();
+            var tours = await _tour.GetAllTourSpots();
             ToursCount = tours.Count;
 
             var hotels = await _hotel.GetAllHotels();
@@ -54,11 +58,35 @@ namespace Globe_Wander_Final.Pages
             BookingsCount = bookingRooms.Count() + bookingTrips.Count();
 
             var rates = await _rate.GetAllRate();
+
             RateCount = rates.Count();
 
             // TODO: Add the both bookings inside this list and filter it and should be returned in the view sorted on the start date.
-            
 
+            if (bookingRooms.Count > 0)
+            {
+                combinedList.AddRange(bookingRooms);
+
+            }
+            if (bookingTrips.Count > 0)
+            {
+
+                combinedList.AddRange(bookingTrips);
+            }
+            combinedList = combinedList
+            .OrderBy(item =>
+              {
+                  if (item is BookingRoomDTO bookingRoomDTO)
+                  {
+                      return bookingRoomDTO.CheckIn;
+                  }
+                  else if (item is BookingTripDTO bookingTripDTO)
+                  {
+                      return bookingTripDTO.StartDate;
+                  }
+                  // Handle other types if needed
+                  return DateTime.MinValue;
+              }).ToList();
 
 
         }

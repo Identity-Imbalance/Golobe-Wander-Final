@@ -31,7 +31,9 @@ namespace Globe_Wander_Final.Models.Services
         /// <param name="userId">ID of the user making the booking.</param>
         public async Task<BookingTripDTO> Create(NewBookingTripDTO bookingTrip, ClaimsPrincipal userPrincipal)
         {
+            
             var getUserId = userPrincipal.FindFirstValue(ClaimTypes.NameIdentifier);
+
             var user = await _UserManager.FindByIdAsync(getUserId);
 
             var trip = await _context.Trips.FindAsync(bookingTrip.TripID);
@@ -101,12 +103,12 @@ namespace Globe_Wander_Final.Models.Services
             return null;
         }
 
-
         /// <summary>
         /// Get a list of all booking trips.
         /// </summary>
         public async Task<List<BookingTripDTO>> GetAllBookingTrips()
         {
+
             var bookingTrips = await _context.bookingTrips.ToListAsync();
             var bookingTripDTOs = bookingTrips.Select(bt => new BookingTripDTO
             {
@@ -208,16 +210,7 @@ namespace Globe_Wander_Final.Models.Services
         /// <param name="tripId">ID of the associated trip.</param>
         public async Task Delete(int id, int tripId)
         {
-            var bookingTrip = await _context.bookingTrips.FindAsync(id);
-            var trip = await _context.Trips.FindAsync(tripId);
-
-            if (bookingTrip != null)
-            {
-                trip.Count -= bookingTrip.NumberOfPersons;
-
-                _context.Entry<BookingTrip>(bookingTrip).State = EntityState.Deleted;
-                await _context.SaveChangesAsync();
-            }
+           
         }
 
         public async Task<List<BookingTripDTO>> GetAllBookingRoomsForUser(string userId)
@@ -246,6 +239,20 @@ namespace Globe_Wander_Final.Models.Services
                 _context.Entry(deleteBookingTrip).State = EntityState.Deleted;
                 await _context.SaveChangesAsync();
             
+        }
+
+        public async Task DeleteBookingTrip(int id, int tripId)
+        {
+            var bookingTrip = await _context.bookingTrips.FindAsync(id);
+            var trip = await _context.Trips.FindAsync(tripId);
+
+            if (bookingTrip != null)
+            {
+                trip.Count -= bookingTrip.NumberOfPersons;
+
+                _context.Entry<BookingTrip>(bookingTrip).State = EntityState.Deleted;
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

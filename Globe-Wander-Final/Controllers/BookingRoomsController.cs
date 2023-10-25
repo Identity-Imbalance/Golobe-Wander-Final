@@ -9,6 +9,7 @@ using Stripe.Checkout;
 using Stripe;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Globe_Wander_Final.Models.Services;
+using System.Security.Claims;
 
 namespace Globe_Wander_Final.Controllers
 {
@@ -20,7 +21,8 @@ namespace Globe_Wander_Final.Controllers
         private readonly UPDATEBOOKINGTEMPServices _UPDATEBOOKINGTEMPServices ;
         private readonly IBookingTrip _bookingTrips;
         private readonly ITrip _trip;
-        public BookingRoomsController(IHotelRoom hotelRoom, IBookingRoom bookingRoom, IHotel hotel, UPDATEBOOKINGTEMPServices UPDATEBOOKINGTEMPServices, IBookingTrip bookingTrips, ITrip trip)
+        private readonly EmailService _emailService;
+       public BookingRoomsController(IHotelRoom hotelRoom, IBookingRoom bookingRoom, IHotel hotel, UPDATEBOOKINGTEMPServices UPDATEBOOKINGTEMPServices, IBookingTrip bookingTrips, ITrip trip, EmailService emailService)
         {
             _hotelRoom = hotelRoom;
             _bookingRoom = bookingRoom;
@@ -28,6 +30,7 @@ namespace Globe_Wander_Final.Controllers
             _UPDATEBOOKINGTEMPServices = UPDATEBOOKINGTEMPServices;
             _bookingTrips  = bookingTrips;
             _trip = trip;
+            _emailService = emailService;
 
 
 
@@ -59,8 +62,17 @@ namespace Globe_Wander_Final.Controllers
         {
             var hotelRoom = await _hotelRoom.GetHotelRoomId(hotelRoomAndBookingForm.NewBookingRoomDTO.HotelID, hotelRoomAndBookingForm.NewBookingRoomDTO.RoomNumber);
            var user = User.Identity.Name;
-           var booking = await _bookingRoom.CreateBookingRoom(hotelRoomAndBookingForm.NewBookingRoomDTO, user);
+
+            if (hotelRoomAndBookingForm.NewBookingRoomDTO.CheckIn <= DateTime.MinValue || hotelRoomAndBookingForm.NewBookingRoomDTO.CheckOut <= DateTime.MinValue)
+            {
+                return RedirectToAction("noInput");
+            }
+            var booking = await _bookingRoom.CreateBookingRoom(hotelRoomAndBookingForm.NewBookingRoomDTO, user);
             var nameOfRoom = hotelRoom.Rooms.Name;
+
+         
+
+
                 StripeConfiguration.ApiKey = "sk_test_51NubdTFevC2H5P3dnpmteGXkcBY9039zcaJJYEs6S5frHIj0BzpWYid6eXGNJPjfKo1nuw7rb3Pm0kEwSZKspkOX00Z1a00TTs";
        
                 var domain = "https://localhost:7062/";
@@ -110,15 +122,36 @@ namespace Globe_Wander_Final.Controllers
         {
 
         var booking =  await _bookingRoom.GetBookingRoomById(ID);
+      var name =User.Identity.Name;
 
 
+
+         var Email = User.FindFirst(ClaimTypes.Email)?.Value;
+            await _emailService.InvoiceForBookingRoom(Email, name, booking);
+            await _emailService.sendEmailTankYou(Email, name);
             return View(booking);
+
+        }
+
+        public async Task<IActionResult> noInput()
+        {
+
+        
+
+
+            return View();
 
         }
         public async Task<IActionResult> RefundMessage(int ID)
         {
+            var name = User.Identity.Name;
 
-            
+
+
+            var Email = User.FindFirst(ClaimTypes.Email)?.Value;
+ await _emailService.sendEmailRefund(Email, name,ID);
+            await _emailService.sendEmailTankYou(Email, name);
+
 
 
             return View(ID);
@@ -139,7 +172,14 @@ namespace Globe_Wander_Final.Controllers
 
             var updated = await _bookingRoom.UpdateBookingRoom(UpdateBooking.IdForUpdate, newbooking);
 
+            var booking = await _bookingRoom.GetBookingRoomById(UpdateBooking.IdForUpdate);
+            var name = User.Identity.Name;
 
+
+
+            var Email = User.FindFirst(ClaimTypes.Email)?.Value;
+            await _emailService.InvoiceForBookingRoom(Email, name, booking);
+            await _emailService.sendEmailTankYou(Email, name);
             await _UPDATEBOOKINGTEMPServices.Delete(ID);
             return View(updated);
 
@@ -221,8 +261,11 @@ namespace Globe_Wander_Final.Controllers
             if (UpdateBooking.CheckIn<= DateTime.MinValue)
             {
                 UpdateBooking.CheckIn = BookingData.CheckIn;
-            }     
-
+            }
+            if (UpdateBooking.CheckIn <= DateTime.MinValue || UpdateBooking.CheckOut <= DateTime.MinValue)
+            {
+                return RedirectToAction("noInput");
+            }
             var totalBeforeUpdate = BookingData.TotalPrice;
             TimeSpan duration = UpdateBooking.CheckOut - UpdateBooking.CheckIn;
             int totalDays = (int)duration.TotalDays;
@@ -291,7 +334,8 @@ if(totalBeforeUpdate > totalAfterUpdate)
                 return new StatusCodeResult(303);
 
             }
-
+ await _UPDATEBOOKINGTEMPServices.Delete(UPDATEBOOKINGTEMP.ID);
+            await _bookingRoom.UpdateBookingRoom(UpdateBooking.ID, UpdateBooking);
             return RedirectToAction("MyBookings");
 
 

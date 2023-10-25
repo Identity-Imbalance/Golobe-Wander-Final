@@ -1069,6 +1069,7 @@ ul.social-links li {
     padding: 0;
     margin: 0 10px 0 0;
     display: inline-block;
+    margin-left:35px;
 }
 
     ul.social-links li:last-child {
@@ -7828,3 +7829,29 @@ section.ready-block {
     position: relative;
 }
 
+.form-container {
+    width: 350px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.space {
+    margin-bottom: 50px;
+}
+
+/* Centering styles for the card container */
+.centered-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Optional to center vertically as well */
+}
