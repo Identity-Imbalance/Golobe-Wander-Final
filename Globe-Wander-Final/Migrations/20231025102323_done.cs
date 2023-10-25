@@ -120,9 +120,7 @@ namespace Globe_Wander_Final.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdForUpdate = table.Column<int>(type: "int", nullable: false),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    NumberOfPersons = table.Column<int>(type: "int", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    NumberOfPersons = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -526,10 +524,10 @@ namespace Globe_Wander_Final.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "ImageUrl", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "2a33dce7-cfc8-427b-998b-d1ab1e1a414b", "adminUser@example.com", true, null, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAEIe56mwHTcm+CqJ5LozGx+wuf18RkdYK1c8BMMWmvG5sz3eZRTmgm+RdSCzzOHBzRQ==", "1234567890", false, "81411230-443b-4ed4-ba26-4969712c8fa4", false, "admin" },
-                    { "2", 0, "ca307109-eb63-4492-80f9-b47e0b0fdfce", "hotel@example.com", true, null, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAEOFpF8guGDzJJeJo58pPktqQSKp9FgXEvbLo7kk2ziTZEMKR24J7EpEC8r+RkOZ8Aw==", "1234567890", false, "1cc5615f-3691-43d2-83ce-8d555efc4c2a", false, "hotel" },
-                    { "3", 0, "05f7fa0e-8407-4e43-b299-6d41c9738260", "trip@example.com", true, null, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAEIly5lHyZCGrhf/S4m5a98VnGQ6XDzNVdc1JynNyigrhZB3GPZjVcUXyx5/m5gb0uQ==", "1234567890", false, "3fe1e742-6f16-4513-9350-95a2a7b87354", false, "trip" },
-                    { "4", 0, "4d22520f-81f7-4c14-b9a2-0def08902713", "User@example.com", true, null, false, null, null, "USER", "AQAAAAIAAYagAAAAENxCa5TSQ9iyREOTnfHymJveLDvpSpbsHxr14d9zbP2yAHEAKyRNOI/e+bNFI4sl3A==", "1234567890", false, "e965b412-7d34-4c6b-8254-bfd19d3a1e27", false, "User" }
+                    { "1", 0, "7eb4555d-3c1f-4cbe-b81e-3bd456a5a92e", "adminUser@example.com", true, null, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAEDgSMcgzBhzYPLPaKCTIJ3Y7wO/e3kxrTiGv7nwchsAba/YWVRmvjFx2nrK6qj05zg==", "1234567890", false, "ff1c5c82-27d8-43b6-86c8-a4c365bae5a1", false, "admin" },
+                    { "2", 0, "3b3df221-3a20-4fe2-8c89-b4fb72b46287", "hotel@example.com", true, null, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAECLvoDuqRCbtCtSsz8/zeoo8IgSQlmyJUUaTXIBOnrN/e5ft0WRtxycvvbnXD/mQeA==", "1234567890", false, "8c8d547d-10a3-4b77-ad55-b876aa936be3", false, "hotel" },
+                    { "3", 0, "9ef0818a-6f8c-46cd-8c51-664255c965a6", "trip@example.com", true, null, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAECyuKwFww60mpv8griVSSj4oRk842U4SBVta/JVLPao0QBAFIbBoKcSAJXGX8IBojA==", "1234567890", false, "a3e08d3e-87fa-40bd-bba8-cf876d9d26ac", false, "trip" },
+                    { "4", 0, "133d264e-b335-4f3e-b43e-8e48b9421979", "User@example.com", true, null, false, null, null, "USER", "AQAAAAIAAYagAAAAEDmicSp2/WWIgW10smKMepbEzT0In2UzLIyXR08z2V8XauNnU4rk/PJ1dPLaRZcm4w==", "1234567890", false, "aaf3474b-861e-40ce-9617-bdefadb2ebdf", false, "User" }
                 });
 
             migrationBuilder.InsertData(

@@ -34,57 +34,20 @@
                             <div id="customer" >
                                 <div class="booking-box">
                                     <div class="customer-information">
-                                        <h3>Let us know who you are</h3>
+                                        <h3>Booking Form:</h3>
                                     <form method="post" asp-action="UserUpdateBooking">
-                                         
-                                        @if (Model.bookingTripDTO.StartDate <= DateTime.Now)
-                                        {
-
+                                       
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Start-Date</label>
-                                                        <input asp-for="updateBooking.StartDate" type="date" hidden value="@Model.bookingTripDTO.StartDate">
-                                                        <p>You cant change the Start Date time </p>
-                                                        <input asp-for=updateBooking.ID hidden type="number" value="@Model.bookingTripDTO.ID">
-                                                        <input asp-for=updateBooking.NumberOfPersons hidden type="number" value="@Model.bookingTripDTO.NumberOfPersons">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>End-Date</label>
-                                                        <input asp-for=updateBooking.EndDate type="date" placeholder="YYYY-MM-DD" min="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <div class="form-btn">
-                                                        <button type="submit" class="biz-btn biz-btn1 mar-top-5">Book</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        }
-                                        else
-                                        {
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Start-Date</label>
-                                                        <input asp-for="updateBooking.StartDate" type="date" placeholder="YYYY-MM-DD" min="@DateTime.Now.ToString("yyyy-MM-dd")" id="CheckIn">
-
-                                                        <input asp-for=updateBooking.ID hidden type="number" value="@Model.bookingTripDTO.ID">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>End-Date</label>
-                                                        <input asp-for=updateBooking.EndDate type="date" placeholder="YYYY-MM-DD" id="CheckOut">
-                                                    </div>
-                                                </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label># NO. PERSONS</label>
-                                                        <input asp-for=updateBooking.NumberOfPersons type="number" placeholder="1"  min="1">
+                                                    @{
+                                                        var maxperson = Model.TripDTO.Capacity - Model.TripDTO.Count;
+                                                    }
+                                                    <input asp-for=updateBooking.NumberOfPersons type="number" placeholder="1" min="1" max="@maxperson">
+                                                    <input asp-for=updateBooking.ID type="hidden" value="@Model.bookingTripDTO.ID">
+                                                    <input asp-for="updateBooking.StartDate" type="hidden" value="@Model.bookingTripDTO.ID">
+                                                    <input asp-for=updateBooking.EndDate type="hidden" value="@Model.bookingTripDTO.ID">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
@@ -95,7 +58,7 @@
                                             </div>
 
 
-                                        }
+                                   
                                     </form>
                                     </div>
                                 </div>
@@ -120,20 +83,3 @@
     <!-- Back to top ends -->
 
     <!-- search popup -->
-<script>
-    var CheckIn = document.getElementById("CheckIn");
-    var CheckOut = document.getElementById("CheckOut");
-
-    CheckIn.addEventListener("change", function () {
-        var checkInDate = new Date(CheckIn.value);
-        var nextDay = new Date(checkInDate);
-        nextDay.setDate(checkInDate.getDate() + 1);
-
-        var year = nextDay.getFullYear();
-        var month = String(nextDay.getMonth() + 1).padStart(2, '0');
-        var day = String(nextDay.getDate()).padStart(2, '0');
-
-        var formattedDate = year + '-' + month + '-' + day;
-        CheckOut.min = formattedDate;
-    });
-</script>
