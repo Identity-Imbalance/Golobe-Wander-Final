@@ -938,6 +938,24 @@ a.rate-review {
             transition: all 200ms ease-in-out;
             font-size: 14px;
         }
+        .pagination ul li span {
+            border-radius: 50%;
+            width: 52px;
+            height: 52px;
+            padding: 0;
+            line-height: 52px;
+            border-bottom: none;
+            display: inline-block;
+            color: #f2f2f2;
+            background-color: #666;
+            font-weight: 700;
+            -moz-transition: all 200ms ease-in-out;
+            -o-transition: all 200ms ease-in-out;
+            -ms-transition: all 200ms ease-in-out;
+            transition: all 200ms ease-in-out;
+            font-size: 14px;
+           
+        }
 
         .pagination ul li a {
             border-radius: 50%;
@@ -1810,7 +1828,7 @@ mark {
 }
 
 .tab-content {
-    padding: 28px 33px;
+    padding: 0px 4px;
     position: relative;
     z-index: 10;
     display: inline-block;
@@ -3131,7 +3149,7 @@ span.like-icon {
 
 .profile-sec {
     padding: 15px 15px 5px;
-    background: #333;
+    background: transparent;
     display: inline-block;
     width: 100%;
     text-align: center;
@@ -3170,7 +3188,7 @@ span.like-icon {
 .dashboard-nav {
     background-color: #333;
     display: block;
-    z-index: 11;
+    z-index: 99;
     position: fixed;
     width: 300px;
     top: 89px;
@@ -4587,6 +4605,7 @@ h4 span.headline-detail {
             opacity: 1;
             visibility: visible;
             max-height: 900px;
+            width: inherit !important;
         }
 
             .dashboard-nav ul, .dashboard-nav.active ul li ul, .dashboard-nav ul li ul {

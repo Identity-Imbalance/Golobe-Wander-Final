@@ -1,0 +1,43 @@
+﻿@using Globe_Wander_Final.Models.Interfaces
+@using Microsoft.AspNetCore.Identity;
+@inject IUser _user
+@inject UserManager<ApplicationUser> _userManager
+@{
+    var user = await _user.GetUser(User);
+    var userRole = await _userManager.GetUserAsync(User);
+
+}
+<div class="content-right pull-right">
+    <div class="profile-sec bg-dark">
+        <div class="dash-content mx-2">
+            <h4 class="text-white">@user.UserName</h4>
+            @if (userRole != null)
+            {
+                var roles = await _userManager.GetRolesAsync(userRole);
+                <span class="text-white">
+
+                    @roles.FirstOrDefault().ToString()
+                </span>
+            }
+        </div>
+        <div class="dash-image" style="width:70px; height:70px; object-fit:cover;">
+            @if (user.ImageUrl != null)
+            {
+                <img src="@user.ImageUrl" alt="@user.UserName" style="height:100%;">
+            }
+
+        </div>
+    </div>
+   
+</div>
+<div class="mx-sm-2">
+    <!-- Added Bootstrap classes -->
+    <ul class="d-flex justify-content-start mx-2 align-items-center ">
+        <li class="nav-item mx-2 p-4">
+            <a class="nav-link" asp-controller="Home" asp-action="Index"><i class="sl sl-icon-home"></i>Home</a>
+        </li>
+        <li class="nav-item mx-2 p-4">
+            <a class="nav-link" asp-area="" asp-controller="User" asp-action="Logout"><i class="fa fa-sign-out-alt"></i>Logout</a>
+        </li>
+    </ul>
+</div>

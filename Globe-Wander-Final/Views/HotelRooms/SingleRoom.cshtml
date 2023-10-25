@@ -1,0 +1,91 @@
+﻿@model Globe_Wander_Final.Models.ViewModels.HotelAndHotelRoom
+  
+<section class="breadcrumb-outer text-center" style="height:40vh !important">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2 class="white">@Model.hotel.Name</h2>
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.hotel.Name</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <img class="overlay" src="https://globewanderimages.blob.core.windows.net/globe-wander-images/hotelroombanner.png" alt="image" />
+</section>
+<section class="hotel-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-xs-12">
+                    <div class="single-content">
+                        <div class="single-title mar-bottom-30">
+                            <h2>@Model.hotel.Name</h2>
+                        <h3>@Model.HotelRoomDTO.Rooms.Name</h3>
+                       
+                        </div>
+                    <div class="single-slider mar-bottom-30">
+                        <div class="slider-1 slider-store">
+                            @foreach (var image in Model.HotelRoomDTO.HotelRoomImages)
+                            {
+                                <div class="detail-slider-item">
+                                    <img src="@image.Path" alt="image">
+                                </div>
+                            }
+
+                        </div>
+                        <div class="slider-1 slider-thumbs">
+                            @foreach (var image in Model.HotelRoomDTO.HotelRoomImages)
+                            {
+                                <div class="detail-slider-item">
+                                    <img src="@image.Path" alt="image">
+                                </div>
+                            }
+                        </div>
+                    </div>
+                        <div class="description mar-bottom-30">
+                            <h3>Description</h3>
+                        <p>@Model.HotelRoomDTO.Description</p>
+                      
+                        </div>
+        
+                        <div class="amnities mar-bottom-30">
+                            <h3>Amnities</h3>
+                            <ul>
+
+@foreach(var item in Model.HotelRoomDTO.Rooms.RoomAmenities){
+                                <li><i class="fa fa-wifi"></i> @item.Amenity.Name</li>
+}
+                            </ul>
+                        </div>
+
+                    <div class="amnities mar-bottom-30">
+                        <h3>specs</h3>
+                        <ul>
+
+                                <li><i class="fa fa-wifi"></i> @Model.HotelRoomDTO.Beds  Beds</li>
+                            <li><i class="fa fa-wifi"></i> @Model.HotelRoomDTO.Bathrooms Bathrooms</li>
+                            <li><i class="fa fa-wifi"></i> @Model.HotelRoomDTO.SquareFeet Sq.ft</li>
+                            <li><i class="fa fa-wifi"></i> @Model.HotelRoomDTO.PricePerDay $ price per day</li>
+                        </ul>
+                    </div>
+
+
+                    <div class="room-btns mar-top-20">
+                        <a class="biz-btn-black" asp-area="" asp-controller="BookingRooms" asp-action="BookingForm" asp-route-HotelID="@Model.HotelRoomDTO.HotelID" asp-route-RoomNumber="@Model.HotelRoomDTO.RoomNumber">Check-In</a>
+                       
+                    </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to top start -->
+    <div id="back-to-top">
+        <a href="#"></a>
+    </div>
+<script src="~/js/plugin.js"></script>
+<script src="~/js/main.js"></script>

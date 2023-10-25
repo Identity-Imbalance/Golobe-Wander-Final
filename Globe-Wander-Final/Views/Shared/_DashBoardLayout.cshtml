@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <!-- Bootstrap core CSS -->
+    @*  <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css"> *@
+    <!--Default CSS-->
+    <link href="~/css/default.css" rel="stylesheet" type="text/css">
+    <!--Custom CSS-->
+    <link href="~/css/style.css" rel="stylesheet" type="text/css">
+    <!--Dashboard CSS-->
+    <link href="~/css/dashboard.css" rel="stylesheet" type="text/css">
+    <!--Icons CSS-->
+    <link href="~/css/icons.css" rel="stylesheet" type="text/css">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/f9b49e7bf3.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <a asp-page="/Dashboard" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
+        <div class="dashboard-sticky-nav">
+            <div class="content-left pull-left">
+                <a asp-page="/Dashboard"><img src="~/imgs/logo.png" height="60" alt="logo"></a>
+            </div>
+            <partial name="_UserInfo" />
+        </div>
+        <div class="dashboard-nav">
+
+            <div class="dashboard-nav-inner">
+                <ul>
+                    <li id="dash">
+                        <a asp-page="/Dashboard"><i class="sl sl-icon-settings"></i> Dashboard</a>
+                    </li>
+                    <li id="user">
+                        <a asp-controller="User" asp-action="Profile"><i class="sl sl-icon-user"></i> Profile</a>
+                    </li>
+                    @if (User.IsInRole("Admin Manager"))
+                    {
+                        <li>
+                            <a><i class="fa-solid fa-plane-departure pe-2 me-2"></i>Tours</a>
+                            <ul>
+                                <li>
+                                    <a asp-controller="TourSpots" asp-action="ListTourSpots">All Tours</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="TourSpots" asp-action="CreateTourSpot">Add New Tour</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole("Trip Manager") || User.IsInRole("Admin Manager"))
+                    {
+                        <li>
+                            <a><i class="sl sl-icon-layers"></i>Trips</a>
+                            <ul>
+                                <li>
+                                    <a asp-controller="Trips" asp-action="ListTrips">All Trips</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Trips" asp-action="CreateTrip">Add New Trip</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole("Hotel Manager") || User.IsInRole("Admin Manager"))
+                    {
+                        <li>
+                            <a><i class="sl sl-icon-layers"></i> Hotel</a>
+                            <ul>
+                                <li>
+                                    <a asp-controller="Hotels" asp-action="ListHotels">All Hotels</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Hotels" asp-action="CreateHotel">Add New Hotel</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole("Hotel Manager") || User.IsInRole("Admin Manager"))
+                    {
+                        <li>
+                            <a><i class="sl sl-icon-layers"></i> Room</a>
+                            <ul>
+                                <li>
+                                    <a asp-controller="Rooms" asp-action="ListRooms">All Rooms </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Rooms" asp-action="CreateRoom">Add A Room </a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole("Hotel Manager") || User.IsInRole("Admin Manager"))
+                    {
+                        <li>
+                            <a><i class="sl sl-icon-layers"></i> Hotel Rooms</a>
+                            <ul>
+                                <li>
+                                    <a asp-controller="HotelRooms" asp-action="ListHotelRooms">All Hotel Rooms</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="HotelRooms" asp-action="CreateHotelRoom">Create Hotel Room</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/jpanelmenu.min.js"></script>
+    <script src="~/js/dashboard-custom.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+
+</body>
+</html>

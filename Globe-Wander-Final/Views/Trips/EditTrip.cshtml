@@ -1,0 +1,101 @@
+﻿@model Globe_Wander_Final.Models.DTOs.TripDTO
+@{
+    Layout = "_DashboardLayout";
+}
+<div id="preloader">
+    <div id="status"></div>
+</div>
+<div id="container-wrapper">
+    <!-- Dashboard -->
+    <div id="dashboard">
+
+ 
+        <div class="dashboard-content">
+            <div class="add-box">
+
+                <div class="add-content">
+                    <h3>Hotel Information</h3>
+                    <form id="hotelForm" method="post" asp-controller="Trips" asp-action="EditTrip" enctype="multipart/form-data">
+                        <div class="row">
+                            <input type="hidden" asp-for="Id" value="@Model.Id" />
+                            <div class="col-sm-12">
+                                <label asp-for="Name">Hotel Name</label>
+                                <input type="text" asp-for="Name" placeholder="Enter Trip Name" required>
+                            </div>
+                            <div class="col-sm-12">
+                                <label asp-for="Description">Description</label>
+                                <textarea asp-for="Description" placeholder="Enter Trip Description" required></textarea>
+                            </div>
+                            <div class="col-sm-12">
+                                <label asp-for="Cost">Trip Cost</label>
+                                <input asp-for="Cost" placeholder="Enter Trip Cost" required>
+                            </div>
+                            <div class="col-sm-12">
+                                <label asp-for="Activity">Trip Activity</label>
+                                <input asp-for="Activity" placeholder="Enter Trip Activity" required>
+                            </div>
+                            <div class="col-sm-12">
+                                <label asp-for="Capacity">Trip Capacity</label>
+                                <input asp-for="Capacity" placeholder="Enter Trip Capacity" required>
+                            </div>
+                         @*    <div class="col-sm-12">
+                                <label asp-for="StartDate">Trip StartDate</label>
+                                <input asp-for="StartDate" placeholder="Enter Trip StartDate" required>
+                            </div> *@
+                         @*    <div class="col-sm-12">
+                                <label asp-for="EndDate">Trip EndDate</label>
+                                <input asp-for="EndDate" placeholder="Enter Trip EndDate" required>
+                            </div> *@
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>EndDate</label>
+                                    <input asp-for="StartDate" type="date" placeholder="Enter Trip StartDate YYYY-MM-DD" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                                </div>
+                            </div><div class="col-md-6">
+                                <div class="form-group">
+                                    <label>EndDate</label>
+                                    <input asp-for="EndDate" type="date" placeholder="Enter Trip EndDate YYYY-MM-DD" min="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 my-3">
+                                <label asp-for="TourSpotID">Select Tour Spot</label>
+                                <select asp-for="TourSpotID" required>
+                                    @* <option value="@Model.TourSpotID">@Model.TourSpotID</option> *@
+                                    @foreach (var spot in ViewBag.Tours)
+                                    {
+                                        <option value="@spot.ID">@spot.Name</option>
+                                    }
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="add-box add-rooms">
+
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="rooms-info">
+                                        <h4>Add Gallery Images</h4>
+                                        <span class="text-danger">Not required</span>
+                                        <div class="image-add">
+                                            <input type="file" name="files" multiple accept=".png, .jpg, .jpeg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-btn">
+                                    <button type="submit" class="biz-btn biz-btn1 mar-top-5">Create Hotel</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Dashboard / End -->
+</div>
+<!-- end Container Wrapper -->

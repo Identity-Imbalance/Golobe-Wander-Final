@@ -1,0 +1,85 @@
+﻿@model Globe_Wander_Final.Models.ViewModels.UpdateTripBooking
+    <!-- header ends -->
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-outer text-center">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <h2 class="white">Trip Booking</h2>
+                <nav aria-label="breadcrumb">
+                    <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Trip Booking</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    <img style="object-fit:cover;" class="overlay" src="https://globewanderimages.blob.core.windows.net/globe-wander-images/pannertrip.jpg" alt="image" />
+    </section>
+    <!-- BreadCrumb Ends -->
+<head>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+</head>
+    <!-- booking starts -->
+    <section class="booking">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-xs-12">
+                    <div class="price-tabmain">
+                        <div class="price-navtab text-center mar-bottom-30">
+                          
+                        </div>    
+
+                        <div class="tab-content">
+                            <div id="customer" >
+                                <div class="booking-box">
+                                    <div class="customer-information">
+                                        <h3>Booking Form:</h3>
+                                    <form method="post" asp-action="UserUpdateBooking">
+                                       
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label># NO. PERSONS</label>
+                                                    @{
+                                                        var maxperson = Model.TripDTO.Capacity - Model.TripDTO.Count;
+                                                    }
+                                                    <input asp-for=updateBooking.NumberOfPersons type="number" placeholder="1" min="1" max="@maxperson">
+                                                    <input asp-for=updateBooking.ID type="hidden" value="@Model.bookingTripDTO.ID">
+                                                    <input asp-for="updateBooking.StartDate" type="hidden" value="@Model.bookingTripDTO.ID">
+                                                    <input asp-for=updateBooking.EndDate type="hidden" value="@Model.bookingTripDTO.ID">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-btn">
+                                                        <button type="submit" class="biz-btn biz-btn1 mar-top-5">Book</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                   
+                                    </form>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+
+           
+            </div>
+    </div>
+      
+    </section>
+    <!-- booking Ends -->
+
+ 
+    <!-- Back to top start -->
+    <div id="back-to-top">
+        <a href="#"></a>
+    </div>
+    <!-- Back to top ends -->
+
+    <!-- search popup -->

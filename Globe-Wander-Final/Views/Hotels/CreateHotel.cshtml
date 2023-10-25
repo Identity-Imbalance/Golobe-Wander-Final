@@ -1,0 +1,85 @@
+﻿@model Globe_Wander_Final.Models.DTOs.NewHotelDTO
+
+@{
+    Layout = "_DashboardLayout";
+    List<int> selectedFacilityIds = new List<int>();
+}
+<div id="preloader">
+    <div id="status"></div>
+</div>
+<div id="container-wrapper">
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <div class="dashboard-content">
+            <div class="add-box">
+
+                <div class="add-content">
+                    <h3>Hotel Information</h3>
+                    <form id="hotelForm" method="post" asp-action="CreateHotel" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label for="Name">Hotel Name</label>
+                                <input type="text" id="hotelName" name="Name" placeholder="Enter Hotel Name" required>
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="Description">Description</label>
+                                <textarea id="description" name="Description" placeholder="Enter Hotel Description" required></textarea>
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="hotelStarRate">Hotel Star Rate</label>
+                                <input type="number" id="hotelStarRate" name="StarRate" placeholder="Enter Hotel Star Rate" required>
+                            </div>
+                            <div class="col-sm-12 my-3">
+                                <label for="TourSpotID">Select Tour Spot</label>
+                                <select id="tourSpotID" name="TourSpotID" required>
+                                    <option value="">Select a Tour Spot</option>
+                                    @foreach (var spot in ViewBag.TourSpots)
+                                    {
+                                        <option value="@spot.ID">@spot.Name</option>
+                                    }
+                                </select>
+
+                            </div>
+
+                            <div class="col-sm-12 my-3">
+
+                            @foreach (var facility in ViewBag.Facilities)
+                            {
+                                <div class="facilities mx-2">
+                                <input type="checkbox" name="selectedFacilityIds" value="@facility.Id" />
+                                @facility.Name
+                                </div>
+                            }
+                            </div>
+                           
+                        </div>
+
+                        <div class="add-box add-rooms">
+
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="rooms-info">
+                                        <h4>Add Gallery Images</h4>
+                                        <span class="text-danger">Not required</span>
+                                        <div class="image-add">
+                                            <input type="file" name="files" multiple accept=".png, .jpg, .jpeg" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-btn">
+                                    <button type="submit" class="biz-btn biz-btn1 mar-top-5">Create Hotel</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Dashboard / End -->
+</div>
+<!-- end Container Wrapper -->

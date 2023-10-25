@@ -1,0 +1,53 @@
+﻿
+
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-outer text-center">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <h2 class="white">Trip Booking</h2>
+                <nav aria-label="breadcrumb">
+                    <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Trip Booking</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    <img style="object-fit:cover;" class="overlay" src="https://globewanderimages.blob.core.windows.net/globe-wander-images/pannertrip.jpg" alt="image" />
+    </section>
+    <!-- BreadCrumb Ends -->
+<head>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+</head>
+    <!-- booking starts -->
+<section class="booking">
+
+    <div class="tab-content">
+        <div class="tab-content centered-card">
+            <!-- Add a class to the container -->
+                            <div id="customer">
+                <div class="booking-box" style="margin:60px;width:900px;">
+                                    <div class="customer-information">
+                                    <h3 style="color:red">Failed To Update the Booking</h3>
+                         
+                                                <div class="col-md-12">
+                                                    <div class="form-btn">
+                                                <p>Dear @User.Identity.Name,</p>
+                                                <p>We noticed that you recently requested to extend your booking on our platform but did not complete the payment for the additional extra persons. As a result, we were unable to confirm your booking update and your booking will remain as originally scheduled.</p>
+                                                <p>We understand that technical issues or other factors may have interrupted your booking update process. If you need assistance or wish to try again, please visit our website or contact our customer service team.</p>
+                                                <p>Please note that without a completed payment, we cannot guarantee the availability of your extension request.</p>
+                                                <p>Thank you for your understanding and we look forward to serving you soon.</p>
+                                                <p>Best regards,<br>Globe Wander</p>
+                                            </div>
+                                                </div>
+                                            </div>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                  
+    </section>
+ 

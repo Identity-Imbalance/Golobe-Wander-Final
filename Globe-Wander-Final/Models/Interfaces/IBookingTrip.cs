@@ -15,9 +15,12 @@ namespace Globe_Wander_Final.Models.Interfaces
         Task<BookingTripDTO> GetBookingTripById(int id);
 
         // UPDATE
-        Task<BookingTripDTO> UpdateBookingTrip(int id, UpdateBookingTripDTO updateBookingTrip, int tripId);
+        Task<BookingTripDTO> UpdateBookingTrip(int id, UpdateBookingTripDTO updateBookingTrip);
+        Task<BookingTripDTO> UpdateBookingTripByUser(int id, UpdateBookingTripDTO updateBookingTrip);
+        Task<List<BookingTripDTO>> GetAllBookingRoomsForUser(string userId);
 
+        Task DeleteBookingTrip(int id, int tripId);
         // DELET by ID
-        Task Delete(int id, int tripId);
+        Task Delete(int id);
     }
 }

@@ -4,7 +4,7 @@ namespace Globe_Wander_Final.Models.Interfaces
 {
     public interface IHotel
     {
-        Task<NewHotelDTO> CreateHotel(NewHotelDTO hotelDTO);
+        Task<Hotel> CreateHotel(NewHotelDTO hotelDTO);
 
         Task<List<HotelDTO>> GetAllHotels();
 
@@ -15,5 +15,15 @@ namespace Globe_Wander_Final.Models.Interfaces
         Task<Hotel> DeleteHotel(int id);
 
         Task<List<AnonymousHotelDTO>> AnonymousHotelDTOs();
+
+        Task<List<Facility>> GetAllFacilities();
+
+        //Task<HotelDTO> UpdateHotelFacility();
+
+        Task<List<HotelFacility>> GetAllHotelFacilityByHotelId(int hotelId);
+
+        Task AddHotelFacility(HotelFacility hotelFacility);
+
+        Task RemoveHotelFacility(HotelFacility hotelFacility);
     }
 }

@@ -17,6 +17,12 @@ namespace Globe_Wander_Final.Models.Services
             _context = context;
         }
 
+        public async Task AddRoomAmenity(RoomAmenity roomAmenity)
+        {
+            await _context.RoomAmenities.AddAsync(roomAmenity);
+            await _context.SaveChangesAsync();
+        }
+
         /// <summary>
         /// Create a new room type.
         /// </summary>
@@ -52,6 +58,19 @@ namespace Globe_Wander_Final.Models.Services
 
         }
 
+        public async Task<List<Amenity>> GetAllAmenities()
+        {
+            var amenities = await _context.Amenities.ToListAsync();
+            return amenities;
+        }
+
+        public async Task<List<RoomAmenity>> GetAllRoomAmenitiesById(int roomId)
+        {
+            var roomAmenities = await _context.RoomAmenities.Where(rm=>rm.RoomId == roomId)
+                .ToListAsync();
+            return roomAmenities;
+        }
+
 
         /// <summary>
         /// Get room data by ID.
@@ -68,6 +87,14 @@ namespace Globe_Wander_Final.Models.Services
                 ID = s.ID,
                 Name = s.Name,
                 Layout = s.Layout,
+                RoomAmenities = _context.RoomAmenities.Where(I => I.RoomId == s.ID).Select(l => new RoomAmenity
+                {
+                    Amenity = l.Amenity,
+                    Room = l.Room,
+                    AmenityId = l.AmenityId,
+                    RoomId = l.RoomId,
+                }
+                            ).ToList()
             }).FirstOrDefaultAsync(x => x.ID == roomId);
 
             return RoomDTO;
@@ -84,10 +111,24 @@ namespace Globe_Wander_Final.Models.Services
                 ID = s.ID,
                 Name = s.Name,
                 Layout = s.Layout,
+                RoomAmenities = _context.RoomAmenities.Where(I => I.RoomId == s.ID).Select(l => new RoomAmenity
+                {
+                    Amenity = l.Amenity,
+                    Room = l.Room,
+                    AmenityId = l.AmenityId,
+                    RoomId = l.RoomId,
+                }
+                            ).ToList()
             }).ToListAsync();
 
             return RoomDTO;
 
+        }
+
+        public async Task RemoveRoomAmenity(RoomAmenity roomAmenity)
+        {
+            _context.RoomAmenities.Remove(roomAmenity);
+            await _context.SaveChangesAsync();
         }
 
 
@@ -103,6 +144,7 @@ namespace Globe_Wander_Final.Models.Services
             {
                 room1.Name = room.Name;
                 room1.Layout = room.Layout;
+             
                 _context.Entry(room1).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }

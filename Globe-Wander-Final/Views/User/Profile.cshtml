@@ -1,0 +1,93 @@
+﻿@model Globe_Wander_Final.Models.DTOs.UserUpdateDTO
+@{
+    Layout = "_DashboardLayout";
+}
+
+<div id="preloader">
+    <div id="status"></div>
+</div>
+<div id="container-wrapper">
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <div class="dashboard-content">
+            <div class="dashboard-form mar-bottom-30">
+                <div class="row">
+
+                    <!-- Profile -->
+                    <div class="col-lg-6 col-md-6 col-xs-12 padding-right-30">
+                        <div class="dashboard-list-box">
+                            <form asp-controller="User" asp-action="Profile" method="post" enctype="multipart/form-data">
+                                <h4 class="gray">Profile Details</h4>
+                                <div class="dashboard-list-box-static">
+
+                                    <!-- Avatar -->
+                                    <div class="edit-profile-photo">
+                                        @if (Model.ImageUrl != null)
+                                        {
+                                            <img src="@Model.ImageUrl" alt="@Model.UserName">
+                                        }
+                                        <div class="change-photo-btn">
+                                            <div class="photoUpload">
+                                                <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                                <input type="file" class="upload" name="image" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Details -->
+                                    <div class="my-profile">
+                                        <input type="hidden" asp-for="ImageUrl" />
+
+                                        <label asp-for="UserName">Your User Name </label>
+                                        <input asp-for="UserName" type="text">
+
+                                        <label asp-for="PhoneNumber">Phone Number </label>
+                                        <input asp-for="PhoneNumber" type="text">
+
+                                        <label asp-for="Email"> Email Address</label>
+                                        <input asp-for="Email" type="text">
+
+                                    </div>
+
+                                    <button type="submit" class="biz-btn biz-btn1">Save Changes</button>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="dashboard-form mar-bottom-30">
+                <div class="dashboard-password">
+                    <h3>Change Password</h3>
+                    <form asp-action="ChangePassword" method="post">
+                        <div class="my-profile">
+                            <label for="currentPassword">Current Password</label>
+                            <input type="password" name="currentPassword"/>
+
+                        </div>
+
+                        <div class="my-profile">
+                            <label for="newPassword">New Password</label>   
+                            <input type="password" name="newPassword"/>
+
+                        </div>
+
+                        <div class="my-profile ">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" name="confirmPassword"/>
+
+                        </div>
+
+                        <button type="submit" class="biz-btn biz-btn1">Change Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Dashboard / End -->
+    </div>
+</div>
+<!-- end Container Wrapper -->
+    </div>

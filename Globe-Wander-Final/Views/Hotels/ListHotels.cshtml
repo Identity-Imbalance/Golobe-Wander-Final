@@ -1,0 +1,81 @@
+﻿@using X.PagedList.Mvc.Core
+@using Globe_Wander_Final.Models.DTOs
+@model X.PagedList.PagedList<HotelDTO>
+@{
+    Layout = "_DashboardLayout";
+}
+<div id="preloader">
+    <div id="status"></div>
+</div>
+<div id="container-wrapper">
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <div class="dashboard-content">
+            <div class="list-outer">
+                @* this should be responsive *@
+               @foreach (var item in Model)
+                {
+
+                    <div class="list-item-1">
+                        <div class="row display-flex">
+                        <div class="col-md-4 col-sm-12">
+                            <div class="list-image1">
+                                    @if (item.HotelImages != null && item.HotelImages.Any())
+                                    {
+                                        var firstImage = item.HotelImages.First();
+                                        <img src="@firstImage.Path" alt="@item.Name">
+                                    }
+                                </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="list-content">
+                                <div class="list-rating">
+                                    <div class="rating">
+                                            @for (int i = 0; i < item.StarRate; i++)
+                                            {
+                                                <span class="fa fa-star checked"></span>
+                                            }
+                                    </div>
+                                </div>
+                                <h3><a asp-action="HotelDetailAdmin">@item.Name</a></h3>
+                                   <p>
+                                       @item.Location
+                                   </p>
+                                   <p>
+                                       @item.Description
+                                   </p>
+                                     @* <p class="price">From <span></span>                                             
+                                 night</p>
+                                *@
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-12">
+                            
+                                <a asp-controller="Hotels" asp-action="EditHotel" asp-route-id="@item.Id" class="biz-btn biz-btn1 mar-top-5">Edit</a>
+                                <form method="post" asp-controller="Hotels" asp-action="DeleteHotel">
+                                    <input type="hidden" name="id" value="@item.Id"/>
+                                <button type="submit"  class="biz-btn biz-btn1 mar-top-5">Delete</button>
+                                </form>
+                               @*  <a type="button" class="biz-btn biz-btn1 mar-top-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="@item.Id">
+                                    <span>Delete</span>
+                                    <i class="fa-solid fa-trash"></i>
+                                </a> *@
+                        </div>
+                    </div>
+
+                </div>
+                }
+                <div class="pagination-content text-center d-flex justify-content-center">
+                    <ul class="pagination">
+                        <li>
+                            @Html.PagedListPager(Model, page => Url.Action("ListHotels", new { page }))
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- end Container Wrapper -->
+</div>

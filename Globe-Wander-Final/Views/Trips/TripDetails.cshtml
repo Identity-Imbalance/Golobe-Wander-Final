@@ -1,0 +1,170 @@
+﻿@model Globe_Wander_Final.Models.ViewModels.RecomandedTripsAndTrip
+
+
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status"></div>
+</div>
+<!-- Preloader Ends -->
+<!-- Breadcrumb -->
+<section class="breadcrumb-outer text-center">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <h2 class="white">Trip Detail</h2>
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a asp-area="" asp-controller="Trips" asp-action="TripDetails">Trip Detail</a></li>
+                </ul>
+            </nav>
+        </div>
+        </div>
+    <img style="object-fit:cover;" class="overlay" src="https://globewanderimages.blob.core.windows.net/globe-wander-images/pannertrip.jpg" alt="image" />
+    </section>
+    <!-- BreadCrumb Ends -->
+    <!-- flight desti starts -->
+    
+
+
+<section class="flight-destinations bg-white">
+    <div class="container">
+        <div class="row">
+            @if (Model.trip.BookingTrips.Any(un => un.Username == User.Identity.Name) && !Model.trip.Rates.Any(un => un.Username == User.Identity.Name))
+            {
+                <div class="col-md-4 col-xs-12">
+                    <div class="sidebar-item">
+                        <div class="detail-title">
+                            <h3>Rate this Trip</h3>
+                        </div>
+                        <div class="sidebar-content">
+                            <form asp-controller="Rates" asp-action="BookingTripRate" method="post">
+                                <input type="hidden" name="TripID" value="@Model.trip.Id" />
+                                <label>Rate number</label>
+                                <input type="number" name="Rating" min="0" max="5" placeholder="5 Stars" />
+                                <label>Comments message</label>
+                                <input type="text" name="Comments" placeholder="Enter your message" />
+                                <button type="submit" class="biz-btn-black">Rate</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div id="content" class="col-md-8 col-xs-12">
+                <div class="detail-content content-wrapper">
+                    <div class="detail-info">
+                        <div class="detail-info-content clearfix">
+
+                            <h2>@Model.trip.Name</h2>
+                            
+                            <h3 class=" detail-price mar-0 text-right">$@Model.trip.Cost<br>Person</h3>
+                        </div>
+
+                    </div>
+                    <div class="gallery detail-box about-slider">
+
+                        <div class="gallery-item">
+                            @foreach (var item in Model.trip.TripImages)
+                            {
+                                <img src="@item.Path" alt="@Model.trip.Name">
+                            }
+                        </div>
+                        <div class="description flight-table mar-bottom-30">
+                            <div class="detail-title">
+                                <h3>Description</h3>
+                            </div>
+
+                            <div class="description-content">
+                                <p>@Model.trip.Description</p>
+                                <table>
+                                    <thead>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                           
+                                            <td hidden><i aria-hidden="true"></i> @Model.trip.Id</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Location</td>
+                                            <td><i class="fa fa-map-marker" aria-hidden="true"></i> @Model.trip.Name</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Departure Time</td>
+                                            <td><i class="fa fa-clock-o" aria-hidden="true"></i> The trip departs on: <span style="color:#DC143C;">@Model.trip.StartDate</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Return Time</td>
+                                            <td><i class="fa fa-clock-o" aria-hidden="true"></i> The trip it ends on: <span style="color:#DC143C;">@Model.trip.EndDate</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Maximum travellers</td>
+                                            <td><i class="fa fa-user" aria-hidden="true"></i> @Model.trip.Capacity</td>
+                                        </tr>
+                                        <tr>
+                                            <td>People that booked</td>
+                                            <td><i class="fa fa-user" aria-hidden="true"></i> @Model.trip.Count</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Activity</td>
+                                            <td><i class="fa fa-check" aria-hidden="true"></i> @Model.trip.Activity</td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                      
+                    </div>
+
+
+                </div>
+
+                <div id="sidebar" class="col-md-4 col-xs-12">
+                    <aside class="detail-sidebar sidebar-wrapper">
+
+                        <div class="sidebar-item">
+                            <div class="detail-title">
+                                <h3>Popular Trips</h3>
+                            </div>
+                            <div class="sidebar-content about-slider">
+                                @foreach (var item in Model.ListTrips)
+                                {
+                                    <div class="sidebar-package">
+
+                                        <div class="sidebar-package-image">
+                                            @foreach (var image in item.TripImages)
+                                            {
+                                                <img src="@image.Path" alt="@item.Name">
+                                            }
+                                        </div>
+
+                                        <div class="destination-content mar-top-20">
+                                            <div class="destination-title">
+                                                <h6 class="mar-bottom-5">@item.Name</h6>
+                                                <h4>
+                                                    <a asp-controller="Trips" asp-action="TripDetails" asp-route-id="@item.Id">@item.Description</a>
+                                                </h4>
+                                            </div>
+                                            <p class="price-ft mar-0 bold">@item.Cost <span>/ per Person</span></p>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
+                        {
+                            <a class="biz-btn-black" asp-controller="BookingTrips" asp-action="BookingForm" asp-route-TripID="@Model.trip.Id">Booking</a>
+                        }
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- flight desti ends -->
+<!-- Back to top start -->
+<div id="back-to-top">
+    <a href="#"></a>
+</div>
+<!-- Back to top ends -->

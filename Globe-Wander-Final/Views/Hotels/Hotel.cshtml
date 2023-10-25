@@ -16,40 +16,26 @@
         <div class="slider">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
+                    @foreach(var item in Model.Take(3)){
                     <div class="swiper-slide">
                         <div class="slide-inner">
-                        <div class="slide-image" style="background-image:url(https://image-tc.galaxy.tf/wijpeg-cdl3cu9xjb88zshrni5yq8thm/empire-hotel-new-york-city-lobby.jpg?width=1200)"></div>
+                            @foreach (var image in item.HotelImages.Take(1))
+                            {
+                              
+                                <div class="slide-image" style="background-image:url(@image.Path)"></div>
+                            }
+
+                      
                             <div class="swiper-content">
-                                <h1>Welcome to <span>Nepayatri Hotel</span></h1>
-                                <p class="mar-bottom-30">Foresee the pain and trouble that are bound to ensue and equal fail in their duty through weakness. </p>
-                                <a href="" class="biz-btn">Explore More</a>
-                                <a href="" class="biz-btn mar-left-10">Contact Us</a>
+                                <h1>Welcome to <span>@item.Name Hotel</span></h1>
+                                <p class="mar-bottom-30">@item.Description </p>
+                                  <a asp-area="" asp-controller="Hotels" asp-action="SingleHotel" asp-route-id="@item.Id"  class ="biz-btn">Explore More</a>
+                           
                             </div>
                             <div class="overlay"></div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-inner">
-                        <div class="slide-image" style="background-image:url(https://image-tc.galaxy.tf/wijpeg-4mt3p2v8383oh9p6gcp7aoaiu/art-deco-lobby-of-empire-hotel-new-york.jpg?width=1200)"></div>
-                            <div class="swiper-content">
-                                <h1><span>Book your dream </span> With us</h1>
-                                <p class="mar-bottom-30">Find awesome hotel, tour, car and activities in London</p>
-                                <a href="" class="biz-btn">Explore More</a>
-                            </div>
-                            <div class="overlay"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-inner">
-                        <div class="slide-image" style="background-image:url(https://image-tc.galaxy.tf/wijpeg-53l4issblmho76sbdeefrihap/empire-hotel-new-york-city-rooftop-lounge-seating.jpg?width=1200)"></div>
-                            <div class="swiper-content">
-                                <h1>Your <span>Adventure</span> Travel Experts In Europe!</h1>
-                                <p class="mar-bottom-30">Find awesome hotel, tour, car and activities in London</p>
-                                <a href="" class="biz-btn">Book Now</a>
-                            </div>
-                            <div class="overlay"></div>
-                        </div>
-                    </div>
+                    </div>}
+               
                 </div>
                 <!-- Add Arrows -->
                 <div class="swiper-button-next"></div>
@@ -60,82 +46,7 @@
     </section>
     <!-- banner ends -->
     <!-- form starts -->
-    <section class="banner-form hotel-form">
-        <div class="container">
-            <div class="form-outer">
-                <div class="form-content">
-                    <div class="row filter-box">
-                        <div class="col-md-3 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label>Your Destination</label>
-                                <div class="input-box">
-                                    <i class="flaticon-placeholder"></i>
-                                    <select class="niceSelect">
-                                        <option value="1">Where are you going?</option>
-                                        <option value="2">Argentina</option>
-                                        <option value="3">Belgium</option>
-                                        <option value="4">Canada</option>
-                                        <option value="5">Denmark</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Check In</label>
-                                <div class="input-box">
-                                    <i class="flaticon-calendar"></i>
-                                    <input id="date-range0" type="text" placeholder="yyyy-mm-dd">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Check Out</label>
-                                <div class="input-box">
-                                    <i class="flaticon-calendar"></i>
-                                    <input id="date-range1" type="text" placeholder="yyyy-mm-dd">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Hotel Types</label>
-                                <div class="input-box">
-                                    <i class="flaticon-add-user"></i>
-                                    <select class="niceSelect">
-                                        <option value="1">High Class</option>
-                                        <option value="2">Middle Class</option>
-                                        <option value="3">Low Class</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Person</label>
-                                <div class="input-box">
-                                    <i class="flaticon-add-user"></i>
-                                    <select class="niceSelect">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-12 col-xs-12">
-                            <div class="form-group mar-top-30">
-                                <a href="#" class="biz-btn"><i class="fa fa-search"></i> Find Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
     <!-- form ends -->
     <!-- partners starts -->
    
@@ -146,38 +57,47 @@
     <div class="container">
         <div class="section-title">
             <h2><span>Recommended</span> Hotels</h2>
-            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+            <p>this a re the hotels that you can book from our website.</p>
         </div>
         <div class="trend-box">
             <div class="row mix tour">
                 @foreach(var item in Model){
-                <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">
-                    <div class="trend-item">
+
+
+                   
+                    <div class="col-md-4 col-sm-6 col-xs-12 mar-bottom-30">
+               
+                     <div class="trend-item">
                         
                         <div class="trend-image">
-                            <img src="images/blog1.jpg" alt="image">
-                            <div class="trend-tags">
-                                <a href="#"><i class="flaticon-like"></i></a>
-                            </div>
-                            <div class="trend-price">
-                                <p class="price">From <span>$350.00</span></p>
-                            </div>
+                                @foreach (var image in item.HotelImages.Take(1))
+                                {
+                                    <img src="@image.Path" alt="@item.Name">
+                                }
+
                         </div>
-                        <div class="trend-content">
+                      <a asp-area="" asp-controller="Hotels" asp-action="SingleHotel" asp-route-id="@item.Id">  
+                          <div class="trend-content">
                             <p><i class="flaticon-location-pin"></i> @item.Name</p>
-                                <h4> <a class="dropdown-item" asp-area="" asp-controller="Hotels" asp-action="GetById" asp-route-id="@item.Id">@item.Description</a></h4>
+                                <h4> @item.Description</h4>
+                                <p>
+                                   
+                                </p>
                             <div class="rating mar-bottom-15">
+                                        @for (int a = item.StarRate;a > 0;a--)
+                                {
                                 <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
+                                
+                                }
+                          
                             </div>
-                            <span class="mar-left-5">38 Reviews</span>
-                            <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> @item.HotelRoom.Count.ToString() has hotel rooms</p>
+                           
+                            <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> @item.HotelRoom.Where(x=>x.IsAvailable == true).Count().ToString() rooms are available</p>
+                                </div>
+                            </a>
+                    </div> 
                         </div>
-                    </div>
-                </div>
+            
            }
               
             </div>
@@ -190,46 +110,46 @@
         <div class="container">
             <div class="section-title">
                 <h2>Explore <span>Rooms</span></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ex neque, sodales accumsan sapien et, auctor vulputate quam donec vitae consectetur turpis</p>
+            <p>this a re the Rooms that you can book from our website.</p>
             </div>
             <div class="room-outer">
                 <div class="row">
                     @foreach(var items in Model ){
                     @foreach (var item in items.HotelRoom)
                     {
-                        <div class="col-md-4 col-sm-12 col-xs-12">
-                            <div class="room-item">
+                    
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                            <a asp-area="" asp-controller="HotelRooms" asp-action="SingleRoom" asp-route-Id="@item.HotelID" asp-route-RoomNumber="@item.RoomNumber">
+                                <div class="room-item">
                                 <div class="room-image">
-                                    <img src="images/room1.jpg" alt="image">
-                                </div>
+                                        @foreach (var image in item.HotelRoomImages.Take(1))
+                                        {
+                                            <img src="@image.Path" alt="@item.Rooms.Name">
+                                        }
+
+                                    </div>
                                 <div class="room-content1">
                                     <div class="room-title">
-                                        <h3>@item.Rooms.Name</h3>
+                                            <h3>@items.Name</h3>
+                                            <h3>@item.Rooms.Name</h3>
                                         <p>@item.PricePerDay</p>
-                                        <div class="deal-rating">
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                        </div>
+                                      
                                     </div>
                                     <div class="room-services mar-bottom-15">
                                         <ul>
-                                            <li><i class="fa fa-bed" aria-hidden="true"></i>     @item.Rooms.Layout</li>
-                                            <li><i class="fa fa-wifi" aria-hidden="true"></i> Wifi</li>
+                                            <li><i class="fa fa-bed" aria-hidden="true"></i>@item.Rooms.Layout</li>
+                                          
                                         </ul>
                                     </div>
-                                    <p>Is Available or not </p>
-
-                                    <p>@item.IsAvailable</p>
+                                  
                                     <div class="room-btns mar-top-20">
-                                        <a href="#" class="biz-btn biz-btn1 mar-right-10">VIEW DETAILS</a>
-                                        <a href="#" class="biz-btn-black">BOOK NOW</a>
+
+                                            <a asp-area="" asp-controller="HotelRooms" asp-action="SingleRoom" asp-route-Id="@item.HotelID" asp-route-RoomNumber="@item.RoomNumber" class="biz-btn-black">BOOK NOW</a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
+                    </div>
                     }
 
                 }
@@ -250,7 +170,7 @@
                         </div>
                         <div class="why-us-content">
                             <h4>Advice & Support</h4>
-                            <p class="mar-0">Travel worry free knowing that we're here if you need us, 24 hours a day</p>
+                            <p class="mar-0">you cancontact us in any day at any time you want</p>
                         </div>
                     </div>
                 </div>
@@ -272,22 +192,11 @@
                         </div>
                         <div class="why-us-content">
                             <h4>Hotel Accomodation</h4>
-                            <p class="mar-0">Travel worry free knowing that we're here if you need us, 24 hours a day</p>
+                            <p class="mar-0">you can book any hotel room you want and update it , 24 hours a day</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="why-us-item why-us-item1 text-center">
-                        <div class="why-us-icon">
-                            <i class="flaticon-location-pin"></i>
-                        </div>
-                        <div class="why-us-content">
-                            <h4>Tour Peckages</h4>
-                            <p class="mar-0">Travel worry free knowing that we're here if you need us, 24 hours a day</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -297,93 +206,5 @@
         <a href="#"></a>
     </div>
     <!-- Back to top ends -->
-    <!-- search popup -->
-    <div id="search1">
-        <button type="button" class="close">×</button>
-        <form>
-            <input type="search" value="" placeholder="type keyword(s) here" />
-            <button type="submit" class="btn btn-primary">Search</button>
-        </form>
-    </div>
-
-    <div class="modal fade" id="login" role="dialog">
-        <div class="modal-dialog">
-            <div class="login-content">
-                <div class="login-title section-border">
-                    <h3>Login</h3>
-                </div>
-                <div class="login-form section-border">
-                    <form>
-                        <div class="form-group">
-                            <input type="email" placeholder="Enter email address">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Enter password">
-                        </div>
-                    </form>
-                    <div class="form-btn">
-                        <a href="#" class="biz-btn biz-btn1">LOGIN</a>
-                    </div>
-                    <div class="form-group form-checkbox">
-                        <input type="checkbox"> Remember Me
-                        <a href="#">Forgot password?</a>
-                    </div>
-                </div>
-                <div class="login-social section-border">
-                    <p>or continue with</p>
-                    <a href="#" class="btn-facebook"><i class="fab fa-facebook" aria-hidden="true"></i> Facebook</a>
-                    <a href="#" class="btn-twitter"><i class="fab fa-twitter" aria-hidden="true"></i> Twitter</a>
-                </div>
-                <div class="sign-up">
-                    <p>Do not have an account?<a href="#">Sign Up</a></p>
-                </div>
-            </div>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-    </div>
-
-    <div class="modal fade" id="register" role="dialog">
-        <div class="modal-dialog">
-            <div class="login-content">
-                <div class="login-title section-border">
-                    <h3>Register</h3>
-                </div>
-                <div class="login-form section-border">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="User Name">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Full Name">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Password">
-                        </div>
-                    </form>
-                    <div class="form-btn">
-                        <a href="#" class="biz-btn biz-btn1">REGISTER</a>
-                    </div>
-                    <div class="form-group form-checkbox">
-                        <input type="checkbox"> Remember Me
-                        <a href="#">Forgot password?</a>
-                    </div>
-                </div>
-                <div class="login-social section-border">
-                    <p>or continue with</p>
-                    <a href="#" class="btn-facebook"><i class="fab fa-facebook" aria-hidden="true"></i> Facebook</a>
-                    <a href="#" class="btn-twitter"><i class="fab fa-twitter" aria-hidden="true"></i> Twitter</a>
-                </div>
-                <div class="sign-up">
-                    <p>Do not have an account?<a href="#">Sign Up</a></p>
-                </div>
-            </div>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-    </div>
-
-    <!--remove -->
 
 <!--remove end-->

@@ -55,10 +55,17 @@ namespace Globe_Wander_Final.Models.Services
         /// <param name="id">ID of the trip to be deleted.</param>
         public async Task DeleteTrip(int id)
         {
+            // to delete the all images with the same trip id 
+            var images = await _context.Images.Where(tr=> tr.TripId == id).ToListAsync();
+
             var tripId = await _context.Trips.FindAsync(id);
 
             if (tripId != null)
             {
+                foreach (var img in images)
+                {
+                    _context.Entry(img).State = EntityState.Deleted;
+                }
                 _context.Entry<Trip>(tripId).State = EntityState.Deleted;
 
                 await _context.SaveChangesAsync();
@@ -76,6 +83,14 @@ namespace Globe_Wander_Final.Models.Services
                     Id = tr.Id,
                     Name = tr.Name,
                     Description = tr.Description,
+                    TripImages = _context.Images.Where(w => tr.Id == w.TripId).Select(e => new Image
+                    {
+                        Id = e.Id,
+                        TripId = e.TripId,
+                        Path = e.Path,
+
+                    }
+                            ).ToList(),
                     Cost = tr.Cost,
                     Activity = tr.Activity,
                     StartDate = tr.StartDate,
@@ -89,7 +104,6 @@ namespace Globe_Wander_Final.Models.Services
                         TripID = bt.TripID,
                         NumberOfPersons = bt.NumberOfPersons,
                         CostPerPerson = bt.CostPerPerson,
-                        Duration = bt.Duration,
                         TotalPrice = bt.TotalPrice,
                         Username = bt.Username
 
@@ -119,6 +133,14 @@ namespace Globe_Wander_Final.Models.Services
                     Id = tr.Id,
                     Name = tr.Name,
                     Description = tr.Description,
+                    TripImages = _context.Images.Where(w => tr.Id == w.TripId).Select(e => new Image
+                    {
+                        Id = e.Id,
+                        TripId = e.TripId,
+                        Path = e.Path,
+
+                    }
+                            ).ToList(),
                     Cost = tr.Cost,
                     Activity = tr.Activity,
                     StartDate = tr.StartDate,
@@ -132,7 +154,6 @@ namespace Globe_Wander_Final.Models.Services
                         TripID = bt.TripID,
                         NumberOfPersons = bt.NumberOfPersons,
                         CostPerPerson = bt.CostPerPerson,
-                        Duration = bt.Duration,
                         TotalPrice = bt.TotalPrice,
                         Username = bt.Username
                     }).ToList(),
@@ -153,7 +174,7 @@ namespace Globe_Wander_Final.Models.Services
         /// </summary>
         /// <param name="trip">Updated trip data.</param>
         /// <param name="id">ID of the trip to be updated.</param>
-        public async Task<TripDTO> UpdateTrip(UpdateTripDTO trip, int id)
+        public async Task<TripDTO> UpdateTrip(NewTripDTO trip, int id)
         {
             var updateTrip = await _context.Trips.FindAsync(id);
 
@@ -166,7 +187,8 @@ namespace Globe_Wander_Final.Models.Services
                 updateTrip.Cost = trip.Cost;
                 updateTrip.EndDate = trip.EndDate;
                 updateTrip.Activity = trip.Activity;
-
+                updateTrip.Capacity = trip.Capacity;
+                updateTrip.TourSpotID = trip.TourSpotID;
                 _context.Entry(updateTrip).State = EntityState.Modified;
 
                 await _context.SaveChangesAsync();
