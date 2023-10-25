@@ -68,8 +68,9 @@ namespace Globe_Wander_Final.Controllers
         {
             return View();
         }
-        [HttpPost]
 
+        // TODO: Valiadation the error mesage
+        [HttpPost]
         public async Task<ActionResult<UserDTO>> Login(LogInDTO data)
 
         {
@@ -86,6 +87,8 @@ namespace Globe_Wander_Final.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
+        // TODO: Validation for the inputs -- Abdallah
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult<UserDTO>> Register(RegisterUserDTO dataDTO)

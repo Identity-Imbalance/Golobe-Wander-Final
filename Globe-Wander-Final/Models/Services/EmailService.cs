@@ -24,7 +24,7 @@ namespace Globe_Wander_Final.Models.Services
             _configuration = configuration;
 
         }
-
+        // TODO: Emails for boking trips thansk etc... -osama 
         public async Task sendEmail(string name,EmailDTO email)
         { 
           
@@ -72,6 +72,8 @@ namespace Globe_Wander_Final.Models.Services
 
         public async Task InvoiceForBookingRoom(string reciver,string reciverName, BookingRoomDTO bookingRoomDTO)
         {
+
+            var days = bookingRoomDTO.TotalPrice / bookingRoomDTO.Cost;
             string email_APIkEY = "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";
             var fromAddress = new MailAddress(_configuration["Brevo:AdminAddress"], _configuration["Brevo:DefaultFromName"]);
             var toAddress = new MailAddress(reciver, reciverName);
@@ -84,7 +86,8 @@ namespace Globe_Wander_Final.Models.Services
             Body += $"<tr> <td>User name :</td>  <td>{bookingRoomDTO.Username}</td> </tr>" +
             $"<tr> <td>CheckIn:</td>  <td>{bookingRoomDTO.CheckIn}</td> </tr>" +
             $"<tr> <td>CheckOut:</td>  <td>{bookingRoomDTO.CheckOut}</td> </tr>" +
-        $"<tr> <td>Cost Per-Day:</td>  <td>{bookingRoomDTO.Cost} $</td> </tr>";
+        $"<tr> <td>Cost Per-Day:</td>  <td>{bookingRoomDTO.Cost} $</td> </tr>"+
+          $"<tr> <td>Day:</td>  <td>{days} </td> </tr>";
     
             Body += $"   </tbody>\r\n        </table>\r\n        <div class=\"invoice-total\">\r\n            <h3>Total Amount:{bookingRoomDTO.TotalPrice} $</h3>\r\n        </div>\r\n    </div>\r\n    <div class=\"footer\">\r\n        <p>Thank you for your business!</p>\r\n    </div>\r\n</body>\r\n</html>";
 
@@ -117,6 +120,61 @@ namespace Globe_Wander_Final.Models.Services
 
 
     ;
+
+
+
+
+        }
+
+        public async Task InvoiceForBookingTrip(string reciver, string reciverName, BookingTripDTO bookingTripDTO)
+        {
+            var person = bookingTripDTO.TotalPrice / bookingTripDTO.CostPerPerson;
+            string email_APIkEY = "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";
+            var fromAddress = new MailAddress(_configuration["Brevo:AdminAddress"], _configuration["Brevo:DefaultFromName"]);
+            var toAddress = new MailAddress(reciver, reciverName);
+            string fromPassword = _configuration["Brevo:fromPassword"];
+            var AuthAddress = new MailAddress(_configuration["Brevo:AuthAddress"]);
+            string Subject = "Invoice";
+            string Body = $"<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Invoice of </title>\r\n    <style>\r\n        body {{\r\n            font-family: Arial, sans-serif;\r\n            background-color: #f0f0f0;\r\n        }}\r\n\r\n        .invoice-container {{\r\n            background-color: #fff;\r\n            max-width: 600px;\r\n            margin: 0 auto;\r\n            padding: 20px;\r\n            border: 1px solid #ccc;\r\n            border-radius: 5px;\r\n            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\r\n        }}\r\n\r\n        .invoice-header {{\r\n            background-color: #000000;\r\n            color: #fff;\r\n            padding: 10px;\r\n            text-align: center;\r\n        }}\r\n\r\n        .invoice-details {{\r\n            margin-top: 20px;\r\n            margin-bottom: 30px;\r\n        }}\r\n\r\n            .invoice-details h1 {{\r\n                font-size: 24px;\r\n            }}\r\n\r\n        .invoice-table {{\r\n            width: 100%;\r\n            border-collapse: collapse;\r\n        }}\r\n\r\n            .invoice-table th, .invoice-table td {{\r\n                border: 1px solid #ccc;\r\n                padding: 10px;\r\n                text-align: left;\r\n            }}\r\n\r\n            .invoice-table th {{\r\n                background-color: #f0f0f0;\r\n            }}\r\n\r\n        .invoice-total {{\r\n            margin-top: 20px;\r\n            text-align: right;\r\n        }}\r\n\r\n            .invoice-total h3 {{\r\n                font-size: 20px;\r\n                color: #007bff;\r\n            }}\r\n\r\n        .footer {{\r\n            margin-top: 20px;\r\n            text-align: center;\r\n            color: #777;\r\n        }}\r\n    </style>\r\n</head>\r\n<body>\r\n    <div class=\"invoice-container\">\r\n        <div class=\"invoice-header\">\r\n            <h1>Globe Wander</h1>\r\n        </div>\r\n        <div class=\"invoice-details\">\r\n            <h1>Invoice Details</h1>\r\n    \r\n        </div>\r\n        <table class=\"invoice-table\">\r\n            <thead>\r\n                <tr>\r\n                    <th>Info</th>\r\n                   \r\n        <th>Date</th>           \r\n                                    </tr>\r\n            </thead>\r\n            <tbody>\r\n              ";
+
+
+            Body += $"<tr> <td>User name :</td>  <td>{bookingTripDTO.Username}</td> </tr>" +
+            $"<tr> <td>Start-Day:</td>  <td>{bookingTripDTO.StartDate}</td> </tr>" +
+            $"<tr> <td>End-Date:</td>  <td>{bookingTripDTO.EndDate}</td> </tr>" +
+        $"<tr> <td>Cost Per-person:</td>  <td>{bookingTripDTO.CostPerPerson} $</td> </tr>"+
+          $"<tr> <td>#No. persons:</td>  <td>{person} </td> </tr>";
+       
+            Body += $"   </tbody>\r\n        </table>\r\n        <div class=\"invoice-total\">\r\n            <h3>Total Amount:{bookingTripDTO.TotalPrice} $</h3>\r\n        </div>\r\n    </div>\r\n    <div class=\"footer\">\r\n        <p>Thank you for your business!</p>\r\n    </div>\r\n</body>\r\n</html>";
+
+
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp-relay.brevo.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(AuthAddress.Address, fromPassword)
+            };
+
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+
+                Subject = Subject,
+                Body = Body,
+                IsBodyHtml = true
+
+            })
+
+            {
+                message.Headers.Add("ApiKey", email_APIkEY);
+                await smtp.SendMailAsync(message);
+
+            }
+
+
+ ;
 
 
 

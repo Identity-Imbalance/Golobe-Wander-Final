@@ -1,4 +1,4 @@
-﻿@model Globe_Wander_Final.Models.DTOs.TourSpotDTO
+@model Globe_Wander_Final.Models.DTOs.TourSpotDTO
 
 
 
@@ -71,7 +71,7 @@
 
                 </div>
             </div>
-       
+
         </section>
     </div>
 
@@ -89,13 +89,13 @@
         <div class="container">
             <div class="section-title">
                 <h2>Related <span>Hotels</span></h2>
-                <p>this other hotels you might be intrested in </p>
+             
             </div>
             <div class="row top-deal-slider">
                 @foreach (var item in Model.Hotels)
                 {
                     <div class="col-md-4">
-                        <div class="trend-item">
+                        <div style="padding:20px;" class="trend-item">
                             <div class="trend-image">
                                 @foreach (var image in item.HotelImages.Take(1))
                                 {
@@ -121,7 +121,7 @@
 
                                     </div>
 
-                                    <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i>@item.HotelRoom.Count.ToString() rooms</p>
+                                    <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i> @item.HotelRoom.Count.ToString() rooms</p>
                                 </div>
                             </a>
                         </div>
@@ -136,31 +136,35 @@
         <div class="container">
             <div class="section-title">
                 <h2><span>Recommended</span> Trips</h2>
-                <p>In Petra, visitors can explore intricately carved tombs and facades, hike through the narrow Siq gorge to reach the iconic Treasury, and enjoy panoramic views from the High Place of Sacrifice. Traditional activities like horseback riding and camel tours offer unique transportation options, providing a memorable journey through this ancient archaeological site. Petra offers a captivating glimpse into the rich history of the Nabatean Kingdom.</p>
-            </div>
+                </div>
             <div class="row">
-                @foreach (var trip in Model.Trips)
+                @foreach (var trip in Model.Trips.Take(2))
                 {
                     <div class="col-md-6 col-sm-6 col-xs-12 mar-bottom-30">
                         <div class="trend-item">
                             
                             <div class="ribbon ribbon-top-left"><span>25% OFF</span></div>
                             <div class="trend-image">
+
                                 @foreach(var img in trip.TripImages.Take(1)){
                                 <img src="@img.Path" alt="image">
                                 }
+
                                 <div class="trend-tags">
                                     <a href="#"><i class="flaticon-like"></i></a>
                                 </div>
                                 <div class="trend-price">
                                     <p class="price">From <span>$ @trip.Cost</span></p>
                                 </div>
+                                
                             </div>
                             <div class="trend-content">
                              <a asp-action="TripDetails" asp-controller="Trips" asp-route-id="@trip.Id">
 
                                 <p><i class="flaticon-location-pin"></i> @trip.Activity</p>
+
                                 <h4>@trip.Name</h4>
+
                        
                                 @{
                                     int sum = 0;
@@ -178,14 +182,27 @@
                                 }
                                 @if (avg > 0)
                                 {
-                                    <span class="mar-left-5">@avg</span>
+                                    <div class="content">
+                                     
+                                    @for (var i = 0; i < avg; i++)
+                                    {
+                                        
+
+
+                                            <div class="rating">
+                                             
+                                                    <span class="fa fa-star checked"></span>
+
+                                            </div>
+                                           
+                                    }
+                                     
+                                        </div>
                                 }
-                                else
-                                {
-                                    <span class="mar-left-5">Not Rated</span>
-                                }
+
                                 <p class="mar-0"><i class="fa fa-clock-o" aria-hidden="true"></i>From @trip.StartDate To @trip.EndDate</p>
                                 </a>
+
                             </div>
                         </div>
                     </div>
@@ -224,7 +241,7 @@
     <script src="js/custom-nav.js"></script>
 
 </body>
-</html>
+
 
 <script src="~/js/plugin.js"></script> 
  <script src="~/js/main.js"></script>

@@ -1,4 +1,4 @@
-﻿@model Globe_Wander_Final.Models.ViewModels.MyBookingsDTO
+﻿@model Globe_Wander_Final.Models.ViewModels.MyBookingsDTO;
 
 
 
@@ -42,7 +42,7 @@
                                         <h4> CheckIn : @bookingRoom.CheckIn</h4>
                                         <h4>CheckOut : @bookingRoom.CheckOut</h4>
                                         <a class="biz-btn-black" asp-area="" asp-controller="BookingRooms" asp-action="UserUpdateBooking" asp-route-ID="@bookingRoom.ID">Update</a>
-                                        <a class="biz-btn" asp-area="" asp-controller="BookingRooms" asp-action="UserDeleteBooking" asp-route-ID="@bookingRoom.ID">Delete</a>
+                                        <a class="biz-btn" asp-area="" asp-controller="BookingRooms" asp-action="UserDeleteBooking" asp-route-Id="@bookingRoom.ID">Delete</a>
 
 
                                     </div>
@@ -87,16 +87,18 @@
                                 <h4> Trip Name : @Model.TripDTOs.Where(x=>x.Id==bookingTrip.TripID).First().Name</h4>
 
                                 <h4> TotalPrice : @bookingTrip.TotalPrice $</h4>
-                                <h4> Duration: @bookingTrip.Duration  Days</h4>
+                                <h4> #No. Persons: @bookingTrip.NumberOfPersons  </h4>
                                 <h4>Activity:  @Model.TripDTOs.Where(x=>x.Id==bookingTrip.TripID).First().Activity </h4>
                                 <h4>Cost preDay : @bookingTrip.CostPerPerson $</h4>
                                 <h4> CheckIn : @bookingTrip.StartDate</h4>
                                 <h4>CheckOut : @bookingTrip.EndDate</h4>
-                                <a class="biz-btn-black" asp-area="" asp-controller="BookingTrips" asp-action="UserUpdateBooking" asp-route-ID="@bookingTrip.ID">Update</a>
-                                @* <a class="biz-btn" asp-area="" asp-controller="BookingTrips" asp-action="UserDeleteBooking" asp-route-ID="@bookingTrip.ID">Delete</a> *@
-                                <form asp-controller="BookingTrips" asp-action="UserDeleteBooking" method="post">
+
+                                @if (DateTime.Now <= bookingTrip.StartDate){
+
+                                    <a class="biz-btn-black" asp-area="" asp-controller="BookingTrips" asp-action="UserUpdateBooking" asp-route-ID="@bookingTrip.ID">Update</a>
+                                }   <form asp-controller="BookingTrips" asp-action="UserDeleteBooking" method="post">
                                     <input type="hidden" name="Id" value="@bookingTrip.ID" />
-                                    <button type="submit" class="biz-btn" >Delete</button>
+                                    <button type="submit" class="biz-btn">Delete</button>
                                 </form>
 
 

@@ -35,8 +35,7 @@ namespace Globe_Wander_Final.Models.Services
             UPDATEBOOKINGTRIP uPDATEBOOKINGTREP = new UPDATEBOOKINGTRIP()
             {
                 IdForUpdate= updated.ID,
-            StartDate = updated.StartDate,
-            EndDate = updated.EndDate,
+      
             NumberOfPersons= updated.NumberOfPersons,
             
 

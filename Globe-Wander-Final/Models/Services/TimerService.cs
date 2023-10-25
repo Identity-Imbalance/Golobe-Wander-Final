@@ -26,10 +26,11 @@ namespace Globe_Wander_Final.Models.Services
             {
               
                 var context = scope.ServiceProvider.GetRequiredService<GlobeWanderDbContext>();
-
+              
                 var expiredBookings = context.BookingRooms.Where(b => b.CheckOut < DateTime.Now);
                 context.BookingRooms.RemoveRange(expiredBookings);
-
+                var trips = context.bookingTrips.Where(b => b.EndDate < DateTime.Now);
+                context.bookingTrips.RemoveRange(trips);
                 context.SaveChanges();
             }
         }

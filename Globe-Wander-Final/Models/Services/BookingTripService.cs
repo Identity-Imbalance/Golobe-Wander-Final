@@ -108,6 +108,7 @@ namespace Globe_Wander_Final.Models.Services
         /// </summary>
         public async Task<List<BookingTripDTO>> GetAllBookingTrips()
         {
+
             var bookingTrips = await _context.bookingTrips.ToListAsync();
             var bookingTripDTOs = bookingTrips.Select(bt => new BookingTripDTO
             {
@@ -145,14 +146,14 @@ namespace Globe_Wander_Final.Models.Services
 
                 if (trip.Capacity >= (trip.Count - bookingTrip.NumberOfPersons + updateBookingTrip.NumberOfPersons))
                 {
-                    bookingTrip.NumberOfPersons = updateBookingTrip.NumberOfPersons;
+                   
                     bookingTrip.StartDate = trip.StartDate;
                     bookingTrip.EndDate = trip.EndDate;
                     bookingTrip.CostPerPerson = trip.Cost;
                     bookingTrip.TotalPrice = cost;
 
                     trip.Count = trip.Count - bookingTrip.NumberOfPersons + updateBookingTrip.NumberOfPersons;
-
+                    bookingTrip.NumberOfPersons = updateBookingTrip.NumberOfPersons;
                     _context.Entry(bookingTrip).State = EntityState.Modified;
                     await _context.SaveChangesAsync();
 
@@ -181,13 +182,12 @@ namespace Globe_Wander_Final.Models.Services
 
                 if (trip.Capacity >= (trip.Count - bookingTrip.NumberOfPersons + updateBookingTrip.NumberOfPersons))
                 {
-                    bookingTrip.NumberOfPersons = updateBookingTrip.NumberOfPersons;
+                   
                     bookingTrip.StartDate = trip.StartDate;
                     bookingTrip.EndDate = trip.EndDate;
                     bookingTrip.TotalPrice = updateBookingTrip.NumberOfPersons * trip.Cost;
-
                     trip.Count = trip.Count - bookingTrip.NumberOfPersons + updateBookingTrip.NumberOfPersons;
-
+                    bookingTrip.NumberOfPersons = updateBookingTrip.NumberOfPersons;
                     _context.Entry(bookingTrip).State = EntityState.Modified;
                     await _context.SaveChangesAsync();
 

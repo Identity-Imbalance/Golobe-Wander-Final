@@ -1,4 +1,6 @@
-﻿@model List<Globe_Wander_Final.Models.DTOs.RoomDTO>
+﻿@using X.PagedList.Mvc.Core
+@using Globe_Wander_Final.Models.DTOs
+@model X.PagedList.PagedList<RoomDTO>
 @{
 }
 @{
@@ -44,14 +46,11 @@
                         </div>
                     </div>
                 }
-                <div class="pagination-content text-center">
+                <div class="pagination-content text-center d-flex justify-content-center">
                     <ul class="pagination">
-                        <li><a href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                        <li>
+                            @Html.PagedListPager(Model, page => Url.Action("ListRooms", new { page }))
+                        </li>
                     </ul>
                 </div>
             </div>

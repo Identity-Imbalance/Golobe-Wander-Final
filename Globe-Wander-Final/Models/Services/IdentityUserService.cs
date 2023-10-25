@@ -210,8 +210,8 @@ namespace Globe_Wander_Final.Models.Services
                 {
                     return false;
                 }
-                    
-                var isCorrect = await _UserManager.ChangePasswordAsync(existUser,currentPassword,newPassword);
+
+                var isCorrect = await _UserManager.ChangePasswordAsync(existUser, currentPassword, newPassword);
 
                 if (isCorrect.Succeeded)
                 {
