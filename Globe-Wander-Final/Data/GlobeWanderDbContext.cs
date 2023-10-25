@@ -31,61 +31,58 @@ namespace Globe_Wander_Final.Data
     );
             modelBuilder.Entity<Trip>().HasData(
 
-                new Trip() { Id = 1, TourSpotID = 1, Name = "Petra ride", Cost = 20, Capacity = 30, Count = 0, Activity = "walking", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "trip start at 8 am and going from Amman to Petra" },
-                 new Trip() { Id = 2, TourSpotID = 1, Name = "Jerash ride", Cost = 30, Capacity = 22, Count = 0, Activity = "visiting", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Amman to Jerash with a trip manager who can speak many languages" },
-                     new Trip() { Id = 3, TourSpotID = 1, Name = "Um-Qais ride", Cost = 40, Capacity = 40, Count = 0, Activity = "climbing", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Amman to Irbid with a trip manager who can speak many languages" },
+    new Trip() { Id = 1, TourSpotID = 1, Name = "Petra ride", Cost = 20, Capacity = 30, Count = 0, Activity = "walking", StartDate = DateTime.Parse("2023-10-27"), EndDate = DateTime.Parse("2023-10-30"), Description = "trip starts at 8 am and goes from Amman to Petra" },
+    new Trip() { Id = 2, TourSpotID = 1, Name = "Jerash ride", Cost = 30, Capacity = 22, Count = 0, Activity = "visiting", StartDate = DateTime.Parse("2023-10-31"), EndDate = DateTime.Parse("2023-11-3"), Description = "Amman to Jerash with a trip manager who can speak many languages" },
+    new Trip() { Id = 3, TourSpotID = 1, Name = "Um-Qais ride", Cost = 40, Capacity = 40, Count = 0, Activity = "climbing", StartDate = DateTime.Parse("2023-11-4"), EndDate = DateTime.Parse("2023-11-7"), Description = "Amman to Irbid with a trip manager who can speak many languages" },
 
-                new Trip() { Id = 4, TourSpotID = 2, Name = "Wadi Rum Adventure", Cost = 50, Capacity = 20, Count = 0, Activity = "desert safari", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Explore the breathtaking Wadi Rum desert in Jordan." },
-                 new Trip() { Id = 5, TourSpotID = 2, Name = "Dead Sea Relaxation", Cost = 25, Capacity = 15, Count = 0, Activity = "swimming and mud baths", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Relax at the world-famous Dead Sea and experience its healing properties." },
-                     new Trip() { Id = 6, TourSpotID = 2, Name = "Aqaba Diving Expedition", Cost = 60, Capacity = 10, Count = 0, Activity = "scuba diving", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Discover the vibrant marine life of the Red Sea in Aqaba." },
+    new Trip() { Id = 4, TourSpotID = 2, Name = "Wadi Rum Adventure", Cost = 50, Capacity = 20, Count = 0, Activity = "desert safari", StartDate = DateTime.Parse("2023-11-10"), EndDate = DateTime.Parse("2023-11-13"), Description = "Explore the breathtaking Wadi Rum desert in Jordan." },
+    new Trip() { Id = 5, TourSpotID = 2, Name = "Dead Sea Relaxation", Cost = 25, Capacity = 15, Count = 0, Activity = "swimming and mud baths", StartDate = DateTime.Parse("2023-11-14"), EndDate = DateTime.Parse("2023-11-17"), Description = "Relax at the world-famous Dead Sea and experience its healing properties." },
+    new Trip() { Id = 6, TourSpotID = 2, Name = "Aqaba Diving Expedition", Cost = 60, Capacity = 10, Count = 0, Activity = "scuba diving", StartDate = DateTime.Parse("2023-11-20"), EndDate = DateTime.Parse("2023-11-23"), Description = "Discover the vibrant marine life of the Red Sea in Aqaba." },
 
-                new Trip() { Id = 7, TourSpotID = 3, Name = "Amman City Tour", Cost = 15, Capacity = 25, Count = 0, Activity = "sightseeing", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Explore the historical and cultural landmarks of Amman." },
-                 new Trip() { Id = 8, TourSpotID = 3, Name = "Dana Biosphere Reserve Hike", Cost = 35, Capacity = 12, Count = 0, Activity = "hiking", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Trek through the stunning Dana Biosphere Reserve." },
-                     new Trip() { Id = 9, TourSpotID = 3, Name = "Wadi Mujib Canyoning", Cost = 45, Capacity = 18, Count = 0, Activity = "canyoning", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Experience the adventure of canyoning in Wadi Mujib." },
+    new Trip() { Id = 7, TourSpotID = 3, Name = "Amman City Tour", Cost = 15, Capacity = 25, Count = 0, Activity = "sightseeing", StartDate = DateTime.Parse("2023-11-25"), EndDate = DateTime.Parse("2023-11-28"), Description = "Explore the historical and cultural landmarks of Amman." },
+    new Trip() { Id = 8, TourSpotID = 3, Name = "Dana Biosphere Reserve Hike", Cost = 35, Capacity = 12, Count = 0, Activity = "hiking", StartDate = DateTime.Parse("2023-12-1"), EndDate = DateTime.Parse("2023-12-4"), Description = "Trek through the stunning Dana Biosphere Reserve." },
+    new Trip() { Id = 9, TourSpotID = 3, Name = "Wadi Mujib Canyoning", Cost = 45, Capacity = 18, Count = 0, Activity = "canyoning", StartDate = DateTime.Parse("2023-12-7"), EndDate = DateTime.Parse("2023-12-10"), Description = "Experience the adventure of canyoning in Wadi Mujib." },
 
-                new Trip() { Id = 10, TourSpotID = 4, Name = "Ma'in Hot Springs Visit", Cost = 20, Capacity = 30, Count = 0, Activity = "relaxation", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Relax in the soothing hot springs of Ma'in." },
-                 new Trip() { Id = 11, TourSpotID = 4, Name = "Kerak Castle Tour", Cost = 25, Capacity = 20, Count = 0, Activity = "historical tour", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Explore the historic Kerak Castle in Jordan." },
-                     new Trip() { Id = 12, TourSpotID = 4, Name = "Ajloun Forest Reserve Trek", Cost = 30, Capacity = 15, Count = 0, Activity = "nature walk", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Take a nature walk in the Ajloun Forest Reserve." },
+    new Trip() { Id = 10, TourSpotID = 4, Name = "Ma'in Hot Springs Visit", Cost = 20, Capacity = 30, Count = 0, Activity = "relaxation", StartDate = DateTime.Parse("2023-12-13"), EndDate = DateTime.Parse("2023-12-16"), Description = "Relax in the soothing hot springs of Ma'in." },
+    new Trip() { Id = 11, TourSpotID = 4, Name = "Kerak Castle Tour", Cost = 25, Capacity = 20, Count = 0, Activity = "historical tour", StartDate = DateTime.Parse("2023-12-19"), EndDate = DateTime.Parse("2023-12-22"), Description = "Explore the historic Kerak Castle in Jordan." },
+    new Trip() { Id = 12, TourSpotID = 4, Name = "Ajloun Forest Reserve Trek", Cost = 30, Capacity = 15, Count = 0, Activity = "nature walk", StartDate = DateTime.Parse("2023-12-25"), EndDate = DateTime.Parse("2023-12-28"), Description = "Take a nature walk in the Ajloun Forest Reserve." },
 
-                new Trip() { Id = 13, TourSpotID = 4, Name = "Amman Culinary Tour", Cost = 40, Capacity = 12, Count = 0, Activity = "food tasting", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Indulge in a culinary journey through Amman's cuisine." },
-                 new Trip() { Id = 14, TourSpotID = 4, Name = "Mosaic City Madaba", Cost = 20, Capacity = 25, Count = 0, Activity = "mosaic art", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Discover the mosaic art of Madaba." },
-                     new Trip() { Id = 15, TourSpotID = 4, Name = "Ajloun Castle Exploration", Cost = 30, Capacity = 18, Count = 0, Activity = "historical tour", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Explore the historic Ajloun Castle." },
+    new Trip() { Id = 13, TourSpotID = 4, Name = "Amman Culinary Tour", Cost = 40, Capacity = 12, Count = 0, Activity = "food tasting", StartDate = DateTime.Parse("2023-12-31"), EndDate = DateTime.Parse("2024-1-3"), Description = "Indulge in a culinary journey through Amman's cuisine." },
+    new Trip() { Id = 14, TourSpotID = 4, Name = "Mosaic City Madaba", Cost = 20, Capacity = 25, Count = 0, Activity = "mosaic art", StartDate = DateTime.Parse("2024-1-6"), EndDate = DateTime.Parse("2024-1-9"), Description = "Discover the mosaic art of Madaba." },
+    new Trip() { Id = 15, TourSpotID = 4, Name = "Ajloun Castle Exploration", Cost = 30, Capacity = 18, Count = 0, Activity = "historical tour", StartDate = DateTime.Parse("2024-1-12"), EndDate = DateTime.Parse("2024-1-15"), Description = "Explore the historic Ajloun Castle." },
 
-                new Trip() { Id = 16, TourSpotID = 5, Name = "Aqaba Beach Getaway", Cost = 55, Capacity = 20, Count = 0, Activity = "beach relaxation", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Relax on the beautiful beaches of Aqaba." },
-                 new Trip() { Id = 17, TourSpotID = 5, Name = "Aqaba Snorkeling Adventure", Cost = 40, Capacity = 15, Count = 0, Activity = "snorkeling", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Explore the underwater world of the Red Sea through snorkeling in Aqaba." },
-                     new Trip() { Id = 18, TourSpotID = 5, Name = "Aqaba Glass-Bottom Boat Tour", Cost = 30, Capacity = 25, Count = 0, Activity = "boat tour", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "View marine life through a glass-bottom boat tour in Aqaba." },
-
-                new Trip() { Id = 19, TourSpotID = 6, Name = "Aqaba Desert Jeep Safari", Cost = 45, Capacity = 12, Count = 0, Activity = "desert adventure", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Embark on an exciting jeep safari in the Aqaba desert." },
-                 new Trip() { Id = 20, TourSpotID =6, Name = "Aqaba Nightlife Tour", Cost = 25, Capacity = 20, Count = 0, Activity = "nightclub hopping", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Experience the vibrant nightlife of Aqaba." },
-                     new Trip() { Id = 21, TourSpotID = 6, Name = "Pyramids of Giza Tour", Cost = 60, Capacity = 15, Count = 0, Activity = "historical tour", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Explore the iconic Pyramids of Giza in Egypt." },
-
-                new Trip() { Id = 22, TourSpotID = 7, Name = "Broadway Show Experience", Cost = 60, Capacity = 18, Count = 0, Activity = "theater", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Attend a Broadway show in the heart of New York City." },
-                    new Trip() { Id = 23, TourSpotID = 7, Name = "Museum Mile Tour", Cost = 30, Capacity = 20, Count = 0, Activity = "museum visit", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Explore the museums along Museum Mile." },
-                        new Trip() { Id = 24, TourSpotID = 7, Name = "Brooklyn Bridge Walk", Cost = 20, Capacity = 35, Count = 0, Activity = "walking tour", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Take a scenic walk across the historic Brooklyn Bridge." },
-    
-                new Trip() { Id = 25, TourSpotID = 8, Name = "Empire State Building Observation Deck", Cost = 35, Capacity = 30, Count = 0, Activity = "sightseeing", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Enjoy panoramic views from the Empire State Building." },
-                    new Trip() { Id = 26, TourSpotID = 8, Name = "Hudson River Boat Tour", Cost = 45, Capacity = 25, Count = 0, Activity = "boat tour", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Cruise along the Hudson River and see Manhattan's skyline." },
-                        new Trip() { Id = 27, TourSpotID = 8, Name = "Ubud Cultural Experience", Cost = 45, Capacity = 20, Count = 0, Activity = "cultural tour", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Immerse in the rich culture of Ubud, Bali." },
-
-    new Trip() { Id = 28, TourSpotID = 9, Name = "Red Sea Adventure", Cost = 60, Capacity = 30, Count = 0, Activity = "snorkeling", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Explore the vibrant marine life of the Red Sea in Aqaba" },
-    new Trip() { Id = 29, TourSpotID = 9, Name = "Desert Safari", Cost = 50, Capacity = 20, Count = 0, Activity = "off-roading", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Experience the thrill of a desert adventure in Aqaba" },
-    new Trip() { Id = 30, TourSpotID = 9, Name = "Historical Dive", Cost = 70, Capacity = 15, Count = 0, Activity = "scuba diving", StartDate = DateTime.Now, EndDate = DateTime.UtcNow, Description = "Discover submerged historical sites in the Red Sea" }
-                );
-
-
-          
-
-        modelBuilder.Entity<Hotel>().HasData(
-   new Hotel() { Id = 1, TourSpotID = 1, Name = "Harmony", Location = "amman", StarRate = 4, Description = "A peaceful retreat in the heart of the city" },
-    new Hotel() { Id = 2, TourSpotID = 2, Name = "Adventure", Location = "wadi rum", StarRate = 3, Description = "The perfect base for your desert adventure" },
-    new Hotel() { Id = 3, TourSpotID = 3, Name = "Oasis", Location = "dead sea", StarRate = 5, Description = "A luxury resort on the shores of the Dead Sea" },
-    new Hotel() { Id = 4, TourSpotID = 1, Name = "Heritage", Location = "jerash", StarRate = 4, Description = "Experience the rich history of Jerash" },
-    new Hotel() { Id = 5, TourSpotID = 2, Name = "Horizon", Location = "aqaba", StarRate = 5, Description = "Stunning sea views in a modern setting" }
+    new Trip() { Id = 16, TourSpotID = 5, Name = "Aqaba Beach Getaway", Cost = 55, Capacity = 20, Count = 0, Activity = "beach relaxation", StartDate = DateTime.Parse("2024-1-18"), EndDate = DateTime.Parse("2024-1-21"), Description = "Relax on the beautiful beaches of Aqaba." },
+    new Trip() { Id = 17, TourSpotID = 5, Name = "Aqaba Snorkeling Adventure", Cost = 40, Capacity = 15, Count = 0, Activity = "snorkeling", StartDate = DateTime.Parse("2024-1-22"), EndDate = DateTime.Parse("2024-1-27"), Description = "Explore the underwater world of the Red Sea through snorkeling in Aqaba." },
+                    new Trip() { Id = 18, TourSpotID = 5, Name = "Aqaba Glass-Bottom Boat Tour", Cost = 30, Capacity = 25, Count = 0, Activity = "boat tour", StartDate = DateTime.Parse("2024-1-28"), EndDate = DateTime.Parse("2024-1-31"), Description = "View marine life through a glass-bottom boat tour in Aqaba." },
+new Trip() { Id = 19, TourSpotID = 6, Name = "Aqaba Desert Jeep Safari", Cost = 45, Capacity = 12, Count = 0, Activity = "desert adventure", StartDate = DateTime.Parse("2024-2-3"), EndDate = DateTime.Parse("2024-2-6"), Description = "Embark on an exciting jeep safari in the Aqaba desert." },
+new Trip() { Id = 20, TourSpotID = 6, Name = "Aqaba Nightlife Tour", Cost = 25, Capacity = 20, Count = 0, Activity = "nightclub hopping", StartDate = DateTime.Parse("2024-2-9"), EndDate = DateTime.Parse("2024-2-12"), Description = "Experience the vibrant nightlife of Aqaba." },
+new Trip() { Id = 21, TourSpotID = 6, Name = "Pyramids of Giza Tour", Cost = 60, Capacity = 15, Count = 0, Activity = "historical tour", StartDate = DateTime.Parse("2024-2-15"), EndDate = DateTime.Parse("2024-2-18"), Description = "Explore the iconic Pyramids of Giza in Egypt." },
+new Trip() { Id = 22, TourSpotID = 7, Name = "Broadway Show Experience", Cost = 60, Capacity = 18, Count = 0, Activity = "theater", StartDate = DateTime.Parse("2024-2-22"), EndDate = DateTime.Parse("2024-2-25"), Description = "Attend a Broadway show in the heart of New York City." },
+new Trip() { Id = 23, TourSpotID = 7, Name = "Museum Mile Tour", Cost = 30, Capacity = 20, Count = 0, Activity = "museum visit", StartDate = DateTime.Parse("2024-2-28"), EndDate = DateTime.Parse("2024-3-2"), Description = "Explore the museums along Museum Mile." },
+new Trip() { Id = 24, TourSpotID = 7, Name = "Brooklyn Bridge Walk", Cost = 20, Capacity = 35, Count = 0, Activity = "walking tour", StartDate = DateTime.Parse("2024-3-6"), EndDate = DateTime.Parse("2024-3-9"), Description = "Take a scenic walk across the historic Brooklyn Bridge." },
+new Trip() { Id = 25, TourSpotID = 8, Name = "Empire State Building Observation Deck", Cost = 35, Capacity = 30, Count = 0, Activity = "sightseeing", StartDate = DateTime.Parse("2024-3-12"), EndDate = DateTime.Parse("2024-3-15"), Description = "Enjoy panoramic views from the Empire State Building." },
+new Trip() { Id = 26, TourSpotID = 8, Name = "Hudson River Boat Tour", Cost = 45, Capacity = 25, Count = 0, Activity = "boat tour", StartDate = DateTime.Parse("2024-3-18"), EndDate = DateTime.Parse("2024-3-21"), Description = "Cruise along the Hudson River and see Manhattan's skyline." },
+new Trip() { Id = 27, TourSpotID = 8, Name = "Ubud Cultural Experience", Cost = 45, Capacity = 20, Count = 0, Activity = "cultural tour", StartDate = DateTime.Parse("2024-3-24"), EndDate = DateTime.Parse("2024-3-27"), Description = "Immerse in the rich culture of Ubud, Bali." },
+new Trip() { Id = 28, TourSpotID = 9, Name = "Red Sea Adventure", Cost = 60, Capacity = 30, Count = 0, Activity = "snorkeling", StartDate = DateTime.Parse("2024-3-31"), EndDate = DateTime.Parse("2024-4-3"), Description = "Explore the vibrant marine life of the Red Sea in Aqaba" },
+new Trip() { Id = 29, TourSpotID = 9, Name = "Desert Safari", Cost = 50, Capacity = 20, Count = 0, Activity = "off-roading", StartDate = DateTime.Parse("2024-4-6"), EndDate = DateTime.Parse("2024-4-9"), Description = "Experience the thrill of a desert adventure in Aqaba" },
+new Trip() { Id = 30, TourSpotID = 9, Name = "Historical Dive", Cost = 70, Capacity = 15, Count = 0, Activity = "scuba diving", StartDate = DateTime.Parse("2024-4-12"), EndDate = DateTime.Parse("2024-4-15"), Description = "Discover submerged historical sites in the Red Sea" }
 );
+
+
+
+
+
+            modelBuilder.Entity<Hotel>().HasData(
+       new Hotel() { Id = 1, TourSpotID = 1, Name = "Harmony", Location = "amman", StarRate = 4, Description = "A peaceful retreat in the heart of the city" },
+        new Hotel() { Id = 2, TourSpotID = 2, Name = "Adventure", Location = "wadi rum", StarRate = 3, Description = "The perfect base for your desert adventure" },
+        new Hotel() { Id = 3, TourSpotID = 3, Name = "Oasis", Location = "dead sea", StarRate = 5, Description = "A luxury resort on the shores of the Dead Sea" },
+        new Hotel() { Id = 4, TourSpotID = 1, Name = "Heritage", Location = "jerash", StarRate = 4, Description = "Experience the rich history of Jerash" },
+        new Hotel() { Id = 5, TourSpotID = 2, Name = "Horizon", Location = "aqaba", StarRate = 5, Description = "Stunning sea views in a modern setting" }
+    );
             modelBuilder.Entity<HotelRoom>().HasData(
-       new HotelRoom { RoomNumber = 101, HotelID = 1,RoomID = 1, Description = " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", SquareFeet = 500, Bathrooms = 1, Beds = 2,PricePerDay = 150.00m, IsAvailable = true },
-    new HotelRoom { RoomNumber = 102, HotelID = 1, RoomID = 2, Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", SquareFeet = 700, Bathrooms = 2,Beds = 2, PricePerDay = 200.00m, IsAvailable = true },
-    new HotelRoom {  RoomNumber = 103, HotelID = 1, RoomID = 3, Description = "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", SquareFeet = 1000, Bathrooms = 2, Beds = 1,PricePerDay = 300.00m,  IsAvailable = true },
+       new HotelRoom { RoomNumber = 101, HotelID = 1, RoomID = 1, Description = " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", SquareFeet = 500, Bathrooms = 1, Beds = 2, PricePerDay = 150.00m, IsAvailable = true },
+    new HotelRoom { RoomNumber = 102, HotelID = 1, RoomID = 2, Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", SquareFeet = 700, Bathrooms = 2, Beds = 2, PricePerDay = 200.00m, IsAvailable = true },
+    new HotelRoom { RoomNumber = 103, HotelID = 1, RoomID = 3, Description = "A large studio with a separate living area, king-size bed, two bathrooms, and a private terrace overlooking the city.", SquareFeet = 1000, Bathrooms = 2, Beds = 1, PricePerDay = 300.00m, IsAvailable = true },
 
      new HotelRoom { RoomNumber = 201, HotelID = 2, RoomID = 1, Description = " A spacious room with a king-size bed, modern amenities, and a beautiful city view.", SquareFeet = 500, Bathrooms = 1, Beds = 2, PricePerDay = 150.00m, IsAvailable = true },
     new HotelRoom { RoomNumber = 202, HotelID = 2, RoomID = 2, Description = " A luxurious suite with two queen-size beds, a mini bar, a private balcony with ocean views, and premium toiletries.", SquareFeet = 700, Bathrooms = 2, Beds = 2, PricePerDay = 200.00m, IsAvailable = true },
@@ -108,18 +105,18 @@ namespace Globe_Wander_Final.Data
             modelBuilder.Entity<Image>().HasData(
             new Image { Id = 1, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg", HotelId = 1 },
               new Image { Id = 2, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg", HotelId = 1 },
-                  new Image { Id = 3, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg",  HotelId = 1 },
-                      new Image { Id = 4, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg",HotelId = 1 },
-                          new Image { Id = 5, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg",  HotelId = 1 },
+                  new Image { Id = 3, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg", HotelId = 1 },
+                      new Image { Id = 4, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg", HotelId = 1 },
+                          new Image { Id = 5, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg", HotelId = 1 },
                            new Image { Id = 6, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg", HotelId = 1 },
                       new Image { Id = 7, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg", HotelId = 1 },
 
 
-              new Image { Id = 8, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel2image2.jpg",  HotelId = 2 },
-                      new Image { Id =9, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel2image1.jpg", HotelId = 2 },
+              new Image { Id = 8, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel2image2.jpg", HotelId = 2 },
+                      new Image { Id = 9, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel2image1.jpg", HotelId = 2 },
                   new Image { Id = 10, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel2image3.jpg", HotelId = 2 },
-                      new Image { Id = 11, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel2image4.jpg",  HotelId = 2 },
-                          new Image { Id = 12, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel2image5.jpg",HotelId = 2 },
+                      new Image { Id = 11, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel2image4.jpg", HotelId = 2 },
+                          new Image { Id = 12, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel2image5.jpg", HotelId = 2 },
                             new Image { Id = 13, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel2image3.jpg", HotelId = 2 },
                       new Image { Id = 14, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel2image4.jpg", HotelId = 2 },
 
@@ -169,9 +166,9 @@ new Image { Id = 20, Path = "https://globewanderimages.blob.core.windows.net/glo
 
 
                 new Image { Id = 50, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg", HotelId = 1, RoomNumber = 103 },
-              new Image { Id =51, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg", HotelId = 1, RoomNumber = 103 },
+              new Image { Id = 51, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg", HotelId = 1, RoomNumber = 103 },
               new Image { Id = 52, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg", HotelId = 1, RoomNumber = 103 },
-                      new Image { Id = 53, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg", HotelId = 1, RoomNumber = 103},
+                      new Image { Id = 53, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg", HotelId = 1, RoomNumber = 103 },
                           new Image { Id = 54, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg", HotelId = 1, RoomNumber = 103 },
        new Image { Id = 55, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg", HotelId = 1, RoomNumber = 103 },
               new Image { Id = 56, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg", HotelId = 1, RoomNumber = 103 },
@@ -212,8 +209,8 @@ new Image { Id = 20, Path = "https://globewanderimages.blob.core.windows.net/glo
                           new Image { Id = 82, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg", HotelId = 3, RoomNumber = 301 },
        new Image { Id = 83, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg", HotelId = 3, RoomNumber = 301 },
               new Image { Id = 84, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg", HotelId = 3, RoomNumber = 301 },
-  
-           
+
+
               new Image { Id = 85, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg", HotelId = 3, RoomNumber = 302 },
               new Image { Id = 86, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg", HotelId = 3, RoomNumber = 302 },
               new Image { Id = 87, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg", HotelId = 3, RoomNumber = 302 },
@@ -230,11 +227,11 @@ new Image { Id = 20, Path = "https://globewanderimages.blob.core.windows.net/glo
                           new Image { Id = 96, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg", HotelId = 3, RoomNumber = 303 },
           new Image { Id = 97, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg", HotelId = 3, RoomNumber = 303 },
                           new Image { Id = 98, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg", HotelId = 3, RoomNumber = 303 },
-             
+
                 ///////////hotelroom4
 
                 new Image { Id = 99, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg", HotelId = 4, RoomNumber = 401 },
-                
+
               new Image { Id = 100, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg", HotelId = 4, RoomNumber = 401 },
               new Image { Id = 101, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg", HotelId = 4, RoomNumber = 401 },
                       new Image { Id = 102, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg", HotelId = 4, RoomNumber = 401 },
@@ -244,7 +241,7 @@ new Image { Id = 20, Path = "https://globewanderimages.blob.core.windows.net/glo
 
 
 
-  new Image { Id = 106, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg", HotelId = 4, RoomNumber = 402 }, 
+  new Image { Id = 106, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg", HotelId = 4, RoomNumber = 402 },
               new Image { Id = 107, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg", HotelId = 4, RoomNumber = 402 },
                   new Image { Id = 108, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image3.jpg", HotelId = 4, RoomNumber = 402 },
                       new Image { Id = 109, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg", HotelId = 4, RoomNumber = 402 },
@@ -278,9 +275,9 @@ new Image { Id = 20, Path = "https://globewanderimages.blob.core.windows.net/glo
               new Image { Id = 129, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg", HotelId = 5, RoomNumber = 502 },
               new Image { Id = 130, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg", HotelId = 5, RoomNumber = 502 },
                       new Image { Id = 131, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image4.jpg", HotelId = 5, RoomNumber = 502 },
-                      new Image { Id =132 , Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg", HotelId = 5, RoomNumber = 502 },
+                      new Image { Id = 132, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg", HotelId = 5, RoomNumber = 502 },
        new Image { Id = 133, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg", HotelId = 5, RoomNumber = 502 },
-         
+
 
 
                             new Image { Id = 134, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image1.jpg", HotelId = 5, RoomNumber = 503 },
@@ -291,12 +288,12 @@ new Image { Id = 20, Path = "https://globewanderimages.blob.core.windows.net/glo
                           new Image { Id = 139, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image5.jpg", HotelId = 5, RoomNumber = 503 },
        new Image { Id = 140, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/hotel1image2.jpg", HotelId = 5, RoomNumber = 503 },
 
-       // Trip Images
+        // Trip Images
         new Image { Id = 141, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip1.jpg", TripId = 1 },
         new Image { Id = 142, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip2.jpg", TripId = 2 },
         new Image { Id = 143, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip3.jpg", TripId = 3 },
-        new Image { Id = 144, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip4.png", TripId = 4 },
-        new Image { Id = 145, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip5.jpg", TripId = 5 },
+        new Image { Id = 144, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip4.jpg", TripId = 4 },
+        new Image { Id = 145, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip5.jpeg", TripId = 5 },
         new Image { Id = 146, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip6.jpg", TripId = 6 },
         new Image { Id = 147, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip7.png", TripId = 7 },
         new Image { Id = 148, Path = "https://globewanderimages.blob.core.windows.net/globe-wander-images/trip8.jpg", TripId = 8 },
@@ -327,13 +324,13 @@ new Image { Id = 20, Path = "https://globewanderimages.blob.core.windows.net/glo
 
         );
 
-    
-        
-    modelBuilder.Entity<Amenity>().HasData(
-                new Amenity() { Id = 1, Name = "Free Wi-Fi" },
-                new Amenity() { Id = 2, Name = "TV" },
-                new Amenity() { Id = 3, Name = "Air conditioning" }
-            );
+
+
+            modelBuilder.Entity<Amenity>().HasData(
+                        new Amenity() { Id = 1, Name = "Free Wi-Fi" },
+                        new Amenity() { Id = 2, Name = "TV" },
+                        new Amenity() { Id = 3, Name = "Air conditioning" }
+                    );
             modelBuilder.Entity<RoomAmenity>().HasData(
     new RoomAmenity() { Id = 1, RoomId = 1, AmenityId = 1 },
     new RoomAmenity() { Id = 2, RoomId = 1, AmenityId = 2 },
@@ -360,7 +357,7 @@ new Image { Id = 20, Path = "https://globewanderimages.blob.core.windows.net/glo
     new HotelFacility() { Id = 8, FacilityId = 3, HotelId = 5 },
     new HotelFacility() { Id = 10, FacilityId = 1, HotelId = 4 },
     new HotelFacility() { Id = 11, FacilityId = 2, HotelId = 5 }
-   
+
 
 );
 
@@ -388,7 +385,7 @@ new Image { Id = 20, Path = "https://globewanderimages.blob.core.windows.net/glo
                 }
             );
 
-          
+
             modelBuilder.Entity<HotelRoom>().HasKey(
                  hotelRooms => new
                  {

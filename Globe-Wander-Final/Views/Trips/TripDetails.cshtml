@@ -18,6 +18,27 @@
                 </ul>
             </nav>
         </div>
+    <img style="object-fit:cover;" class="overlay" src="https://globewanderimages.blob.core.windows.net/globe-wander-images/pannertrip.jpg" alt="image" />
+    </section>
+    <!-- BreadCrumb Ends -->
+    <!-- flight desti starts -->
+    <section class="flight-destinations bg-white">
+        <div class="container">
+            <div class="row">
+                <div id="content" class="col-md-8 col-xs-12">
+                    <div class="detail-content content-wrapper">
+                        <div class="detail-info">
+                            <div class="detail-info-content clearfix">
+
+                                <h2>@Model.trip.Name</h2>
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                                <h3 class=" detail-price mar-0 text-right">$@Model.trip.Cost<br>Person</h3>
     </div>
     <div class="overlay"></div>
 </section>
@@ -73,48 +94,48 @@
                                 <img src="@item.Path" alt="@Model.trip.Name">
                             }
                         </div>
+                        <div class="description flight-table mar-bottom-30">
+                            <div class="detail-title">
+                                <h3>Description</h3>
+                            </div>
+                            <div class="description-content">
+                                <p>@Model.trip.Description</p>
+                                <table>
+                                    <thead>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Trip ID</td>
+                                            <td><i aria-hidden="true"></i> @Model.trip.Id</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Location</td>
+                                            <td><i class="fa fa-map-marker" aria-hidden="true"></i> @Model.trip.Name</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Departure and return Time</td>
+                                            <td><i class="fa fa-clock-o" aria-hidden="true"></i> Please arrive by <span style="color:#DC143C;">@Model.trip.StartDate</span> for a prompt departure at <span style="color:#DC143C;">@Model.trip.EndDate</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Maximum travellers</td>
+                                            <td><i class="fa fa-user" aria-hidden="true"></i> @Model.trip.Capacity</td>
+                                        </tr>
+                                        <tr>
+                                            <td>People that booked</td>
+                                            <td><i class="fa fa-user" aria-hidden="true"></i> @Model.trip.Count</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Activity</td>
+                                            <td><i class="fa fa-check" aria-hidden="true"></i> @Model.trip.Activity</td>
+                                        </tr>
 
 
-                    </div>
-                    <div class="description flight-table mar-bottom-30">
-                        <div class="detail-title">
-                            <h3>Description</h3>
+                                    </tbody>
+                                </table>
+                            </div>
+
                         </div>
-                        <div class="description-content">
-                            <p>@Model.trip.Description</p>
-                            <table>
-                                <thead>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="title">Trip ID</td>
-                                        <td><i aria-hidden="true"></i> @Model.trip.Id</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="title">Location</td>
-                                        <td><i class="fa fa-map-marker" aria-hidden="true"></i> @Model.trip.Name</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="title">Departure and return Time</td>
-                                        <td><i class="fa fa-clock-o" aria-hidden="true"></i> Please arrive by <span style="color:#DC143C;">@Model.trip.StartDate</span> for a prompt departure at <span style="color:#DC143C;">@Model.trip.EndDate</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="title">Maximum travellers</td>
-                                        <td><i class="fa fa-user" aria-hidden="true"></i> @Model.trip.Capacity</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="title">People that booked</td>
-                                        <td><i class="fa fa-user" aria-hidden="true"></i> @Model.trip.Count</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="title">Activity</td>
-                                        <td><i class="fa fa-check" aria-hidden="true"></i> @Model.trip.Activity</td>
-                                    </tr>
-
-
-                                </tbody>
-                            </table>
-                        </div>
+                      
                     </div>
 
 
