@@ -385,14 +385,7 @@ namespace Globe_Wander_Final.Models.Services
                             TotalPrice = bt.TotalPrice,
                             Username = bt.Username
                         }).ToList(),
-                        TripImages = _context.Images.Where(w => trips.Id == w.TripId).Select(e => new Image
-                        {
-                            Id = e.Id,
-                            TripId = e.TripId,
-                            Path = e.Path,
-
-                        }
-                            ).ToList(),
+                     
                         Rates = trips.Rates.Select(r => new RateDTO
                         {
                             ID = r.ID,

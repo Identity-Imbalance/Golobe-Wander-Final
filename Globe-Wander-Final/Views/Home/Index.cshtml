@@ -204,8 +204,16 @@
                             <p class="price white">From <span>$350.00</span></p>
                             <div class="td-content">
                                 <h3><i class="fa fa-map-marker-alt"></i> @tour.Name</h3>
-                                <p class="white">@tour.Description</p>
-                                <a href="#" class="biz-btn">Book Now</a>
+                                <p class="white">
+                                    @{
+                                        string itemDescription = tour.Description; // Your original string
+                                        int dotPosition = itemDescription.IndexOf('.'); // Find the position of the first dot
+                                        string result = itemDescription.Substring(0, dotPosition);
+                                        ;
+                                    }
+                                    @result
+                                </p>
+                                <a asp-action="GetSpotById" asp-controller="TourSpots" asp-route-spotId="@tour.ID" class="biz-btn">Book Now</a>
                             </div>
                         </div>
                     </div>
@@ -239,20 +247,20 @@
                                         <div class="ribbon ribbon-top-left"><span>25% OFF</span></div>
                                         <div class="trend-image">
                                     <img src="@item.Img" alt="image" width="300px" height="300px">
-                                            <div class="trend-tags">
-                                                <a href="#"><i class="flaticon-like"></i></a>
-                                            </div>
-                                            <div class="trend-price">
-                                                <p class="price">From <span>$350.00</span></p>
-                                            </div>
+                                          
                                         </div>
                                  <a asp-action="GetSpotById" asp-controller="TourSpots" asp-route-spotId="@item.ID">
                                         <div class="trend-content">
                                             <p><i class="flaticon-location-pin"></i>@item.Name</p>
-                                        <p ><i class="fa fa-clock-o" aria-hidden="true"></i> @item.Country</p>
+                                            <p><i class="flaticon-location-pin" aria-hidden="true"></i> @item.Country</p>
                                             <p>Tour Type: @item.Category</p>
-                                        <h4>
-                                        @item.Description  
+                                            <h4>
+                                                @{
+                                                    string itemDescription = item.Description; // Your original string
+                                                    int dotPosition = itemDescription.IndexOf('.'); // Find the position of the first dot
+                                                    string result = itemDescription.Substring(0, dotPosition);
+                                                    ;}
+                                                @result
                                         
                                     </h4>
                                     @foreach(var trip in item.Trips){
