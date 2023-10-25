@@ -41,7 +41,10 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label># NO. PERSONS</label>
-                                                    <input asp-for=updateBooking.NumberOfPersons type="number" placeholder="1"  min="1" >
+                                                    @{
+                                                        var maxperson = Model.TripDTO.Capacity - Model.TripDTO.Count;
+                                                    }
+                                                    <input asp-for=updateBooking.NumberOfPersons type="number" placeholder="1" min="1" max="@maxperson">
                                                     <input asp-for=updateBooking.ID type="hidden" value="@Model.bookingTripDTO.ID">
                                                     <input asp-for="updateBooking.StartDate" type="hidden" value="@Model.bookingTripDTO.ID">
                                                     <input asp-for=updateBooking.EndDate type="hidden" value="@Model.bookingTripDTO.ID">
@@ -55,7 +58,7 @@
                                             </div>
 
 
-                                        }
+                                   
                                     </form>
                                     </div>
                                 </div>
@@ -80,20 +83,3 @@
     <!-- Back to top ends -->
 
     <!-- search popup -->
-<script>
-    var CheckIn = document.getElementById("CheckIn");
-    var CheckOut = document.getElementById("CheckOut");
-
-    CheckIn.addEventListener("change", function () {
-        var checkInDate = new Date(CheckIn.value);
-        var nextDay = new Date(checkInDate);
-        nextDay.setDate(checkInDate.getDate() + 1);
-
-        var year = nextDay.getFullYear();
-        var month = String(nextDay.getMonth() + 1).padStart(2, '0');
-        var day = String(nextDay.getDate()).padStart(2, '0');
-
-        var formattedDate = year + '-' + month + '-' + day;
-        CheckOut.min = formattedDate;
-    });
-</script>

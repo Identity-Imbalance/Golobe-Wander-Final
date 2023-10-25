@@ -37,8 +37,12 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label># NO. PERSONS</label>
+
+                                                    @{
+                                                        var maxperson = Model.TripDTO.Capacity - Model.TripDTO.Count;
+                                                    }
                                                     <input asp-for=NewBookingTripDTO.TripID hidden type="number" value="@Model.TripDTO.Id">
-                                                    <input asp-for=NewBookingTripDTO.NumberOfPersons min=1 type="number">
+                                                    <input asp-for=NewBookingTripDTO.NumberOfPersons min=1 type="number" max="@maxperson">
 
                                                 </div>
                                             </div>

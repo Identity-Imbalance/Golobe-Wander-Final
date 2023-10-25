@@ -203,10 +203,11 @@ namespace Globe_Wander_Final.Controllers
         {
 
             var BookingData = await _bookingTrip.GetBookingTripById(Id);
+            var trip = await _trip.GetTripByID(BookingData.TripID);
             var BOOKING = new UpdateTripBooking()
             {
                 bookingTripDTO = BookingData,
-
+                TripDTO = trip
             };
 
             return View(BOOKING);
