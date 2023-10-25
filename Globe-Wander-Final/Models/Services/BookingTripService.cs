@@ -146,14 +146,14 @@ namespace Globe_Wander_Final.Models.Services
 
                 if (trip.Capacity >= (trip.Count - bookingTrip.NumberOfPersons + updateBookingTrip.NumberOfPersons))
                 {
-                    bookingTrip.NumberOfPersons = updateBookingTrip.NumberOfPersons;
+                   
                     bookingTrip.StartDate = trip.StartDate;
                     bookingTrip.EndDate = trip.EndDate;
                     bookingTrip.CostPerPerson = trip.Cost;
                     bookingTrip.TotalPrice = cost;
 
                     trip.Count = trip.Count - bookingTrip.NumberOfPersons + updateBookingTrip.NumberOfPersons;
-
+                    bookingTrip.NumberOfPersons = updateBookingTrip.NumberOfPersons;
                     _context.Entry(bookingTrip).State = EntityState.Modified;
                     await _context.SaveChangesAsync();
 
