@@ -21,7 +21,7 @@ namespace Globe_Wander_Final.Controllers
             _upload = upload;
         }
 
-        //TODO: remove the filter & list type & edit the design column it should be container & maximum traveler first one remove  remove the id - yaman
+        //TODO: remove the filter & list type & edit the design column it should be container & maximum traveler first one remove  remove the id - yaman - done
         public async Task<IActionResult> Trips(int? page)
         {
             int pageSize = 6; // Set your desired page size here.

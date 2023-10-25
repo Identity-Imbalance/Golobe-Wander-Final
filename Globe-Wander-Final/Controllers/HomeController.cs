@@ -23,7 +23,7 @@ namespace Globe_Wander_Final.Controllers
             _hotel = hotel;
             _room = hotelRoom;
         }
-        // TODO: fix the banner pictures and remove the unnceeassy buttons and words - yaman
+        // TODO: fix the banner pictures and remove the unnceeassy buttons and words - yaman - done
         public async Task<IActionResult> Index()
         {
            var tourSpots =  await _tour.GetAllTourSpots();

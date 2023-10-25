@@ -41,8 +41,11 @@
 
                                         <h4> CheckIn : @bookingRoom.CheckIn</h4>
                                         <h4>CheckOut : @bookingRoom.CheckOut</h4>
+                                        <div style="display: flex; justify-content:space-around">
                                         <a class="biz-btn-black" asp-area="" asp-controller="BookingRooms" asp-action="UserUpdateBooking" asp-route-ID="@bookingRoom.ID">Update</a>
+
                                         <a class="biz-btn" asp-area="" asp-controller="BookingRooms" asp-action="UserDeleteBooking" asp-route-Id="@bookingRoom.ID">Delete</a>
+
 
 
                                     </div>
@@ -93,15 +96,17 @@
                                 <h4> CheckIn : @bookingTrip.StartDate</h4>
                                 <h4>CheckOut : @bookingTrip.EndDate</h4>
 
+
                                 @if (DateTime.Now <= bookingTrip.StartDate){
 
                                     <a class="biz-btn-black" asp-area="" asp-controller="BookingTrips" asp-action="UserUpdateBooking" asp-route-ID="@bookingTrip.ID">Update</a>
                                 }   <form asp-controller="BookingTrips" asp-action="UserDeleteBooking" method="post">
+
                                     <input type="hidden" name="Id" value="@bookingTrip.ID" />
                                     <button type="submit" class="biz-btn">Delete</button>
                                 </form>
 
-
+                                </div>
                             </div>
 
 
