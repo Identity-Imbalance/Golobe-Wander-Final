@@ -134,6 +134,14 @@ namespace Globe_Wander_Final.Models.Services
                             TotalPrice = bt.TotalPrice,
                             Username = bt.Username
                         }).ToList(),
+                        TripImages = _context.Images.Where(w => trips.Id == w.TripId).Select(e => new Image
+                        {
+                            Id = e.Id,
+                            TripId = e.TripId,
+                            Path = e.Path,
+
+                        }
+                            ).ToList(),
                         Rates = trips.Rates.Select(r => new RateDTO
                         {
                             ID = r.ID,
@@ -329,6 +337,7 @@ namespace Globe_Wander_Final.Models.Services
                                     RoomId = l.RoomId,
                                 }
                                     ).ToList(),
+
                             }).Where(r => r.ID == v.RoomID).FirstOrDefault(),
                             BookingRoom = _context.BookingRooms.Select(bk => new BookingRoomDTO
                             {
@@ -351,7 +360,7 @@ namespace Globe_Wander_Final.Models.Services
                     {
                         Id = trips.Id,
                         Name = trips.Name,
-                        Description = trips.Description,
+                        Description = trips.Description,    
                         Cost = trips.Cost,
                         Activity = trips.Activity,
                         StartDate = trips.StartDate,
@@ -368,6 +377,14 @@ namespace Globe_Wander_Final.Models.Services
                             TotalPrice = bt.TotalPrice,
                             Username = bt.Username
                         }).ToList(),
+                        TripImages = _context.Images.Where(w => trips.Id == w.TripId).Select(e => new Image
+                        {
+                            Id = e.Id,
+                            TripId = e.TripId,
+                            Path = e.Path,
+
+                        }
+                            ).ToList(),
                         Rates = trips.Rates.Select(r => new RateDTO
                         {
                             ID = r.ID,
