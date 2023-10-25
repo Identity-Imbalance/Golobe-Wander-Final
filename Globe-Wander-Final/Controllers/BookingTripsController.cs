@@ -121,6 +121,7 @@ namespace Globe_Wander_Final.Controllers
         }
 
         [HttpPost]
+        //TODO: max of the input is should be capacity - count  -- Osama
         public async Task<IActionResult> BookingForm(TripAndBookingTrip tripAndBookingForm)
         {
             var BookingTripData = await _bookingTrip.GetAllBookingRoomsForUser(User.Identity.Name);

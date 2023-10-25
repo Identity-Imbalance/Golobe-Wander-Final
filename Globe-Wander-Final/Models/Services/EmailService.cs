@@ -24,7 +24,7 @@ namespace Globe_Wander_Final.Models.Services
             _configuration = configuration;
 
         }
-
+        // TODO: Emails for boking trips thansk etc... -osama 
         public async Task sendEmail(string name,EmailDTO email)
         { 
           

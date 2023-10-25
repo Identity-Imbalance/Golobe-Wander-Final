@@ -30,7 +30,7 @@ namespace Globe_Wander_Final.Controllers
         {
             if (_signInManager.IsSignedIn(User) && ModelState.IsValid)
             {
-                var newUser = await userService.UpdateProfile(model, User.Identity.Name,User);
+                var newUser = await userService.UpdateProfile(model, User.Identity.Name, image);
                 if (newUser != null)
                 {
                     return RedirectToAction("Profile", "User");
@@ -68,8 +68,9 @@ namespace Globe_Wander_Final.Controllers
         {
             return View();
         }
-        [HttpPost]
 
+        // TODO: Valiadation the error mesage
+        [HttpPost]
         public async Task<ActionResult<UserDTO>> Login(LogInDTO data)
 
         {
@@ -86,6 +87,8 @@ namespace Globe_Wander_Final.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
+        // TODO: Validation for the inputs -- Abdallah
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult<UserDTO>> Register(RegisterUserDTO dataDTO)

@@ -45,6 +45,7 @@ namespace Globe_Wander_Final.Controllers
         }
 
         [Authorize]
+        //TODO: check the forms of the booking - Osama
         public async Task<IActionResult> BookingForm(int HotelID, int RoomNumber)
         {
 
@@ -201,6 +202,8 @@ namespace Globe_Wander_Final.Controllers
             return View();
 
         }
+        
+        //TODO: fix update , remove the duration and replace wit how many user booked, fix buttons, - Osama
         public async Task<IActionResult> MyBookings()
         {
             var user = User.Identity.Name;
@@ -241,6 +244,7 @@ namespace Globe_Wander_Final.Controllers
             return RedirectToAction("MyBookings");
         }
 
+        //TODO: check the forms of the booking - osama
         public async Task<IActionResult> UserUpdateBooking(int Id)
         {
 

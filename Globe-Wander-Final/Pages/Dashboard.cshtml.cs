@@ -8,6 +8,7 @@ using System.Linq;
 namespace Globe_Wander_Final.Pages
 {
     [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)] // Disable caching
+        [Authorize(Roles = "Admin Manager, Trip Manager, Hotel Manager")]
 
     public class DashboardModel : PageModel
     {
@@ -39,7 +40,7 @@ namespace Globe_Wander_Final.Pages
 
         public List<object> combinedList { get; set; }
 
-        [Authorize(Roles = "Admin Manager, Trip Manager, Hotel Manager")]
+        //TODO: remove the logo of amazon, add header of the dashboard LogOut, if i can add a register for the admins 
         public async Task OnGet()
         {
             var tours = await _tour.GetAllTourSpots();

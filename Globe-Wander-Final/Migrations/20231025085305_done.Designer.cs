@@ -12,7 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Globe_Wander_Final.Migrations
 {
     [DbContext(typeof(GlobeWanderDbContext))]
+<<<<<<<< HEAD:Globe-Wander-Final/Migrations/20231025085240_done.Designer.cs
     [Migration("20231025085240_done")]
+========
+    [Migration("20231025085305_done")]
+>>>>>>>> 9341d3f1842847fa39b2ac7a7e9ff1871146ce17:Globe-Wander-Final/Migrations/20231025085305_done.Designer.cs
     partial class done
     {
         /// <inheritdoc />
@@ -131,15 +135,26 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
+<<<<<<<< HEAD:Globe-Wander-Final/Migrations/20231025085240_done.Designer.cs
                             ConcurrencyStamp = "7b4fa17e-8ba4-4eb2-ad5f-47b611201fab",
+========
+                            ConcurrencyStamp = "4d22520f-81f7-4c14-b9a2-0def08902713",
+>>>>>>>> 9341d3f1842847fa39b2ac7a7e9ff1871146ce17:Globe-Wander-Final/Migrations/20231025085305_done.Designer.cs
                             Email = "User@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "USER",
+<<<<<<<< HEAD:Globe-Wander-Final/Migrations/20231025085240_done.Designer.cs
                             PasswordHash = "AQAAAAIAAYagAAAAELEE7SvnuQ8zYvINg0T/GulkrPpy37w5na93W5i3Pk7UqHG0KLqbu43M7nFV6IhekQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "e9732b6f-d84b-4c97-bbd2-054bc84a87d8",
+========
+                            PasswordHash = "AQAAAAIAAYagAAAAENxCa5TSQ9iyREOTnfHymJveLDvpSpbsHxr14d9zbP2yAHEAKyRNOI/e+bNFI4sl3A==",
+                            PhoneNumber = "1234567890",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "e965b412-7d34-4c6b-8254-bfd19d3a1e27",
+>>>>>>>> 9341d3f1842847fa39b2ac7a7e9ff1871146ce17:Globe-Wander-Final/Migrations/20231025085305_done.Designer.cs
                             TwoFactorEnabled = false,
                             UserName = "User"
                         },
@@ -147,16 +162,27 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
+<<<<<<<< HEAD:Globe-Wander-Final/Migrations/20231025085240_done.Designer.cs
                             ConcurrencyStamp = "4f07661c-755c-4441-afcd-3723375e164e",
+========
+                            ConcurrencyStamp = "2a33dce7-cfc8-427b-998b-d1ab1e1a414b",
+>>>>>>>> 9341d3f1842847fa39b2ac7a7e9ff1871146ce17:Globe-Wander-Final/Migrations/20231025085305_done.Designer.cs
                             Email = "adminUser@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "adminUser@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
+<<<<<<<< HEAD:Globe-Wander-Final/Migrations/20231025085240_done.Designer.cs
                             PasswordHash = "AQAAAAIAAYagAAAAEIGPFCp+U04eL2E2Q3CwmBVo/s7yYuz5cNOVmoRpuGMWwmuo0v2p4t1KiWvokaLLbQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "ad7e69f6-2f5b-44e3-b98c-91e9b492b76a",
+========
+                            PasswordHash = "AQAAAAIAAYagAAAAEIe56mwHTcm+CqJ5LozGx+wuf18RkdYK1c8BMMWmvG5sz3eZRTmgm+RdSCzzOHBzRQ==",
+                            PhoneNumber = "1234567890",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "81411230-443b-4ed4-ba26-4969712c8fa4",
+>>>>>>>> 9341d3f1842847fa39b2ac7a7e9ff1871146ce17:Globe-Wander-Final/Migrations/20231025085305_done.Designer.cs
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -164,16 +190,27 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
+<<<<<<<< HEAD:Globe-Wander-Final/Migrations/20231025085240_done.Designer.cs
                             ConcurrencyStamp = "e71c0914-2285-45cc-bd4b-324fac361ace",
+========
+                            ConcurrencyStamp = "05f7fa0e-8407-4e43-b299-6d41c9738260",
+>>>>>>>> 9341d3f1842847fa39b2ac7a7e9ff1871146ce17:Globe-Wander-Final/Migrations/20231025085305_done.Designer.cs
                             Email = "trip@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "trip@EXAMPLE.COM",
                             NormalizedUserName = "TRIP",
+<<<<<<<< HEAD:Globe-Wander-Final/Migrations/20231025085240_done.Designer.cs
                             PasswordHash = "AQAAAAIAAYagAAAAEPx0JXFjiwQc8wkcHlgCyythWeyIOok5oF9lwt9u7RrYVDIBwieOe0KMMLsf8AWyQQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "f5496008-acca-495a-88f2-b6bb9a239e3a",
+========
+                            PasswordHash = "AQAAAAIAAYagAAAAEIly5lHyZCGrhf/S4m5a98VnGQ6XDzNVdc1JynNyigrhZB3GPZjVcUXyx5/m5gb0uQ==",
+                            PhoneNumber = "1234567890",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "3fe1e742-6f16-4513-9350-95a2a7b87354",
+>>>>>>>> 9341d3f1842847fa39b2ac7a7e9ff1871146ce17:Globe-Wander-Final/Migrations/20231025085305_done.Designer.cs
                             TwoFactorEnabled = false,
                             UserName = "trip"
                         },
@@ -181,16 +218,27 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
+<<<<<<<< HEAD:Globe-Wander-Final/Migrations/20231025085240_done.Designer.cs
                             ConcurrencyStamp = "28d1cc97-674d-4dbd-a795-4ecd95e605ed",
+========
+                            ConcurrencyStamp = "ca307109-eb63-4492-80f9-b47e0b0fdfce",
+>>>>>>>> 9341d3f1842847fa39b2ac7a7e9ff1871146ce17:Globe-Wander-Final/Migrations/20231025085305_done.Designer.cs
                             Email = "hotel@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "hotel@EXAMPLE.COM",
                             NormalizedUserName = "HOTEL",
+<<<<<<<< HEAD:Globe-Wander-Final/Migrations/20231025085240_done.Designer.cs
                             PasswordHash = "AQAAAAIAAYagAAAAEKuszvvY3F9zd0QieAZ+XBPBTGjcE/P0sEVbSVIibKkXXUIFrvNlwWkIn+aG7dkODQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "8003b615-487c-4c0c-afe2-d1c2d4acecf7",
+========
+                            PasswordHash = "AQAAAAIAAYagAAAAEOFpF8guGDzJJeJo58pPktqQSKp9FgXEvbLo7kk2ziTZEMKR24J7EpEC8r+RkOZ8Aw==",
+                            PhoneNumber = "1234567890",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "1cc5615f-3691-43d2-83ce-8d555efc4c2a",
+>>>>>>>> 9341d3f1842847fa39b2ac7a7e9ff1871146ce17:Globe-Wander-Final/Migrations/20231025085305_done.Designer.cs
                             TwoFactorEnabled = false,
                             UserName = "hotel"
                         });
