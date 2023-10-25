@@ -76,8 +76,6 @@ namespace Globe_Wander_Final.Controllers
             {
 
                 ID = UpdateBooking.IdForUpdate,
-                StartDate = UpdateBooking.StartDate,
-                EndDate = UpdateBooking.EndDate,
                 NumberOfPersons = UpdateBooking.NumberOfPersons
 
             };
@@ -218,14 +216,8 @@ namespace Globe_Wander_Final.Controllers
         public async Task<IActionResult> UserUpdateBooking(UpdateBookingTripDTO UpdateBooking)
         {
             var BookingData = await _bookingTrip.GetBookingTripById(UpdateBooking.ID);
-            if (UpdateBooking.StartDate <= DateTime.MinValue)
-            {
-                UpdateBooking.StartDate = BookingData.StartDate;
-            }
-            if (UpdateBooking.NumberOfPersons == null || UpdateBooking.NumberOfPersons == 0)
-            {
-                UpdateBooking.NumberOfPersons = BookingData.NumberOfPersons;
-            }
+             UpdateBooking.StartDate = BookingData.StartDate;
+            UpdateBooking.EndDate = BookingData.EndDate;
             var totalBeforeUpdate = BookingData.TotalPrice;
 
             //var updated = await _bookingRoom.UpdateBookingRoom(UpdateBooking.ID, UpdateBooking);
@@ -293,8 +285,8 @@ namespace Globe_Wander_Final.Controllers
                 return new StatusCodeResult(303);
 
             }
-            await _bookingTrip.UpdateBookingTripByUser(UpdateBooking.ID, UpdateBooking);
-            return RedirectToAction("UpdateOnlyCheckOut", new { Id = UpdateBooking.ID });
+            await _UPDATEBOOKINGTRIPServices.Delete(UpdateBooking.ID);
+            return RedirectToAction("MyBookings", "BookingRooms");
 
 
 
