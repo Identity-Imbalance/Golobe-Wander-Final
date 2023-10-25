@@ -44,7 +44,7 @@
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Trips" asp-action="Trips">Trips</a></li>
 
                                 <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Hotels" asp-action="Hotel">Hotels </a></li>
-                                @if (!User.IsInRole("User") || !User.Identity.IsAuthenticated)
+                                @if (User.IsInRole("Admin Manager") || User.IsInRole("Hotel Manager") || User.IsInRole("Trip Manager"))
                                 {
                                     <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-page="/Dashboard">Dashboard</a></li>                                    
                                 }

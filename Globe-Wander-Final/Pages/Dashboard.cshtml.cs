@@ -7,7 +7,6 @@ using System.Linq;
 
 namespace Globe_Wander_Final.Pages
 {
-    [Authorize(Roles = "Admin Manager, Trip Manager, Hotel Manager")]
     [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)] // Disable caching
 
     public class DashboardModel : PageModel
@@ -40,7 +39,7 @@ namespace Globe_Wander_Final.Pages
 
         public List<object> combinedList { get; set; }
 
-
+        [Authorize(Roles = "Admin Manager, Trip Manager, Hotel Manager")]
         public async Task OnGet()
         {
             var tours = await _tour.GetAllTourSpots();
