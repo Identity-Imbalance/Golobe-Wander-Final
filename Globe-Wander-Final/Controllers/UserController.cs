@@ -30,7 +30,7 @@ namespace Globe_Wander_Final.Controllers
         {
             if (_signInManager.IsSignedIn(User) && ModelState.IsValid)
             {
-                var newUser = await userService.UpdateProfile(model, User.Identity.Name, image);
+                var newUser = await userService.UpdateProfile(model, User.Identity.Name,User);
                 if (newUser != null)
                 {
                     return RedirectToAction("Profile", "User");

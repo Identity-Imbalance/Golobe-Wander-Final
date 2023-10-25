@@ -9,6 +9,7 @@ namespace Globe_Wander_Final.Pages
 {
     [Authorize(Roles = "Admin Manager, Trip Manager, Hotel Manager")]
     [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)] // Disable caching
+
     public class DashboardModel : PageModel
     {
 
