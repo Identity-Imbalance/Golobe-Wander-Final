@@ -17,7 +17,7 @@ namespace Globe_Wander_Final.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.12")
+                .HasAnnotation("ProductVersion", "7.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -128,15 +128,15 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "133d264e-b335-4f3e-b43e-8e48b9421979",
+                            ConcurrencyStamp = "259c8f4e-993e-48b0-b71e-fbeafc02fa0d",
                             Email = "User@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDmicSp2/WWIgW10smKMepbEzT0In2UzLIyXR08z2V8XauNnU4rk/PJ1dPLaRZcm4w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELHgjzJn1LBBMTw6X3WXRch1HJ829N30M2FbHXxRaWcZsvT6NGocl9qjqf0+s8eg/w==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "aaf3474b-861e-40ce-9617-bdefadb2ebdf",
+                            SecurityStamp = "26bd3d59-f988-45b1-a765-78c64fcec825",
                             TwoFactorEnabled = false,
                             UserName = "User"
                         },
@@ -144,16 +144,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7eb4555d-3c1f-4cbe-b81e-3bd456a5a92e",
+                            ConcurrencyStamp = "5d77ba68-f2bd-43e1-8dda-62f34233d31e",
                             Email = "adminUser@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "adminUser@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDgSMcgzBhzYPLPaKCTIJ3Y7wO/e3kxrTiGv7nwchsAba/YWVRmvjFx2nrK6qj05zg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKoKtRAIesOT1oiN1DT2WA724jmMRXlWhBnOwFLeIUNfBV8uEjicMfjz0073N5yohw==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ff1c5c82-27d8-43b6-86c8-a4c365bae5a1",
+                            SecurityStamp = "408da660-1ec6-4009-ba2e-f3a87ef7f440",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -161,16 +161,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9ef0818a-6f8c-46cd-8c51-664255c965a6",
+                            ConcurrencyStamp = "8640c1c8-82ed-42ae-9a2d-d974e01b5ef9",
                             Email = "trip@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "trip@EXAMPLE.COM",
                             NormalizedUserName = "TRIP",
-                            PasswordHash = "AQAAAAIAAYagAAAAECyuKwFww60mpv8griVSSj4oRk842U4SBVta/JVLPao0QBAFIbBoKcSAJXGX8IBojA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHeANOMbXzPDlEZJcPjGtSyLnkhQQuAROTm7e2UGnIBoli0YinhY5TAcp1XuTBolsA==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a3e08d3e-87fa-40bd-bba8-cf876d9d26ac",
+                            SecurityStamp = "052b7719-eac4-4a7b-82ae-65b5e623a7a7",
                             TwoFactorEnabled = false,
                             UserName = "trip"
                         },
@@ -178,16 +178,16 @@ namespace Globe_Wander_Final.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3b3df221-3a20-4fe2-8c89-b4fb72b46287",
+                            ConcurrencyStamp = "9933c4cd-537c-43f0-8b89-cfe9f6e4b09f",
                             Email = "hotel@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "hotel@EXAMPLE.COM",
                             NormalizedUserName = "HOTEL",
-                            PasswordHash = "AQAAAAIAAYagAAAAECLvoDuqRCbtCtSsz8/zeoo8IgSQlmyJUUaTXIBOnrN/e5ft0WRtxycvvbnXD/mQeA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPkI1sWx8sHDbIGSgiyI/qwIAXMIOZ7jZmgBF1muCXpvk/B+WhCh8RCGz0PFokpu5A==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8c8d547d-10a3-4b77-ad55-b876aa936be3",
+                            SecurityStamp = "260764ba-3f09-49be-941d-7365810fe84c",
                             TwoFactorEnabled = false,
                             UserName = "hotel"
                         });

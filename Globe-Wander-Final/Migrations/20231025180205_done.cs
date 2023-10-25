@@ -524,10 +524,10 @@ namespace Globe_Wander_Final.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "ImageUrl", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "7eb4555d-3c1f-4cbe-b81e-3bd456a5a92e", "adminUser@example.com", true, null, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAEDgSMcgzBhzYPLPaKCTIJ3Y7wO/e3kxrTiGv7nwchsAba/YWVRmvjFx2nrK6qj05zg==", "1234567890", false, "ff1c5c82-27d8-43b6-86c8-a4c365bae5a1", false, "admin" },
-                    { "2", 0, "3b3df221-3a20-4fe2-8c89-b4fb72b46287", "hotel@example.com", true, null, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAECLvoDuqRCbtCtSsz8/zeoo8IgSQlmyJUUaTXIBOnrN/e5ft0WRtxycvvbnXD/mQeA==", "1234567890", false, "8c8d547d-10a3-4b77-ad55-b876aa936be3", false, "hotel" },
-                    { "3", 0, "9ef0818a-6f8c-46cd-8c51-664255c965a6", "trip@example.com", true, null, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAECyuKwFww60mpv8griVSSj4oRk842U4SBVta/JVLPao0QBAFIbBoKcSAJXGX8IBojA==", "1234567890", false, "a3e08d3e-87fa-40bd-bba8-cf876d9d26ac", false, "trip" },
-                    { "4", 0, "133d264e-b335-4f3e-b43e-8e48b9421979", "User@example.com", true, null, false, null, null, "USER", "AQAAAAIAAYagAAAAEDmicSp2/WWIgW10smKMepbEzT0In2UzLIyXR08z2V8XauNnU4rk/PJ1dPLaRZcm4w==", "1234567890", false, "aaf3474b-861e-40ce-9617-bdefadb2ebdf", false, "User" }
+                    { "1", 0, "5d77ba68-f2bd-43e1-8dda-62f34233d31e", "adminUser@example.com", true, null, false, null, "adminUser@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAEKoKtRAIesOT1oiN1DT2WA724jmMRXlWhBnOwFLeIUNfBV8uEjicMfjz0073N5yohw==", "1234567890", false, "408da660-1ec6-4009-ba2e-f3a87ef7f440", false, "admin" },
+                    { "2", 0, "9933c4cd-537c-43f0-8b89-cfe9f6e4b09f", "hotel@example.com", true, null, false, null, "hotel@EXAMPLE.COM", "HOTEL", "AQAAAAIAAYagAAAAEPkI1sWx8sHDbIGSgiyI/qwIAXMIOZ7jZmgBF1muCXpvk/B+WhCh8RCGz0PFokpu5A==", "1234567890", false, "260764ba-3f09-49be-941d-7365810fe84c", false, "hotel" },
+                    { "3", 0, "8640c1c8-82ed-42ae-9a2d-d974e01b5ef9", "trip@example.com", true, null, false, null, "trip@EXAMPLE.COM", "TRIP", "AQAAAAIAAYagAAAAEHeANOMbXzPDlEZJcPjGtSyLnkhQQuAROTm7e2UGnIBoli0YinhY5TAcp1XuTBolsA==", "1234567890", false, "052b7719-eac4-4a7b-82ae-65b5e623a7a7", false, "trip" },
+                    { "4", 0, "259c8f4e-993e-48b0-b71e-fbeafc02fa0d", "User@example.com", true, null, false, null, null, "USER", "AQAAAAIAAYagAAAAELHgjzJn1LBBMTw6X3WXRch1HJ829N30M2FbHXxRaWcZsvT6NGocl9qjqf0+s8eg/w==", "1234567890", false, "26bd3d59-f988-45b1-a765-78c64fcec825", false, "User" }
                 });
 
             migrationBuilder.InsertData(
