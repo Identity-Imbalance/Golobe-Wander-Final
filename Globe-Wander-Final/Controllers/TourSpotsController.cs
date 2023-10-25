@@ -15,7 +15,7 @@ namespace Globe_Wander_Final.Controllers
         {
             _tours = tours;
         }
-
+        // TODO: The Eye icon on each tour should be removed - yaman
         public async Task<IActionResult> Index()
         {
             var tours = await _tours.GetAllTourSpots();
@@ -23,6 +23,7 @@ namespace Globe_Wander_Final.Controllers
             return View(tours);
         }
 
+        //TODO: Render the Trip inside && Link for the recomended trip  - yaman
         public async Task<IActionResult> GetSpotById(int spotId)
         {
             var tourId = await _tours.GetSpotById(spotId);
@@ -41,6 +42,7 @@ namespace Globe_Wander_Final.Controllers
             return View(pageList);
         }
 
+        
         [Authorize(Roles = "Admin Manager")]
         public async Task<IActionResult> CreateTourSpot()
         {
@@ -49,6 +51,7 @@ namespace Globe_Wander_Final.Controllers
 
         [Authorize(Roles = "Admin Manager")]
         [HttpPost]
+        //TODO: validation 
         public async Task<IActionResult> CreateTourSpot(newTourSpotDTO model, IFormFile image)
         {
             if (ModelState.IsValid)
@@ -70,6 +73,7 @@ namespace Globe_Wander_Final.Controllers
 
         [Authorize(Roles = "Admin Manager")]
         [HttpPost]
+        //TODO: validation 
         public async Task<IActionResult> EditTourSpot(newTourSpotDTO model, IFormFile image)
         {
             

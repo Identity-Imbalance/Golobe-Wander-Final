@@ -20,6 +20,8 @@ namespace Globe_Wander_Final.Controllers
             _tour = tour;
             _upload = upload;
         }
+
+        //TODO: remove the filter & list type & edit the design column it should be container & maximum traveler first one remove  remove the id - yaman
         public async Task<IActionResult> Trips(int? page)
         {
             int pageSize = 6; // Set your desired page size here.
@@ -32,7 +34,7 @@ namespace Globe_Wander_Final.Controllers
 
             return View(pagedList);
         }
-
+        //TODO: Home/detail edit the posistion & comment should be vaildated & remove the trip id & fix the depature and arrive time & rate star shuld be calculated - yaman
         public async Task<IActionResult> TripDetails(int id)
         {
 
