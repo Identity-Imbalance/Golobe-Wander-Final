@@ -41,9 +41,10 @@
 
                                         <h4> CheckIn : @bookingRoom.CheckIn</h4>
                                         <h4>CheckOut : @bookingRoom.CheckOut</h4>
+                                        <div style="display: flex; justify-content:space-around">
                                         <a class="biz-btn-black" asp-area="" asp-controller="BookingRooms" asp-action="UserUpdateBooking" asp-route-ID="@bookingRoom.ID">Update</a>
                                         <a class="biz-btn" asp-area="" asp-controller="BookingRooms" asp-action="UserDeleteBooking" asp-route-ID="@bookingRoom.ID">Delete</a>
-
+                                        </div>
 
                                     </div>
 
@@ -92,6 +93,7 @@
                                 <h4>Cost preDay : @bookingTrip.CostPerPerson $</h4>
                                 <h4> CheckIn : @bookingTrip.StartDate</h4>
                                 <h4>CheckOut : @bookingTrip.EndDate</h4>
+                                <div style="display: flex; justify-content:space-around">
                                 <a class="biz-btn-black" asp-area="" asp-controller="BookingTrips" asp-action="UserUpdateBooking" asp-route-ID="@bookingTrip.ID">Update</a>
                                 @* <a class="biz-btn" asp-area="" asp-controller="BookingTrips" asp-action="UserDeleteBooking" asp-route-ID="@bookingTrip.ID">Delete</a> *@
                                 <form asp-controller="BookingTrips" asp-action="UserDeleteBooking" method="post">
@@ -99,7 +101,7 @@
                                     <button type="submit" class="biz-btn" >Delete</button>
                                 </form>
 
-
+                                </div>
                             </div>
 
 

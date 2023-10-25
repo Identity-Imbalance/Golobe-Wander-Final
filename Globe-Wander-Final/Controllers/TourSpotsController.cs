@@ -15,7 +15,7 @@ namespace Globe_Wander_Final.Controllers
         {
             _tours = tours;
         }
-        // TODO: The Eye icon on each tour should be removed - yaman
+        // TODO: The Eye icon on each tour should be removed - yaman - done
         public async Task<IActionResult> Index()
         {
             var tours = await _tours.GetAllTourSpots();
@@ -23,7 +23,7 @@ namespace Globe_Wander_Final.Controllers
             return View(tours);
         }
 
-        //TODO: Render the Trip inside && Link for the recomended trip  - yaman
+        //TODO: Render the Trip inside && Link for the recomended trip  - yaman - done
         public async Task<IActionResult> GetSpotById(int spotId)
         {
             var tourId = await _tours.GetSpotById(spotId);

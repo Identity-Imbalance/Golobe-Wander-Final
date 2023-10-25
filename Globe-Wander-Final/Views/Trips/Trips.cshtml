@@ -2,11 +2,11 @@
 @using Globe_Wander_Final.Models.DTOs
 @model X.PagedList.PagedList<TripDTO>
 
-    <!-- Preloader -->
-    <div id="preloader">
-        <div id="status"></div>
-    </div>
-    <!-- Preloader Ends -->
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status"></div>
+</div>
+<!-- Preloader Ends -->
 <!-- banner starts -->
 <section class="banner ver-banner">
     <div class="slider">
@@ -25,8 +25,8 @@
 
                             <div class="swiper-content">
                                 <h1><span>@item.Name</span></h1>
-                                <p class="mar-bottom-30">@item.Description </p>
-                                
+
+
                             </div>
                             <div class="overlay"></div>
                         </div>
@@ -42,121 +42,136 @@
     <div class="border-line" style="background-image: url();"></div>
 </section>
 <!-- banner ends -->
-    <!-- flight-list starts -->
-    <section class="list flight-list">
-        <div class="container">
-            <div class="row">
+<!-- flight-list starts -->
 
-                <div class="col-md-8 col-xs-12">
-                    <div class="content">
-                        <div class="list-results display-flex space-between">
-                            <div class="list-results-sort display-flex">
-                                <div class="form-group display-flex mar-bottom-0 mar-right-20">
-                                    <label>Sort By Ranking</label>
-                                    <div class="input-box">
-                                        <select class="niceSelect">
-                                            <option value="1">0</option>
-                                            <option value="2">1</option>
-                                            <option value="3">2</option>
-                                            <option value="4">3</option>
-                                            <option value="5">4</option>
-                                        </select>
-                                    </div>
+<section class="list flight-list">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>All Trips</h2>
+        </div>
+        <div class="row" style="    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    margin-top: calc(var(--bs-gutter-y) * -1);
+    margin-right: calc(var(--bs-gutter-x) * -.5);
+    margin-left: calc(var(--bs-gutter-x) * -.5);
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-around;">
+
+            <div class="col-md-8 col-xs-12">
+
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        var total = item.Capacity - item.Count;
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="ticket-item list-ticket">
+                                <div>
+                                    @foreach (var image in item.TripImages.Take(1))
+                                    {
+                                        <img style="height:250px;border-radius:10px;" src="@image.Path" alt="@item.Name">
+                                    }
                                 </div>
-                                <div class="form-group display-flex mar-bottom-0 ">
-                                    <label>Sort By Price</label>
-                                    <div class="input-box">
-                                        <select class="niceSelect">
-                                            <option value="1">$50</option>
-                                            <option value="2">$100</option>
-                                            <option value="3">$150</option>
-                                            <option value="4">$200</option>
-                                            <option value="5">$250</option>
-                                        </select>
-                                    </div>
+                                <div class="flight-content">
+                                    <div class="ticket-content">
+                                        <div class="ticket-title">
+                                            <p class="price mar-bottom-5" hidden>@item.Id</p>
+                                            <h3 class="mar-0">@item.Name</h3>
 
+                                        </div>
+                                        <div class="ticket-btn mar-top-5">
+                                            <p class="price mar-0"><span class="bold">$@item.Cost</span> avg/person</p>
+                                        </div>
+
+                                        <div class="my-1">
+                                            <p class="title">Maximum travellers</p>
+                                            <p><i class="fa fa-user" aria-hidden="true"></i> @total</p>
+                                        </div>
+                                    </div>
+                                    <div class="landing display-flex">
+                                        <div class="icon">
+                                            <i class="fa fa-plane" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="content">
+                                            <p class="bold">Start</p>
+                                            <p>@item.StartDate</p>
+                                        </div>
+                                    </div>
+                                    <div class="landing display-flex">
+                                        <div class="icon landing-icon">
+                                            <i class="fa fa-plane" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="content">
+                                            <p class="bold">End</p>
+                                            <p>@item.EndDate</p>
+                                        </div>
+                                    </div>
+                                    <div class="landing display-flex">
+                                        @{
+                                            int sum = 0;
+                                            int avg = 0;
+                                        }
+                                        @foreach (var rate in item.Rates)
+                                        {
+                                            sum = sum + rate.Rating;
+
+                                        }
+
+                                        @{
+                                            if (item.Rates.Count != 0)
+                                                avg = sum / item.Rates.Count;
+
+                                        }
+                                        @if (avg > 0)
+                                        {
+                                            <div class="content">
+
+                                                @for (var i = 0; i < avg; i++)
+                                                {
+
+
+
+                                                    <div class="rating">
+
+                                                        <span class="fa fa-star checked"></span>
+
+                                                    </div>
+
+                                                }
+
+                                            </div>
+                                        }
+
+                                    </div>
+                                    
+                                    <div class="flight-btn text-center">
+                                        <a class="biz-btn biz-btn1 mar-right-10" asp-controller="Trips" asp-action="TripDetails" asp-route-id="@item.Id">Trip Details</a>
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <a class="biz-btn-black" asp-controller="BookingTrips" asp-action="BookingForm" asp-route-TripID="@item.Id">Booking</a>
+                                        }
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="click-menu pull-right">
-                            <div class="change-list mar-right-10"><a href="flightlist-1.html"><i class="fa fa-bars"></i></a></div>
-                            <div class="change-grid f-active"><a href="flightlist.html"><i class="fa fa-th"></i></a></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        @foreach (var item in Model)
-                        {
-                            var total = item.Capacity - item.Count;
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="ticket-item list-ticket">
-                                    <div>
-                                            @foreach (var image in item.TripImages.Take(1))
-                                            {
-                                                <img style="height:250px;border-radius:10px;" src="@image.Path" alt="@item.Name">
-                                            }
-                 </div>
-                                    <div class="flight-content">
-                                        <div class="ticket-content">
-                                            <div class="ticket-title">
-                                                <p class="price mar-bottom-5">@item.Id</p>
-                                                <h3 class="mar-0">@item.Name</h3>
 
-                                            </div>
-                                            <div class="ticket-btn mar-top-5">
-                                                <p class="price mar-0"><span class="bold">$@item.Cost</span> avg/person</p>
-                                            </div>
-                                            <div class="my-1">
-                                                <p class="title">Maximum travellers</p>
-                                                <p><i class="fa fa-user" aria-hidden="true"></i> @item.Capacity</p>
-                                            </div>
-                                            <div class="my-1">
-                                                <p class="title">Maximum travellers</p>
-                                                <p><i class="fa fa-user" aria-hidden="true">@total</i></p>
-                                            </div>
-                                        </div>
-                                        <div class="landing display-flex">
-                                            <div class="icon">
-                                                <i class="fa fa-plane" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="content">
-                                                <p class="bold">Start</p>
-                                                <p>@item.StartDate</p>
-                                            </div>
-                                        </div>
-                                        <div class="landing display-flex">
-                                            <div class="icon landing-icon">
-                                                <i class="fa fa-plane" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="content">
-                                                <p class="bold">End</p>
-                                                <p>@item.EndDate</p>
-                                            </div>
-                                        </div>
-                                        <div class="flight-btn text-center">
-                                            <a class="biz-btn biz-btn1 mar-right-10" asp-controller="Trips" asp-action="TripDetails" asp-route-id="@item.Id">Trip Details</a>
-                                            @if (User.Identity.IsAuthenticated)
-                                            {
-                                                <a class="biz-btn-black" asp-controller="BookingTrips" asp-action="BookingForm" asp-route-TripID="@item.Id">Booking</a>
-                                            }
-                                           
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                           
-                        }
-                    </div>
-                    <div class="pagination-content text-center d-flex justify-content-center">
-                        <ul class="pagination">
-                            <li>
-                                @Html.PagedListPager(Model, page => Url.Action("Trips", new { page }))
-                            </li>
-                        </ul>
-                    </div>
+                    }
+                </div>
+                <div class="pagination-content text-center d-flex justify-content-center">
+                    <ul class="pagination">
+                        <li>
+                            @Html.PagedListPager(Model, page => Url.Action("Trips", new { page }))
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+
 </section>
 
 

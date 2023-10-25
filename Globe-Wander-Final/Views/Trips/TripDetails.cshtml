@@ -8,14 +8,16 @@
 <!-- Preloader Ends -->
 <!-- Breadcrumb -->
 <section class="breadcrumb-outer text-center">
+    <div class="container">
         <div class="breadcrumb-content">
             <h2 class="white">Trip Detail</h2>
             <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Trip Detail</li>
+                    <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a asp-area="" asp-controller="Trips" asp-action="TripDetails">Trip Detail</a></li>
                 </ul>
             </nav>
+        </div>
         </div>
     <img style="object-fit:cover;" class="overlay" src="https://globewanderimages.blob.core.windows.net/globe-wander-images/pannertrip.jpg" alt="image" />
     </section>
@@ -53,13 +55,7 @@
                         <div class="detail-info-content clearfix">
 
                             <h2>@Model.trip.Name</h2>
-                            <div class="rating">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                            </div>
+                            
                             <h3 class=" detail-price mar-0 text-right">$@Model.trip.Cost<br>Person</h3>
                         </div>
 
@@ -76,6 +72,7 @@
                             <div class="detail-title">
                                 <h3>Description</h3>
                             </div>
+
                             <div class="description-content">
                                 <p>@Model.trip.Description</p>
                                 <table>
@@ -83,16 +80,20 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Trip ID</td>
-                                            <td><i aria-hidden="true"></i> @Model.trip.Id</td>
+                                           
+                                            <td hidden><i aria-hidden="true"></i> @Model.trip.Id</td>
                                         </tr>
                                         <tr>
                                             <td>Location</td>
                                             <td><i class="fa fa-map-marker" aria-hidden="true"></i> @Model.trip.Name</td>
                                         </tr>
                                         <tr>
-                                            <td>Departure and return Time</td>
-                                            <td><i class="fa fa-clock-o" aria-hidden="true"></i> Please arrive by <span style="color:#DC143C;">@Model.trip.StartDate</span> for a prompt departure at <span style="color:#DC143C;">@Model.trip.EndDate</span></td>
+                                            <td>Departure Time</td>
+                                            <td><i class="fa fa-clock-o" aria-hidden="true"></i> The trip departs on: <span style="color:#DC143C;">@Model.trip.StartDate</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Return Time</td>
+                                            <td><i class="fa fa-clock-o" aria-hidden="true"></i> The trip it ends on: <span style="color:#DC143C;">@Model.trip.EndDate</span></td>
                                         </tr>
                                         <tr>
                                             <td>Maximum travellers</td>

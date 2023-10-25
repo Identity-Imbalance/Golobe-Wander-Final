@@ -359,6 +359,14 @@ namespace Globe_Wander_Final.Models.Services
                         Capacity = trips.Capacity,
                         Count = trips.Count,
                         TourSpotID = trips.TourSpotID,
+                        TripImages = _context.Images.Where(w => trips.Id == w.TripId).Select(e => new Image
+                        {
+                            Id = e.Id,
+                            TripId = e.TripId,
+                            Path = e.Path,
+
+                        }
+                            ).ToList(),
                         BookingTrips = trips.BookingTrips.Select(bt => new BookingTripDTO
                         {
                             ID = bt.ID,
